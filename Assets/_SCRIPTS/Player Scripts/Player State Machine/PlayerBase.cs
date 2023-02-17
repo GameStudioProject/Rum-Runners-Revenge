@@ -8,6 +8,9 @@ public class PlayerBase : MonoBehaviour
     
     public PlayerIdleState PlayerIdleState { get; private set; }
     public PlayerMoveState PlayerMoveState { get; private set; }
+    public PlayerJumpState PlayerJumpState { get; private set; }
+    public PlayerInAirState PlayerInAirState { get; private set; }
+    public PlayerLandState PlayerLandState { get; private set; }
     
     [SerializeField] private PlayerData _playerData;
     #endregion
@@ -16,6 +19,12 @@ public class PlayerBase : MonoBehaviour
     public Animator PlayerAnimator { get; private set; }
     public PlayerInput PlayerInputHandler { get; private set; }
     public Rigidbody2D PlayerRB { get; private set; }
+    #endregion
+
+    #region Check Player Transforms
+
+    [SerializeField] private Transform _playerGroundCheck;
+
     #endregion
     
     #region Other Variables
@@ -32,6 +41,10 @@ public class PlayerBase : MonoBehaviour
 
         PlayerIdleState = new PlayerIdleState(this, PlayerStateMachine, _playerData, "idle");
         PlayerMoveState = new PlayerMoveState(this, PlayerStateMachine, _playerData, "move");
+        PlayerJumpState = new PlayerJumpState(this, PlayerStateMachine, _playerData, "inAir");
+        PlayerInAirState = new PlayerInAirState(this, PlayerStateMachine, _playerData, "inAir");
+        PlayerLandState = new PlayerLandState(this, PlayerStateMachine, _playerData, "land");
+
     }
 
     private void Start()
@@ -68,9 +81,22 @@ public class PlayerBase : MonoBehaviour
         PlayerRB.velocity = _velocityWorkspace;
         PlayerCurrentVelocity = _velocityWorkspace;
     }
+
+    public void SetPlayerVelocityY(float velocity)
+    {
+        _velocityWorkspace.Set(PlayerCurrentVelocity.x, velocity);
+        PlayerRB.velocity = _velocityWorkspace;
+        PlayerCurrentVelocity = _velocityWorkspace;
+    }
+    
     #endregion
 
     #region Player Check Functions
+
+    public bool CheckIfPlayerGrounded()
+    {
+        return Physics2D.OverlapCircle(_playerGroundCheck.position, _playerData.playerGroundCheckRadius, _playerData.whatIsGround);
+    }
     
     public void CheckIfPlayerShouldFlip(int playerXInput)
     {
@@ -82,6 +108,11 @@ public class PlayerBase : MonoBehaviour
     #endregion
     
     #region Other Functions
+
+    private void PlayerAnimationTrigger() => PlayerStateMachine.PlayerCurrentState.PlayerAnimationTrigger();
+
+    private void PlayerAnimationFinishTrigger() => PlayerStateMachine.PlayerCurrentState.PlayerAnimationFinishTrigger();
+    
     public void PlayerFlip()
     {
         PlayerFacingDirection *= -1;

@@ -8,11 +8,14 @@ public class PlayerStates
     protected PlayerStateMachine _playerStateMachine;
     protected PlayerData _playerData;
 
+    protected bool _isPlayerAnimationFinished;
+
     protected float stateStartTime;
 
     private string _animationBoolName;
 
-    public PlayerStates(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName)
+    public PlayerStates(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData,
+        string animationBoolName)
     {
         _player = player;
         _playerStateMachine = playerStateMachine;
@@ -26,6 +29,7 @@ public class PlayerStates
         _player.PlayerAnimator.SetBool(_animationBoolName, true);
         stateStartTime = Time.time;
         Debug.Log(_animationBoolName);
+        _isPlayerAnimationFinished = false;
     }
 
     public virtual void StateExit()
@@ -35,7 +39,7 @@ public class PlayerStates
 
     public virtual void EveryFrameUpdate() //unity Update();
     {
-            
+
     }
 
     public virtual void PhysicsUpdate() //unity FixedUpdate();
@@ -45,6 +49,13 @@ public class PlayerStates
 
     public virtual void PerformPlayerChecks() //check for ground etc etc
     {
-            
+
     }
+
+    public virtual void PlayerAnimationTrigger()
+    {
+
+    }
+
+    public virtual void PlayerAnimationFinishTrigger() => _isPlayerAnimationFinished = true;
 }

@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerGroundedState : PlayerStates
 {
     protected int _xPlayerInput;
+
+    private bool _playerJumpInput;
     
     public PlayerGroundedState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
     {
@@ -24,6 +26,13 @@ public class PlayerGroundedState : PlayerStates
         base.EveryFrameUpdate();
 
         _xPlayerInput = _player.PlayerInputHandler.NormInputX;
+        _playerJumpInput = _player.PlayerInputHandler.PlayerJumpInput;
+
+        if (_playerJumpInput)
+        {
+            _player.PlayerInputHandler.PlayerUsedJumpInput();
+            _playerStateMachine.ChangePlayerState(_player.PlayerJumpState);
+        }
     }
 
     public override void PhysicsUpdate()

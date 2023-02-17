@@ -8,7 +8,8 @@ public class PlayerInput : MonoBehaviour
     public Vector2 RawPlayerMovementInput { get; private set; }
     public int NormInputX { get; private set; }
     public int NormInputY { get; private set; }
-    
+    public bool PlayerJumpInput { get; private set; }
+
     public void OnMovementInput(InputAction.CallbackContext button)
     {
         RawPlayerMovementInput = button.ReadValue<Vector2>();
@@ -19,6 +20,11 @@ public class PlayerInput : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext button)
     {
-        
+        if (button.started)
+        {
+            PlayerJumpInput = true;
+        }
     }
-}
+
+    public void PlayerUsedJumpInput() => PlayerJumpInput = false;
+}    
