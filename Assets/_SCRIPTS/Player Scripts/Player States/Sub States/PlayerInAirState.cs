@@ -7,6 +7,7 @@ public class PlayerInAirState : PlayerStates
     private int _playerXInput;
     private bool _isPlayerGrounded;
     private bool _isPlayerTouchingWall;
+    private bool _isPlayerTouchingWallBehind;
     private bool _playerJumpInput;
     private bool _playerJumpInputStop;
     private bool _playerCoyoteTime;
@@ -45,8 +46,14 @@ public class PlayerInAirState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerLandState);
         }
+        else if (_playerJumpInput && (_isPlayerTouchingWall || _isPlayerTouchingWallBehind))
+        {
+            _player.PlayerWallJumpState.FindWallJumpDirection(_isPlayerTouchingWall);
+            _playerStateMachine.ChangePlayerState(_player.PlayerWallJumpState);
+        }
         else if (_playerJumpInput && _player.PlayerJumpState.CanPlayerJump())
         {
+            _player.PlayerInputHandler.PlayerUsedJumpInput();
             _playerStateMachine.ChangePlayerState(_player.PlayerJumpState);
         }
         else if (_isPlayerTouchingWall && _playerGrabInput)
@@ -94,6 +101,7 @@ public class PlayerInAirState : PlayerStates
 
         _isPlayerGrounded = _player.CheckIfPlayerGrounded();
         _isPlayerTouchingWall = _player.CheckIfPlayerTouchesWall();
+        _isPlayerTouchingWallBehind = _player.CheckIfPlayerTouchesWallBehind();
     }
 
     private void CheckPlayerCoyoteTime()

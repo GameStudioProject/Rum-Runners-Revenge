@@ -29,14 +29,18 @@ public class PlayerWallGrabState : PlayerTouchWallState
 
         PlayerHoldPosition();
 
-        if (_playerYInput > 0)
+        if (!_isExitingPlayerState)
         {
-            _playerStateMachine.ChangePlayerState(_player.PlayerWallClimbState);
+            if (_playerYInput > 0)
+            {
+                _playerStateMachine.ChangePlayerState(_player.PlayerWallClimbState);
+            }
+            else if (_playerYInput < 0 || !_playerGrabInput)
+            {
+                _playerStateMachine.ChangePlayerState(_player.PlayerWallSlideState);
+            }
         }
-        else if (_playerYInput < 0 || !_playerGrabInput)
-        {
-            _playerStateMachine.ChangePlayerState(_player.PlayerWallSlideState);
-        }
+        
     }
 
     private void PlayerHoldPosition()

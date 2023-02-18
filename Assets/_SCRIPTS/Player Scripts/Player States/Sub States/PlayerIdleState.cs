@@ -21,7 +21,7 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.EveryFrameUpdate();
 
-        if (_xPlayerInput != 0)
+        if (_xPlayerInput != 0 && !_isExitingPlayerState)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerMoveState);
         }

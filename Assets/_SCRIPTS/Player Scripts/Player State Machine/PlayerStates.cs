@@ -9,6 +9,7 @@ public class PlayerStates
     protected PlayerData _playerData;
 
     protected bool _isPlayerAnimationFinished;
+    protected bool _isExitingPlayerState;
 
     protected float stateStartTime;
 
@@ -30,11 +31,13 @@ public class PlayerStates
         stateStartTime = Time.time;
         Debug.Log(_animationBoolName);
         _isPlayerAnimationFinished = false;
+        _isExitingPlayerState = false;
     }
 
     public virtual void StateExit()
     {
         _player.PlayerAnimator.SetBool(_animationBoolName, false);
+        _isExitingPlayerState = true;
     }
 
     public virtual void EveryFrameUpdate() //unity Update();

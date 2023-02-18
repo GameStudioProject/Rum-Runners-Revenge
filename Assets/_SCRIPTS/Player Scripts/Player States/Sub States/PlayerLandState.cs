@@ -13,14 +13,18 @@ public class PlayerLandState : PlayerGroundedState
     {
         base.EveryFrameUpdate();
 
-        if (_xPlayerInput != 0)
+        if (!_isExitingPlayerState)
         {
-            _playerStateMachine.ChangePlayerState(_player.PlayerMoveState);
+            if (_xPlayerInput != 0)
+            {
+                _playerStateMachine.ChangePlayerState(_player.PlayerMoveState);
+            }
+            else if (_isPlayerAnimationFinished)
+            {
+                _playerStateMachine.ChangePlayerState(_player.PlayerIdleState);
+            }
         }
-        else if (_isPlayerAnimationFinished)
-        {
-            _playerStateMachine.ChangePlayerState(_player.PlayerIdleState);
-        }
+        
     }
 
 

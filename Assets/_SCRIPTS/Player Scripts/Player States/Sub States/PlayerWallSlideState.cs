@@ -13,7 +13,7 @@ public class PlayerWallSlideState : PlayerTouchWallState
         
         _player.SetPlayerVelocityY(-_playerData.playerWallSlideSpeed);
 
-        if (_playerGrabInput && _playerYInput == 0)
+        if (_playerGrabInput && _playerYInput == 0 && !_isExitingPlayerState)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerWallGrabState);
         }
