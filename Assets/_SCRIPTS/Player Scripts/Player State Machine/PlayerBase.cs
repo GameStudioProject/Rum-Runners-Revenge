@@ -11,6 +11,10 @@ public class PlayerBase : MonoBehaviour
     public PlayerJumpState PlayerJumpState { get; private set; }
     public PlayerInAirState PlayerInAirState { get; private set; }
     public PlayerLandState PlayerLandState { get; private set; }
+    public PlayerWallSlideState PlayerWallSlideState { get; private set; }
+    public PlayerWallGrabState PlayerWallGrabState { get; private set; }
+    public PlayerWallClimbState PlayerWallClimbState { get; private set; }
+    
     
     [SerializeField] private PlayerData _playerData;
     #endregion
@@ -24,6 +28,7 @@ public class PlayerBase : MonoBehaviour
     #region Check Player Transforms
 
     [SerializeField] private Transform _playerGroundCheck;
+    [SerializeField] private Transform _playerWallCheck;
 
     #endregion
     
@@ -44,7 +49,9 @@ public class PlayerBase : MonoBehaviour
         PlayerJumpState = new PlayerJumpState(this, PlayerStateMachine, _playerData, "inAir");
         PlayerInAirState = new PlayerInAirState(this, PlayerStateMachine, _playerData, "inAir");
         PlayerLandState = new PlayerLandState(this, PlayerStateMachine, _playerData, "land");
-
+        PlayerWallSlideState = new PlayerWallSlideState(this, PlayerStateMachine, _playerData, "wallSlide");
+        PlayerWallGrabState = new PlayerWallGrabState(this, PlayerStateMachine, _playerData, "wallGrab");
+        PlayerWallClimbState = new PlayerWallClimbState(this, PlayerStateMachine, _playerData, "wallClimb");
     }
 
     private void Start()
@@ -96,6 +103,11 @@ public class PlayerBase : MonoBehaviour
     public bool CheckIfPlayerGrounded()
     {
         return Physics2D.OverlapCircle(_playerGroundCheck.position, _playerData.playerGroundCheckRadius, _playerData.whatIsGround);
+    }
+
+    public bool CheckIfPlayerTouchesWall()
+    {
+        return Physics2D.Raycast(_playerWallCheck.position, Vector2.right * PlayerFacingDirection, _playerData.PlayerWallCheckDistance, _playerData.whatIsGround);
     }
     
     public void CheckIfPlayerShouldFlip(int playerXInput)

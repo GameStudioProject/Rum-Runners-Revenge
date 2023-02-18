@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     public int NormInputY { get; private set; }
     public bool PlayerJumpInput { get; private set; }
     public bool PlayerJumpInputStop { get; private set; }
+    public bool PlayerGrabInput { get; private set; }
 
     [SerializeField] private float _playerInputHoldTime = 0.2f;
 
@@ -25,8 +26,24 @@ public class PlayerInput : MonoBehaviour
     {
         RawPlayerMovementInput = button.ReadValue<Vector2>();
 
-        NormInputX = (int)(RawPlayerMovementInput * Vector2.right).normalized.x;
-        NormInputY = (int)(RawPlayerMovementInput * Vector2.up).normalized.y;
+        if (Mathf.Abs(RawPlayerMovementInput.x) > 0.5f)
+        {
+            NormInputX = (int)(RawPlayerMovementInput * Vector2.right).normalized.x;   
+        }
+        else
+        {
+            NormInputX = 0;
+        }
+
+        if (Mathf.Abs(RawPlayerMovementInput.y) > 0.5f)
+        {
+            NormInputY = (int)(RawPlayerMovementInput * Vector2.up).normalized.y;
+        }
+        else
+        {
+            NormInputY = 0;
+        }
+        
     }
 
     public void OnJumpInput(InputAction.CallbackContext button)
@@ -43,8 +60,19 @@ public class PlayerInput : MonoBehaviour
             PlayerJumpInputStop = true;
         }
     }
-    
-    
+
+    public void OnPlayerGrabInput( InputAction.CallbackContext button)
+    {
+        if (button.started)
+        {
+            PlayerGrabInput = true;
+        }
+
+        if (button.canceled)
+        {
+            PlayerGrabInput = false;
+        }
+    }
 
     public void PlayerUsedJumpInput() => PlayerJumpInput = false;
 
