@@ -10,12 +10,16 @@ public class PlayerWallClimbState : PlayerTouchWallState
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
-        
-        _player.SetPlayerVelocityY(_playerData.playerWallClimbSpeed);
 
-        if (_playerYInput != 1 && !_isExitingPlayerState)
+        if (!_isExitingPlayerState)
         {
-            _playerStateMachine.ChangePlayerState(_player.PlayerWallGrabState);
+            _player.SetPlayerVelocityY(_playerData.playerWallClimbSpeed);
+
+            if (_playerYInput != 1)
+            {
+                _playerStateMachine.ChangePlayerState(_player.PlayerWallGrabState);
+            }
         }
+        
     }
 }

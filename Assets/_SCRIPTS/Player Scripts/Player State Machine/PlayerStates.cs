@@ -23,6 +23,11 @@ public class PlayerStates
         _playerData = playerData;
         _animationBoolName = animationBoolName;
     }
+    
+    public virtual void PerformPlayerChecks() //check for ground etc etc
+    {
+
+    }
 
     public virtual void StateEnter()
     {
@@ -50,10 +55,7 @@ public class PlayerStates
         PerformPlayerChecks();
     }
 
-    public virtual void PerformPlayerChecks() //check for ground etc etc
-    {
-
-    }
+    
 
     public virtual void PlayerAnimationTrigger()
     {

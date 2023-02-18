@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovementSpeed: 10
   playerJumpVelocity: 15
+  playerJumps: 1
+  playerWallJumpStrength: 20
+  playerWallJumpTime: 0.4
+  playerWallJumpAngle: {x: 1, y: 2}
+  playerCoyoteTime: 0.2
+  playerJumpHeightStrength: 0.5
+  playerWallSlideSpeed: 2
+  playerWallClimbSpeed: 3
   playerGroundCheckRadius: 0.3
+  PlayerWallCheckDistance: 0.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128

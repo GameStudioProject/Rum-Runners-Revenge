@@ -27,10 +27,12 @@ public class PlayerWallGrabState : PlayerTouchWallState
     {
         base.EveryFrameUpdate();
 
-        PlayerHoldPosition();
+        
 
         if (!_isExitingPlayerState)
         {
+            PlayerHoldPosition();
+            
             if (_playerYInput > 0)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerWallClimbState);
