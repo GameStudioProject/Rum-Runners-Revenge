@@ -6,6 +6,10 @@ public class PlayerInAirState : PlayerStates
 {
     private int _playerXInput;
     private bool _isPlayerGrounded;
+    private bool _playerJumpInput;
+    private bool _playerJumpInputStop;
+    private bool _playerCoyoteTime;
+    private bool _isPlayerJumping;
 
     public PlayerInAirState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
     {
@@ -25,12 +29,22 @@ public class PlayerInAirState : PlayerStates
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
+        
+        CheckPlayerCoyoteTime();
 
         _playerXInput = _player.PlayerInputHandler.NormInputX;
+        _playerJumpInput = _player.PlayerInputHandler.PlayerJumpInput;
+        _playerJumpInputStop = _player.PlayerInputHandler.PlayerJumpInputStop;
+
+        CheckPlayerJumpStrength();
 
         if (_isPlayerGrounded && _player.PlayerCurrentVelocity.y < 0.01f)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerLandState);
+        }
+        else if (_playerJumpInput && _player.PlayerJumpState.CanPlayerJump())
+        {
+            _playerStateMachine.ChangePlayerState(_player.PlayerJumpState);
         }
         else
         {
@@ -39,6 +53,22 @@ public class PlayerInAirState : PlayerStates
             
             _player.PlayerAnimator.SetFloat("yVelocity", _player.PlayerCurrentVelocity.y);
             _player.PlayerAnimator.SetFloat("xVelocity", Mathf.Abs(_player.PlayerCurrentVelocity.x));
+        }
+    }
+
+    private void CheckPlayerJumpStrength()
+    {
+        if (_isPlayerJumping)
+        {
+            if (_playerJumpInputStop)
+            {
+                _player.SetPlayerVelocityY(_player.PlayerCurrentVelocity.y * _playerData.playerJumpHeightStrength);
+                _isPlayerJumping = false;
+            }
+            else if (_player.PlayerCurrentVelocity.y <= 0.0f)
+            {
+                _isPlayerJumping = false;
+            }
         }
     }
 
@@ -53,4 +83,18 @@ public class PlayerInAirState : PlayerStates
 
         _isPlayerGrounded = _player.CheckIfPlayerGrounded();
     }
+
+    private void CheckPlayerCoyoteTime()
+    {
+        if (_playerCoyoteTime && Time.time > stateStartTime + _playerData.playerCoyoteTime)
+        {
+            _playerCoyoteTime = false;
+            _player.PlayerJumpState.DecreasePlayerJumps();
+        }
+    }
+
+    public void StartPlayerCoyoteTime() => _playerCoyoteTime = true;
+
+    public void SetPlayerJump() => _isPlayerJumping = true;
+
 }

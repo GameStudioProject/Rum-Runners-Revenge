@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,16 @@ public class PlayerInput : MonoBehaviour
     public int NormInputX { get; private set; }
     public int NormInputY { get; private set; }
     public bool PlayerJumpInput { get; private set; }
+    public bool PlayerJumpInputStop { get; private set; }
+
+    [SerializeField] private float _playerInputHoldTime = 0.2f;
+
+    private float _playerJumpInputStartTime;
+
+    private void Update()
+    {
+        CheckPlayerJumpInputHoldTime();
+    }
 
     public void OnMovementInput(InputAction.CallbackContext button)
     {
@@ -23,8 +34,25 @@ public class PlayerInput : MonoBehaviour
         if (button.started)
         {
             PlayerJumpInput = true;
+            PlayerJumpInputStop = false;
+            _playerJumpInputStartTime = Time.time;
+        }
+
+        if (button.canceled)
+        {
+            PlayerJumpInputStop = true;
         }
     }
+    
+    
 
     public void PlayerUsedJumpInput() => PlayerJumpInput = false;
+
+    private void CheckPlayerJumpInputHoldTime()
+    {
+        if (Time.time >= _playerJumpInputStartTime + _playerInputHoldTime)
+        {
+            PlayerJumpInput = false;
+        }
+    }
 }    
