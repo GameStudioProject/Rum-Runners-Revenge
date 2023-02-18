@@ -15,6 +15,7 @@ public class PlayerBase : MonoBehaviour
     public PlayerWallGrabState PlayerWallGrabState { get; private set; }
     public PlayerWallClimbState PlayerWallClimbState { get; private set; }
     public PlayerWallJumpState PlayerWallJumpState { get; private set; }
+    public PlayerLedgeClimbState PlayerLedgeClimbState { get; private set; }
     
     
     [SerializeField] private PlayerData _playerData;
@@ -30,6 +31,7 @@ public class PlayerBase : MonoBehaviour
 
     [SerializeField] private Transform _playerGroundCheck;
     [SerializeField] private Transform _playerWallCheck;
+    [SerializeField] private Transform _PlayerLedgeCheck;
 
     #endregion
     
@@ -54,6 +56,7 @@ public class PlayerBase : MonoBehaviour
         PlayerWallGrabState = new PlayerWallGrabState(this, PlayerStateMachine, _playerData, "wallGrab");
         PlayerWallClimbState = new PlayerWallClimbState(this, PlayerStateMachine, _playerData, "wallClimb");
         PlayerWallJumpState = new PlayerWallJumpState(this, PlayerStateMachine, _playerData, "inAir");
+        PlayerLedgeClimbState = new PlayerLedgeClimbState(this, PlayerStateMachine, _playerData, "ledgeClimbState");
     }
 
     private void Start()
@@ -82,6 +85,12 @@ public class PlayerBase : MonoBehaviour
     #endregion
 
     #region Set Functions
+
+    public void SetPlayerVelocityZero()
+    {
+        PlayerRB.velocity = Vector2.zero;
+        PlayerCurrentVelocity = Vector2.zero;
+    }
 
     public void SetPlayerVelocity(float velocity, Vector2 angle, int direction)
     {
@@ -123,6 +132,12 @@ public class PlayerBase : MonoBehaviour
     {
         return Physics2D.Raycast(_playerWallCheck.position, Vector2.right * -PlayerFacingDirection, _playerData.PlayerWallCheckDistance, _playerData.whatIsGround);
     }
+
+    public bool CheckIfPlayerTouchesLedge()
+    {
+        return Physics2D.Raycast(_PlayerLedgeCheck.position, Vector2.right * PlayerFacingDirection,
+            _playerData.PlayerWallCheckDistance, _playerData.whatIsGround);
+    }
     
     public void CheckIfPlayerShouldFlip(int playerXInput)
     {
@@ -134,6 +149,18 @@ public class PlayerBase : MonoBehaviour
     #endregion
     
     #region Other Functions
+
+    public Vector2 FindCornerPosition()
+    {
+        RaycastHit2D xHit = Physics2D.Raycast(_playerWallCheck.position, Vector2.right * PlayerFacingDirection, _playerData.PlayerWallCheckDistance, _playerData.whatIsGround);
+        float xDistance = xHit.distance;
+        _velocityWorkspace.Set(xDistance * PlayerFacingDirection, 0f);
+        RaycastHit2D yHit = Physics2D.Raycast(_PlayerLedgeCheck.position + (Vector3)(_velocityWorkspace), Vector2.down, _PlayerLedgeCheck.position.y - _playerWallCheck.position.y, _playerData.whatIsGround);
+        float yDistance = yHit.distance;
+        
+        _velocityWorkspace.Set(_playerWallCheck.position.x + (xDistance * PlayerFacingDirection), _PlayerLedgeCheck.position.y - yDistance);
+        return _velocityWorkspace;
+    }
 
     private void PlayerAnimationTrigger() => PlayerStateMachine.PlayerCurrentState.PlayerAnimationTrigger();
 

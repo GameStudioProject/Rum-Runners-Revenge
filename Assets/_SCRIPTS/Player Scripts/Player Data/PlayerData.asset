@@ -22,6 +22,8 @@ MonoBehaviour:
   playerJumpHeightStrength: 0.5
   playerWallSlideSpeed: 2
   playerWallClimbSpeed: 3
+  playerStartOffset: {x: 0.4, y: 0.9}
+  playerStopOffset: {x: 0.4, y: 0.8}
   playerGroundCheckRadius: 0.3
   PlayerWallCheckDistance: 0.5
   whatIsGround:
