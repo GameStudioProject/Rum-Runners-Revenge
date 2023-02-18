@@ -58,7 +58,7 @@ public class PlayerInAirState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerLandState);
         }
-        else if (_isPlayerTouchingWall && !_isPlayerTouchingLedge)
+        else if (_isPlayerTouchingWall && !_isPlayerTouchingLedge && !_isPlayerGrounded)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerLedgeClimbState);
         }
@@ -73,7 +73,7 @@ public class PlayerInAirState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerJumpState);
         }
-        else if (_isPlayerTouchingWall && _playerGrabInput)
+        else if (_isPlayerTouchingWall && _playerGrabInput && _isPlayerTouchingLedge)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerWallGrabState);
         }

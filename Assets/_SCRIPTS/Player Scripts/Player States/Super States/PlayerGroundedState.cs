@@ -8,6 +8,7 @@ public class PlayerGroundedState : PlayerStates
     private bool _playerGrabInput;
     private bool _isPlayerGrounded;
     private bool _isPlayerTouchingWall;
+    private bool _isPlayerTouchingLedge;
     
     public PlayerGroundedState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
     {
@@ -43,7 +44,7 @@ public class PlayerGroundedState : PlayerStates
             _player.PlayerInAirState.StartPlayerCoyoteTime();
             _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
         }
-        else if (_isPlayerTouchingWall && _playerGrabInput)
+        else if (_isPlayerTouchingWall && _playerGrabInput && _isPlayerTouchingLedge)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerWallGrabState);
         }
@@ -60,5 +61,6 @@ public class PlayerGroundedState : PlayerStates
 
         _isPlayerGrounded = _player.CheckIfPlayerGrounded();
         _isPlayerTouchingWall = _player.CheckIfPlayerTouchesWall();
+        _isPlayerTouchingLedge = _player.CheckIfPlayerTouchesLedge();
     }
 }
