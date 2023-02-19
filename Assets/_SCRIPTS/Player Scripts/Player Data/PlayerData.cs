@@ -27,8 +27,17 @@ public class PlayerData : ScriptableObject
 
     [Header("Player Ledge Climb State Data")]
     public Vector2 playerStartOffset;
-
     public Vector2 playerStopOffset;
+
+    [Header("Player Dash State Data")] 
+    public float playerDashCooldown = 0.5f;
+    public float maxDashHoldTime = 1f;
+    public float slowMotionTimeScale = 0.25f;
+    public float playerDashTime = 0.2f;
+    public float playerDashSpeed = 30f;
+    public float playerAirDrag = 10f;
+    public float playerDashHeightMultiplier = 0.2f;
+    public float playerAfterImageDistance = 0.5f;
 
     [Header("Player Check Variables")] 
     public float playerGroundCheckRadius = 0.3f;

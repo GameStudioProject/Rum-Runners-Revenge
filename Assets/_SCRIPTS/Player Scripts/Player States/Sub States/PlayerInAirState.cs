@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class PlayerInAirState : PlayerStates
 {
+    //Player Input
     private int _playerXInput;
+    private bool _playerJumpInput;
+    private bool _playerJumpInputStop;
+    private bool _playerGrabInput;
+    private bool _playerDashInput;
+    
+    //Player Checks
     private bool _isPlayerGrounded;
     private bool _isPlayerTouchingWall;
     private bool _isPlayerTouchingWallBehind;
     private bool _previousIsTouchingWall;
     private bool _previousIsTouchingWallBack;
-    private bool _playerJumpInput;
-    private bool _playerJumpInputStop;
+    private bool _isPlayerTouchingLedge;
+    
     private bool _playerCoyoteTime;
     private bool _playerWallJumpCoyoteTime;
     private bool _isPlayerJumping;
-    private bool _playerGrabInput;
-    private bool _isPlayerTouchingLedge;
 
     private float _startPlayerWallJumpCoyoteTime;
 
@@ -51,6 +56,7 @@ public class PlayerInAirState : PlayerStates
         _playerJumpInput = _player.PlayerInputHandler.PlayerJumpInput;
         _playerJumpInputStop = _player.PlayerInputHandler.PlayerJumpInputStop;
         _playerGrabInput = _player.PlayerInputHandler.PlayerGrabInput;
+        _playerDashInput = _player.PlayerInputHandler.PlayerDashInput;
 
         CheckPlayerJumpStrength();
 
@@ -80,6 +86,10 @@ public class PlayerInAirState : PlayerStates
         else if (_isPlayerTouchingWall && _playerXInput == _player.PlayerFacingDirection && _player.PlayerCurrentVelocity.y <= 0)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerWallSlideState);
+        }
+        else if (_playerDashInput && _player.PlayerDashState.CheckIfPlayerCanDash())
+        {
+            _playerStateMachine.ChangePlayerState(_player.PlayerDashState);
         }
         else
         {

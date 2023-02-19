@@ -9,6 +9,7 @@ public class PlayerGroundedState : PlayerStates
     private bool _isPlayerGrounded;
     private bool _isPlayerTouchingWall;
     private bool _isPlayerTouchingLedge;
+    private bool _playerDashInput;
     
     public PlayerGroundedState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
     {
@@ -20,6 +21,7 @@ public class PlayerGroundedState : PlayerStates
         base.StateEnter();
         
         _player.PlayerJumpState.ResetPlayerJumps();
+        _player.PlayerDashState.ResetPlayerDash();
     }
 
     public override void StateExit()
@@ -34,6 +36,7 @@ public class PlayerGroundedState : PlayerStates
         _xPlayerInput = _player.PlayerInputHandler.NormInputX;
         _playerJumpInput = _player.PlayerInputHandler.PlayerJumpInput;
         _playerGrabInput = _player.PlayerInputHandler.PlayerGrabInput;
+        _playerDashInput = _player.PlayerInputHandler.PlayerDashInput;
 
         if (_playerJumpInput && _player.PlayerJumpState.CanPlayerJump())
         {
@@ -47,6 +50,10 @@ public class PlayerGroundedState : PlayerStates
         else if (_isPlayerTouchingWall && _playerGrabInput && _isPlayerTouchingLedge)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerWallGrabState);
+        }
+        else if (_playerDashInput && _player.PlayerDashState.CheckIfPlayerCanDash())
+        {
+            _playerStateMachine.ChangePlayerState(_player.PlayerDashState);
         }
     }
 

@@ -16,6 +16,7 @@ public class PlayerBase : MonoBehaviour
     public PlayerWallClimbState PlayerWallClimbState { get; private set; }
     public PlayerWallJumpState PlayerWallJumpState { get; private set; }
     public PlayerLedgeClimbState PlayerLedgeClimbState { get; private set; }
+    public PlayerDashState PlayerDashState { get; private set; }
     
     
     [SerializeField] private PlayerData _playerData;
@@ -23,8 +24,9 @@ public class PlayerBase : MonoBehaviour
 
     #region Components
     public Animator PlayerAnimator { get; private set; }
-    public PlayerInput PlayerInputHandler { get; private set; }
+    public PlayerInputHandler PlayerInputHandler { get; private set; }
     public Rigidbody2D PlayerRB { get; private set; }
+    public Transform PlayerDashDirectionIndicator { get; private set; }
     #endregion
 
     #region Check Player Transforms
@@ -57,13 +59,15 @@ public class PlayerBase : MonoBehaviour
         PlayerWallClimbState = new PlayerWallClimbState(this, PlayerStateMachine, _playerData, "wallClimb");
         PlayerWallJumpState = new PlayerWallJumpState(this, PlayerStateMachine, _playerData, "inAir");
         PlayerLedgeClimbState = new PlayerLedgeClimbState(this, PlayerStateMachine, _playerData, "ledgeClimbState");
+        PlayerDashState = new PlayerDashState(this, PlayerStateMachine, _playerData, "inAir");
     }
 
     private void Start()
     {
         PlayerAnimator = GetComponent<Animator>();
-        PlayerInputHandler = GetComponent<PlayerInput>();
+        PlayerInputHandler = GetComponent<PlayerInputHandler>();
         PlayerRB = GetComponent<Rigidbody2D>();
+        PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
 
         PlayerFacingDirection = 1;
         
@@ -96,6 +100,13 @@ public class PlayerBase : MonoBehaviour
     {
         angle.Normalize();
         _velocityWorkspace.Set(angle.x * velocity * direction, angle.y * velocity);
+        PlayerRB.velocity = _velocityWorkspace;
+        PlayerCurrentVelocity = _velocityWorkspace;
+    }
+
+    public void SetPlayerVelocity(float velocity, Vector2 direction)
+    {
+        _velocityWorkspace = direction * velocity;
         PlayerRB.velocity = _velocityWorkspace;
         PlayerCurrentVelocity = _velocityWorkspace;
     }
