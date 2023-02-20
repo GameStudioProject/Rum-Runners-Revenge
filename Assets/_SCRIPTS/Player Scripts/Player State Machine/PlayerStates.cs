@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStates
 {
+    protected Core _core;
+    
     protected PlayerBase _player;
     protected PlayerStateMachine _playerStateMachine;
     protected PlayerData _playerData;
@@ -22,6 +24,7 @@ public class PlayerStates
         _playerStateMachine = playerStateMachine;
         _playerData = playerData;
         _animationBoolName = animationBoolName;
+        _core = player.Core;
     }
     
     public virtual void PerformPlayerChecks() //check for ground etc etc

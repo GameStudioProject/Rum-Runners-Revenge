@@ -19,9 +19,9 @@ public class PlayerMoveState : PlayerGroundedState
     {
         base.EveryFrameUpdate();
         
-        _player.CheckIfPlayerShouldFlip(_xPlayerInput);
+        _core.MovementComponent.CheckIfPlayerShouldFlip(_xPlayerInput);
         
-        _player.SetPlayerVelocityX(_playerData.playerMovementSpeed * _xPlayerInput);
+        _core.MovementComponent.SetPlayerVelocityX(_playerData.playerMovementSpeed * _xPlayerInput);
 
         if (!_isExitingPlayerState)
         {

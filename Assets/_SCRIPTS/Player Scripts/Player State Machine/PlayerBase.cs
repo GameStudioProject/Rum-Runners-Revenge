@@ -25,6 +25,8 @@ public class PlayerBase : MonoBehaviour
     #endregion
 
     #region Components
+
+    public Core Core { get; private set; }
     public Animator PlayerAnimator { get; private set; }
     public PlayerInputHandler PlayerInputHandler { get; private set; }
     public Rigidbody2D PlayerRB { get; private set; }
@@ -34,23 +36,20 @@ public class PlayerBase : MonoBehaviour
 
     #region Check Player Transforms
 
-    [SerializeField] private Transform _playerGroundCheck;
-    [SerializeField] private Transform _playerWallCheck;
-    [SerializeField] private Transform _PlayerLedgeCheck;
-    [SerializeField] private Transform _PlayerCeilingCheck;
+    
 
     #endregion
     
     #region Other Variables
-    public Vector2 PlayerCurrentVelocity { get; private set; }
-    public int PlayerFacingDirection { get; private set; }
-    
+
     private Vector2 _velocityWorkspace;
     #endregion
     
     #region Unity Functions
     private void Awake()
     {
+        Core = GetComponentInChildren<Core>();
+        
         PlayerStateMachine = new PlayerStateMachine();
 
         PlayerIdleState = new PlayerIdleState(this, PlayerStateMachine, _playerData, "idle");
@@ -76,16 +75,13 @@ public class PlayerBase : MonoBehaviour
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
         PlayerHitBox = GetComponent<BoxCollider2D>();
 
-        PlayerFacingDirection = 1;
-        
-        
+
         PlayerStateMachine.InitializeStateMachine(PlayerIdleState);
     }
 
     private void Update()
     {
-        PlayerCurrentVelocity = PlayerRB.velocity;
-        
+        Core.EveryFrameUpdate();
         PlayerStateMachine.PlayerCurrentState.EveryFrameUpdate();
     }
 
@@ -95,82 +91,6 @@ public class PlayerBase : MonoBehaviour
     }
     #endregion
 
-    #region Set Functions
-
-    public void SetPlayerVelocityZero()
-    {
-        PlayerRB.velocity = Vector2.zero;
-        PlayerCurrentVelocity = Vector2.zero;
-    }
-
-    public void SetPlayerVelocity(float velocity, Vector2 angle, int direction)
-    {
-        angle.Normalize();
-        _velocityWorkspace.Set(angle.x * velocity * direction, angle.y * velocity);
-        PlayerRB.velocity = _velocityWorkspace;
-        PlayerCurrentVelocity = _velocityWorkspace;
-    }
-
-    public void SetPlayerVelocity(float velocity, Vector2 direction)
-    {
-        _velocityWorkspace = direction * velocity;
-        PlayerRB.velocity = _velocityWorkspace;
-        PlayerCurrentVelocity = _velocityWorkspace;
-    }
-    
-    public void SetPlayerVelocityX(float velocity)
-    {
-        _velocityWorkspace.Set(velocity, PlayerCurrentVelocity.y);
-        PlayerRB.velocity = _velocityWorkspace;
-        PlayerCurrentVelocity = _velocityWorkspace;
-    }
-
-    public void SetPlayerVelocityY(float velocity)
-    {
-        _velocityWorkspace.Set(PlayerCurrentVelocity.x, velocity);
-        PlayerRB.velocity = _velocityWorkspace;
-        PlayerCurrentVelocity = _velocityWorkspace;
-    }
-    
-    #endregion
-
-    #region Player Check Functions
-    
-    public bool CheckForCeiling()
-    {
-        return Physics2D.OverlapCircle(_PlayerCeilingCheck.position, _playerData.playerGroundCheckRadius, _playerData.whatIsGround);
-    }
-
-    public bool CheckIfPlayerGrounded()
-    {
-        return Physics2D.OverlapCircle(_playerGroundCheck.position, _playerData.playerGroundCheckRadius, _playerData.whatIsGround);
-    }
-
-    public bool CheckIfPlayerTouchesWall()
-    {
-        return Physics2D.Raycast(_playerWallCheck.position, Vector2.right * PlayerFacingDirection, _playerData.PlayerWallCheckDistance, _playerData.whatIsGround);
-    }
-    
-    public bool CheckIfPlayerTouchesWallBehind()
-    {
-        return Physics2D.Raycast(_playerWallCheck.position, Vector2.right * -PlayerFacingDirection, _playerData.PlayerWallCheckDistance, _playerData.whatIsGround);
-    }
-
-    public bool CheckIfPlayerTouchesLedge()
-    {
-        return Physics2D.Raycast(_PlayerLedgeCheck.position, Vector2.right * PlayerFacingDirection,
-            _playerData.PlayerWallCheckDistance, _playerData.whatIsGround);
-    }
-    
-    public void CheckIfPlayerShouldFlip(int playerXInput)
-    {
-        if (playerXInput != 0 && playerXInput != PlayerFacingDirection)
-        {
-            PlayerFlip();
-        }
-    }
-    #endregion
-    
     #region Other Functions
 
     public void SetPlayerHitBoxHeight(float height)
@@ -183,27 +103,12 @@ public class PlayerBase : MonoBehaviour
         PlayerHitBox.size = _velocityWorkspace;
         PlayerHitBox.offset = hitBoxCentre;
     }
-
-    public Vector2 FindCornerPosition()
-    {
-        RaycastHit2D xHit = Physics2D.Raycast(_playerWallCheck.position, Vector2.right * PlayerFacingDirection, _playerData.PlayerWallCheckDistance, _playerData.whatIsGround);
-        float xDistance = xHit.distance;
-        _velocityWorkspace.Set((xDistance + 0.015f) * PlayerFacingDirection, 0f);
-        RaycastHit2D yHit = Physics2D.Raycast(_PlayerLedgeCheck.position + (Vector3)(_velocityWorkspace), Vector2.down, _PlayerLedgeCheck.position.y - _playerWallCheck.position.y + 0.015f, _playerData.whatIsGround);
-        float yDistance = yHit.distance;
-        
-        _velocityWorkspace.Set(_playerWallCheck.position.x + (xDistance * PlayerFacingDirection), _PlayerLedgeCheck.position.y - yDistance);
-        return _velocityWorkspace;
-    }
+    
 
     private void PlayerAnimationTrigger() => PlayerStateMachine.PlayerCurrentState.PlayerAnimationTrigger();
 
     private void PlayerAnimationFinishTrigger() => PlayerStateMachine.PlayerCurrentState.PlayerAnimationFinishTrigger();
     
-    public void PlayerFlip()
-    {
-        PlayerFacingDirection *= -1;
-        transform.Rotate(0.0f, 180.0f, 0.0f);
-    }
+    
     #endregion
 }

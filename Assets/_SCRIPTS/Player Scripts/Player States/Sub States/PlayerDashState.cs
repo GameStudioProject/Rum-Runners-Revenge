@@ -24,7 +24,7 @@ public class PlayerDashState : PlayerAbilityState
         _player.PlayerInputHandler.PlayerUsedDashInput();
 
         _isPlayerHolding = true;
-        _playerDashDirection = Vector2.right * _player.PlayerFacingDirection;
+        _playerDashDirection = Vector2.right * _core.MovementComponent.PlayerFacingDirection;
 
         Time.timeScale = _playerData.slowMotionTimeScale; //slowmotion
         stateStartTime = Time.unscaledTime; //constant time so the slowmotion scaleTime has no effect on countdown
@@ -36,9 +36,9 @@ public class PlayerDashState : PlayerAbilityState
     {
         base.StateExit();
 
-        if (_player.PlayerCurrentVelocity.y > 0)
+        if (_core.MovementComponent.PlayerCurrentVelocity.y > 0)
         {
-            _player.SetPlayerVelocityY(_player.PlayerCurrentVelocity.y * _playerData.playerDashHeightMultiplier);
+            _core.MovementComponent.SetPlayerVelocityY(_core.MovementComponent.PlayerCurrentVelocity.y * _playerData.playerDashHeightMultiplier);
         }
         
     }
@@ -49,8 +49,8 @@ public class PlayerDashState : PlayerAbilityState
         
         if (!_isExitingPlayerState)
         {
-            _player.PlayerAnimator.SetFloat("yVelocity", _player.PlayerCurrentVelocity.y);
-            _player.PlayerAnimator.SetFloat("xVelocity", Mathf.Abs(_player.PlayerCurrentVelocity.x));
+            _player.PlayerAnimator.SetFloat("yVelocity", _core.MovementComponent.PlayerCurrentVelocity.y);
+            _player.PlayerAnimator.SetFloat("xVelocity", Mathf.Abs(_core.MovementComponent.PlayerCurrentVelocity.x));
             
             if (_isPlayerHolding)
             {
@@ -71,16 +71,16 @@ public class PlayerDashState : PlayerAbilityState
                     _isPlayerHolding = false;
                     Time.timeScale = 1f;
                     stateStartTime = Time.time;
-                    _player.CheckIfPlayerShouldFlip(Mathf.RoundToInt(_playerDashDirection.x));
+                    _core.MovementComponent.CheckIfPlayerShouldFlip(Mathf.RoundToInt(_playerDashDirection.x));
                     _player.PlayerRB.drag = _playerData.playerAirDrag;
-                    _player.SetPlayerVelocity(_playerData.playerDashSpeed, _playerDashDirection);
+                    _core.MovementComponent.SetPlayerVelocity(_playerData.playerDashSpeed, _playerDashDirection);
                     _player.PlayerDashDirectionIndicator.gameObject.SetActive(false);
                     PlaceAfterImage();
                 }
             }
             else
             {
-                _player.SetPlayerVelocity(_playerData.playerDashSpeed, _playerDashDirection);
+                _core.MovementComponent.SetPlayerVelocity(_playerData.playerDashSpeed, _playerDashDirection);
                 CheckIfAfterImageIsNeeded();
 
                 if (Time.time >= stateStartTime + _playerData.playerDashTime)
