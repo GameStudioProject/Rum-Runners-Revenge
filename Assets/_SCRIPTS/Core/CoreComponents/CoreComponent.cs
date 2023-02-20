@@ -13,7 +13,7 @@ public class CoreComponent : MonoBehaviour
 
         if (core == null)
         {
-            Debug.LogError("Core is missing on parent gameobject");
+            Debug.LogError("Core is missing on parent game object");
         }
     }
 }
