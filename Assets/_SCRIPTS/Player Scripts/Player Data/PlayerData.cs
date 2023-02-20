@@ -39,6 +39,11 @@ public class PlayerData : ScriptableObject
     public float playerDashHeightMultiplier = 0.2f;
     public float playerAfterImageDistance = 0.5f;
 
+    [Header("Player Crouch States Data")] 
+    public float playerCrouchMoveSpeed = 5f;
+    public float playerCrouchHitBoxHeight = 0.8f;
+    public float playerStandHitBoxHeight = 1.6f;
+
     [Header("Player Check Variables")] 
     public float playerGroundCheckRadius = 0.3f;
     public float PlayerWallCheckDistance = 0.5f;

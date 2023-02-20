@@ -21,10 +21,18 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.EveryFrameUpdate();
 
-        if (_xPlayerInput != 0 && !_isExitingPlayerState)
+        if (!_isExitingPlayerState)
         {
-            _playerStateMachine.ChangePlayerState(_player.PlayerMoveState);
+            if (_xPlayerInput != 0)
+            {
+                _playerStateMachine.ChangePlayerState(_player.PlayerMoveState);
+            }
+            else if (_yPlayerInput == -1)
+            {
+                _playerStateMachine.ChangePlayerState(_player.PlayerCrouchIdleState);
+            }
         }
+        
     }
 
     public override void PhysicsUpdate()

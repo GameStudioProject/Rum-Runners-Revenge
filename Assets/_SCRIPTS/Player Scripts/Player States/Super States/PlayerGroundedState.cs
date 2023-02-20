@@ -3,6 +3,9 @@ using UnityEngine;
 public class PlayerGroundedState : PlayerStates
 {
     protected int _xPlayerInput;
+    protected int _yPlayerInput;
+
+    protected bool _isPlayerTouchingCeiling;
 
     private bool _playerJumpInput;
     private bool _playerGrabInput;
@@ -34,6 +37,7 @@ public class PlayerGroundedState : PlayerStates
         base.EveryFrameUpdate();
 
         _xPlayerInput = _player.PlayerInputHandler.NormInputX;
+        _yPlayerInput = _player.PlayerInputHandler.NormInputY;
         _playerJumpInput = _player.PlayerInputHandler.PlayerJumpInput;
         _playerGrabInput = _player.PlayerInputHandler.PlayerGrabInput;
         _playerDashInput = _player.PlayerInputHandler.PlayerDashInput;
@@ -51,7 +55,7 @@ public class PlayerGroundedState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerWallGrabState);
         }
-        else if (_playerDashInput && _player.PlayerDashState.CheckIfPlayerCanDash())
+        else if (_playerDashInput && _player.PlayerDashState.CheckIfPlayerCanDash() && !_isPlayerTouchingCeiling)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerDashState);
         }
@@ -69,5 +73,6 @@ public class PlayerGroundedState : PlayerStates
         _isPlayerGrounded = _player.CheckIfPlayerGrounded();
         _isPlayerTouchingWall = _player.CheckIfPlayerTouchesWall();
         _isPlayerTouchingLedge = _player.CheckIfPlayerTouchesLedge();
+        _isPlayerTouchingCeiling = _player.CheckForCeiling();
     }
 }

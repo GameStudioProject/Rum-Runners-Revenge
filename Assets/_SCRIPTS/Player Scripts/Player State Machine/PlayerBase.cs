@@ -17,6 +17,8 @@ public class PlayerBase : MonoBehaviour
     public PlayerWallJumpState PlayerWallJumpState { get; private set; }
     public PlayerLedgeClimbState PlayerLedgeClimbState { get; private set; }
     public PlayerDashState PlayerDashState { get; private set; }
+    public PlayerCrouchIdleState PlayerCrouchIdleState { get; private set; }
+    public PlayerCrouchMoveState PlayerCrouchMoveState { get; private set; }
     
     
     [SerializeField] private PlayerData _playerData;
@@ -27,6 +29,7 @@ public class PlayerBase : MonoBehaviour
     public PlayerInputHandler PlayerInputHandler { get; private set; }
     public Rigidbody2D PlayerRB { get; private set; }
     public Transform PlayerDashDirectionIndicator { get; private set; }
+    public BoxCollider2D PlayerHitBox { get; private set; }
     #endregion
 
     #region Check Player Transforms
@@ -34,6 +37,7 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] private Transform _playerGroundCheck;
     [SerializeField] private Transform _playerWallCheck;
     [SerializeField] private Transform _PlayerLedgeCheck;
+    [SerializeField] private Transform _PlayerCeilingCheck;
 
     #endregion
     
@@ -60,6 +64,8 @@ public class PlayerBase : MonoBehaviour
         PlayerWallJumpState = new PlayerWallJumpState(this, PlayerStateMachine, _playerData, "inAir");
         PlayerLedgeClimbState = new PlayerLedgeClimbState(this, PlayerStateMachine, _playerData, "ledgeClimbState");
         PlayerDashState = new PlayerDashState(this, PlayerStateMachine, _playerData, "inAir");
+        PlayerCrouchIdleState = new PlayerCrouchIdleState(this, PlayerStateMachine, _playerData, "crouchIdle");
+        PlayerCrouchMoveState = new PlayerCrouchMoveState(this, PlayerStateMachine, _playerData, "crouchMove");
     }
 
     private void Start()
@@ -68,6 +74,7 @@ public class PlayerBase : MonoBehaviour
         PlayerInputHandler = GetComponent<PlayerInputHandler>();
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
+        PlayerHitBox = GetComponent<BoxCollider2D>();
 
         PlayerFacingDirection = 1;
         
@@ -128,6 +135,11 @@ public class PlayerBase : MonoBehaviour
     #endregion
 
     #region Player Check Functions
+    
+    public bool CheckForCeiling()
+    {
+        return Physics2D.OverlapCircle(_PlayerCeilingCheck.position, _playerData.playerGroundCheckRadius, _playerData.whatIsGround);
+    }
 
     public bool CheckIfPlayerGrounded()
     {
@@ -160,6 +172,17 @@ public class PlayerBase : MonoBehaviour
     #endregion
     
     #region Other Functions
+
+    public void SetPlayerHitBoxHeight(float height)
+    {
+        Vector2 hitBoxCentre = PlayerHitBox.offset;
+        _velocityWorkspace.Set(PlayerHitBox.size.x, height);
+
+        hitBoxCentre.y += (height - PlayerHitBox.size.y) / 2;
+        
+        PlayerHitBox.size = _velocityWorkspace;
+        PlayerHitBox.offset = hitBoxCentre;
+    }
 
     public Vector2 FindCornerPosition()
     {
