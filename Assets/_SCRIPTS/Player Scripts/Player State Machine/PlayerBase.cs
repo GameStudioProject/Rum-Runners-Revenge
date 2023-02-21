@@ -19,6 +19,8 @@ public class PlayerBase : MonoBehaviour
     public PlayerDashState PlayerDashState { get; private set; }
     public PlayerCrouchIdleState PlayerCrouchIdleState { get; private set; }
     public PlayerCrouchMoveState PlayerCrouchMoveState { get; private set; }
+    public PlayerAttackState PlayerPrimaryAttackState { get; private set; }
+    public PlayerAttackState PlayerSecondaryAttackState { get; private set; }
     
     
     [SerializeField] private PlayerData _playerData;
@@ -32,6 +34,8 @@ public class PlayerBase : MonoBehaviour
     public Rigidbody2D PlayerRB { get; private set; }
     public Transform PlayerDashDirectionIndicator { get; private set; }
     public BoxCollider2D PlayerHitBox { get; private set; }
+    public PlayerTempInventory PlayerInventory { get; private set; }
+    
     #endregion
 
     #region Check Player Transforms
@@ -65,6 +69,8 @@ public class PlayerBase : MonoBehaviour
         PlayerDashState = new PlayerDashState(this, PlayerStateMachine, _playerData, "inAir");
         PlayerCrouchIdleState = new PlayerCrouchIdleState(this, PlayerStateMachine, _playerData, "crouchIdle");
         PlayerCrouchMoveState = new PlayerCrouchMoveState(this, PlayerStateMachine, _playerData, "crouchMove");
+        PlayerPrimaryAttackState = new PlayerAttackState(this, PlayerStateMachine, _playerData, "attack");
+        PlayerSecondaryAttackState = new PlayerAttackState(this, PlayerStateMachine, _playerData, "attack");
     }
 
     private void Start()
@@ -74,8 +80,11 @@ public class PlayerBase : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
         PlayerHitBox = GetComponent<BoxCollider2D>();
+        PlayerInventory = GetComponent<PlayerTempInventory>();
 
-
+        PlayerPrimaryAttackState.SetPlayerWeapon(PlayerInventory.playerWeapons[(int)PlayerCombatInputs.primary]);
+        //PlayerSecondaryAttackState.SetPlayerWeapon(PlayerInventory.playerWeapons[(int)PlayerCombatInputs.secondary]);
+        
         PlayerStateMachine.InitializeStateMachine(PlayerIdleState);
     }
 

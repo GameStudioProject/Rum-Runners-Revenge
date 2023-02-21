@@ -60,7 +60,15 @@ public class PlayerInAirState : PlayerStates
 
         CheckPlayerJumpStrength();
 
-        if (_isPlayerGrounded && _core.MovementComponent.PlayerCurrentVelocity.y < 0.01f)
+        if (_player.PlayerInputHandler.PlayerAttackInputs[(int)PlayerCombatInputs.primary])
+        {
+            _playerStateMachine.ChangePlayerState(_player.PlayerPrimaryAttackState);
+        }
+        else if (_player.PlayerInputHandler.PlayerAttackInputs[(int)PlayerCombatInputs.secondary])
+        {
+            _playerStateMachine.ChangePlayerState(_player.PlayerSecondaryAttackState);
+        }
+        else if (_isPlayerGrounded && _core.MovementComponent.PlayerCurrentVelocity.y < 0.01f)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerLandState);
         }
