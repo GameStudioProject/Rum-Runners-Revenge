@@ -27,7 +27,19 @@ public class E2_Archer_PlayerDetectedState : Enemy_PlayerDetectedState
 
         if (_performEnemyCloseRangeAction)
         {
-            _enemyStateMachine.ChangeEnemyState(_archer.ArcherMeleeAttack);
+            if (Time.time >= _archer.ArcherDodgeState._stateStartTime + _archer._archerDodgeStateData.enemyDodgeCooldown)
+            {
+                _enemyStateMachine.ChangeEnemyState(_archer.ArcherDodgeState);
+            }
+            else
+            {
+                _enemyStateMachine.ChangeEnemyState(_archer.ArcherMeleeAttack);
+            }
+            
+        }
+        else if (_performEnemyLongRangeAction)
+        {
+            _enemyStateMachine.ChangeEnemyState(_archer.ArcherRangedAttackState);
         }
         else if (!_isPlayerInMaxAgroRange)
         {

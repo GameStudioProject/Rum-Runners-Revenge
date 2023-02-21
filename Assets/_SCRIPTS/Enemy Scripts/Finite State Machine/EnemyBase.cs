@@ -52,6 +52,8 @@ public class EnemyBase : MonoBehaviour
     public virtual void Update()
     {
         EnemyStateMachine.CurrentEnemyState.EveryFrameUpdate();
+        
+        EnemyAnimator.SetFloat("yVelocity", EnemyRB.velocity.y);
 
         if (Time.time >= _lastDamageTime + enemyData.enemyStunRecoveryTime)
         {

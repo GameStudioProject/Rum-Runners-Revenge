@@ -19,6 +19,10 @@ public class Enemy_DodgeState : EnemyStates
     public override void StateEnter()
     {
         base.StateEnter();
+
+        _isEnemyDodgeOver = false;
+        
+        _enemyBase.SetVelocity(_enemyDodgeStateData.enemyDodgeSpeed, _enemyDodgeStateData.enemyDodgeAngle, -_enemyBase.EnemyFacingDirection);
     }
 
     public override void StateExit()
@@ -29,6 +33,11 @@ public class Enemy_DodgeState : EnemyStates
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
+
+        if (Time.time >= _stateStartTime + _enemyDodgeStateData.enemyDodgeTime && _isEnemyGrounded)
+        {
+            _isEnemyDodgeOver = true;
+        }
     }
 
     public override void PhysicsUpdate()
@@ -42,6 +51,6 @@ public class Enemy_DodgeState : EnemyStates
 
         _performCloseRangeAction = _enemyBase.EnemyCheckPlayerInCloseRangeAction();
         _isPlayerInMaxAgroRange = _enemyBase.EnemyCheckPlayerInMaxAgroRange();
-        
+        _isEnemyGrounded = _enemyBase.EnemyCheckGround();
     }
 }

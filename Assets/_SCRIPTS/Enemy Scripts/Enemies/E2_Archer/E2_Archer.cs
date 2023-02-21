@@ -11,6 +11,8 @@ public class E2_Archer : EnemyBase
     public E2_Archer_LookForPlayerState ArcherLookForPlayerState { get; private set; }
     public E2_Archer_StunState ArcherStunState { get; private set; }
     public E2_Archer_DeadState ArcherDeadState { get; private set; }
+    public E2_Archer_DodgeState ArcherDodgeState { get; private set; }
+    public E2_Archer_RangedAttackState ArcherRangedAttackState { get; private set; }
 
     [SerializeField] private D_EnemyMoveState _archerMoveStateData;
     [SerializeField] private D_EnemyIdleState _archerIdleStateData;
@@ -19,8 +21,11 @@ public class E2_Archer : EnemyBase
     [SerializeField] private D_EnemyLookForPlayerState _archerLookForPlayerStateData;
     [SerializeField] private D_EnemyStunState _archerStunStateData;
     [SerializeField] private D_EnemyDeadState _archerDeadStateData;
+    [SerializeField] public D_EnemyDodgeState _archerDodgeStateData;
+    [SerializeField] private D_RangedAttackState _archerRangedAttackStateData;
 
     [SerializeField] private Transform _meleeAttackPosition;
+    [SerializeField] private Transform _rangedAttackPosition;
 
     public override void Start()
     {
@@ -33,6 +38,8 @@ public class E2_Archer : EnemyBase
         ArcherLookForPlayerState = new E2_Archer_LookForPlayerState(this, EnemyStateMachine, "lookForPlayer", _archerLookForPlayerStateData, this);
         ArcherStunState = new E2_Archer_StunState(this, EnemyStateMachine, "stun", _archerStunStateData, this);
         ArcherDeadState = new E2_Archer_DeadState(this, EnemyStateMachine, "dead", _archerDeadStateData, this);
+        ArcherDodgeState = new E2_Archer_DodgeState(this, EnemyStateMachine, "dodge", _archerDodgeStateData, this);
+        ArcherRangedAttackState = new E2_Archer_RangedAttackState(this, EnemyStateMachine, "rangedAttack",_rangedAttackPosition, _archerRangedAttackStateData, this);
 
         EnemyStateMachine.InitializeState(ArcherMoveState);
     }
@@ -48,6 +55,10 @@ public class E2_Archer : EnemyBase
         else if (_isEnemyStunned && EnemyStateMachine.CurrentEnemyState != ArcherStunState)
         {
             EnemyStateMachine.ChangeEnemyState(ArcherStunState);
+        }
+        else if (EnemyCheckPlayerInMinAgroRange())
+        {
+            EnemyStateMachine.ChangeEnemyState(ArcherRangedAttackState);
         }
         else if (!EnemyCheckPlayerInMinAgroRange())
         {
