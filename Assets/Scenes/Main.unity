@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 234787420}
   - component: {fileID: 234787422}
   - component: {fileID: 234787421}
+  - component: {fileID: 234787423}
   m_Layer: 6
   m_Name: Base
   m_TagString: Untagged
@@ -321,6 +322,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &234787423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234787419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4989e8eeab7eda4885b93470d05311d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &240846831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,6 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691e6145a13e60a47bf658664b28f395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerWeaponData: {fileID: 11400000, guid: 635d81799066eee4a98d699b6efdcaa6, type: 2}
 --- !u!4 &573148058
 Transform:
   m_ObjectHideFlags: 0
