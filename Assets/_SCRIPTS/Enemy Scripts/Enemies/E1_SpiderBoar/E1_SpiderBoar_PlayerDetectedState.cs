@@ -39,7 +39,7 @@ public class E1_SpiderBoar_PlayerDetectedState : Enemy_PlayerDetectedState
         }
         else if (!_isEnemyDetectingLedge)
         {
-            _enemyBase.EnemyFlip();
+            _core.MovementComponent.EntityFlip();
             _enemyStateMachine.ChangeEnemyState(_enemySpiderBoar.spiderBoar_MoveState);
         }
     }

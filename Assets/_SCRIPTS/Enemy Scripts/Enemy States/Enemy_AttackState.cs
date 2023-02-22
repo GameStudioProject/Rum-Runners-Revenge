@@ -20,7 +20,7 @@ public class Enemy_AttackState : EnemyStates
 
         _enemyBase.EnemyAnimationToStateMachine.EnemyAttackState = this;
         _isEnemyAnimationFinished = false;
-        _enemyBase.SetVelocity(0f);
+        _core.MovementComponent.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()

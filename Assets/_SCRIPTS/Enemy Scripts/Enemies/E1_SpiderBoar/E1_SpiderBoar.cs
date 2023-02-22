@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,9 +25,9 @@ public class E1_SpiderBoar : EnemyBase
 
     [SerializeField] private Transform _enemyMeleeAttackPosition;
 
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
 
         spiderBoar_MoveState = new E1_SpiderBoar_MoveState(this, EnemyStateMachine, "move", _enemyMoveStateData, this);
         spiderBoar_IdleState = new E1_SpiderBoar_IdleState(this, EnemyStateMachine, "idle", _enemyIdleStateData, this);
@@ -37,6 +38,10 @@ public class E1_SpiderBoar : EnemyBase
         spiderBoar_StunState = new E1_SpiderBoar_StunState(this, EnemyStateMachine, "stun", _enemyStunStateData, this);
         spiderBoar_DeadState = new E1_SpiderBoar_DeadState(this, EnemyStateMachine, "dead", _enemyDeadStateData, this);
         
+    }
+
+    private void Start()
+    {
         EnemyStateMachine.InitializeState(spiderBoar_MoveState);
     }
 

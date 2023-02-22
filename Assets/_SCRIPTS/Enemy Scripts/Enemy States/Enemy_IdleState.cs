@@ -22,7 +22,7 @@ public class Enemy_IdleState : EnemyStates
     {
         base.StateEnter();
         
-        _enemyBase.SetVelocity(0f);
+        _core.MovementComponent.SetEntityVelocityX(0f);
         _isEnemyIdleTimeOver = false;
         
         SetEnemyRandomIdleTime();
@@ -34,7 +34,7 @@ public class Enemy_IdleState : EnemyStates
 
         if (_enemyFlipAfterIdle)
         {
-            _enemyBase.EnemyFlip();
+            _core.MovementComponent.EntityFlip();
         }
     }
 

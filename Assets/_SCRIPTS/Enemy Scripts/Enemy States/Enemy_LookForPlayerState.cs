@@ -30,7 +30,7 @@ public class Enemy_LookForPlayerState : EnemyStates
         _lastEnemyTurnTime = _stateStartTime;
         _amountOfEnemyTurnsDone = 0;
         
-        _enemyBase.SetVelocity(0f);
+        _core.MovementComponent.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()
@@ -44,14 +44,14 @@ public class Enemy_LookForPlayerState : EnemyStates
 
         if (_turnEnemyImmediately)
         {
-            _enemyBase.EnemyFlip();
+            _core.MovementComponent.EntityFlip();
             _lastEnemyTurnTime = Time.time;
             _amountOfEnemyTurnsDone++;
             _turnEnemyImmediately = false;
         }
         else if (Time.time >= _lastEnemyTurnTime + _enemyLookForPlayerStateData.enemyTimeBetweenTurns && !_isAllEnemyTurnsDone)
         {
-            _enemyBase.EnemyFlip();
+            _core.MovementComponent.EntityFlip();
             _lastEnemyTurnTime = Time.time;
             _amountOfEnemyTurnsDone++;
         }

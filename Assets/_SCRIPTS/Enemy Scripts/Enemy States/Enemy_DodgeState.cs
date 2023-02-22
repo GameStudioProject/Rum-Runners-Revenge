@@ -22,7 +22,7 @@ public class Enemy_DodgeState : EnemyStates
 
         _isEnemyDodgeOver = false;
         
-        _enemyBase.SetVelocity(_enemyDodgeStateData.enemyDodgeSpeed, _enemyDodgeStateData.enemyDodgeAngle, -_enemyBase.EnemyFacingDirection);
+        _core.MovementComponent.SetEntityVelocity(_enemyDodgeStateData.enemyDodgeSpeed, _enemyDodgeStateData.enemyDodgeAngle, -_core.MovementComponent.EntityFacingDirection);
     }
 
     public override void StateExit()
@@ -51,6 +51,6 @@ public class Enemy_DodgeState : EnemyStates
 
         _performCloseRangeAction = _enemyBase.EnemyCheckPlayerInCloseRangeAction();
         _isPlayerInMaxAgroRange = _enemyBase.EnemyCheckPlayerInMaxAgroRange();
-        _isEnemyGrounded = _enemyBase.EnemyCheckGround();
+        _isEnemyGrounded = _core.CollisionSenses.CheckIfEntityGrounded;
     }
 }

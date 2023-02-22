@@ -20,7 +20,7 @@ public class Enemy_MoveState : EnemyStates
     {
         base.StateEnter();
         
-        _enemyBase.SetVelocity(_enemyStateData.EnemyMovementSpeed);
+        _core.MovementComponent.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * _core.MovementComponent.EntityFacingDirection);
         
     }
 
@@ -43,8 +43,8 @@ public class Enemy_MoveState : EnemyStates
     {
         base.DoEnemyChecks();
         
-        _isEnemyDetectingLedge = _enemyBase.EnemyCheckLedge();
-        _isEnemyDetectingWall = _enemyBase.EnemyCheckWall();
+        _isEnemyDetectingLedge = _core.CollisionSenses.CheckIfEntityTouchesLedgeVertical;
+        _isEnemyDetectingWall = _core.CollisionSenses.CheckIfEntityTouchesWall;
         _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
     }
 }

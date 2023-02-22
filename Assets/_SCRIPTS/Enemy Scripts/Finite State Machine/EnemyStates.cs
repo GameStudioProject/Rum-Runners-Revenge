@@ -6,6 +6,7 @@ public class EnemyStates
 {
     protected EnemyFiniteStateMachine _enemyStateMachine;
     protected EnemyBase _enemyBase;
+    protected Core _core;
 
     public float _stateStartTime { get; protected set; }
 
@@ -16,6 +17,7 @@ public class EnemyStates
         this._enemyBase = _enemyBase;
         this._enemyStateMachine = _enemyStateMachine;
         this._enemyAnimationBoolName = _enemyAnimationBoolName;
+        _core = this._enemyBase.Core;
     }
 
     public virtual void StateEnter()

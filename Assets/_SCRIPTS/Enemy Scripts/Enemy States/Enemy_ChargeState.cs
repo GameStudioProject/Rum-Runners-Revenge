@@ -24,7 +24,7 @@ public class Enemy_ChargeState : EnemyStates
         base.StateEnter();
 
         _isEnemyChargeTimeOver = false;
-        _enemyBase.SetVelocity(_enemyChargeStateData.enemyChargeSpeed);
+        _core.MovementComponent.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * _core.MovementComponent.EntityFacingDirection);
     }
 
     public override void StateExit()
@@ -52,8 +52,8 @@ public class Enemy_ChargeState : EnemyStates
         base.DoEnemyChecks();
         
         _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
-        _isEnemyDetectingLedge = _enemyBase.EnemyCheckLedge();
-        _isEnemyDetectingWall = _enemyBase.EnemyCheckWall();
+        _isEnemyDetectingLedge = _core.CollisionSenses.CheckIfEntityTouchesLedgeVertical;
+        _isEnemyDetectingWall = _core.CollisionSenses.CheckIfEntityTouchesWall;
 
         _performEnemyCloseRangeAction = _enemyBase.EnemyCheckPlayerInCloseRangeAction();
     }

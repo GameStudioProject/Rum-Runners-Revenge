@@ -22,7 +22,7 @@ public class Enemy_PlayerDetectedState : EnemyStates
         base.StateEnter();
 
         _performEnemyLongRangeAction = false;
-        _enemyBase.SetVelocity(0f);
+        _core.MovementComponent.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()
@@ -51,7 +51,7 @@ public class Enemy_PlayerDetectedState : EnemyStates
         
         _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
         _isPlayerInMaxAgroRange = _enemyBase.EnemyCheckPlayerInMaxAgroRange();
-        _isEnemyDetectingLedge = _enemyBase.EnemyCheckLedge();
+        _isEnemyDetectingLedge = _core.CollisionSenses.CheckIfEntityTouchesLedgeVertical;
 
         _performEnemyCloseRangeAction = _enemyBase.EnemyCheckPlayerInCloseRangeAction();
     }

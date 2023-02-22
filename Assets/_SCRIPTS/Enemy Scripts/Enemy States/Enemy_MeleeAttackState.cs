@@ -18,7 +18,7 @@ public class Enemy_MeleeAttackState : Enemy_AttackState
         base.StateEnter();
 
         _attackDetails.damageAmount = _enemyMeleeAttackStateData.enemyAttackDamage;
-        _attackDetails.position = _enemyBase.EnemyAliveGO.transform.position;
+        _attackDetails.position = _enemyBase.transform.position;
     }
 
     public override void StateExit()

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MovementComponent : CoreComponent
 {
-    public Rigidbody2D PlayerRB { get; private set; }
+    public Rigidbody2D Rigidbody { get; private set; }
     
-    public int PlayerFacingDirection { get; private set; }
+    public int EntityFacingDirection { get; private set; }
     
-    public Vector2 PlayerCurrentVelocity { get; private set; }
+    public Vector2 EntityCurrentVelocity { get; private set; }
     
     private Vector2 _velocityWorkspace;
 
@@ -16,65 +16,65 @@ public class MovementComponent : CoreComponent
     {
         base.Awake();
 
-        PlayerFacingDirection = 1;
+        EntityFacingDirection = 1;
 
-        PlayerRB = GetComponentInParent<Rigidbody2D>();
+        Rigidbody = GetComponentInParent<Rigidbody2D>();
     }
 
     public void EveryFrameUpdate()
     {
-        PlayerCurrentVelocity = PlayerRB.velocity;
+        EntityCurrentVelocity = Rigidbody.velocity;
     }
 
     #region Set Functions
 
-    public void SetPlayerVelocityZero()
+    public void SetEntityVelocityZero()
     {
-        PlayerRB.velocity = Vector2.zero;
-        PlayerCurrentVelocity = Vector2.zero;
+        Rigidbody.velocity = Vector2.zero;
+        EntityCurrentVelocity = Vector2.zero;
     }
 
-    public void SetPlayerVelocity(float velocity, Vector2 angle, int direction)
+    public void SetEntityVelocity(float velocity, Vector2 angle, int direction)
     {
         angle.Normalize();
         _velocityWorkspace.Set(angle.x * velocity * direction, angle.y * velocity);
-        PlayerRB.velocity = _velocityWorkspace;
-        PlayerCurrentVelocity = _velocityWorkspace;
+        Rigidbody.velocity = _velocityWorkspace;
+        EntityCurrentVelocity = _velocityWorkspace;
     }
 
-    public void SetPlayerVelocity(float velocity, Vector2 direction)
+    public void SetEntityVelocity(float velocity, Vector2 direction)
     {
         _velocityWorkspace = direction * velocity;
-        PlayerRB.velocity = _velocityWorkspace;
-        PlayerCurrentVelocity = _velocityWorkspace;
+        Rigidbody.velocity = _velocityWorkspace;
+        EntityCurrentVelocity = _velocityWorkspace;
     }
     
-    public void SetPlayerVelocityX(float velocity)
+    public void SetEntityVelocityX(float velocity)
     {
-        _velocityWorkspace.Set(velocity, PlayerCurrentVelocity.y);
-        PlayerRB.velocity = _velocityWorkspace;
-        PlayerCurrentVelocity = _velocityWorkspace;
+        _velocityWorkspace.Set(velocity, EntityCurrentVelocity.y);
+        Rigidbody.velocity = _velocityWorkspace;
+        EntityCurrentVelocity = _velocityWorkspace;
     }
 
-    public void SetPlayerVelocityY(float velocity)
+    public void SetEntityVelocityY(float velocity)
     {
-        _velocityWorkspace.Set(PlayerCurrentVelocity.x, velocity);
-        PlayerRB.velocity = _velocityWorkspace;
-        PlayerCurrentVelocity = _velocityWorkspace;
+        _velocityWorkspace.Set(EntityCurrentVelocity.x, velocity);
+        Rigidbody.velocity = _velocityWorkspace;
+        EntityCurrentVelocity = _velocityWorkspace;
     }
     
-    public void CheckIfPlayerShouldFlip(int playerXInput)
+    public void CheckIfEntityShouldFlip(int playerXInput)
     {
-        if (playerXInput != 0 && playerXInput != PlayerFacingDirection)
+        if (playerXInput != 0 && playerXInput != EntityFacingDirection)
         {
-            PlayerFlip();
+            EntityFlip();
         }
     }
     
-    public void PlayerFlip()
+    public void EntityFlip()
     {
-        PlayerFacingDirection *= -1;
-        PlayerRB.transform.Rotate(0.0f, 180.0f, 0.0f);
+        EntityFacingDirection *= -1;
+        Rigidbody.transform.Rotate(0.0f, 180.0f, 0.0f);
     }
     
     #endregion

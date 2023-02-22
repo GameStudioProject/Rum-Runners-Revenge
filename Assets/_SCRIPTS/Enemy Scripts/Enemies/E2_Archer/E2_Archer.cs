@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,9 +28,9 @@ public class E2_Archer : EnemyBase
     [SerializeField] private Transform _meleeAttackPosition;
     [SerializeField] private Transform _rangedAttackPosition;
 
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         
         ArcherMoveState = new E2_Archer_MoveState(this, EnemyStateMachine, "move", _archerMoveStateData, this);
         ArcherIdleState = new E2_Archer_IdleState(this, EnemyStateMachine, "idle", _archerIdleStateData, this);
@@ -41,6 +42,10 @@ public class E2_Archer : EnemyBase
         ArcherDodgeState = new E2_Archer_DodgeState(this, EnemyStateMachine, "dodge", _archerDodgeStateData, this);
         ArcherRangedAttackState = new E2_Archer_RangedAttackState(this, EnemyStateMachine, "rangedAttack",_rangedAttackPosition, _archerRangedAttackStateData, this);
 
+    }
+
+    private void Start()
+    {
         EnemyStateMachine.InitializeState(ArcherMoveState);
     }
 
