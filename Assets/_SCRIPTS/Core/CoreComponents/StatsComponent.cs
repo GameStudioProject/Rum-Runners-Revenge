@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class StatsComponent : CoreComponent
 {
+    public event Action OnHealthZero;
+
     [SerializeField] private float _maxEntityHealth;
     private float _currentEntityHealth;
 
@@ -19,6 +22,9 @@ public class StatsComponent : CoreComponent
         if (_currentEntityHealth <= 0)
         {
             _currentEntityHealth = 0;
+            
+            OnHealthZero?.Invoke();
+            
             Debug.Log("Health is zero, u ded bich");
         }
     }

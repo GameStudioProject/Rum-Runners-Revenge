@@ -86,12 +86,6 @@ public class EnemyBase : MonoBehaviour
         return Physics2D.Raycast(_enemyPlayerCheck.position, transform.right, enemyData.enemyCloseRangeActionDistance, enemyData.whatIsPlayer);
     }
 
-    public virtual void EnemyDamageHop(float velocity)
-    {
-        _velocityWorkspace.Set(MovementComponent.Rigidbody.velocity.x, velocity);
-        MovementComponent.Rigidbody.velocity = _velocityWorkspace;
-    }
-
     public virtual void ResetEnemyStunResistance()
     {
         _isEnemyStunned = false;

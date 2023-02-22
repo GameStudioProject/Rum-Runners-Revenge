@@ -34,11 +34,19 @@ public class Core : MonoBehaviour
     {
         var component = _coreComponentsList.OfType<CoreT>().FirstOrDefault();
 
-        if (component == null)
+        if (component)
         {
-            Debug.LogWarning($"{typeof(CoreT)} not found {transform.parent.name}");
+            return component;
         }
 
+        component = GetComponentInChildren<CoreT>();
+
+        if (component)
+        {
+            return component;
+        }
+        
+        Debug.LogWarning($"{typeof(CoreT)} not found on {transform.parent.name}");
         return component;
     }
 }
