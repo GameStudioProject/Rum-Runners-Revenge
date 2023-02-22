@@ -5,6 +5,18 @@ using UnityEngine;
 
 public class Enemy_ChargeState : EnemyStates
 {
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
+    }
+    protected CollisionSenses CollisionSenses
+    {
+        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
+    }
+    
+    private MovementComponent _movementComponent;
+    private CollisionSenses _collisionSenses;
+    
     protected D_EnemyChargeState _enemyChargeStateData;
 
     protected bool _isPlayerInMinAgroRange;
@@ -24,7 +36,7 @@ public class Enemy_ChargeState : EnemyStates
         base.StateEnter();
 
         _isEnemyChargeTimeOver = false;
-        _core.MovementComponent.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * _core.MovementComponent.EntityFacingDirection);
+        MovementComponent?.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * MovementComponent.EntityFacingDirection);
     }
 
     public override void StateExit()
@@ -36,7 +48,7 @@ public class Enemy_ChargeState : EnemyStates
     {
         base.EveryFrameUpdate();
         
-        _core.MovementComponent.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * _core.MovementComponent.EntityFacingDirection);
+        MovementComponent?.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * MovementComponent.EntityFacingDirection);
 
         if (Time.time >= _stateStartTime + _enemyChargeStateData.enemyChargeTime)
         {
@@ -52,11 +64,13 @@ public class Enemy_ChargeState : EnemyStates
     public override void DoEnemyChecks()
     {
         base.DoEnemyChecks();
-        
-        _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
-        _isEnemyDetectingLedge = _core.CollisionSenses.CheckIfEntityTouchesLedgeVertical;
-        _isEnemyDetectingWall = _core.CollisionSenses.CheckIfEntityTouchesWall;
 
+        if (CollisionSenses)
+        {
+            _isEnemyDetectingLedge = CollisionSenses.CheckIfEntityTouchesLedgeVertical;
+            _isEnemyDetectingWall = CollisionSenses.CheckIfEntityTouchesWall;
+        }
+        _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
         _performEnemyCloseRangeAction = _enemyBase.EnemyCheckPlayerInCloseRangeAction();
     }
 }

@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class Enemy_IdleState : EnemyStates
 {
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
+    }
+    protected CollisionSenses CollisionSenses
+    {
+        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
+    }
+    
+    private MovementComponent _movementComponent;
+    private CollisionSenses _collisionSenses;
+    
     protected D_EnemyIdleState _enemyStateData;
 
     protected bool _enemyFlipAfterIdle;
@@ -22,7 +34,7 @@ public class Enemy_IdleState : EnemyStates
     {
         base.StateEnter();
         
-        _core.MovementComponent.SetEntityVelocityX(0f);
+        MovementComponent?.SetEntityVelocityX(0f);
         _isEnemyIdleTimeOver = false;
         
         SetEnemyRandomIdleTime();
@@ -34,7 +46,7 @@ public class Enemy_IdleState : EnemyStates
 
         if (_enemyFlipAfterIdle)
         {
-            _core.MovementComponent.EntityFlip();
+            MovementComponent?.EntityFlip();
         }
     }
 
@@ -42,7 +54,7 @@ public class Enemy_IdleState : EnemyStates
     {
         base.EveryFrameUpdate();
         
-        _core.MovementComponent.SetEntityVelocityX(0f);
+        MovementComponent?.SetEntityVelocityX(0f);
 
         if (Time.time >= _stateStartTime + _enemyIdleTime)
         {

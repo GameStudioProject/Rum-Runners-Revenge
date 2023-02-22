@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class E1_SpiderBoar_PlayerDetectedState : Enemy_PlayerDetectedState
 {
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
+    }
+
+    private MovementComponent _movementComponent;
+    
     private E1_SpiderBoar _enemySpiderBoar;
     
     public E1_SpiderBoar_PlayerDetectedState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyPlayerDetectedState _enemyStateData, E1_SpiderBoar _enemySpiderBoar) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyStateData)
@@ -39,7 +46,7 @@ public class E1_SpiderBoar_PlayerDetectedState : Enemy_PlayerDetectedState
         }
         else if (!_isEnemyDetectingLedge)
         {
-            _core.MovementComponent.EntityFlip();
+            MovementComponent?.EntityFlip();
             _enemyStateMachine.ChangeEnemyState(_enemySpiderBoar.spiderBoar_MoveState);
         }
     }

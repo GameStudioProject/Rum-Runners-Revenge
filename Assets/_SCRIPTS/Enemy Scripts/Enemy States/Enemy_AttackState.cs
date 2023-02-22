@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Enemy_AttackState : EnemyStates
 {
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
+    }
+
+    private MovementComponent _movementComponent;
+
     protected Transform _enemyAttackPosition;
 
     protected bool _isEnemyAnimationFinished;
@@ -20,7 +27,7 @@ public class Enemy_AttackState : EnemyStates
 
         _enemyBase.EnemyAnimationToStateMachine.EnemyAttackState = this;
         _isEnemyAnimationFinished = false;
-        _core.MovementComponent.SetEntityVelocityX(0f);
+        MovementComponent?.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()
@@ -31,7 +38,7 @@ public class Enemy_AttackState : EnemyStates
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
-        _core.MovementComponent.SetEntityVelocityX(0f);
+        MovementComponent?.SetEntityVelocityX(0f);
     }
 
     public override void PhysicsUpdate()

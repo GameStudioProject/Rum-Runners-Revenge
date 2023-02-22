@@ -42,12 +42,12 @@ public class PlayerAttackState : PlayerAbilityState
 
         if (_shouldPlayerFlip)
         {
-            _core.MovementComponent.CheckIfEntityShouldFlip(_playerXInput);
+            MovementComponent?.CheckIfEntityShouldFlip(_playerXInput);
         }
 
         if (_setPlayerVelocity)
         {
-            _core.MovementComponent.SetEntityVelocityX(_weaponVelocityToSet * _core.MovementComponent.EntityFacingDirection);
+            MovementComponent?.SetEntityVelocityX(_weaponVelocityToSet * MovementComponent.EntityFacingDirection);
         }
     }
 
@@ -59,7 +59,7 @@ public class PlayerAttackState : PlayerAbilityState
 
     public void SetPlayerVelocity(float velocity)
     {
-        _core.MovementComponent.SetEntityVelocityX(velocity * _core.MovementComponent.EntityFacingDirection);
+        MovementComponent?.SetEntityVelocityX(velocity * MovementComponent.EntityFacingDirection);
 
         _weaponVelocityToSet = velocity;
         _setPlayerVelocity = true;

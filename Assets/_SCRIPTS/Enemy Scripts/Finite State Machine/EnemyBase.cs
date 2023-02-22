@@ -7,6 +7,13 @@ using Random = UnityEngine.Random;
 
 public class EnemyBase : MonoBehaviour
 {
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= Core.GetCoreComponent<MovementComponent>();
+    }
+
+    private MovementComponent _movementComponent;
+    
     public EnemyFiniteStateMachine EnemyStateMachine;
     
     public D_EnemyBase enemyData;
@@ -51,7 +58,7 @@ public class EnemyBase : MonoBehaviour
         
         EnemyStateMachine.CurrentEnemyState.EveryFrameUpdate();
         
-        EnemyAnimator.SetFloat("yVelocity", Core.MovementComponent.Rigidbody.velocity.y);
+        EnemyAnimator.SetFloat("yVelocity", MovementComponent.Rigidbody.velocity.y);
 
         if (Time.time >= _lastDamageTime + enemyData.enemyStunRecoveryTime)
         {
@@ -81,8 +88,8 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void EnemyDamageHop(float velocity)
     {
-        _velocityWorkspace.Set(Core.MovementComponent.Rigidbody.velocity.x, velocity);
-        Core.MovementComponent.Rigidbody.velocity = _velocityWorkspace;
+        _velocityWorkspace.Set(MovementComponent.Rigidbody.velocity.x, velocity);
+        MovementComponent.Rigidbody.velocity = _velocityWorkspace;
     }
 
     public virtual void ResetEnemyStunResistance()
@@ -95,12 +102,12 @@ public class EnemyBase : MonoBehaviour
     {
         if (Core != null)
         {
-            Gizmos.DrawLine(_enemyWallCheck.position, _enemyWallCheck.position + (Vector3)(Vector2.right * Core.MovementComponent.EntityFacingDirection * enemyData.wallCheckDistance));
+            Gizmos.DrawLine(_enemyWallCheck.position, _enemyWallCheck.position + (Vector3)(Vector2.right * MovementComponent?.EntityFacingDirection * enemyData.wallCheckDistance));
             Gizmos.DrawLine(_enemyLedgeCheck.position, _enemyLedgeCheck.position + (Vector3)(Vector2.down * enemyData.ledgeCheckDistance));
         
-            Gizmos.DrawWireSphere(_enemyPlayerCheck.position + (Vector3)(Vector2.right * Core.MovementComponent.EntityFacingDirection * enemyData.enemyCloseRangeActionDistance), 0.2f);
-            Gizmos.DrawWireSphere(_enemyPlayerCheck.position + (Vector3)(Vector2.right * Core.MovementComponent.EntityFacingDirection * enemyData.enemyMinAgroDistance), 0.2f);
-            Gizmos.DrawWireSphere(_enemyPlayerCheck.position + (Vector3)(Vector2.right * Core.MovementComponent.EntityFacingDirection *enemyData.enemyMaxAgroDistance), 0.2f);
+            Gizmos.DrawWireSphere(_enemyPlayerCheck.position + (Vector3)(Vector2.right * MovementComponent?.EntityFacingDirection * enemyData.enemyCloseRangeActionDistance), 0.2f);
+            Gizmos.DrawWireSphere(_enemyPlayerCheck.position + (Vector3)(Vector2.right * MovementComponent?.EntityFacingDirection * enemyData.enemyMinAgroDistance), 0.2f);
+            Gizmos.DrawWireSphere(_enemyPlayerCheck.position + (Vector3)(Vector2.right * MovementComponent?.EntityFacingDirection *enemyData.enemyMaxAgroDistance), 0.2f);
         }
         
     }

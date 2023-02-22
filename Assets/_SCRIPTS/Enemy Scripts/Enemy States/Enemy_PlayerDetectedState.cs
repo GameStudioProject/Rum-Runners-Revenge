@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class Enemy_PlayerDetectedState : EnemyStates
 {
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
+    }
+    protected CollisionSenses CollisionSenses
+    {
+        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
+    }
+    
+    private MovementComponent _movementComponent;
+    private CollisionSenses _collisionSenses;
+    
     protected D_EnemyPlayerDetectedState _enemyStateData;
 
     protected bool _isPlayerInMinAgroRange;
@@ -22,7 +34,7 @@ public class Enemy_PlayerDetectedState : EnemyStates
         base.StateEnter();
 
         _performEnemyLongRangeAction = false;
-        _core.MovementComponent.SetEntityVelocityX(0f);
+        MovementComponent?.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()
@@ -34,7 +46,7 @@ public class Enemy_PlayerDetectedState : EnemyStates
     {
         base.EveryFrameUpdate();
         
-        _core.MovementComponent.SetEntityVelocityX(0f);
+        MovementComponent?.SetEntityVelocityX(0f);
 
         if (Time.time >= _stateStartTime + _enemyStateData.enemyLongRangeActionTime)
         {
@@ -53,7 +65,10 @@ public class Enemy_PlayerDetectedState : EnemyStates
         
         _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
         _isPlayerInMaxAgroRange = _enemyBase.EnemyCheckPlayerInMaxAgroRange();
-        _isEnemyDetectingLedge = _core.CollisionSenses.CheckIfEntityTouchesLedgeVertical;
+        if (CollisionSenses)
+        {
+            _isEnemyDetectingLedge = CollisionSenses.CheckIfEntityTouchesLedgeVertical;
+        }
 
         _performEnemyCloseRangeAction = _enemyBase.EnemyCheckPlayerInCloseRangeAction();
     }

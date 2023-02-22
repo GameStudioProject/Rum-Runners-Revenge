@@ -6,6 +6,18 @@ public class PlayerAbilityState : PlayerStates
 {
     protected bool _isPlayerAbilityDone;
 
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
+    }
+    protected CollisionSenses CollisionSenses
+    {
+        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
+    }
+    
+    private MovementComponent _movementComponent;
+    private CollisionSenses _collisionSenses;
+
     private bool _isPlayerGrounded;
     
     public PlayerAbilityState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
@@ -31,7 +43,7 @@ public class PlayerAbilityState : PlayerStates
 
         if (_isPlayerAbilityDone)
         {
-            if (_isPlayerGrounded && _core.MovementComponent.EntityCurrentVelocity.y < 0.01f)
+            if (_isPlayerGrounded && MovementComponent?.EntityCurrentVelocity.y < 0.01f)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerIdleState);
             }
@@ -51,6 +63,10 @@ public class PlayerAbilityState : PlayerStates
     {
         base.PerformPlayerChecks();
 
-        _isPlayerGrounded = _core.CollisionSenses.CheckIfEntityGrounded;
+        if (CollisionSenses)
+        {
+            _isPlayerGrounded = CollisionSenses.CheckIfEntityGrounded;
+            
+        }
     }
 }

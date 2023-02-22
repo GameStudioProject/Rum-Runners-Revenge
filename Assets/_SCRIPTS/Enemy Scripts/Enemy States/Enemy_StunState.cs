@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class Enemy_StunState : EnemyStates
 {
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
+    }
+    protected CollisionSenses CollisionSenses
+    {
+        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
+    }
+    
+    private MovementComponent _movementComponent;
+    private CollisionSenses _collisionSenses;
+    
     protected D_EnemyStunState _enemyStunStateData;
 
     protected bool _isEnemyStunTimeOver;
@@ -23,7 +35,7 @@ public class Enemy_StunState : EnemyStates
 
         _isEnemyStunTimeOver = false;
         _isEnemyMovementStopped = false;
-        _core.MovementComponent.SetEntityVelocity(_enemyStunStateData.enemyStunKnockbackSpeed, _enemyStunStateData.enemyStunKnockbackAngle, _enemyBase.LastDamageDirection);
+        MovementComponent?.SetEntityVelocity(_enemyStunStateData.enemyStunKnockbackSpeed, _enemyStunStateData.enemyStunKnockbackAngle, _enemyBase.LastDamageDirection);
     }
 
     public override void StateExit()
@@ -45,7 +57,7 @@ public class Enemy_StunState : EnemyStates
         if (_isEnemyGrounded && Time.time >= _stateStartTime + _enemyStunStateData.enemyStunKnockbackTime && !_isEnemyMovementStopped)
         {
             _isEnemyMovementStopped = true;
-            _core.MovementComponent.SetEntityVelocityX(0f);
+            MovementComponent?.SetEntityVelocityX(0f);
         }
     }
 
@@ -58,7 +70,11 @@ public class Enemy_StunState : EnemyStates
     {
         base.DoEnemyChecks();
 
-        _isEnemyGrounded = _core.CollisionSenses.CheckIfEntityGrounded;
+        if (CollisionSenses)
+        {
+            _isEnemyGrounded = CollisionSenses.CheckIfEntityGrounded;
+        }
+        
         _performEnemyCloseRangeAction = _enemyBase.EnemyCheckPlayerInCloseRangeAction();
         _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
     }

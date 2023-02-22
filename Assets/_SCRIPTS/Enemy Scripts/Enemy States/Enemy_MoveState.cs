@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class Enemy_MoveState : EnemyStates
 {
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
+    }
+    protected CollisionSenses CollisionSenses
+    {
+        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
+    }
+    
+    private MovementComponent _movementComponent;
+    private CollisionSenses _collisionSenses;
+    
     protected D_EnemyMoveState _enemyStateData;
 
     protected bool _isEnemyDetectingWall;
@@ -20,7 +32,7 @@ public class Enemy_MoveState : EnemyStates
     {
         base.StateEnter();
         
-        _core.MovementComponent.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * _core.MovementComponent.EntityFacingDirection);
+        MovementComponent?.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * MovementComponent.EntityFacingDirection);
     }
 
     public override void StateExit()
@@ -32,7 +44,7 @@ public class Enemy_MoveState : EnemyStates
     {
         base.EveryFrameUpdate();
         
-        _core.MovementComponent.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * _core.MovementComponent.EntityFacingDirection);
+        MovementComponent?.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * MovementComponent.EntityFacingDirection);
     }
 
     public override void PhysicsUpdate()
@@ -43,9 +55,13 @@ public class Enemy_MoveState : EnemyStates
     public override void DoEnemyChecks()
     {
         base.DoEnemyChecks();
+
+        if (CollisionSenses)
+        {
+            _isEnemyDetectingLedge = CollisionSenses.CheckIfEntityTouchesLedgeVertical;
+            _isEnemyDetectingWall = CollisionSenses.CheckIfEntityTouchesWall;
+        }
         
-        _isEnemyDetectingLedge = _core.CollisionSenses.CheckIfEntityTouchesLedgeVertical;
-        _isEnemyDetectingWall = _core.CollisionSenses.CheckIfEntityTouchesWall;
         _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
     }
 }

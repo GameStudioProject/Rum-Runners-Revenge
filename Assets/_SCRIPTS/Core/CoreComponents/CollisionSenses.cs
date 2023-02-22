@@ -5,6 +5,13 @@ using UnityEngine.Serialization;
 
 public class CollisionSenses : CoreComponent
 {
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= core.GetCoreComponent<MovementComponent>();
+    }
+
+    private MovementComponent _movementComponent;
+    
     public Transform EntityGroundCheck
     {
         get => GenericCoreNotImplementedError<Transform>.TryGet(_entityGroundCheck, transform.parent.name);
@@ -54,17 +61,17 @@ public class CollisionSenses : CoreComponent
 
     public bool CheckIfEntityTouchesWall
     {
-        get => Physics2D.Raycast(EntityWallCheck.position, Vector2.right * core.MovementComponent.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
+        get => Physics2D.Raycast(EntityWallCheck.position, Vector2.right * MovementComponent.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
     }
     
     public bool CheckIfEntityTouchesWallBehind
     {
-        get => Physics2D.Raycast(EntityWallCheck.position, Vector2.right * -core.MovementComponent.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
+        get => Physics2D.Raycast(EntityWallCheck.position, Vector2.right * -MovementComponent.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
     }
 
     public bool CheckIfEntityTouchesLedgeHorizontal
     {
-        get => Physics2D.Raycast(EntityLedgeCheckHorizontal.position, Vector2.right * core.MovementComponent.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
+        get => Physics2D.Raycast(EntityLedgeCheckHorizontal.position, Vector2.right * MovementComponent.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
     }
 
     public bool CheckIfEntityTouchesLedgeVertical

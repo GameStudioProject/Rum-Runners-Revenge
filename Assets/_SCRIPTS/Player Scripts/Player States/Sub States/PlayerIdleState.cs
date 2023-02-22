@@ -9,7 +9,7 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.StateEnter();
         
-        _core.MovementComponent.SetEntityVelocityX(0f);
+        MovementComponent?.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()

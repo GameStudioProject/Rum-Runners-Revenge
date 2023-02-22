@@ -2,6 +2,18 @@ using UnityEngine;
 
 public class PlayerTouchWallState : PlayerStates
 {
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
+    }
+    protected CollisionSenses CollisionSenses
+    {
+        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
+    }
+    
+    private MovementComponent _movementComponent;
+    private CollisionSenses _collisionSenses;
+    
     protected bool _isPlayerGrounded;
     protected bool _isPlayerTouchingWall;
     protected bool _playerGrabInput;
@@ -43,7 +55,7 @@ public class PlayerTouchWallState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerIdleState);
         }
-        else if (!_isPlayerTouchingWall || (_playerXInput != _core.MovementComponent.EntityFacingDirection && !_playerGrabInput))
+        else if (!_isPlayerTouchingWall || (_playerXInput != MovementComponent?.EntityFacingDirection && !_playerGrabInput))
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
         }
@@ -62,9 +74,12 @@ public class PlayerTouchWallState : PlayerStates
     {
         base.PerformPlayerChecks();
 
-        _isPlayerGrounded = _core.CollisionSenses.CheckIfEntityGrounded;
-        _isPlayerTouchingWall = _core.CollisionSenses.CheckIfEntityTouchesWall;
-        _isPlayerTouchingLedge = _core.CollisionSenses.CheckIfEntityTouchesLedgeHorizontal;
+        if (CollisionSenses)
+        {
+            _isPlayerGrounded = CollisionSenses.CheckIfEntityGrounded;
+            _isPlayerTouchingWall = CollisionSenses.CheckIfEntityTouchesWall;
+            _isPlayerTouchingLedge = CollisionSenses.CheckIfEntityTouchesLedgeHorizontal;
+        }
 
         if (_isPlayerTouchingWall && !_isPlayerTouchingLedge)
         {
