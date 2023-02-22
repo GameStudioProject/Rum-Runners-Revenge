@@ -7,62 +7,24 @@ public class CollisionSenses : CoreComponent
 {
     public Transform EntityGroundCheck
     {
-        get
-        {
-            if (_entityGroundCheck != null)
-                return _entityGroundCheck;
-            
-            Debug.LogError("No Ground Check on" + core.transform.parent.name);
-            return null;
-        }
-
+        get => GenericCoreNotImplementedError<Transform>.TryGet(_entityGroundCheck, transform.parent.name);
         private set => _entityGroundCheck = value;
     }
 
     public Transform EntityWallCheck { 
-        get 
-        {
-        if (_entityWallCheck != null)
-            return _entityWallCheck;
-            
-        Debug.LogError("No wall Check on" + core.transform.parent.name);
-        return null; 
-        }
-        
-        private set => _entityWallCheck = value; 
+        get => GenericCoreNotImplementedError<Transform>.TryGet(_entityWallCheck, transform.parent.name);
+        private set => _entityWallCheck = value;
     }
     public Transform EntityLedgeCheckHorizontal {
-        get
-        {
-            if (_entityLedgeCheckHorizontal != null)
-                return _entityLedgeCheckHorizontal;
-
-            Debug.LogError("No ledge horizontal Check on" + core.transform.parent.name);
-            return null;
-        }
-        
-        private set => _entityLedgeCheckHorizontal = value; 
+        get => GenericCoreNotImplementedError<Transform>.TryGet(_entityLedgeCheckHorizontal, transform.parent.name);
+        private set => _entityLedgeCheckHorizontal = value;
     }
     public Transform EntityLedgeCheckVertical { 
-        get
-        {
-            if (_entityLedgeCheckVertical != null)
-                return _entityLedgeCheckVertical;
-            
-            Debug.LogError("No ledge vertical Check on" + core.transform.parent.name);
-            return null;
-        } 
-        private set => _entityLedgeCheckVertical = value; 
+        get => GenericCoreNotImplementedError<Transform>.TryGet(_entityLedgeCheckVertical, transform.parent.name);
+        private set => _entityLedgeCheckVertical = value;
     }
     public Transform EntityCeilingCheck { 
-        get
-        {
-            if (_entityCeilingCheck != null)
-                return _entityCeilingCheck;
-            
-            Debug.LogError("No ceiling Check on" + core.transform.parent.name);
-            return null;
-        } 
+        get => GenericCoreNotImplementedError<Transform>.TryGet(_entityCeilingCheck, transform.parent.name);
         private set => _entityCeilingCheck = value; 
     }
     public float EntityGroundCheckRadius { get => _entityGroundCheckRadius; set => _entityGroundCheckRadius = value; }

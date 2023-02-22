@@ -91,38 +91,6 @@ public class EnemyBase : MonoBehaviour
         _enemyCurrentStunResistance = enemyData.enemyStunResistance;
     }
 
-    public virtual void Damage(AttackDetails attackDetails)
-    {
-        _lastDamageTime = Time.time;
-        
-        _enemyCurrentHealth -= attackDetails.damageAmount;
-        _enemyCurrentStunResistance -= attackDetails.stunDamageAmount;
-        
-        EnemyDamageHop(enemyData.enemyDamageHopSpeed);
-
-        Instantiate(enemyData._enemyHitParticle, transform.position,
-            Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)));
-
-        if (attackDetails.position.x > transform.position.x)
-        {
-            LastDamageDirection = -1;
-        }
-        else
-        {
-            LastDamageDirection = 1;
-        }
-
-        if (_enemyCurrentStunResistance <= 0)
-        {
-            _isEnemyStunned = true;
-        }
-
-        if (_enemyCurrentHealth <= 0)
-        {
-            _isEnemyDead = true;
-        }
-    }
-
     public virtual void OnDrawGizmos()
     {
         if (Core != null)

@@ -49,29 +49,6 @@ public class E2_Archer : EnemyBase
         EnemyStateMachine.InitializeState(ArcherMoveState);
     }
 
-    public override void Damage(AttackDetails attackDetails)
-    {
-        base.Damage(attackDetails);
-
-        if (_isEnemyDead)
-        {
-            EnemyStateMachine.ChangeEnemyState(ArcherDeadState);
-        }
-        else if (_isEnemyStunned && EnemyStateMachine.CurrentEnemyState != ArcherStunState)
-        {
-            EnemyStateMachine.ChangeEnemyState(ArcherStunState);
-        }
-        else if (EnemyCheckPlayerInMinAgroRange())
-        {
-            EnemyStateMachine.ChangeEnemyState(ArcherRangedAttackState);
-        }
-        else if (!EnemyCheckPlayerInMinAgroRange())
-        {
-            ArcherLookForPlayerState.TurnEnemyImmediately(true);
-            EnemyStateMachine.ChangeEnemyState(ArcherLookForPlayerState);
-        }
-    }
-
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();

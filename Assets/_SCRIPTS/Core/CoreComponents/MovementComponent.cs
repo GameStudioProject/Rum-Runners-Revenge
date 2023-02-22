@@ -8,6 +8,8 @@ public class MovementComponent : CoreComponent
     
     public int EntityFacingDirection { get; private set; }
     
+    public bool CanSetEntityVelocity { get; set; }
+    
     public Vector2 EntityCurrentVelocity { get; private set; }
     
     private Vector2 _velocityWorkspace;
@@ -19,6 +21,7 @@ public class MovementComponent : CoreComponent
         EntityFacingDirection = 1;
 
         Rigidbody = GetComponentInParent<Rigidbody2D>();
+        CanSetEntityVelocity = true;
     }
 
     public void EveryFrameUpdate()
@@ -30,37 +33,42 @@ public class MovementComponent : CoreComponent
 
     public void SetEntityVelocityZero()
     {
-        Rigidbody.velocity = Vector2.zero;
-        EntityCurrentVelocity = Vector2.zero;
+        _velocityWorkspace = Vector2.zero;
+        SetFinalEntityVelocity();
     }
 
     public void SetEntityVelocity(float velocity, Vector2 angle, int direction)
     {
         angle.Normalize();
         _velocityWorkspace.Set(angle.x * velocity * direction, angle.y * velocity);
-        Rigidbody.velocity = _velocityWorkspace;
-        EntityCurrentVelocity = _velocityWorkspace;
+        SetFinalEntityVelocity();
     }
 
     public void SetEntityVelocity(float velocity, Vector2 direction)
     {
         _velocityWorkspace = direction * velocity;
-        Rigidbody.velocity = _velocityWorkspace;
-        EntityCurrentVelocity = _velocityWorkspace;
+        SetFinalEntityVelocity();
     }
     
     public void SetEntityVelocityX(float velocity)
     {
         _velocityWorkspace.Set(velocity, EntityCurrentVelocity.y);
-        Rigidbody.velocity = _velocityWorkspace;
-        EntityCurrentVelocity = _velocityWorkspace;
+        SetFinalEntityVelocity();
     }
 
     public void SetEntityVelocityY(float velocity)
     {
         _velocityWorkspace.Set(EntityCurrentVelocity.x, velocity);
-        Rigidbody.velocity = _velocityWorkspace;
-        EntityCurrentVelocity = _velocityWorkspace;
+        SetFinalEntityVelocity();
+    }
+
+    public void SetFinalEntityVelocity()
+    {
+        if (CanSetEntityVelocity)
+        {
+            Rigidbody.velocity = _velocityWorkspace;
+            EntityCurrentVelocity = _velocityWorkspace;
+        }
     }
     
     public void CheckIfEntityShouldFlip(int playerXInput)

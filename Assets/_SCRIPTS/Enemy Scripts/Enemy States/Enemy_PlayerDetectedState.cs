@@ -33,6 +33,8 @@ public class Enemy_PlayerDetectedState : EnemyStates
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
+        
+        _core.MovementComponent.SetEntityVelocityX(0f);
 
         if (Time.time >= _stateStartTime + _enemyStateData.enemyLongRangeActionTime)
         {

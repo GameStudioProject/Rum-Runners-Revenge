@@ -35,6 +35,8 @@ public class Enemy_ChargeState : EnemyStates
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
+        
+        _core.MovementComponent.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * _core.MovementComponent.EntityFacingDirection);
 
         if (Time.time >= _stateStartTime + _enemyChargeStateData.enemyChargeTime)
         {

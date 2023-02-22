@@ -7,6 +7,9 @@ public class D_EnemyMeleeAttackState : ScriptableObject
 {
     public float enemyAttackRadius = 0.5f;
     public float enemyAttackDamage = 10f;
+    
+    public Vector2 knockbackAngle = Vector2.one;
+    public float knockbackStrength = 10f;
 
     public LayerMask whatIsPlayer;
 }

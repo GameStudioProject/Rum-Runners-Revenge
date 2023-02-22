@@ -21,7 +21,6 @@ public class Enemy_MoveState : EnemyStates
         base.StateEnter();
         
         _core.MovementComponent.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * _core.MovementComponent.EntityFacingDirection);
-        
     }
 
     public override void StateExit()
@@ -32,6 +31,8 @@ public class Enemy_MoveState : EnemyStates
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
+        
+        _core.MovementComponent.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * _core.MovementComponent.EntityFacingDirection);
     }
 
     public override void PhysicsUpdate()

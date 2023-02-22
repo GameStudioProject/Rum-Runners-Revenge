@@ -50,7 +50,7 @@ public class PlayerGroundedState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerSecondaryAttackState);
         }
-        else if (_playerJumpInput && _player.PlayerJumpState.CanPlayerJump())
+        else if (_playerJumpInput && _player.PlayerJumpState.CanPlayerJump() && !_isPlayerTouchingCeiling)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerJumpState);
         }

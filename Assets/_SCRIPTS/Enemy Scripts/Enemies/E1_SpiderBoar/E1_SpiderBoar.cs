@@ -45,20 +45,6 @@ public class E1_SpiderBoar : EnemyBase
         EnemyStateMachine.InitializeState(spiderBoar_MoveState);
     }
 
-    public override void Damage(AttackDetails attackDetails)
-    {
-        base.Damage(attackDetails);
-
-        if (_isEnemyDead)
-        {
-            EnemyStateMachine.ChangeEnemyState(spiderBoar_DeadState);
-        }
-        else if (_isEnemyStunned && EnemyStateMachine.CurrentEnemyState != spiderBoar_StunState)
-        {
-            EnemyStateMachine.ChangeEnemyState(spiderBoar_StunState);
-        }
-    }
-
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();

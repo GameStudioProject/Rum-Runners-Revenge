@@ -41,6 +41,8 @@ public class Enemy_LookForPlayerState : EnemyStates
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
+        
+        _core.MovementComponent.SetEntityVelocityX(0f);
 
         if (_turnEnemyImmediately)
         {

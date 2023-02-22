@@ -31,6 +31,7 @@ public class Enemy_AttackState : EnemyStates
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
+        _core.MovementComponent.SetEntityVelocityX(0f);
     }
 
     public override void PhysicsUpdate()

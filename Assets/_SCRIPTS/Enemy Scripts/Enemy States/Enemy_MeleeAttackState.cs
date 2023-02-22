@@ -6,8 +6,6 @@ public class Enemy_MeleeAttackState : Enemy_AttackState
 {
     protected D_EnemyMeleeAttackState _enemyMeleeAttackStateData;
 
-    protected AttackDetails _attackDetails;
-
     public Enemy_MeleeAttackState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, Transform _enemyAttackPosition, D_EnemyMeleeAttackState _enemyMeleeAttackStateData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyAttackPosition)
     {
         this._enemyMeleeAttackStateData = _enemyMeleeAttackStateData;
@@ -16,9 +14,6 @@ public class Enemy_MeleeAttackState : Enemy_AttackState
     public override void StateEnter()
     {
         base.StateEnter();
-
-        _attackDetails.damageAmount = _enemyMeleeAttackStateData.enemyAttackDamage;
-        _attackDetails.position = _enemyBase.transform.position;
     }
 
     public override void StateExit()
@@ -49,7 +44,19 @@ public class Enemy_MeleeAttackState : Enemy_AttackState
 
         foreach (Collider2D collider in detectedObjects)
         {
-            collider.transform.SendMessage("Damage", _attackDetails);
+            DamageInterface damageable = collider.GetComponent<DamageInterface>();
+
+            if (damageable != null)
+            {
+                damageable.Damage(_enemyMeleeAttackStateData.enemyAttackDamage);
+            }
+
+            KnockbackInterface knockbackable = collider.GetComponent<KnockbackInterface>();
+
+            if (knockbackable != null)
+            {
+                knockbackable.Knockback(_enemyMeleeAttackStateData.knockbackAngle, _enemyMeleeAttackStateData.knockbackStrength, _core.MovementComponent.EntityFacingDirection);
+            }
         }
     }
 

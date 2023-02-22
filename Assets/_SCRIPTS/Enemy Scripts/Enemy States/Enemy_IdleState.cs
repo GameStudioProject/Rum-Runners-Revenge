@@ -41,6 +41,8 @@ public class Enemy_IdleState : EnemyStates
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
+        
+        _core.MovementComponent.SetEntityVelocityX(0f);
 
         if (Time.time >= _stateStartTime + _enemyIdleTime)
         {
