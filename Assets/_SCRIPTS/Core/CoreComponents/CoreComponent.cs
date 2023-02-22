@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoreComponent : MonoBehaviour
+public class CoreComponent : MonoBehaviour, LogicUpdateInterface
 {
     protected Core core;
 
@@ -15,5 +15,11 @@ public class CoreComponent : MonoBehaviour
         {
             Debug.LogError("Core is missing on parent game object");
         }
+        core.AddCoreComponent(this);
+    }
+
+    public virtual void LogicUpdate()
+    {
+        
     }
 }

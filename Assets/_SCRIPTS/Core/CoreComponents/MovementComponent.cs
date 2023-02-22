@@ -24,7 +24,7 @@ public class MovementComponent : CoreComponent
         CanSetEntityVelocity = true;
     }
 
-    public void EveryFrameUpdate()
+    public override void LogicUpdate()
     {
         EntityCurrentVelocity = Rigidbody.velocity;
     }
