@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f143286726964f6da424e001006936ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxEntityHealth: 0
+  _maxEntityHealth: 100
 --- !u!1 &192941326
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +675,7 @@ Transform:
   - {fileID: 1684775027}
   - {fileID: 1748238952}
   - {fileID: 157965877}
+  - {fileID: 812175098}
   m_Father: {fileID: 2036913550}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -735,6 +736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebc0b72b914e634da224256961e5d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
   _maxKnockbackTime: 0.2
 --- !u!61 &407360326
 BoxCollider2D:
@@ -1461,9 +1463,54 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1247931194}
+  - {fileID: 1605911623}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &812175097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 812175098}
+  - component: {fileID: 812175099}
+  m_Layer: 8
+  m_Name: ParticleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &812175098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812175097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 378530605}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &812175099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812175097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0dd96a43b748fd855e2df26932691b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &851398061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,6 +1544,7 @@ Transform:
   - {fileID: 1906771831}
   - {fileID: 1805676968}
   - {fileID: 2086452978}
+  - {fileID: 2104081014}
   m_Father: {fileID: 1963260748}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15503,6 +15551,7 @@ Transform:
   - {fileID: 1755150551}
   - {fileID: 407360324}
   - {fileID: 2100456524}
+  - {fileID: 1975736261}
   m_Father: {fileID: 1358180723}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15968,6 +16017,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1605911622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1605911623}
+  m_Layer: 0
+  m_Name: Particles
+  m_TagString: ParticleContainer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1605911623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605911622}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.6349738, y: 0.16161792, z: -1.1857841}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 811279510}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1684775026
 GameObject:
   m_ObjectHideFlags: 0
@@ -16070,6 +16150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebc0b72b914e634da224256961e5d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
   _maxKnockbackTime: 0.2
 --- !u!61 &1748238954
 BoxCollider2D:
@@ -20114,6 +20195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebc0b72b914e634da224256961e5d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
   _maxKnockbackTime: 0.2
 --- !u!1 &1875214309
 GameObject:
@@ -20400,6 +20482,50 @@ MonoBehaviour:
   _enemyStunStateData: {fileID: 11400000, guid: 55734151a46738846b22402295e6a644, type: 2}
   _enemyDeadStateData: {fileID: 11400000, guid: 8d0c6ce19cbdcd646a7136a7bc159a0a, type: 2}
   _enemyMeleeAttackPosition: {fileID: 192941327}
+--- !u!1 &1975736260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1975736261}
+  - component: {fileID: 1975736262}
+  m_Layer: 8
+  m_Name: ParticleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1975736261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975736260}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1340482120}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1975736262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975736260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0dd96a43b748fd855e2df26932691b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2012228673
 GameObject:
   m_ObjectHideFlags: 0
@@ -20720,7 +20846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f143286726964f6da424e001006936ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxEntityHealth: 0
+  _maxEntityHealth: 100
 --- !u!1 &2100456523
 GameObject:
   m_ObjectHideFlags: 0
@@ -20766,3 +20892,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxEntityHealth: 100
+--- !u!1 &2104081013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2104081014}
+  - component: {fileID: 2104081015}
+  m_Layer: 8
+  m_Name: ParticleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2104081014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104081013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 851398062}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2104081015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104081013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0dd96a43b748fd855e2df26932691b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
