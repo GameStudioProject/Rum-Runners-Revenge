@@ -37,6 +37,7 @@ public class CollisionSenses : CoreComponent
     public float EntityGroundCheckRadius { get => _entityGroundCheckRadius; set => _entityGroundCheckRadius = value; }
     public float EntityWallCheckDistance { get => _entityWallCheckDistance; set => _entityWallCheckDistance = value; }
     public LayerMask WhatIsGround { get => _whatIsGround; set => _whatIsGround = value; }
+    public LayerMask WhatIsGrappleable { get => _whatisGrappleble; set => _whatisGrappleble = value; }
     
     [SerializeField] private Transform _entityGroundCheck;
     [SerializeField] private Transform _entityWallCheck;
@@ -46,6 +47,7 @@ public class CollisionSenses : CoreComponent
     [SerializeField] private float _entityGroundCheckRadius;
     [SerializeField] private float _entityWallCheckDistance;
     [SerializeField] private LayerMask _whatIsGround;
+    [SerializeField] private LayerMask _whatisGrappleble;
     
     #region Player Check Functions
     

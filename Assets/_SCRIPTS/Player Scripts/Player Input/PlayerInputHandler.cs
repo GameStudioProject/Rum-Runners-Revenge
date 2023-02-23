@@ -13,6 +13,8 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 RawPlayerMovementInput { get; private set; }
     
     public Vector2 RawPlayerDashDirectionInput { get; private set; }
+    
+    public Vector2 RawPlayerGrappleHookDirectionInput { get; private set; }
     public Vector2Int PlayerDashDirectionInput { get; private set; }
     
     public int NormInputX { get; private set; }
@@ -22,6 +24,8 @@ public class PlayerInputHandler : MonoBehaviour
     public bool PlayerGrabInput { get; private set; }
     public bool PlayerDashInput { get; private set; }
     public bool PlayerDashInputStop { get; private set; }
+    public bool PlayerGrappleHookInput { get; private set; }
+    public bool PlayerGrappleHookInputStop { get; private set; }
     
     public bool[] PlayerAttackInputs { get; private set; }
 
@@ -123,6 +127,20 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void OnPlayerGrappleHookInput(InputAction.CallbackContext button)
+    {
+        if (button.started)
+        {
+            PlayerGrappleHookInput = true;
+            PlayerGrappleHookInputStop = false;
+            
+        }
+        else if (button.canceled)
+        {
+            PlayerDashInputStop = true;
+        }
+    }
+
     public void OnPlayerDashInputDirection(InputAction.CallbackContext direction)
     {
         RawPlayerDashDirectionInput = direction.ReadValue<Vector2>();
@@ -135,9 +153,21 @@ public class PlayerInputHandler : MonoBehaviour
         PlayerDashDirectionInput = Vector2Int.RoundToInt(RawPlayerDashDirectionInput.normalized);
     }
 
+    public void OnPlayerGrappleHookInputDirection(InputAction.CallbackContext direction)
+    {
+        RawPlayerGrappleHookDirectionInput = direction.ReadValue<Vector2>();
+
+        if (_playerInput.currentControlScheme == "Keyboard")
+        {
+            RawPlayerGrappleHookDirectionInput = _camera.ScreenToWorldPoint((Vector3)RawPlayerGrappleHookDirectionInput) - transform.position;
+        }
+    }
+
     public void PlayerUsedJumpInput() => PlayerJumpInput = false;
 
     public void PlayerUsedDashInput() => PlayerDashInput = false;
+
+    public void PlayerUsedGrappleHookInput() => PlayerGrappleHookInput = false;
 
     private void CheckPlayerJumpInputHoldTime()
     {

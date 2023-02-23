@@ -26,6 +26,7 @@ public class PlayerGroundedState : PlayerStates
     private bool _isPlayerTouchingWall;
     private bool _isPlayerTouchingLedge;
     private bool _playerDashInput;
+    private bool _playerGrappleHookInput;
     
     public PlayerGroundedState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
     {
@@ -54,6 +55,8 @@ public class PlayerGroundedState : PlayerStates
         _playerJumpInput = _player.PlayerInputHandler.PlayerJumpInput;
         _playerGrabInput = _player.PlayerInputHandler.PlayerGrabInput;
         _playerDashInput = _player.PlayerInputHandler.PlayerDashInput;
+        _playerGrappleHookInput = _player.PlayerInputHandler.PlayerGrappleHookInput;
+        
 
         if (_player.PlayerInputHandler.PlayerAttackInputs[(int)PlayerCombatInputs.primary] && !_isPlayerTouchingCeiling)
         {
@@ -79,6 +82,10 @@ public class PlayerGroundedState : PlayerStates
         else if (_playerDashInput && _player.PlayerDashState.CheckIfPlayerCanDash() && !_isPlayerTouchingCeiling)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerDashState);
+        }
+        else if (_playerGrappleHookInput)
+        {
+            _playerStateMachine.ChangePlayerState(_player.PlayerGrappleHookState);
         }
     }
 

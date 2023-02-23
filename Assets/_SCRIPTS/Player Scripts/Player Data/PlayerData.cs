@@ -43,4 +43,10 @@ public class PlayerData : ScriptableObject
     public float playerCrouchMoveSpeed = 5f;
     public float playerCrouchHitBoxHeight = 0.8f;
     public float playerStandHitBoxHeight = 1.6f;
+
+    [Header("Player Grapple Hook State Data")]
+    public GameObject playerGrappleHook;
+    public float playerGrappleDistance = 5f;
+    public float playerGrappleHookSpeed = 10f;
+
 }

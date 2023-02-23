@@ -21,6 +21,7 @@ public class PlayerBase : MonoBehaviour
     public PlayerCrouchMoveState PlayerCrouchMoveState { get; private set; }
     public PlayerAttackState PlayerPrimaryAttackState { get; private set; }
     public PlayerAttackState PlayerSecondaryAttackState { get; private set; }
+    public PlayerGrappleHookState PlayerGrappleHookState { get; private set; }
     
     
     [SerializeField] private PlayerData _playerData;
@@ -71,6 +72,7 @@ public class PlayerBase : MonoBehaviour
         PlayerCrouchMoveState = new PlayerCrouchMoveState(this, PlayerStateMachine, _playerData, "crouchMove");
         PlayerPrimaryAttackState = new PlayerAttackState(this, PlayerStateMachine, _playerData, "attack");
         PlayerSecondaryAttackState = new PlayerAttackState(this, PlayerStateMachine, _playerData, "attack");
+        PlayerGrappleHookState = new PlayerGrappleHookState(this, PlayerStateMachine, _playerData, "inAir");
     }
 
     private void Start()

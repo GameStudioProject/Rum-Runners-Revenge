@@ -1043,7 +1043,7 @@ Camera:
   far clip plane: 5000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.3125
+  orthographic size: 0
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -16126,6 +16126,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 75dfa99d-fed3-40f0-b008-f86c29cf3759
     m_ActionName: Gameplay/Secondary Attack[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1358180721}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnPlayerGrappleHookInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a9222657-9475-456f-8aef-b3b94ac88a53
+    m_ActionName: Gameplay/Player GrappleHook[/Keyboard/r,/XInputControllerWindows/rightShoulder]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
