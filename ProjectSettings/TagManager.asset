@@ -18,8 +18,8 @@ TagManager:
   - Damageable
   - Dead
   - Weapon
-  - 
-  - 
+  - GrappleHook
+  - Grappleble
   - 
   - 
   - 
@@ -54,6 +54,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 3355110597
+    locked: 0
+  - name: GrapplePoints
+    uniqueID: 2827965155
     locked: 0
   - name: Player
     uniqueID: 3255014635

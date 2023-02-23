@@ -25,8 +25,16 @@ MonoBehaviour:
   playerStartOffset: {x: 0.4, y: 0.9}
   playerStopOffset: {x: 0.4, y: 0.75}
   playerDashCooldown: 0.5
-  playerGroundCheckRadius: 0.3
-  PlayerWallCheckDistance: 0.5
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 128
+  maxDashHoldTime: 1
+  slowMotionTimeScale: 0.25
+  playerDashTime: 0.2
+  playerDashSpeed: 30
+  playerAirDrag: 10
+  playerDashHeightMultiplier: 0.2
+  playerAfterImageDistance: 0.5
+  playerCrouchMoveSpeed: 5
+  playerCrouchHitBoxHeight: 0.8
+  playerStandHitBoxHeight: 1.6
+  playerGrappleHook: {fileID: 6529713458421754532, guid: 731459b65cf8fb84cb3b66b3189a4094, type: 3}
+  playerGrappleDistance: 0
+  playerGrappleHookSpeed: 10
