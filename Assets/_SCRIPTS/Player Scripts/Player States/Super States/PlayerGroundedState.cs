@@ -39,6 +39,7 @@ public class PlayerGroundedState : PlayerStates
         
         _player.PlayerJumpState.ResetPlayerJumps();
         _player.PlayerDashState.ResetPlayerDash();
+        _player.PlayerGrappleHookState.ResetGrappleHook();
     }
 
     public override void StateExit()
@@ -83,7 +84,7 @@ public class PlayerGroundedState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerDashState);
         }
-        else if (_playerGrappleHookInput)
+        else if (_playerGrappleHookInput && _player.PlayerGrappleHookState.CanPlayerGrapple)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerGrappleHookState);
         }

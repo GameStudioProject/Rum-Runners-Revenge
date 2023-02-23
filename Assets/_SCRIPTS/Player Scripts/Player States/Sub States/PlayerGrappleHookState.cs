@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerGrappleHookState : PlayerAbilityState
 {
+    public bool CanPlayerGrapple { get; private set; }
+    
     private Vector2 _playerGrappleTarget;
     private bool _isPlayerGrappleHooking;
     private float _distanceToGrappleTarget;
@@ -17,7 +19,12 @@ public class PlayerGrappleHookState : PlayerAbilityState
     public override void StateEnter()
     {
         base.StateEnter();
+
+        CanPlayerGrapple = false;
+        _player.PlayerInputHandler.PlayerUsedGrappleHookInput();
+
         StartGrappleHook(CollisionSenses.CheckForGrappleble);
+        
     }
 
     public override void StateExit()
@@ -29,49 +36,65 @@ public class PlayerGrappleHookState : PlayerAbilityState
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
-        
-        Debug.Log("Velocity: " + MovementComponent.EntityCurrentVelocity);
 
-
-        if (_isPlayerGrappleHooking)
+        if (!_isExitingPlayerState)
         {
-            _distanceToGrappleTarget = Vector2.Distance(_player.transform.position, _playerGrappleTarget);
-
-            if (_distanceToGrappleTarget <= _playerData.playerGrappleHookStopDistance)
+            if (_isPlayerGrappleHooking)
             {
-                StopGrappleHook();
-                return;
+                _distanceToGrappleTarget = Vector2.Distance(_player.transform.position, _playerGrappleTarget);
+
+                if (_distanceToGrappleTarget <= _playerData.playerGrappleHookStopDistance)
+                {
+                    StopGrappleHook();
+                    return;
+                }
+
+                _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;
+            
+                MovementComponent.SetEntityVelocity(_grappleDirection * _playerData.playerGrappleSpeed);
+            
+                // Calculate the movement amount using MoveTowards
+                float movementAmount = _playerData.playerGrappleSpeed * Time.deltaTime;
+                Vector2 newPosition = Vector2.MoveTowards(_player.transform.position, _playerGrappleTarget, movementAmount);
+
+                _player.transform.position = newPosition;
             }
-
-            _grappleTime += Time.deltaTime;
-
-            if (_grappleTime >= _playerData.playerGrappleHookDuration)
-            {
-                StopGrappleHook();
-                return;
-            }
-
-            float lerpTime = _grappleTime / _playerData.playerGrappleHookDuration;
-            Vector2 newPosition = Vector2.Lerp(_player.transform.position, _playerGrappleTarget, lerpTime);
-
-            _grappleDirection = (newPosition - (Vector2)_player.transform.position).normalized;
-            MovementComponent.SetEntityVelocity(_grappleDirection * _playerData.playerGrappleSpeed);
         }
     }
+
+
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
     }
 
+    public override void PlayerAnimationTrigger()
+    {
+        base.PlayerAnimationTrigger();
+        _isPlayerGrappleHooking = true;
+    }
+
+    public override void PlayerAnimationFinishTrigger()
+    {
+        base.PlayerAnimationFinishTrigger();
+        
+        
+    }
+
     public void StartGrappleHook(Collider2D[] hitColliders)
     {
         if (hitColliders.Length > 0)
         {
-            _isPlayerGrappleHooking = true;
             Vector2 closestPoint = hitColliders[0].ClosestPoint(_player.transform.position);
             _playerGrappleTarget = closestPoint;
             _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;
+            
+            if (_grappleDirection.x * MovementComponent.EntityFacingDirection < 0)
+            {
+                // Flip the player towards the grapple point
+                MovementComponent.EntityFlip();
+            }
         }
     }
 
@@ -80,6 +103,12 @@ public class PlayerGrappleHookState : PlayerAbilityState
         _isPlayerGrappleHooking = false;
         _grappleTime = 0f;
         MovementComponent.SetEntityVelocityZero();
+        _isPlayerAbilityDone = true;
+    }
+
+    public void ResetGrappleHook()
+    {
+        CanPlayerGrapple = true;
     }
 }
 

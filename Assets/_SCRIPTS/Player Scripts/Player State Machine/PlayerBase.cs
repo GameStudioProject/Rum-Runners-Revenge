@@ -72,7 +72,7 @@ public class PlayerBase : MonoBehaviour
         PlayerCrouchMoveState = new PlayerCrouchMoveState(this, PlayerStateMachine, _playerData, "crouchMove");
         PlayerPrimaryAttackState = new PlayerAttackState(this, PlayerStateMachine, _playerData, "attack");
         PlayerSecondaryAttackState = new PlayerAttackState(this, PlayerStateMachine, _playerData, "attack");
-        PlayerGrappleHookState = new PlayerGrappleHookState(this, PlayerStateMachine, _playerData, "inAir");
+        PlayerGrappleHookState = new PlayerGrappleHookState(this, PlayerStateMachine, _playerData, "grappleHook");
     }
 
     private void Start()
