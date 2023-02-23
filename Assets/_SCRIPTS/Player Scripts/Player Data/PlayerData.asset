@@ -35,6 +35,5 @@ MonoBehaviour:
   playerCrouchMoveSpeed: 5
   playerCrouchHitBoxHeight: 0.8
   playerStandHitBoxHeight: 1.6
-  playerGrappleHook: {fileID: 6529713458421754532, guid: 731459b65cf8fb84cb3b66b3189a4094, type: 3}
-  playerGrappleDistance: 0
-  playerGrappleHookSpeed: 10
+  playerGrappleSpeed: 0.01
+  playerGrappleHookStopDistance: 20

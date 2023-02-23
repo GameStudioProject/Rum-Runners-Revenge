@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerGrappleHookState : PlayerAbilityState
 {
-    private Vector2 _grappleHookAnchorPoint;
-    private Vector2 _grappleHookStartPosition;
+    private Vector2 _playerGrappleTarget;
+    private Vector2 _direction;
+    private bool _isPlayerGrappleHooking;
+    private float _distanceToGrappleTarget;
     
+
     public PlayerGrappleHookState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
     {
         
@@ -20,41 +23,36 @@ public class PlayerGrappleHookState : PlayerAbilityState
     public override void StateEnter()
     {
         base.StateEnter();
-
-        _isPlayerAbilityDone = false;
-        RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, _player.transform.right, _playerData.playerGrappleDistance, CollisionSenses.WhatIsGrappleable);
-
-        if (hit.collider != null)
-        {
-            _grappleHookAnchorPoint = hit.point;
-            _grappleHookStartPosition = _player.transform.position;
-        }
-        else
-        {
-            Debug.Log("no anchor point");
-        }
         
-        _playerData.playerGrappleHook.gameObject.SetActive(true);
-        _playerData.playerGrappleHook.transform.position = _grappleHookAnchorPoint;
-
+        StartGrappleHook(CollisionSenses.CheckForGrappleble);
+        
     }
 
     public override void StateExit()
     {
         base.StateExit();
-        
-        _playerData.playerGrappleHook.gameObject.SetActive(false);
-        
+        //MovementComponent.SetEntityVelocityZero();
     }
 
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
 
-        Vector2 direction = _grappleHookAnchorPoint - (Vector2)_player.transform.position;
-        float distance = direction.magnitude;
-        
-        MovementComponent.SetEntityVelocity(_playerData.playerGrappleHookSpeed, direction);
+        if (_isPlayerGrappleHooking)
+        {
+            _direction = (CollisionSenses.EntityGrappleCheck.position - _player.transform.position).normalized;
+            _distanceToGrappleTarget = Vector2.Distance(_player.transform.position, _playerGrappleTarget);
+
+            if (_distanceToGrappleTarget <= _playerData.playerGrappleHookStopDistance)
+            {
+                StopGrappleHook();
+                _player.transform.position = _playerGrappleTarget;
+                MovementComponent.SetEntityVelocityZero();
+                return;
+            }
+
+            MovementComponent.SetEntityVelocity(_direction);
+        }
     }
 
     public override void PhysicsUpdate()
@@ -62,18 +60,18 @@ public class PlayerGrappleHookState : PlayerAbilityState
         base.PhysicsUpdate();
     }
 
-    public override void PlayerAnimationTrigger()
+    public void StartGrappleHook(Collider2D[] hitColliders)
     {
-        base.PlayerAnimationTrigger();
+        if (hitColliders.Length > 0)
+        {
+            _isPlayerGrappleHooking = true;
+            Vector2 closestPoint = hitColliders[0].ClosestPoint(_player.transform.position);
+            _playerGrappleTarget = closestPoint;
+        }
     }
 
-    public override void PlayerAnimationFinishTrigger()
+    public void StopGrappleHook()
     {
-        base.PlayerAnimationFinishTrigger();
-    }
-
-    public void FindNearestAnchorPoint()
-    {
-        
+        _isPlayerGrappleHooking = false;
     }
 }

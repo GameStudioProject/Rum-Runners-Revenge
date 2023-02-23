@@ -44,6 +44,12 @@ public class MovementComponent : CoreComponent
         SetFinalEntityVelocity();
     }
 
+    public void SetEntityVelocity(Vector2 direction)
+    {
+        _velocityWorkspace = direction;
+        SetFinalEntityVelocity();
+    }
+
     public void SetEntityVelocity(float velocity, Vector2 direction)
     {
         _velocityWorkspace = direction * velocity;
