@@ -10,7 +10,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
     private float distanceToGrappleTarget;
     private Vector2 grappleDirection;
     private float grappleTime;
-    private float maxGrappleDistance; // use camelCase for consistency
+    private float maxGrappleDistance;
 
     public PlayerGrappleHookState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData,
         string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
@@ -23,7 +23,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
 
         canPlayerGrapple = false;
         _player.PlayerInputHandler.PlayerUsedGrappleHookInput();
-        maxGrappleDistance = _playerData.maxGrappleDistance; // assign maximum grapple distance from PlayerData
+        maxGrappleDistance = _playerData.maxGrappleDistance;
 
         StartGrappleHook(CollisionSenses.CheckForGrappleble);
     }
@@ -58,8 +58,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
                 grappleDirection = (playerGrappleTarget - (Vector2)_player.transform.position).normalized;
 
                 MovementComponent.SetEntityVelocity(grappleDirection * _playerData.playerGrappleSpeed);
-
-                // Calculate the movement amount using MoveTowards
+                
                 float movementAmount = _playerData.playerGrappleSpeed * Time.deltaTime;
                 Vector2 newPosition =
                     Vector2.MoveTowards(_player.transform.position, playerGrappleTarget, movementAmount);
@@ -87,18 +86,16 @@ public class PlayerGrappleHookState : PlayerAbilityState
 
     public void StartGrappleHook(Collider2D[] hitColliders)
     {
-        if (hitColliders.Length == 0) return; // early return if there are no grapple points
+        if (hitColliders.Length == 0) return;
         Vector2 closestPoint = hitColliders[0].ClosestPoint(_player.transform.position);
         playerGrappleTarget = closestPoint;
         grappleDirection = (playerGrappleTarget - (Vector2)_player.transform.position).normalized;
 
         if (grappleDirection.x * MovementComponent.EntityFacingDirection < 0)
         {
-            // Flip the player towards the grapple point
             MovementComponent.EntityFlip();
         }
-
-        // add comments explaining the code
+        
     }
 
     public void StopGrappleHook()
@@ -106,7 +103,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
         isPlayerGrappleHooking = false;
         grappleTime = 0f;
         MovementComponent.SetEntityVelocityZero();
-        _isPlayerAbilityDone = true; // use camelCase for consistency
+        _isPlayerAbilityDone = true;
     }
 
     public void ResetGrappleHook()
