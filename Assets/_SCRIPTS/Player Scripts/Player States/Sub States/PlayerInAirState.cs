@@ -113,8 +113,9 @@ public class PlayerInAirState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerDashState);
         }
-        else if (_playerGrappleHookInput && _player.PlayerGrappleHookState._canPlayerGrapple && _playerStateMachine.PlayerCurrentState != _player.PlayerMoveState)
+        else if (_playerGrappleHookInput && _playerStateMachine.PlayerCurrentState != _player.PlayerMoveState)
         {
+            
             _playerStateMachine.ChangePlayerState(_player.PlayerGrappleHookState);
         }
         else

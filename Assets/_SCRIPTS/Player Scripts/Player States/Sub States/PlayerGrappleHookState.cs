@@ -12,6 +12,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
     private Vector2 _grappleDirection;
     private float _grappleTime;
     private float _maxGrappleDistance;
+    private Rigidbody2D _rigidbody;
 
     public PlayerGrappleHookState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData,
         string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
@@ -26,8 +27,11 @@ public class PlayerGrappleHookState : PlayerAbilityState
         _player.PlayerInputHandler.PlayerUsedGrappleHookInput();
         _maxGrappleDistance = _playerData.maxGrappleDistance;
         _grappleLineRenderer = _player.GetComponent<LineRenderer>();
+        _rigidbody = _player.GetComponent<Rigidbody2D>();
+        _rigidbody.velocity = MovementComponent.EntityCurrentVelocity;
         
-        StartGrappleHook(CollisionSenses.CheckForGrappleble);
+        
+        StartGrappleHook(CollisionSenses?.CheckForGrappleble);
         
     }
 
@@ -35,7 +39,6 @@ public class PlayerGrappleHookState : PlayerAbilityState
     {
         base.StateExit();
         _isPlayerGrappleHooking = false;
-        MovementComponent.SetEntityVelocityZero();
     }
 
     public override void EveryFrameUpdate()
@@ -61,7 +64,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
                 
                 _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;
 
-                MovementComponent.SetEntityVelocity(_grappleDirection * _playerData.playerGrappleSpeed);
+                MovementComponent?.SetEntityVelocity(_grappleDirection * _playerData.playerGrappleSpeed);
                 
                 float movementAmount = _playerData.playerGrappleSpeed * Time.deltaTime;
                 Vector2 newPosition = Vector2.MoveTowards(_player.transform.position, _playerGrappleTarget, movementAmount);
@@ -96,6 +99,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
 
     public void StartGrappleHook(Collider2D[] hitColliders)
     {
+        MovementComponent?.SetEntityVelocityZero();
         if (hitColliders.Length == 0) return;
 
         float closestDistance = float.MaxValue;
@@ -120,7 +124,6 @@ public class PlayerGrappleHookState : PlayerAbilityState
         {
             MovementComponent?.EntityFlip();
         }
-        
     }
 
 
