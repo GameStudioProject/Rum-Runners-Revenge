@@ -84,7 +84,7 @@ public class PlayerGroundedState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerDashState);
         }
-        else if (_playerGrappleHookInput && _player.PlayerGrappleHookState.CanPlayerGrapple)
+        else if (_playerGrappleHookInput && _player.PlayerGrappleHookState.canPlayerGrapple)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerGrappleHookState);
         }

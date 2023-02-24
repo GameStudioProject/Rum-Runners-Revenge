@@ -37,3 +37,4 @@ MonoBehaviour:
   playerStandHitBoxHeight: 1.6
   playerGrappleSpeed: 5
   playerGrappleHookStopDistance: 0.5
+  maxGrappleDistance: 8
