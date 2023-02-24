@@ -6,8 +6,8 @@ public class PlayerGrappleHookState : PlayerAbilityState
 {
     public LineRenderer _grappleLineRenderer;
     public bool _canPlayerGrapple { get; private set; }
+    public bool _isPlayerGrappleHooking { get; private set; }
     private Vector2 _playerGrappleTarget;
-    private bool _isPlayerGrappleHooking;
     private float _distanceToGrappleTarget;
     private Vector2 _grappleDirection;
     private float _grappleTime;
@@ -25,9 +25,12 @@ public class PlayerGrappleHookState : PlayerAbilityState
 
         _canPlayerGrapple = false;
         _player.PlayerInputHandler.PlayerUsedGrappleHookInput();
+        
         _maxGrappleDistance = _playerData.maxGrappleDistance;
+        
         _grappleLineRenderer = _player.GetComponent<LineRenderer>();
         _rigidbody = _player.GetComponent<Rigidbody2D>();
+        
         _rigidbody.velocity = MovementComponent.EntityCurrentVelocity;
         
         
