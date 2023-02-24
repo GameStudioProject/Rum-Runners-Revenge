@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerGrappleHookState : PlayerAbilityState
 {
+    public LineRenderer _grappleLineRenderer;
     public bool _canPlayerGrapple { get; private set; }
     private Vector2 _playerGrappleTarget;
     private bool _isPlayerGrappleHooking;
@@ -24,6 +25,8 @@ public class PlayerGrappleHookState : PlayerAbilityState
         _canPlayerGrapple = false;
         _player.PlayerInputHandler.PlayerUsedGrappleHookInput();
         _maxGrappleDistance = _playerData.maxGrappleDistance;
+        _grappleLineRenderer = _player.GetComponent<LineRenderer>();
+        
 
         StartGrappleHook(CollisionSenses.CheckForGrappleble);
     }
@@ -63,6 +66,12 @@ public class PlayerGrappleHookState : PlayerAbilityState
                 Vector2 newPosition = Vector2.MoveTowards(_player.transform.position, _playerGrappleTarget, movementAmount);
 
                 _player.transform.position = newPosition;
+
+                if (_grappleLineRenderer != null)
+                {
+                    _grappleLineRenderer.SetPosition(0, _player.transform.position);
+                    _grappleLineRenderer.SetPosition(1, _playerGrappleTarget);
+                }
             }
         }
     }
@@ -76,6 +85,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
     {
         base.PlayerAnimationTrigger();
         _isPlayerGrappleHooking = true;
+        _grappleLineRenderer.enabled = true;
     }
 
     public override void PlayerAnimationFinishTrigger()
@@ -85,6 +95,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
 
     public void StartGrappleHook(Collider2D[] hitColliders)
     {
+        
         if (hitColliders.Length == 0) return;
         Vector2 closestPoint = hitColliders[0].ClosestPoint(_player.transform.position);
         _playerGrappleTarget = closestPoint;
@@ -95,11 +106,13 @@ public class PlayerGrappleHookState : PlayerAbilityState
             MovementComponent?.EntityFlip();
         }
         
+        
     }
 
     public void StopGrappleHook()
     {
         _isPlayerGrappleHooking = false;
+        _grappleLineRenderer.enabled = false;
         _grappleTime = 0f;
         MovementComponent.SetEntityVelocityZero();
         _isPlayerAbilityDone = true;
