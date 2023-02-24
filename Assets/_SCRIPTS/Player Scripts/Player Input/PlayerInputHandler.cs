@@ -25,8 +25,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool PlayerDashInput { get; private set; }
     public bool PlayerDashInputStop { get; private set; }
     public bool PlayerGrappleHookInput { get; private set; }
-    public bool PlayerGrappleHookInputStop { get; private set; }
-    
+
     public bool[] PlayerAttackInputs { get; private set; }
 
     [SerializeField] private float _playerInputHoldTime = 0.2f;
@@ -132,12 +131,11 @@ public class PlayerInputHandler : MonoBehaviour
         if (button.started)
         {
             PlayerGrappleHookInput = true;
-            PlayerGrappleHookInputStop = false;
-            
+
         }
         else if (button.canceled)
         {
-            PlayerDashInputStop = true;
+            PlayerGrappleHookInput = false;
         }
     }
 
@@ -151,16 +149,6 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
         PlayerDashDirectionInput = Vector2Int.RoundToInt(RawPlayerDashDirectionInput.normalized);
-    }
-
-    public void OnPlayerGrappleHookInputDirection(InputAction.CallbackContext direction)
-    {
-        RawPlayerGrappleHookDirectionInput = direction.ReadValue<Vector2>();
-
-        if (_playerInput.currentControlScheme == "Keyboard")
-        {
-            RawPlayerGrappleHookDirectionInput = _camera.ScreenToWorldPoint((Vector3)RawPlayerGrappleHookDirectionInput) - transform.position;
-        }
     }
 
     public void PlayerUsedJumpInput() => PlayerJumpInput = false;

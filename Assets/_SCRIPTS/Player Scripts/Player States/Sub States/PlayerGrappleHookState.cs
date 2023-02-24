@@ -35,13 +35,12 @@ public class PlayerGrappleHookState : PlayerAbilityState
         
         
         StartGrappleHook(CollisionSenses?.CheckForGrappleble);
-        
+
     }
 
     public override void StateExit()
     {
         base.StateExit();
-        _isPlayerGrappleHooking = false;
     }
 
     public override void EveryFrameUpdate()
@@ -145,4 +144,22 @@ public class PlayerGrappleHookState : PlayerAbilityState
         _distanceToGrappleTarget = float.MaxValue;
         _grappleTime = 0f;
     }
+
+    public bool CanPlayerGrapple()
+    {
+        if (_isPlayerGrappleHooking)
+        {
+            return false;
+        }
+        else if (_canPlayerGrapple)
+        {
+            _canPlayerGrapple = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

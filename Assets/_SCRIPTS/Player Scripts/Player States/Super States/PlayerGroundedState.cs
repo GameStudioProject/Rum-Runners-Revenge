@@ -84,10 +84,11 @@ public class PlayerGroundedState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerDashState);
         }
-        else if (_playerGrappleHookInput && _playerStateMachine.PlayerCurrentState != _player.PlayerMoveState)
+        else if (_playerGrappleHookInput && _playerStateMachine.PlayerCurrentState != _player.PlayerMoveState && _player.PlayerGrappleHookState.CanPlayerGrapple())
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerGrappleHookState);
         }
+
     }
 
     public override void PhysicsUpdate()
