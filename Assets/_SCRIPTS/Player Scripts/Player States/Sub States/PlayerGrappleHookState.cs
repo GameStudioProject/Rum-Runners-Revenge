@@ -27,13 +27,14 @@ public class PlayerGrappleHookState : PlayerAbilityState
         _maxGrappleDistance = _playerData.maxGrappleDistance;
         _grappleLineRenderer = _player.GetComponent<LineRenderer>();
         
-
         StartGrappleHook(CollisionSenses.CheckForGrappleble);
+        
     }
 
     public override void StateExit()
     {
         base.StateExit();
+        _isPlayerGrappleHooking = false;
         MovementComponent.SetEntityVelocityZero();
     }
 
@@ -57,7 +58,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
                     StopGrappleHook();
                     return;
                 }
-
+                
                 _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;
 
                 MovementComponent.SetEntityVelocity(_grappleDirection * _playerData.playerGrappleSpeed);
@@ -95,9 +96,23 @@ public class PlayerGrappleHookState : PlayerAbilityState
 
     public void StartGrappleHook(Collider2D[] hitColliders)
     {
-        
         if (hitColliders.Length == 0) return;
-        Vector2 closestPoint = hitColliders[0].ClosestPoint(_player.transform.position);
+
+        float closestDistance = float.MaxValue;
+        Vector2 closestPoint = Vector2.zero;
+
+        foreach (Collider2D collider in hitColliders)
+        {
+            Vector2 point = collider.ClosestPoint(_player.transform.position);
+            float distance = Vector2.Distance(_player.transform.position, point);
+
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestPoint = point;
+            }
+        }
+
         _playerGrappleTarget = closestPoint;
         _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;
 
@@ -106,8 +121,8 @@ public class PlayerGrappleHookState : PlayerAbilityState
             MovementComponent?.EntityFlip();
         }
         
-        
     }
+
 
     public void StopGrappleHook()
     {

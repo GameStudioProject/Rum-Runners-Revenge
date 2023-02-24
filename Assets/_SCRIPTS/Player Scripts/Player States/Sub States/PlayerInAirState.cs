@@ -22,6 +22,7 @@ public class PlayerInAirState : PlayerStates
     private bool _playerJumpInputStop;
     private bool _playerGrabInput;
     private bool _playerDashInput;
+    private bool _playerGrappleHookInput;
     
     //Player Checks
     private bool _isPlayerGrounded;
@@ -69,6 +70,7 @@ public class PlayerInAirState : PlayerStates
         _playerJumpInputStop = _player.PlayerInputHandler.PlayerJumpInputStop;
         _playerGrabInput = _player.PlayerInputHandler.PlayerGrabInput;
         _playerDashInput = _player.PlayerInputHandler.PlayerDashInput;
+        _playerGrappleHookInput = _player.PlayerInputHandler.PlayerGrappleHookInput;
 
         CheckPlayerJumpStrength();
 
@@ -110,6 +112,10 @@ public class PlayerInAirState : PlayerStates
         else if (_playerDashInput && _player.PlayerDashState.CheckIfPlayerCanDash())
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerDashState);
+        }
+        else if (_playerGrappleHookInput && _player.PlayerGrappleHookState._canPlayerGrapple && _playerStateMachine.PlayerCurrentState != _player.PlayerMoveState)
+        {
+            _playerStateMachine.ChangePlayerState(_player.PlayerGrappleHookState);
         }
         else
         {

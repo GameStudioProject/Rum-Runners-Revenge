@@ -35,6 +35,7 @@ MonoBehaviour:
   playerCrouchMoveSpeed: 5
   playerCrouchHitBoxHeight: 0.8
   playerStandHitBoxHeight: 1.6
-  playerGrappleSpeed: 5
+  playerGrappleSpeed: 7
+  playerGrappleCooldown: 3
   playerGrappleHookStopDistance: 0.5
   maxGrappleDistance: 8
