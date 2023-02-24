@@ -41,6 +41,8 @@ public class PlayerGrappleHookState : PlayerAbilityState
     public override void StateExit()
     {
         base.StateExit();
+        
+        _rigidbody.velocity = MovementComponent.EntityCurrentVelocity.normalized * _playerData.playerGrappleExitBoost;
     }
 
     public override void EveryFrameUpdate()
@@ -134,7 +136,6 @@ public class PlayerGrappleHookState : PlayerAbilityState
         _isPlayerGrappleHooking = false;
         _grappleLineRenderer.enabled = false;
         _grappleTime = 0f;
-        MovementComponent.SetEntityVelocityZero();
         _isPlayerAbilityDone = true;
     }
 

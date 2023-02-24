@@ -46,6 +46,7 @@ public class PlayerData : ScriptableObject
 
     [Header("Player Grapple Hook State Data")]
     public float playerGrappleSpeed = 5f;
+    public float playerGrappleExitBoost = 10f;
     public float playerGrappleHookStopDistance = 10f;
     public float maxGrappleDistance = 5;
 
