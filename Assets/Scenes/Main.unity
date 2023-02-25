@@ -435,6 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxEntityHealth: 50
+  _maxEntityStamina: 0
 --- !u!1 &192941326
 GameObject:
   m_ObjectHideFlags: 0
@@ -21992,6 +21993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxEntityHealth: 100
+  _maxEntityStamina: 0
 --- !u!1 &2100456523
 GameObject:
   m_ObjectHideFlags: 0
@@ -22037,6 +22039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxEntityHealth: 100
+  _maxEntityStamina: 100
 --- !u!1 &2104081013
 GameObject:
   m_ObjectHideFlags: 0

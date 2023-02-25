@@ -40,6 +40,7 @@ public class PlayerGroundedState : PlayerStates
         _player.PlayerJumpState.ResetPlayerJumps();
         _player.PlayerDashState.ResetPlayerDash();
         _player.PlayerGrappleHookState.ResetGrappleHook();
+        _player.PlayerWallGrabState.ResetPlayerWallGrab();
     }
 
     public override void StateExit()

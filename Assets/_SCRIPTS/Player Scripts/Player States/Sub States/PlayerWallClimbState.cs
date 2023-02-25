@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerWallClimbState : PlayerTouchWallState
 {
+    
+
     public PlayerWallClimbState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
     {
         
@@ -15,7 +17,11 @@ public class PlayerWallClimbState : PlayerTouchWallState
         {
             MovementComponent?.SetEntityVelocityY(_playerData.playerWallClimbSpeed);
 
-            if (_playerYInput != 1)
+            if (Time.time >= stateStartTime + _playerData.playerWallClimbTime)
+            {
+                _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
+            }
+            if (_playerYInput != 1 && StatsComponent._maxEntityStamina != 0)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerWallGrabState);
             }

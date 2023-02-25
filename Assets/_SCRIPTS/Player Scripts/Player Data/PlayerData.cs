@@ -22,8 +22,13 @@ public class PlayerData : ScriptableObject
     [Header("Player Wall Slide State Data")]
     public float playerWallSlideSpeed = 3f;
 
+    [Header("Player Wall Grab State Data")]
+    public float playerWallGrabTime = 5f;
+    public float playerWallGrabSlideSpeed = 1.5f;
+
     [Header("Player Wall Climb State Data")]
     public float playerWallClimbSpeed = 3f;
+    public float playerWallClimbTime = 1f;
 
     [Header("Player Ledge Climb State Data")]
     public Vector2 playerStartOffset;

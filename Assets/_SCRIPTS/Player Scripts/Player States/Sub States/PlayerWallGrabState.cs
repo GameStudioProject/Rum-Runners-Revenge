@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerWallGrabState : PlayerTouchWallState
 {
     private Vector2 _playerHoldPosition;
+    public bool CanPlayerWallGrab { get; private set; }
     
     public PlayerWallGrabState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
     {
@@ -31,9 +32,16 @@ public class PlayerWallGrabState : PlayerTouchWallState
 
         if (!_isExitingPlayerState)
         {
-            PlayerHoldPosition();
-            
-            if (_playerYInput > 0)
+            //PlayerHoldPosition();
+            MovementComponent?.SetEntityVelocityX(0f);
+            MovementComponent?.SetEntityVelocityY(-_playerData.playerWallGrabSlideSpeed);
+
+            if (Time.time >= stateStartTime + _playerData.playerWallGrabTime)
+            {
+                _player.PlayerInputHandler.PlayerUsedWallGrabInput();
+                _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
+            }
+            else if (_playerYInput > 0)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerWallClimbState);
             }
@@ -49,8 +57,7 @@ public class PlayerWallGrabState : PlayerTouchWallState
     {
         _player.transform.position = _playerHoldPosition;
         
-        MovementComponent?.SetEntityVelocityX(0f);
-        MovementComponent?.SetEntityVelocityY(0f);
+        
     }
 
     public override void PhysicsUpdate()
@@ -61,5 +68,23 @@ public class PlayerWallGrabState : PlayerTouchWallState
     public override void PerformPlayerChecks()
     {
         base.PerformPlayerChecks();
+    }
+
+    public bool CheckIfPlayerCanWallGrab()
+    {
+        if (CanPlayerWallGrab)
+        {
+            CanPlayerWallGrab = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void ResetPlayerWallGrab()
+    {
+        CanPlayerWallGrab = true;
     }
 }

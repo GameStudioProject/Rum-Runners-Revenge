@@ -11,8 +11,14 @@ public class PlayerTouchWallState : PlayerStates
         get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
     }
     
+    protected StatsComponent StatsComponent
+    {
+        get => _statsComponent ??= _core.GetCoreComponent<StatsComponent>();
+    }
+    
     private MovementComponent _movementComponent;
     private CollisionSenses _collisionSenses;
+    private StatsComponent _statsComponent;
     
     protected bool _isPlayerGrounded;
     protected bool _isPlayerTouchingWall;

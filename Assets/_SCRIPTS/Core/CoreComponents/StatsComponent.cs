@@ -5,14 +5,17 @@ public class StatsComponent : CoreComponent
 {
     public event Action OnHealthZero;
 
-    [SerializeField] private float _maxEntityHealth;
+    [SerializeField] public float _maxEntityHealth;
+    [SerializeField] public float _maxEntityStamina;
     private float _currentEntityHealth;
+    private float _currentEntityStamina;
 
     protected override void Awake()
     {
         base.Awake();
 
         _currentEntityHealth = _maxEntityHealth;
+        _currentEntityStamina = _maxEntityStamina;
     }
 
     public void DecreaseHealth(float decreaseAmount)
@@ -27,6 +30,11 @@ public class StatsComponent : CoreComponent
             
             Debug.Log("Health is zero, u ded bich");
         }
+    }
+
+    public void DecreaseStamina(float decreaseAmount)
+    {
+        _currentEntityStamina -= decreaseAmount;
     }
 
     public void IncreaseHealth(float increaseAmount)

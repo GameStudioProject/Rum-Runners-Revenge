@@ -157,6 +157,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void PlayerUsedGrappleHookInput() => PlayerGrappleHookInput = false;
 
+    public void PlayerUsedWallGrabInput() => PlayerGrabInput = false;
+
     private void CheckPlayerJumpInputHoldTime()
     {
         if (Time.time >= _playerJumpInputStartTime + _playerInputHoldTime)

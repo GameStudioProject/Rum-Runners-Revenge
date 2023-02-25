@@ -20,8 +20,11 @@ MonoBehaviour:
   playerWallJumpAngle: {x: 1, y: 2}
   playerCoyoteTime: 0.2
   playerJumpHeightStrength: 0.5
-  playerWallSlideSpeed: 2
+  playerWallSlideSpeed: 2.5
+  playerWallGrabTime: 1.5
+  playerWallGrabSlideSpeed: 0.1
   playerWallClimbSpeed: 3
+  playerWallClimbTime: 1
   playerStartOffset: {x: 0.4, y: 0.9}
   playerStopOffset: {x: 0.4, y: 0.75}
   playerDashCooldown: 0.5
