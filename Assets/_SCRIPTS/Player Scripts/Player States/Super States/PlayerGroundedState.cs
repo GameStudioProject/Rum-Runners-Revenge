@@ -13,7 +13,7 @@ public class PlayerGroundedState : PlayerStates
     }
     private MovementComponent _movement;
     
-    private CollisionSenses CollisionSenses
+    protected CollisionSenses CollisionSenses
     {
         get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
     }
