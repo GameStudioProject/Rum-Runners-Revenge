@@ -27,6 +27,8 @@ public class PlayerGroundedState : PlayerStates
     private bool _isPlayerTouchingLedge;
     private bool _playerDashInput;
     private bool _playerGrappleHookInput;
+
+    public bool _isPlayerDrunk;
     
     public PlayerGroundedState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
     {

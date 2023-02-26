@@ -10,7 +10,6 @@ public class PlayerGrappleHookState : PlayerAbilityState
     private Vector2 _playerGrappleTarget;
     private float _distanceToGrappleTarget;
     private Vector2 _grappleDirection;
-    private float _grappleTime;
     private float _maxGrappleDistance;
     private Rigidbody2D _rigidbody;
 
@@ -135,7 +134,6 @@ public class PlayerGrappleHookState : PlayerAbilityState
     {
         _isPlayerGrappleHooking = false;
         _grappleLineRenderer.enabled = false;
-        _grappleTime = 0f;
         _isPlayerAbilityDone = true;
     }
 
@@ -143,7 +141,6 @@ public class PlayerGrappleHookState : PlayerAbilityState
     {
         _canPlayerGrapple = true;
         _distanceToGrappleTarget = float.MaxValue;
-        _grappleTime = 0f;
     }
 
     public bool CanPlayerGrapple()
