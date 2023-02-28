@@ -8,6 +8,7 @@ using System.Linq;
 public class Core : MonoBehaviour
 {
     private List<CoreComponent> _coreComponentsList = new List<CoreComponent>();
+    
 
     private void Awake()
     {
