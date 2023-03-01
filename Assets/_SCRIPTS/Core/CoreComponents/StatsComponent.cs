@@ -7,6 +7,7 @@ public class StatsComponent : CoreComponent
 
     [SerializeField] public float _maxEntityHealth;
     public float _currentEntityHealth { get; private set; }
+    public HealthBarScript healthbar;
 
     protected override void Awake()
     {
@@ -22,6 +23,11 @@ public class StatsComponent : CoreComponent
         if (_currentEntityHealth <= 0)
         {
             _currentEntityHealth = 0;
+
+            if (healthbar != null)
+            {
+                healthbar.SetHealth(_currentEntityHealth);
+            }
             
             OnHealthZero?.Invoke();
             

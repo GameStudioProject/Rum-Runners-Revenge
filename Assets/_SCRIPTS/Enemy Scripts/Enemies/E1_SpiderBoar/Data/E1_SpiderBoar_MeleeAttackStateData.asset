@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: E1_SpiderBoar_MeleeAttackStateData
   m_EditorClassIdentifier: 
   enemyAttackRadius: 0.75
-  enemyAttackDamage: 10
+  enemyAttackDamage: 20
+  knockbackAngle: {x: 1, y: 1}
+  knockbackStrength: 10
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64

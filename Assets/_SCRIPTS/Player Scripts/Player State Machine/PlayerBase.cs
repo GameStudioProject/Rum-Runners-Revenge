@@ -36,7 +36,6 @@ public class PlayerBase : MonoBehaviour
         get => _statsComponent ??= Core.GetCoreComponent<StatsComponent>();
     }
     private StatsComponent _statsComponent;
-    
     public Animator PlayerAnimator { get; private set; }
     public PlayerInputHandler PlayerInputHandler { get; private set; }
     public Rigidbody2D PlayerRB { get; private set; }
