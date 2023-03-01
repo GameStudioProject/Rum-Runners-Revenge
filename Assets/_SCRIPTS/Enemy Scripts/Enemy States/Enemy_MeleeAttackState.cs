@@ -57,6 +57,7 @@ public class Enemy_MeleeAttackState : Enemy_AttackState
             if (damageable != null)
             {
                 damageable.Damage(_enemyMeleeAttackStateData.enemyAttackDamage);
+                
             }
 
             KnockbackInterface knockbackable = collider.GetComponent<KnockbackInterface>();

@@ -21,7 +21,7 @@ public class PlayerWallClimbState : PlayerTouchWallState
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
             }
-            if (_playerYInput != 1 && StatsComponent._maxEntityStamina != 0)
+            if (_playerYInput != 1)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerWallGrabState);
             }

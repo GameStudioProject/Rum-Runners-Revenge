@@ -30,21 +30,23 @@ public class PlayerBase : MonoBehaviour
     #region Components
 
     public Core Core { get; private set; }
+    
+    private StatsComponent StatsComponent
+    {
+        get => _statsComponent ??= Core.GetCoreComponent<StatsComponent>();
+    }
+    private StatsComponent _statsComponent;
+    
     public Animator PlayerAnimator { get; private set; }
     public PlayerInputHandler PlayerInputHandler { get; private set; }
     public Rigidbody2D PlayerRB { get; private set; }
     public Transform PlayerDashDirectionIndicator { get; private set; }
     public BoxCollider2D PlayerHitBox { get; private set; }
     public PlayerTempInventory PlayerInventory { get; private set; }
+    public HealthBarScript healthbar;
     
     #endregion
 
-    #region Check Player Transforms
-
-    
-
-    #endregion
-    
     #region Other Variables
 
     private Vector2 _velocityWorkspace;
@@ -83,6 +85,7 @@ public class PlayerBase : MonoBehaviour
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
         PlayerHitBox = GetComponent<BoxCollider2D>();
         PlayerInventory = GetComponent<PlayerTempInventory>();
+        healthbar.SetMaxHealth(StatsComponent._maxEntityHealth);
 
         PlayerPrimaryAttackState.SetPlayerWeapon(PlayerInventory.playerWeapons[(int)PlayerCombatInputs.primary]);
         //PlayerSecondaryAttackState.SetPlayerWeapon(PlayerInventory.playerWeapons[(int)PlayerCombatInputs.secondary]);
@@ -94,6 +97,7 @@ public class PlayerBase : MonoBehaviour
     {
         Core.EveryFrameUpdate();
         PlayerStateMachine.PlayerCurrentState.EveryFrameUpdate();
+        healthbar.SetHealth(StatsComponent._currentEntityHealth);
     }
 
     private void FixedUpdate()
