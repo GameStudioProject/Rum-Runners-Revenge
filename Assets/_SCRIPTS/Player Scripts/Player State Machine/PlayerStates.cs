@@ -37,8 +37,8 @@ public class PlayerStates
         PerformPlayerChecks();
         _player.PlayerAnimator.SetBool(_animationBoolName, true);
         stateStartTime = Time.time;
-        Debug.Log(_animationBoolName);
-        Debug.Log(_playerStateMachine.PlayerCurrentState);
+        //Debug.Log(_animationBoolName);
+        //Debug.Log(_playerStateMachine.PlayerCurrentState);
         _isPlayerAnimationFinished = false;
         _isExitingPlayerState = false;
     }
