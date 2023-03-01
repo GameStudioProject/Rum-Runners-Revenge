@@ -82,9 +82,11 @@ public class PlayerLedgeClimbState : PlayerStates
             _playerXInput = _player.PlayerInputHandler.NormInputX;
             _playerYInput = _player.PlayerInputHandler.NormInputY;
             _playerJumpInput = _player.PlayerInputHandler.PlayerJumpInput;
-        
+            
             MovementComponent?.SetEntityVelocityZero();
             _player.transform.position = _playerStartPosition;
+            
+            
 
             if (_playerXInput == MovementComponent?.EntityFacingDirection && _isPlayerHanging && !_isPlayerClimbing)
             {
