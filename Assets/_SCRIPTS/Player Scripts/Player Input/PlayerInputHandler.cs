@@ -33,6 +33,7 @@ public class PlayerInputHandler : MonoBehaviour
     private float _playerJumpInputStartTime;
     private float _playerDashInputStartTime;
 
+
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -77,10 +78,12 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMovementInput(InputAction.CallbackContext button)
     {
+
         RawPlayerMovementInput = button.ReadValue<Vector2>();
 
         NormInputX = Mathf.RoundToInt(RawPlayerMovementInput.x);
         NormInputY = Mathf.RoundToInt(RawPlayerMovementInput.y);
+        
 
     }
 
