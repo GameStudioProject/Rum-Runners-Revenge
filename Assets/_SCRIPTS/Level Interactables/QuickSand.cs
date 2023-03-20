@@ -21,6 +21,7 @@ public class QuickSand : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX;
             rb.gravityScale = 0.05f;
         };
@@ -30,6 +31,7 @@ public class QuickSand : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) 
     {
         rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.gravityScale = 5;     
     }
 }
