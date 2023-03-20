@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: E2_Archer_DodgeData
   m_EditorClassIdentifier: 
   enemyDodgeSpeed: 15
+  enemyDodgeSpeedMultiplier: 1.2
   enemyDodgeTime: 0.2
   enemyDodgeCooldown: 2
   enemyDodgeAngle: {x: 1, y: 1}

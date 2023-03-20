@@ -33,8 +33,15 @@ public class Enemy_DodgeState : EnemyStates
         base.StateEnter();
 
         _isEnemyDodgeOver = false;
-        
-        MovementComponent?.SetEntityVelocity(_enemyDodgeStateData.enemyDodgeSpeed, _enemyDodgeStateData.enemyDodgeAngle, -MovementComponent.EntityFacingDirection);
+
+        if (_collisionSenses.CheckEntityDodgeLandZone)
+        {
+            MovementComponent?.SetEntityVelocity(_enemyDodgeStateData.enemyDodgeSpeed, _enemyDodgeStateData.enemyDodgeAngle, -MovementComponent.EntityFacingDirection);
+        }
+        else
+        {
+            MovementComponent?.SetEntityVelocity(_enemyDodgeStateData.enemyDodgeSpeed * _enemyDodgeStateData.enemyDodgeSpeedMultiplier, _enemyDodgeStateData.enemyDodgeAngle, MovementComponent.EntityFacingDirection);
+        }
     }
 
     public override void StateExit()

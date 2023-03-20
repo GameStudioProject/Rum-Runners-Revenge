@@ -40,6 +40,12 @@ public class CollisionSenses : CoreComponent
         get => GenericCoreNotImplementedError<Transform>.TryGet(_entityCeilingCheck, transform.parent.name);
         private set => _entityCeilingCheck = value; 
     }
+    public Transform EntityDodgeLandZone
+    {
+        get => GenericCoreNotImplementedError<Transform>.TryGet(_entityDodgeLandZone, transform.parent.name);
+        private set => _entityDodgeLandZone = value;
+    }
+    
     public float EntityGroundCheckRadius { get => _entityGroundCheckRadius; set => _entityGroundCheckRadius = value; }
     public float EntityWallCheckDistance { get => _entityWallCheckDistance; set => _entityWallCheckDistance = value; }
     public LayerMask WhatIsGround { get => _whatIsGround; set => _whatIsGround = value; }
@@ -51,6 +57,7 @@ public class CollisionSenses : CoreComponent
     [SerializeField] private Transform _entityLedgeCheckHorizontal;
     [SerializeField] private Transform _entityLedgeCheckVertical;
     [SerializeField] private Transform _entityCeilingCheck;
+    [SerializeField] private Transform _entityDodgeLandZone;
     [SerializeField] private float _entityGroundCheckRadius;
     [SerializeField] private float _entityWallCheckDistance;
     [SerializeField] private float _entityGrappleCheckRadius;
@@ -87,6 +94,11 @@ public class CollisionSenses : CoreComponent
     public bool CheckIfEntityTouchesLedgeVertical
     {
         get => Physics2D.Raycast(EntityLedgeCheckVertical.position, Vector2.down, _entityWallCheckDistance, _whatIsGround);
+    }
+
+    public bool CheckEntityDodgeLandZone
+    {
+        get => Physics2D.Raycast(_entityDodgeLandZone.position, Vector2.down, 3.0f, _whatIsGround);
     }
 
     public Collider2D[] CheckForGrappleble

@@ -18668,6 +18668,37 @@ Transform:
   m_Father: {fileID: 811279510}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1625680142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1625680143}
+  m_Layer: 8
+  m_Name: DodgeLandZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1625680143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625680142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.27, y: -0.069, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1684775027}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1684775026
 GameObject:
   m_ObjectHideFlags: 0
@@ -18700,6 +18731,7 @@ Transform:
   - {fileID: 147606689}
   - {fileID: 1346247470}
   - {fileID: 1875214310}
+  - {fileID: 1625680143}
   m_Father: {fileID: 378530605}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18721,6 +18753,7 @@ MonoBehaviour:
   _entityLedgeCheckHorizontal: {fileID: 0}
   _entityLedgeCheckVertical: {fileID: 1875214310}
   _entityCeilingCheck: {fileID: 0}
+  _entityDodgeLandZone: {fileID: 1625680143}
   _entityGroundCheckRadius: 0.3
   _entityWallCheckDistance: 0.3
   _entityGrappleCheckRadius: 0
@@ -18858,6 +18891,7 @@ MonoBehaviour:
   _entityLedgeCheckHorizontal: {fileID: 477267816}
   _entityLedgeCheckVertical: {fileID: 0}
   _entityCeilingCheck: {fileID: 438435856}
+  _entityDodgeLandZone: {fileID: 0}
   _entityGroundCheckRadius: 0.3
   _entityWallCheckDistance: 0.5
   _entityGrappleCheckRadius: 10
@@ -23088,6 +23122,7 @@ MonoBehaviour:
   _entityLedgeCheckHorizontal: {fileID: 0}
   _entityLedgeCheckVertical: {fileID: 585601453}
   _entityCeilingCheck: {fileID: 0}
+  _entityDodgeLandZone: {fileID: 0}
   _entityGroundCheckRadius: 0.3
   _entityWallCheckDistance: 0.3
   _entityGrappleCheckRadius: 0
