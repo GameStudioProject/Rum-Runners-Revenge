@@ -43,6 +43,7 @@ public class EnemyBase : MonoBehaviour
     public virtual void Awake()
     {
         Core = GetComponentInChildren<Core>();
+        CollisionSenses.EnemyBase = this;
         
         _enemyCurrentHealth = enemyData.maxHealth;
         _enemyCurrentStunResistance = enemyData.enemyStunResistance;

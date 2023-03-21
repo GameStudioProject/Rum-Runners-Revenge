@@ -54,11 +54,11 @@ public class CollisionSenses : CoreComponent
         private set => _entityPlayerCheck = value;
     }
     
+    public EnemyBase EnemyBase {get; set; }
+
     public D_EnemyBase EntityData
     {
-        get => GenericCoreNotImplementedError<D_EnemyBase>.TryGet(_entityData, transform.parent.name);
-        private set => _entityData = value;
-
+        get => EnemyBase.enemyData;
     }
     
     public float EntityGroundCheckRadius { get => _entityGroundCheckRadius; set => _entityGroundCheckRadius = value; }
@@ -81,8 +81,7 @@ public class CollisionSenses : CoreComponent
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsPlayer;
     [SerializeField] private LayerMask _whatisGrappleble;
-    [SerializeField] private D_EnemyBase _entityData;
-    
+
     #region Player Check Functions
     
     public bool CheckForCeiling

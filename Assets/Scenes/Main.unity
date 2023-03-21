@@ -16967,7 +16967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1261403615
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17790,7 +17790,6 @@ MonoBehaviour:
   _whatisGrappleble:
     serializedVersion: 2
     m_Bits: 0
-  _entityData: {fileID: 11400000, guid: 8d10c7fbd47d9da40a210982ce701dbc, type: 2}
 --- !u!1 &1605911622
 GameObject:
   m_ObjectHideFlags: 0
@@ -17924,7 +17923,6 @@ MonoBehaviour:
   _whatisGrappleble:
     serializedVersion: 2
     m_Bits: 0
-  _entityData: {fileID: 11400000, guid: 8e183d24a3e1545498e3707b38a9f613, type: 2}
 --- !u!1 &1748238951
 GameObject:
   m_ObjectHideFlags: 0
@@ -22233,7 +22231,6 @@ MonoBehaviour:
   _whatisGrappleble:
     serializedVersion: 2
     m_Bits: 0
-  _entityData: {fileID: 11400000, guid: b79c1195f4d026d48b32d03cd297443a, type: 2}
 --- !u!1 &1939036032
 GameObject:
   m_ObjectHideFlags: 0
@@ -22689,7 +22686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2036913550
 Transform:
   m_ObjectHideFlags: 0
