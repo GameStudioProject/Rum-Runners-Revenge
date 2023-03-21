@@ -23120,6 +23120,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5724095939062360214, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5724095939471745313, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
       propertyPath: enemyData
       value: 
