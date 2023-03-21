@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fdb18b401da37b14a9bc7853175bde5a
+guid: 1304c97e58dc1d64cbc967b4b8b1299a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,11 +117,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy 1_0
+      name: finished_crab_enemy_idle_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -131,18 +131,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40a9bf397f09cc5479710d99d4e52704
-      internalID: -676880515
+      spriteID: 58a95e9bcc853444fa964bc96ea2a663
+      internalID: 305119912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 1_1
+      name: finished_crab_enemy_idle_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 192
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -152,18 +152,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3553e90ddf446a045bd0422f70cf8609
-      internalID: -1018056052
+      spriteID: 0d8acd65cc6b8ab488aba5d086e4f9dd
+      internalID: -763930180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 1_2
+      name: finished_crab_enemy_idle_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 192
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -173,18 +173,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2440e9cf0c68b4a40883e3caeb42897d
-      internalID: -1901765228
+      spriteID: df40f8a68b17a6643a0109cbcd2e69e2
+      internalID: -720262358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 1_3
+      name: finished_crab_enemy_idle_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 192
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -194,18 +194,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e8ca847e8803424bbe174ef1e58124c
-      internalID: -1423304792
+      spriteID: 9571705076ad52341a77b7e07f7262d1
+      internalID: -1501834776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 1_4
+      name: finished_crab_enemy_idle_4
       rect:
         serializedVersion: 2
         x: 256
-        y: 192
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -215,18 +215,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a46172b5d4695ee42af5be5d73949703
-      internalID: 235942746
+      spriteID: 8487526f97ebabb48a6be1f49f5a8102
+      internalID: 191991368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 1_5
+      name: finished_crab_enemy_idle_5
       rect:
         serializedVersion: 2
         x: 320
-        y: 192
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -236,18 +236,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e0136e5099780740b0f6289324cf506
-      internalID: -467822429
+      spriteID: 6ef08ce1305a8434e95acd8598506bfe
+      internalID: 1661628898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 1_6
+      name: finished_crab_enemy_idle_6
       rect:
         serializedVersion: 2
         x: 384
-        y: 192
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -257,248 +257,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 063827795e783ea46ab4475cbf5bc6c2
-      internalID: -1258249664
+      spriteID: 857e7d357ba2db343b8bb3a8b4821db5
+      internalID: -1194307909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 1_7
+      name: finished_crab_enemy_idle_7
       rect:
         serializedVersion: 2
         x: 448
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe954ed4d41f1104da7c98f8aa2a0cfe
-      internalID: -688448683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy 1_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 64bde755c0b8171439aeb9335890eab6
-      internalID: 445373808
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy 1_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 242dedcfa7563944bb1cce19e40e0101
-      internalID: -998420335
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy 1_10
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 400a6beaefe901d4681257c643df96a3
-      internalID: 719250112
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy 1_11
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 53d782005335670458cd6db14fbbcac4
-      internalID: -237938807
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy 1_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2676a4ea1ab6f84fa1c4aa97d6795e2
-      internalID: 444418897
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy 1_13
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 147791d572f333442b3445e6353ab1a5
-      internalID: 271827523
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy 1_14
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d021cc46d2e86e4e91e93493544a61c
-      internalID: -187361586
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy 1_15
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6026db82a9baea54eacbe3f997f3ce64
-      internalID: -1350951141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy 1_16
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a6cda254ca88f54ab48d8ab587b2be1
-      internalID: 621229757
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy 1_17
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 28ba9d5671d7f9845990935b8b377849
-      internalID: 1814705332
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy 1_18
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 0
         width: 64
         height: 64
@@ -509,17 +278,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 545437d1f07695741aacc67bc32ea39f
-      internalID: -1293427817
+      spriteID: 3f258f1901bb10445b2f3c889fff7a1f
+      internalID: -1991005777
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 1_19
+      name: finished_crab_enemy_idle_8
       rect:
         serializedVersion: 2
-        x: 64
+        x: 512
         y: 0
         width: 64
         height: 64
@@ -530,17 +299,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5739899a1b0eca499aa1d2ea67f54ee
-      internalID: 1537175441
+      spriteID: 1d05820b29de450469af90ac610f8242
+      internalID: -1952404537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 1_20
+      name: finished_crab_enemy_idle_9
       rect:
         serializedVersion: 2
-        x: 128
+        x: 576
         y: 0
         width: 64
         height: 64
@@ -551,17 +320,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 184b1fd5fcc7a45449d22e3532cd1e62
-      internalID: -1672230443
+      spriteID: 01ef332448666c14a9febeec8fec9063
+      internalID: 16869310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy 1_21
+      name: finished_crab_enemy_idle_10
       rect:
         serializedVersion: 2
-        x: 192
+        x: 640
         y: 0
         width: 64
         height: 64
@@ -572,8 +341,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8c384a35b47d8e4a8d72198284ca8dc
-      internalID: 885529498
+      spriteID: 5beb99ffaf3b3b545ab404f2e9edd495
+      internalID: 1191548540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finished_crab_enemy_idle_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb1448a170e4394e910d2a85143f49f
+      internalID: -1655824136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finished_crab_enemy_idle_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04fabf04b3b97ee4aaa67780efbdbf49
+      internalID: 1617314415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finished_crab_enemy_idle_13
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de90c7a6fa12e5546872f7300b346b85
+      internalID: 408243960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finished_crab_enemy_idle_14
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd502d8aaec3fc14bad77dba269afc79
+      internalID: -1951679632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: finished_crab_enemy_idle_15
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22114b3e65c280144a46ad87ef51571d
+      internalID: -437250170
       vertices: []
       indices: 
       edges: []
@@ -589,28 +463,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Enemy 1_0: -676880515
-      Enemy 1_1: -1018056052
-      Enemy 1_10: 719250112
-      Enemy 1_11: -237938807
-      Enemy 1_12: 444418897
-      Enemy 1_13: 271827523
-      Enemy 1_14: -187361586
-      Enemy 1_15: -1350951141
-      Enemy 1_16: 621229757
-      Enemy 1_17: 1814705332
-      Enemy 1_18: -1293427817
-      Enemy 1_19: 1537175441
-      Enemy 1_2: -1901765228
-      Enemy 1_20: -1672230443
-      Enemy 1_21: 885529498
-      Enemy 1_3: -1423304792
-      Enemy 1_4: 235942746
-      Enemy 1_5: -467822429
-      Enemy 1_6: -1258249664
-      Enemy 1_7: -688448683
-      Enemy 1_8: 445373808
-      Enemy 1_9: -998420335
+      finished_crab_enemy_idle_0: 305119912
+      finished_crab_enemy_idle_1: -763930180
+      finished_crab_enemy_idle_10: 1191548540
+      finished_crab_enemy_idle_11: -1655824136
+      finished_crab_enemy_idle_12: 1617314415
+      finished_crab_enemy_idle_13: 408243960
+      finished_crab_enemy_idle_14: -1951679632
+      finished_crab_enemy_idle_15: -437250170
+      finished_crab_enemy_idle_2: -720262358
+      finished_crab_enemy_idle_3: -1501834776
+      finished_crab_enemy_idle_4: 191991368
+      finished_crab_enemy_idle_5: 1661628898
+      finished_crab_enemy_idle_6: -1194307909
+      finished_crab_enemy_idle_7: -1991005777
+      finished_crab_enemy_idle_8: -1952404537
+      finished_crab_enemy_idle_9: 16869310
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
