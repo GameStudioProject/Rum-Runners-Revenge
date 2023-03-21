@@ -4,18 +4,6 @@ using UnityEngine;
 
 public class Enemy_DodgeState : EnemyStates
 {
-    protected MovementComponent MovementComponent
-    {
-        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
-    }
-    protected CollisionSenses CollisionSenses
-    {
-        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
-    }
-    
-    private MovementComponent _movementComponent;
-    private CollisionSenses _collisionSenses;
-    
     protected D_EnemyDodgeState _enemyDodgeStateData;
 
     protected bool _performCloseRangeAction;
@@ -34,7 +22,7 @@ public class Enemy_DodgeState : EnemyStates
 
         _isEnemyDodgeOver = false;
 
-        if (_collisionSenses.CheckEntityDodgeLandZone)
+        if (CollisionSenses.CheckEntityDodgeLandZone)
         {
             MovementComponent?.SetEntityVelocity(_enemyDodgeStateData.enemyDodgeSpeed, _enemyDodgeStateData.enemyDodgeAngle, -MovementComponent.EntityFacingDirection);
         }
@@ -68,8 +56,8 @@ public class Enemy_DodgeState : EnemyStates
     {
         base.DoEnemyChecks();
 
-        _performCloseRangeAction = _enemyBase.EnemyCheckPlayerInCloseRangeAction();
-        _isPlayerInMaxAgroRange = _enemyBase.EnemyCheckPlayerInMaxAgroRange();
+        _performCloseRangeAction = CollisionSenses.EnemyCheckPlayerInCloseRangeAction();
+        _isPlayerInMaxAgroRange = CollisionSenses.EnemyCheckPlayerInMaxAgroRange();
 
         if (CollisionSenses)
         {

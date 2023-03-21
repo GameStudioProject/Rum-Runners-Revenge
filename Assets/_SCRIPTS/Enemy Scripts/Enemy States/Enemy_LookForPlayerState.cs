@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class Enemy_LookForPlayerState : EnemyStates
 {
-    protected MovementComponent MovementComponent
-    {
-        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
-    }
-
-    private MovementComponent _movementComponent;
-    
-    
     protected D_EnemyLookForPlayerState _enemyLookForPlayerStateData;
 
     protected bool _turnEnemyImmediately;
@@ -86,7 +78,7 @@ public class Enemy_LookForPlayerState : EnemyStates
     {
         base.DoEnemyChecks();
 
-        _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
+        _isPlayerInMinAgroRange = CollisionSenses.EnemyCheckPlayerInMinAgroRange();
     }
 
     public void TurnEnemyImmediately(bool flip)

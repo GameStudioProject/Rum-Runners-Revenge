@@ -5,12 +5,14 @@ using UnityEngine.Serialization;
 
 public class CollisionSenses : CoreComponent
 {
+
     protected MovementComponent MovementComponent
     {
         get => _movementComponent ??= core.GetCoreComponent<MovementComponent>();
     }
 
     private MovementComponent _movementComponent;
+    
     
     public Transform EntityGroundCheck
     {
@@ -45,14 +47,29 @@ public class CollisionSenses : CoreComponent
         get => GenericCoreNotImplementedError<Transform>.TryGet(_entityDodgeLandZone, transform.parent.name);
         private set => _entityDodgeLandZone = value;
     }
+
+    public Transform EntityPlayerCheck
+    {
+        get => GenericCoreNotImplementedError<Transform>.TryGet(_entityPlayerCheck, transform.parent.name);
+        private set => _entityPlayerCheck = value;
+    }
+    
+    public D_EnemyBase EntityData
+    {
+        get => GenericCoreNotImplementedError<D_EnemyBase>.TryGet(_entityData, transform.parent.name);
+        private set => _entityData = value;
+
+    }
     
     public float EntityGroundCheckRadius { get => _entityGroundCheckRadius; set => _entityGroundCheckRadius = value; }
     public float EntityWallCheckDistance { get => _entityWallCheckDistance; set => _entityWallCheckDistance = value; }
     public LayerMask WhatIsGround { get => _whatIsGround; set => _whatIsGround = value; }
+    public LayerMask WhatIsPlayer { get => _whatIsPlayer; set => _whatIsPlayer = value; }
     public LayerMask WhatIsGrappleable { get => _whatisGrappleble; set => _whatisGrappleble = value; }
     
     [SerializeField] private Transform _entityGroundCheck;
     [SerializeField] private Transform _entityWallCheck;
+    [SerializeField] private Transform _entityPlayerCheck;
     [SerializeField] private Transform _entityGrappleCheck;
     [SerializeField] private Transform _entityLedgeCheckHorizontal;
     [SerializeField] private Transform _entityLedgeCheckVertical;
@@ -62,7 +79,9 @@ public class CollisionSenses : CoreComponent
     [SerializeField] private float _entityWallCheckDistance;
     [SerializeField] private float _entityGrappleCheckRadius;
     [SerializeField] private LayerMask _whatIsGround;
+    [SerializeField] private LayerMask _whatIsPlayer;
     [SerializeField] private LayerMask _whatisGrappleble;
+    [SerializeField] private D_EnemyBase _entityData;
     
     #region Player Check Functions
     
@@ -106,6 +125,20 @@ public class CollisionSenses : CoreComponent
         get => Physics2D.OverlapCircleAll(_entityGrappleCheck.transform.position, _entityGrappleCheckRadius, _whatisGrappleble);
     }
     
-    
+    public virtual bool EnemyCheckPlayerInMinAgroRange()
+    {
+        return Physics2D.Raycast(_entityPlayerCheck.position, transform.right, EntityData.enemyMinAgroDistance, _whatIsPlayer);
+    }
+
+    public virtual bool EnemyCheckPlayerInMaxAgroRange()
+    {
+        return Physics2D.Raycast(_entityPlayerCheck.position, transform.right, EntityData.enemyMaxAgroDistance, _whatIsPlayer);
+    }
+
+    public virtual bool EnemyCheckPlayerInCloseRangeAction()
+    {
+        return Physics2D.Raycast(_entityPlayerCheck.position, transform.right, EntityData.enemyCloseRangeActionDistance, _whatIsPlayer);
+    }
+
     #endregion
 }

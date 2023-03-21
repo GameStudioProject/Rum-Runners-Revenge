@@ -4,18 +4,6 @@ using UnityEngine;
 
 public class Enemy_StunState : EnemyStates
 {
-    protected MovementComponent MovementComponent
-    {
-        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
-    }
-    protected CollisionSenses CollisionSenses
-    {
-        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
-    }
-    
-    private MovementComponent _movementComponent;
-    private CollisionSenses _collisionSenses;
-    
     protected D_EnemyStunState _enemyStunStateData;
 
     protected bool _isEnemyStunTimeOver;
@@ -75,7 +63,7 @@ public class Enemy_StunState : EnemyStates
             _isEnemyGrounded = CollisionSenses.CheckIfEntityGrounded;
         }
         
-        _performEnemyCloseRangeAction = _enemyBase.EnemyCheckPlayerInCloseRangeAction();
-        _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
+        _performEnemyCloseRangeAction = CollisionSenses.EnemyCheckPlayerInCloseRangeAction();
+        _isPlayerInMinAgroRange = CollisionSenses.EnemyCheckPlayerInMinAgroRange();
     }
 }

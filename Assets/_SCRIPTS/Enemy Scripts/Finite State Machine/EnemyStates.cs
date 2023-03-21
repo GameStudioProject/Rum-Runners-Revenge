@@ -4,9 +4,23 @@ using UnityEngine;
 
 public class EnemyStates
 {
+    
     protected EnemyFiniteStateMachine _enemyStateMachine;
     protected EnemyBase _enemyBase;
     protected Core _core;
+    
+    protected MovementComponent MovementComponent
+    {
+        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
+    }
+
+    protected CollisionSenses CollisionSenses
+    {
+        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
+    }
+
+    private MovementComponent _movementComponent;
+    private CollisionSenses _collisionSenses;
 
     public float _stateStartTime { get; protected set; }
 

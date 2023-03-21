@@ -4,18 +4,6 @@ using UnityEngine;
 
 public class Enemy_PlayerDetectedState : EnemyStates
 {
-    protected MovementComponent MovementComponent
-    {
-        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
-    }
-    protected CollisionSenses CollisionSenses
-    {
-        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
-    }
-    
-    private MovementComponent _movementComponent;
-    private CollisionSenses _collisionSenses;
-    
     protected D_EnemyPlayerDetectedState _enemyStateData;
 
     protected bool _isPlayerInMinAgroRange;
@@ -63,13 +51,13 @@ public class Enemy_PlayerDetectedState : EnemyStates
     {
         base.DoEnemyChecks();
         
-        _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
-        _isPlayerInMaxAgroRange = _enemyBase.EnemyCheckPlayerInMaxAgroRange();
+        _isPlayerInMinAgroRange = CollisionSenses.EnemyCheckPlayerInMinAgroRange();
+        _isPlayerInMaxAgroRange = CollisionSenses.EnemyCheckPlayerInMaxAgroRange();
         if (CollisionSenses)
         {
             _isEnemyDetectingLedge = CollisionSenses.CheckIfEntityTouchesLedgeVertical;
         }
 
-        _performEnemyCloseRangeAction = _enemyBase.EnemyCheckPlayerInCloseRangeAction();
+        _performEnemyCloseRangeAction = CollisionSenses.EnemyCheckPlayerInCloseRangeAction();
     }
 }

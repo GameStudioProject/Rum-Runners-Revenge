@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Enemy_AttackState : EnemyStates
 {
-    protected MovementComponent MovementComponent
-    {
-        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
-    }
-
-    private MovementComponent _movementComponent;
+    
 
     protected Transform _enemyAttackPosition;
 
@@ -50,7 +45,7 @@ public class Enemy_AttackState : EnemyStates
     {
         base.DoEnemyChecks();
 
-        _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
+        _isPlayerInMinAgroRange = CollisionSenses.EnemyCheckPlayerInMinAgroRange();
     }
 
     public virtual void EnemyTriggerAttack()

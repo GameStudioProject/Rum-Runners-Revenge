@@ -2389,7 +2389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867903676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.518, y: 0.562, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17096,7 +17096,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261403614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.1, y: 0.35, z: 0}
+  m_LocalPosition: {x: 13.1, y: 0.281, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17117,10 +17117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 8d10c7fbd47d9da40a210982ce701dbc, type: 2}
-  _enemyWallCheck: {fileID: 1302581040}
-  _enemyLedgeCheck: {fileID: 2104150333}
-  _enemyPlayerCheck: {fileID: 867903677}
-  _enemyGroundCheck: {fileID: 8625807}
   _enemyIdleStateData: {fileID: 11400000, guid: 5402ef224a7c52c4dafae6875a0cf9ce, type: 2}
   _enemyMoveStateData: {fileID: 11400000, guid: b4ee4d615b906384590158873c9b82ba, type: 2}
 --- !u!114 &1261403621
@@ -17776,6 +17772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entityGroundCheck: {fileID: 8625807}
   _entityWallCheck: {fileID: 1302581040}
+  _entityPlayerCheck: {fileID: 867903677}
   _entityGrappleCheck: {fileID: 0}
   _entityLedgeCheckHorizontal: {fileID: 0}
   _entityLedgeCheckVertical: {fileID: 2104150333}
@@ -17787,9 +17784,13 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 128
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
   _whatisGrappleble:
     serializedVersion: 2
     m_Bits: 0
+  _entityData: {fileID: 11400000, guid: 8d10c7fbd47d9da40a210982ce701dbc, type: 2}
 --- !u!1 &1605911622
 GameObject:
   m_ObjectHideFlags: 0
@@ -17905,6 +17906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entityGroundCheck: {fileID: 147606689}
   _entityWallCheck: {fileID: 1346247470}
+  _entityPlayerCheck: {fileID: 152324246}
   _entityGrappleCheck: {fileID: 0}
   _entityLedgeCheckHorizontal: {fileID: 0}
   _entityLedgeCheckVertical: {fileID: 1875214310}
@@ -17916,9 +17918,13 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 128
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
   _whatisGrappleble:
     serializedVersion: 2
     m_Bits: 0
+  _entityData: {fileID: 11400000, guid: 8e183d24a3e1545498e3707b38a9f613, type: 2}
 --- !u!1 &1748238951
 GameObject:
   m_ObjectHideFlags: 0
@@ -22209,6 +22215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entityGroundCheck: {fileID: 1115738885}
   _entityWallCheck: {fileID: 1236125913}
+  _entityPlayerCheck: {fileID: 240846832}
   _entityGrappleCheck: {fileID: 0}
   _entityLedgeCheckHorizontal: {fileID: 0}
   _entityLedgeCheckVertical: {fileID: 585601453}
@@ -22220,9 +22227,13 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 128
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
   _whatisGrappleble:
     serializedVersion: 2
     m_Bits: 0
+  _entityData: {fileID: 11400000, guid: b79c1195f4d026d48b32d03cd297443a, type: 2}
 --- !u!1 &1939036032
 GameObject:
   m_ObjectHideFlags: 0
@@ -22590,10 +22601,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: b79c1195f4d026d48b32d03cd297443a, type: 2}
-  _enemyWallCheck: {fileID: 1236125913}
-  _enemyLedgeCheck: {fileID: 585601453}
-  _enemyPlayerCheck: {fileID: 240846832}
-  _enemyGroundCheck: {fileID: 1115738885}
   _enemyIdleStateData: {fileID: 11400000, guid: 0fd3b0297dd0742419a7ed153dffe7b4, type: 2}
   _enemyMoveStateData: {fileID: 11400000, guid: 84a64351e41b1264c8c8c9dc91bb7df8, type: 2}
   _enemyPlayerDetectedStateData: {fileID: 11400000, guid: 5b9da7802d741ba4d89dcc6ef04ea8be, type: 2}
@@ -22844,10 +22851,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 8e183d24a3e1545498e3707b38a9f613, type: 2}
-  _enemyWallCheck: {fileID: 1346247470}
-  _enemyLedgeCheck: {fileID: 1875214310}
-  _enemyPlayerCheck: {fileID: 152324246}
-  _enemyGroundCheck: {fileID: 147606689}
   _archerMoveStateData: {fileID: 11400000, guid: e985e3ce27a268d489e5054970a8257a, type: 2}
   _archerIdleStateData: {fileID: 11400000, guid: ab43d1e8b29574c42a5cb9270592a8a5, type: 2}
   _archerPlayerDetectedStateData: {fileID: 11400000, guid: 1653ad8f566cac041b33db60febcb413, type: 2}
@@ -23119,6 +23122,10 @@ PrefabInstance:
     - target: {fileID: 5724095939062360212, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724095939471745313, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: enemyData
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5724095939696080308, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
       propertyPath: healthbar

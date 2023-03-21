@@ -4,18 +4,6 @@ using UnityEngine;
 
 public class Enemy_MoveState : EnemyStates
 {
-    protected MovementComponent MovementComponent
-    {
-        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
-    }
-    protected CollisionSenses CollisionSenses
-    {
-        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
-    }
-    
-    private MovementComponent _movementComponent;
-    private CollisionSenses _collisionSenses;
-    
     protected D_EnemyMoveState _enemyStateData;
 
     protected bool _isEnemyDetectingWall;
@@ -62,6 +50,6 @@ public class Enemy_MoveState : EnemyStates
             _isEnemyDetectingWall = CollisionSenses.CheckIfEntityTouchesWall;
         }
         
-        _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
+        _isPlayerInMinAgroRange = CollisionSenses.EnemyCheckPlayerInMinAgroRange();
     }
 }

@@ -70,7 +70,7 @@ public class Enemy_ChargeState : EnemyStates
             _isEnemyDetectingLedge = CollisionSenses.CheckIfEntityTouchesLedgeVertical;
             _isEnemyDetectingWall = CollisionSenses.CheckIfEntityTouchesWall;
         }
-        _isPlayerInMinAgroRange = _enemyBase.EnemyCheckPlayerInMinAgroRange();
-        _performEnemyCloseRangeAction = _enemyBase.EnemyCheckPlayerInCloseRangeAction();
+        _isPlayerInMinAgroRange = CollisionSenses.EnemyCheckPlayerInMinAgroRange();
+        _performEnemyCloseRangeAction = CollisionSenses.EnemyCheckPlayerInCloseRangeAction();
     }
 }
