@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c19d2e7ef64a84b78843e0897da520, type: 3}
+  m_Name: Sword_1
+  m_EditorClassIdentifier: 
+  <NumberOfAttacks>k__BackingField: 3
+  <ComponentData>k__BackingField:
+  - rid: 9040973014786375681
+  references:
+    version: 2
+    RefIds:
+    - rid: 9040973014786375681
+      type: {class: PlayerWeaponSpriteData, ns: Tomas.Weapons.Components.ComponentData, asm: Assembly-CSharp}
+      data:
+        <PlayerAttackData>k__BackingField:
+        - <PlayerSprites>k__BackingField:
+          - {fileID: -1987402590, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: -351094280, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 1791216324, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 603611908, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: -1233246082, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+        - <PlayerSprites>k__BackingField:
+          - {fileID: 988610502, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 15816517, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 772720957, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 1273519991, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 916460301, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+        - <PlayerSprites>k__BackingField:
+          - {fileID: 750126921, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 912870272, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 10835460, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 2097261312, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: -701177856, guid: e5f50a995f7756641884e53f3c84594b, type: 3}

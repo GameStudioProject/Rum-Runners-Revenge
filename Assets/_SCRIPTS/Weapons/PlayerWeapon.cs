@@ -1,25 +1,29 @@
 using System;
 using UnityEngine;
-using Tomas.Utilities;
+using Unity.VisualScripting;
+using Timer = Tomas.Utilities.Timer;
 
 
 namespace Tomas.Weapons
 {
     public class PlayerWeapon : MonoBehaviour
     {
-        [SerializeField] private int _numberOfAttacks;
+        [field: SerializeField] public PlayerWeaponDataSO WeaponData { get; private set; }
+        
         [SerializeField] private float _attackCounterResetCooldown;
 
         public int AttackCounter
         {
             get => _attackCounter;
-            private set => _attackCounter = value >= _numberOfAttacks ? 0 : value;
+            private set => _attackCounter = value >= WeaponData.NumberOfAttacks ? 0 : value;
         }
-        
+
+        public event Action OnWeaponEnter;
         public event Action OnWeaponExit;
         
         private Animator _weaponAnimator;
-        private GameObject _weaponBaseGameObject;
+        public GameObject BaseWeaponGameObject { get; private set; }
+        public GameObject WeaponSpriteGameObject { get; private set; }
 
         private PlayerWeaponAnimationHandler _playerWeaponEventHandler;
 
@@ -36,6 +40,8 @@ namespace Tomas.Weapons
             _weaponAnimator.SetBool("active", true);
             _weaponAnimator.SetInteger("counter", AttackCounter);
             
+            OnWeaponEnter?.Invoke();
+            
         }
 
         private void WeaponExit()
@@ -50,10 +56,11 @@ namespace Tomas.Weapons
 
         private void Awake()
         {
-            _weaponBaseGameObject = transform.Find("Base").gameObject;
-            _weaponAnimator = _weaponBaseGameObject.GetComponent<Animator>();
+            BaseWeaponGameObject = transform.Find("Base").gameObject;
+            WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
+            _weaponAnimator = BaseWeaponGameObject.GetComponent<Animator>();
 
-            _playerWeaponEventHandler = _weaponBaseGameObject.GetComponent<PlayerWeaponAnimationHandler>();
+            _playerWeaponEventHandler = BaseWeaponGameObject.GetComponent<PlayerWeaponAnimationHandler>();
 
             _attackCounterResetTimer = new Timer(_attackCounterResetCooldown);
         }
