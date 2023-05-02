@@ -41,7 +41,6 @@ public class PlayerBase : MonoBehaviour
     public Rigidbody2D PlayerRB { get; private set; }
     public Transform PlayerDashDirectionIndicator { get; private set; }
     public BoxCollider2D PlayerHitBox { get; private set; }
-    public PlayerTempInventory PlayerInventory { get; private set; }
     public HealthBarScript healthBar;
     
     #endregion
@@ -83,12 +82,8 @@ public class PlayerBase : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
         PlayerHitBox = GetComponent<BoxCollider2D>();
-        PlayerInventory = GetComponent<PlayerTempInventory>();
         healthBar.SetMaxHealth(StatsComponent._maxEntityHealth);
 
-        PlayerPrimaryAttackState.SetPlayerWeapon(PlayerInventory.playerWeapons[(int)PlayerCombatInputs.primary]);
-        //PlayerSecondaryAttackState.SetPlayerWeapon(PlayerInventory.playerWeapons[(int)PlayerCombatInputs.secondary]);
-        
         PlayerStateMachine.InitializeStateMachine(PlayerIdleState);
     }
 

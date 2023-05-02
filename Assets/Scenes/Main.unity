@@ -1041,7 +1041,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1358180723}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -85634,11 +85634,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5724095939062360205, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5724095939062360205, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5724095939062360212, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
       propertyPath: m_Name
@@ -85656,5 +85656,6 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 320541216}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5724095939062360207, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
