@@ -1071,6 +1071,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key
       objectReference: {fileID: 0}
+    - target: {fileID: 392511290887544838, guid: 23cedd8eff8593b4c9be49d1bebd8902, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2080445779}
     - target: {fileID: 392511290887544839, guid: 23cedd8eff8593b4c9be49d1bebd8902, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -85756,6 +85760,11 @@ Transform:
   m_Father: {fileID: 991075817}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2080445779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5724095939062360212, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+  m_PrefabInstance: {fileID: 5724095937734072825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2086452977
 GameObject:
   m_ObjectHideFlags: 0
@@ -85884,6 +85893,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5724095938132347583, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: m_Size.x
+      value: 0.71890545
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724095938132347583, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: m_Size.y
+      value: 1.4691172
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724095938132347583, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.019535542
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724095938132347583, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.23470068
+      objectReference: {fileID: 0}
     - target: {fileID: 5724095939062360201, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
       propertyPath: healthBar
       value: 
@@ -85931,6 +85956,30 @@ PrefabInstance:
     - target: {fileID: 5724095939062360202, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724095939062360205, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7226429
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724095939062360205, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: m_Size.y
+      value: 1.4715967
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724095939062360205, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.017849922
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724095939062360205, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.23407793
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724095939062360205, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724095939062360205, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5724095939062360212, guid: c26d6ccc8428440449db2145d9f98d30, type: 3}
       propertyPath: m_Name
