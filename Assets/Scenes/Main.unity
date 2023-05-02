@@ -86604,6 +86604,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SecondaryWeapon
       objectReference: {fileID: 0}
+    - target: {fileID: 6037516842053459384, guid: c5e142efa98ce1b44b56a990f2de1eef, type: 3}
+      propertyPath: _numberOfAttacks
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6863215350103278290, guid: c5e142efa98ce1b44b56a990f2de1eef, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -86776,10 +86780,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1358180723}
     m_Modifications:
-    - target: {fileID: 372067687, guid: c5e142efa98ce1b44b56a990f2de1eef, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 324145399902446098, guid: c5e142efa98ce1b44b56a990f2de1eef, type: 3}
       propertyPath: m_Name
       value: PrimaryWeapon
