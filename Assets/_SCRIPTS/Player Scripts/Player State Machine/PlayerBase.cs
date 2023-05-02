@@ -1,4 +1,6 @@
 using System;
+using Tomas.Weapons;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerBase : MonoBehaviour 
@@ -48,12 +50,18 @@ public class PlayerBase : MonoBehaviour
     #region Other Variables
 
     private Vector2 _velocityWorkspace;
+
+    private PlayerWeapon _primaryWeapon;
+    private PlayerWeapon _secondaryWeapon;
     #endregion
     
     #region Unity Functions
     private void Awake()
     {
         Core = GetComponentInChildren<Core>();
+
+        _primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<PlayerWeapon>();
+        _secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<PlayerWeapon>();
         
         PlayerStateMachine = new PlayerStateMachine();
 
@@ -70,8 +78,8 @@ public class PlayerBase : MonoBehaviour
         PlayerDashState = new PlayerDashState(this, PlayerStateMachine, _playerData, "inAir");
         PlayerCrouchIdleState = new PlayerCrouchIdleState(this, PlayerStateMachine, _playerData, "crouchIdle");
         PlayerCrouchMoveState = new PlayerCrouchMoveState(this, PlayerStateMachine, _playerData, "crouchMove");
-        PlayerPrimaryAttackState = new PlayerAttackState(this, PlayerStateMachine, _playerData, "attack");
-        PlayerSecondaryAttackState = new PlayerAttackState(this, PlayerStateMachine, _playerData, "attack");
+        PlayerPrimaryAttackState = new PlayerAttackState(this, PlayerStateMachine, _playerData, "attack", _primaryWeapon);
+        PlayerSecondaryAttackState = new PlayerAttackState(this, PlayerStateMachine, _playerData, "attack", _secondaryWeapon);
         PlayerGrappleHookState = new PlayerGrappleHookState(this, PlayerStateMachine, _playerData, "grappleHook");
     }
 

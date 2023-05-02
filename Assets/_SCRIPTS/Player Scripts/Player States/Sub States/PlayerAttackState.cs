@@ -1,11 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tomas.Weapons;
 using UnityEngine;
 
 public class PlayerAttackState : PlayerAbilityState
 {
-    public PlayerAttackState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
+    private PlayerWeapon _playerWeapon;
+    
+    public PlayerAttackState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName, PlayerWeapon playerWeapon) : base(player, playerStateMachine, playerData, animationBoolName)
     {
-        
+        this._playerWeapon = playerWeapon;
+
+        _playerWeapon.OnWeaponExit += ExitWeaponHandler;
+    }
+
+    public override void StateEnter()
+    {
+        base.StateEnter();
+
+        _playerWeapon.WeaponEnter();
+    }
+
+    private void ExitWeaponHandler()
+    {
+        PlayerAnimationFinishTrigger();
+        _isPlayerAbilityDone = true;
     }
 }
