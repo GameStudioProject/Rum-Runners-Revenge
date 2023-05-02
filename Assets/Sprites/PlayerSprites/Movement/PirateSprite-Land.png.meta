@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 91b868fc4273e364094fcea3722287b1
+guid: 51d315c8a6d54f141b86dab0bb0750e1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PirateSprite-J_0
+      name: PirateSprite-Land_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4dee973974fae5644a8eebd111a36797
-      internalID: -1219456714
+      spriteID: f6d253fe7ca182e44aae5120aa0bbd90
+      internalID: -136294182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PirateSprite-J_1
+      name: PirateSprite-Land_1
       rect:
         serializedVersion: 2
         x: 64
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe4cefa6996075d44b65c8b4594ce4ab
-      internalID: 150948635
+      spriteID: d1f08ccecc4f4cd46b9cd3457e71cd5c
+      internalID: 544800444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PirateSprite-J_2
+      name: PirateSprite-Land_2
       rect:
         serializedVersion: 2
         x: 128
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc30d3b6798ca6d46ae891aee390f2c4
-      internalID: 788688894
+      spriteID: 243ddbe29e4db734dbfc390b74071245
+      internalID: 1653207653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PirateSprite-J_3
+      name: PirateSprite-Land_3
       rect:
         serializedVersion: 2
         x: 192
@@ -194,8 +194,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97505b08ee8a3a343976fba4f55a4fac
-      internalID: 412880243
+      spriteID: e697a9df80047c54ba5809dee0507490
+      internalID: -342351801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateSprite-Land_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e39359be1bf4d9644ba39b1537e17286
+      internalID: 1985268448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateSprite-Land_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ed881ffe52a41f458434240fc45049e
+      internalID: 415519693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateSprite-Land_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4080fee3aecc0624ab10f19b19051044
+      internalID: 2051288413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateSprite-Land_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c050187b13b824946970ca366eaefd87
+      internalID: -1580963275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateSprite-Land_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb361d31211947c4b9525942f1e1dfea
+      internalID: -703170527
       vertices: []
       indices: 
       edges: []
@@ -211,10 +316,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PirateSprite-J_0: -1219456714
-      PirateSprite-J_1: 150948635
-      PirateSprite-J_2: 788688894
-      PirateSprite-J_3: 412880243
+      PirateSprite-Land_0: -136294182
+      PirateSprite-Land_1: 544800444
+      PirateSprite-Land_2: 1653207653
+      PirateSprite-Land_3: -342351801
+      PirateSprite-Land_4: 1985268448
+      PirateSprite-Land_5: 415519693
+      PirateSprite-Land_6: 2051288413
+      PirateSprite-Land_7: -1580963275
+      PirateSprite-Land_8: -703170527
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

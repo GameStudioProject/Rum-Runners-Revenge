@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 91b868fc4273e364094fcea3722287b1
+guid: 5a707fdb9700748409fd37f3dbb65fba
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PirateSprite-J_0
+      name: PirateSprite-crouch_walk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4dee973974fae5644a8eebd111a36797
-      internalID: -1219456714
+      spriteID: 33fa5f5522bd5024b90ee0bc153f6212
+      internalID: -374255117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PirateSprite-J_1
+      name: PirateSprite-crouch_walk_1
       rect:
         serializedVersion: 2
         x: 64
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe4cefa6996075d44b65c8b4594ce4ab
-      internalID: 150948635
+      spriteID: a32fb1040b9691642bf522dd8c766066
+      internalID: 1568675072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PirateSprite-J_2
+      name: PirateSprite-crouch_walk_2
       rect:
         serializedVersion: 2
         x: 128
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc30d3b6798ca6d46ae891aee390f2c4
-      internalID: 788688894
+      spriteID: 2d2a59253bf19f14fa18c5d99e151782
+      internalID: -1799115125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PirateSprite-J_3
+      name: PirateSprite-crouch_walk_3
       rect:
         serializedVersion: 2
         x: 192
@@ -194,8 +194,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97505b08ee8a3a343976fba4f55a4fac
-      internalID: 412880243
+      spriteID: ccb0b6528812daa469ae47dbe0cc6467
+      internalID: -1548586204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateSprite-crouch_walk_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e02d4a9290181b34c8e5190a0324342d
+      internalID: -1477264893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateSprite-crouch_walk_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91426953282dc354fa675291ded8160d
+      internalID: 1717476041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateSprite-crouch_walk_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6888e4b8d30240643915790555a5f61a
+      internalID: -600708831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateSprite-crouch_walk_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2063a86057ddc0f4d81c92f98a9ae71f
+      internalID: 636959614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateSprite-crouch_walk_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3645153dd2e65946ad3a828e268442d
+      internalID: -1401957423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateSprite-crouch_walk_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79c96f8d5319680498f511a4439a4103
+      internalID: -177234825
       vertices: []
       indices: 
       edges: []
@@ -211,10 +337,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PirateSprite-J_0: -1219456714
-      PirateSprite-J_1: 150948635
-      PirateSprite-J_2: 788688894
-      PirateSprite-J_3: 412880243
+      PirateSprite-crouch_walk_0: -374255117
+      PirateSprite-crouch_walk_1: 1568675072
+      PirateSprite-crouch_walk_2: -1799115125
+      PirateSprite-crouch_walk_3: -1548586204
+      PirateSprite-crouch_walk_4: -1477264893
+      PirateSprite-crouch_walk_5: 1717476041
+      PirateSprite-crouch_walk_6: -600708831
+      PirateSprite-crouch_walk_7: 636959614
+      PirateSprite-crouch_walk_8: -1401957423
+      PirateSprite-crouch_walk_9: -177234825
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
