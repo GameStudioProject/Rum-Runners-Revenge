@@ -33,8 +33,8 @@ public class PlayerWallGrabState : PlayerTouchWallState
         if (!_isExitingPlayerState)
         {
             //PlayerHoldPosition();
-            MovementComponent?.SetEntityVelocityX(0f);
-            MovementComponent?.SetEntityVelocityY(-_playerData.playerWallGrabSlideSpeed);
+            movementComponent.Component.SetEntityVelocityX(0f);
+            movementComponent.Component.SetEntityVelocityY(-_playerData.playerWallGrabSlideSpeed);
 
             if (Time.time >= stateStartTime + _playerData.playerWallGrabTime)
             {

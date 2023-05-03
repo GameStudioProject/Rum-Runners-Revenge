@@ -16,6 +16,7 @@ MonoBehaviour:
   <ComponentData>k__BackingField:
   - rid: 9040973014786375682
   - rid: 9040973036983681025
+  - rid: 9040973036983681031
   references:
     version: 2
     RefIds:
@@ -51,3 +52,31 @@ MonoBehaviour:
           <PlayerVelocity>k__BackingField: 5
         - <PlayerDirection>k__BackingField: {x: 1, y: 5}
           <PlayerVelocity>k__BackingField: 10
+    - rid: 9040973036983681031
+      type: {class: PlayerWeaponActionHitBoxData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        <WeaponAttackData>k__BackingField:
+        - Debug: 0
+          <WeaponHitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0.11
+            y: -0.9
+            width: 1.94
+            height: 1.41
+        - Debug: 0
+          <WeaponHitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0.11
+            y: -0.9
+            width: 1.94
+            height: 1.41
+        - Debug: 0
+          <WeaponHitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0
+            y: -0.9
+            width: 1.61
+            height: 2.51
+        <WeaponDetectableLayers>k__BackingField:
+          serializedVersion: 2
+          m_Bits: 256

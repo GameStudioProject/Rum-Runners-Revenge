@@ -20,6 +20,11 @@ namespace Tomas.Weapons.Components
             eventHandler = GetComponentInChildren<PlayerWeaponAnimationHandler>();
         }
 
+        protected virtual void Start()
+        {
+            
+        }
+
         protected virtual void WeaponComponentHandleEnter()
         {
             _isWeaponAttackActive = true;

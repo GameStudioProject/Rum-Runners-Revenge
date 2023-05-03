@@ -7,19 +7,6 @@ public class PlayerGroundedState : PlayerStates
 
     protected bool _isPlayerTouchingCeiling;
 
-    protected MovementComponent MovementComponent
-    {
-        get => _movement ??= _core.GetCoreComponent<MovementComponent>();
-    }
-    private MovementComponent _movement;
-    
-    protected CollisionSenses CollisionSenses
-    {
-        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
-    }
-    
-    private CollisionSenses _collisionSenses;
-
     private bool _playerJumpInput;
     private bool _playerGrabInput;
     private bool _isPlayerGrounded;
@@ -102,12 +89,12 @@ public class PlayerGroundedState : PlayerStates
     {
         base.PerformPlayerChecks();
 
-        if (CollisionSenses)
+        if (collisionSenses.Component)
         {
-            _isPlayerGrounded = CollisionSenses.CheckIfEntityGrounded;
-            _isPlayerTouchingWall =CollisionSenses.CheckIfEntityTouchesWall;
-            _isPlayerTouchingLedge = CollisionSenses.CheckIfEntityTouchesLedgeHorizontal;
-            _isPlayerTouchingCeiling = CollisionSenses.CheckForCeiling;
+            _isPlayerGrounded = collisionSenses.Component.CheckIfEntityGrounded;
+            _isPlayerTouchingWall = collisionSenses.Component.CheckIfEntityTouchesWall;
+            _isPlayerTouchingLedge = collisionSenses.Component.CheckIfEntityTouchesLedgeHorizontal;
+            _isPlayerTouchingCeiling = collisionSenses.Component.CheckForCeiling;
         }
     }
 }

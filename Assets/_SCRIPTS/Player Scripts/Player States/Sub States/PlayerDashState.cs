@@ -24,7 +24,7 @@ public class PlayerDashState : PlayerAbilityState
         _player.PlayerInputHandler.PlayerUsedDashInput();
 
         _isPlayerHolding = true;
-        _playerDashDirection = Vector2.right * MovementComponent.EntityFacingDirection;
+        _playerDashDirection = Vector2.right * movementComponent.Component.EntityFacingDirection;
 
         Time.timeScale = _playerData.slowMotionTimeScale; //slowmotion
         stateStartTime = Time.unscaledTime; //constant time so the slowmotion scaleTime has no effect on countdown
@@ -36,9 +36,9 @@ public class PlayerDashState : PlayerAbilityState
     {
         base.StateExit();
 
-        if (MovementComponent.EntityCurrentVelocity.y > 0)
+        if (movementComponent.Component.EntityCurrentVelocity.y > 0)
         {
-            MovementComponent?.SetEntityVelocityY(MovementComponent.EntityCurrentVelocity.y * _playerData.playerDashHeightMultiplier);
+            movementComponent.Component.SetEntityVelocityY(movementComponent.Component.EntityCurrentVelocity.y * _playerData.playerDashHeightMultiplier);
         }
         
     }
@@ -49,8 +49,8 @@ public class PlayerDashState : PlayerAbilityState
         
         if (!_isExitingPlayerState)
         {
-            _player.PlayerAnimator.SetFloat("yVelocity", MovementComponent.EntityCurrentVelocity.y);
-            _player.PlayerAnimator.SetFloat("xVelocity", Mathf.Abs(MovementComponent.EntityCurrentVelocity.x));
+            _player.PlayerAnimator.SetFloat("yVelocity", movementComponent.Component.EntityCurrentVelocity.y);
+            _player.PlayerAnimator.SetFloat("xVelocity", Mathf.Abs(movementComponent.Component.EntityCurrentVelocity.x));
             
             if (_isPlayerHolding)
             {
@@ -71,16 +71,16 @@ public class PlayerDashState : PlayerAbilityState
                     _isPlayerHolding = false;
                     Time.timeScale = 1f;
                     stateStartTime = Time.time;
-                    MovementComponent?.CheckIfEntityShouldFlip(Mathf.RoundToInt(_playerDashDirection.x));
+                    movementComponent.Component.CheckIfEntityShouldFlip(Mathf.RoundToInt(_playerDashDirection.x));
                     _player.PlayerRB.drag = _playerData.playerAirDrag;
-                    MovementComponent?.SetEntityVelocity(_playerData.playerDashSpeed, _playerDashDirection);
+                    movementComponent.Component.SetEntityVelocity(_playerData.playerDashSpeed, _playerDashDirection);
                     _player.PlayerDashDirectionIndicator.gameObject.SetActive(false);
                     PlaceAfterImage();
                 }
             }
             else
             {
-                MovementComponent?.SetEntityVelocity(_playerData.playerDashSpeed, _playerDashDirection);
+                movementComponent.Component.SetEntityVelocity(_playerData.playerDashSpeed, _playerDashDirection);
                 CheckIfAfterImageIsNeeded();
 
                 if (Time.time >= stateStartTime + _playerData.playerDashTime)

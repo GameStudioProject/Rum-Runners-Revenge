@@ -32,12 +32,9 @@ public class PlayerBase : MonoBehaviour
     #region Components
 
     public Core Core { get; private set; }
-    
-    private StatsComponent StatsComponent
-    {
-        get => _statsComponent ??= Core.GetCoreComponent<StatsComponent>();
-    }
-    private StatsComponent _statsComponent;
+
+    protected CoreAccessComponent<StatsComponent> statsComponent;
+
     public Animator PlayerAnimator { get; private set; }
     public PlayerInputHandler PlayerInputHandler { get; private set; }
     public Rigidbody2D PlayerRB { get; private set; }
@@ -59,6 +56,7 @@ public class PlayerBase : MonoBehaviour
     private void Awake()
     {
         Core = GetComponentInChildren<Core>();
+        statsComponent = new CoreAccessComponent<StatsComponent>(Core);
 
         _primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<PlayerWeapon>();
         _secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<PlayerWeapon>();
@@ -93,7 +91,7 @@ public class PlayerBase : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
         PlayerHitBox = GetComponent<BoxCollider2D>();
-        healthBar.SetMaxHealth(StatsComponent._maxEntityHealth);
+        healthBar.SetMaxHealth(statsComponent.Component._maxEntityHealth);
 
         PlayerStateMachine.InitializeStateMachine(PlayerIdleState);
     }
@@ -102,7 +100,7 @@ public class PlayerBase : MonoBehaviour
     {
         Core.EveryFrameUpdate();
         PlayerStateMachine.PlayerCurrentState.EveryFrameUpdate();
-        healthBar.SetHealth(StatsComponent._currentEntityHealth);
+        healthBar.SetHealth(statsComponent.Component._currentEntityHealth);
     }
 
     private void FixedUpdate()

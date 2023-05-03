@@ -15,7 +15,7 @@ public class PlayerWallClimbState : PlayerTouchWallState
 
         if (!_isExitingPlayerState)
         {
-            MovementComponent?.SetEntityVelocityY(_playerData.playerWallClimbSpeed);
+            movementComponent.Component.SetEntityVelocityY(_playerData.playerWallClimbSpeed);
 
             if (Time.time >= stateStartTime + _playerData.playerWallClimbTime)
             {

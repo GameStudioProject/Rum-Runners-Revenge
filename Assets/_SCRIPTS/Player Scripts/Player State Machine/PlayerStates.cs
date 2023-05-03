@@ -5,6 +5,12 @@ using UnityEngine;
 public class PlayerStates
 {
     protected Core _core;
+    protected CoreAccessComponent<MovementComponent> movementComponent;
+    protected CoreAccessComponent<CollisionSenses> collisionSenses;
+    protected CoreAccessComponent<CombatComponent> combatComponent;
+    protected CoreAccessComponent<DeathComponent> deathComponent;
+    protected CoreAccessComponent<StatsComponent> statsComponent;
+    protected CoreAccessComponent<ParticleManagerComponent> particleManagerComponent;
     
     protected PlayerBase _player;
     protected PlayerStateMachine _playerStateMachine;
@@ -25,6 +31,13 @@ public class PlayerStates
         _playerData = playerData;
         _animationBoolName = animationBoolName;
         _core = player.Core;
+        
+        movementComponent = new CoreAccessComponent<MovementComponent>(_core);
+        collisionSenses = new CoreAccessComponent<CollisionSenses>(_core);
+        combatComponent = new CoreAccessComponent<CombatComponent>(_core);
+        deathComponent = new CoreAccessComponent<DeathComponent>(_core);
+        statsComponent = new CoreAccessComponent<StatsComponent>(_core);
+        particleManagerComponent = new CoreAccessComponent<ParticleManagerComponent>(_core);
     }
     
     public virtual void PerformPlayerChecks() //check for ground etc etc

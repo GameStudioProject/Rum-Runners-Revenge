@@ -9,11 +9,6 @@ public class Core : MonoBehaviour
 {
     private List<CoreComponent> _coreComponentsList = new List<CoreComponent>();
 
-    private void Awake()
-    {
-        
-    }
-
     public void EveryFrameUpdate()
     {
         foreach (CoreComponent _componentList in _coreComponentsList)
@@ -48,5 +43,11 @@ public class Core : MonoBehaviour
         
         Debug.LogWarning($"{typeof(CoreT)} not found on {transform.parent.name}");
         return component;
+    }
+    
+    public T GetCoreComponent<T>(ref T value) where T : CoreComponent
+    {
+        value = GetCoreComponent<T>();
+        return value;
     }
 }

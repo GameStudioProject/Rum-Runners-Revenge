@@ -2,24 +2,6 @@ using UnityEngine;
 
 public class PlayerTouchWallState : PlayerStates
 {
-    protected MovementComponent MovementComponent
-    {
-        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
-    }
-    protected CollisionSenses CollisionSenses
-    {
-        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
-    }
-    
-    protected StatsComponent StatsComponent
-    {
-        get => _statsComponent ??= _core.GetCoreComponent<StatsComponent>();
-    }
-    
-    private MovementComponent _movementComponent;
-    private CollisionSenses _collisionSenses;
-    private StatsComponent _statsComponent;
-    
     protected bool _isPlayerGrounded;
     protected bool _isPlayerTouchingWall;
     protected bool _playerGrabInput;
@@ -61,7 +43,7 @@ public class PlayerTouchWallState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerIdleState);
         }
-        else if (!_isPlayerTouchingWall || (_playerXInput != MovementComponent?.EntityFacingDirection && !_playerGrabInput))
+        else if (!_isPlayerTouchingWall || (_playerXInput != movementComponent.Component.EntityFacingDirection && !_playerGrabInput))
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
         }
@@ -80,11 +62,11 @@ public class PlayerTouchWallState : PlayerStates
     {
         base.PerformPlayerChecks();
 
-        if (CollisionSenses)
+        if (collisionSenses.Component)
         {
-            _isPlayerGrounded = CollisionSenses.CheckIfEntityGrounded;
-            _isPlayerTouchingWall = CollisionSenses.CheckIfEntityTouchesWall;
-            _isPlayerTouchingLedge = CollisionSenses.CheckIfEntityTouchesLedgeHorizontal;
+            _isPlayerGrounded = collisionSenses.Component.CheckIfEntityGrounded;
+            _isPlayerTouchingWall = collisionSenses.Component.CheckIfEntityTouchesWall;
+            _isPlayerTouchingLedge = collisionSenses.Component.CheckIfEntityTouchesLedgeHorizontal;
         }
 
         if (_isPlayerTouchingWall && !_isPlayerTouchingLedge)

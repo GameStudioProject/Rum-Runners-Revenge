@@ -20,10 +20,7 @@ namespace Tomas.Weapons
         public void AddData(PlayerWeaponComponentData data)
         {
             if (ComponentData.FirstOrDefault(t => t.GetType() == data.GetType()) != null) return;
-            {
-                
-            }
-            
+
             ComponentData.Add(data);
         }
     }

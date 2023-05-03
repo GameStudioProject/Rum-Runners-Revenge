@@ -22,7 +22,7 @@ public class Enemy_PlayerDetectedState : EnemyStates
         base.StateEnter();
 
         _performEnemyLongRangeAction = false;
-        MovementComponent?.SetEntityVelocityX(0f);
+        movementComponent.Component.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()
@@ -34,7 +34,7 @@ public class Enemy_PlayerDetectedState : EnemyStates
     {
         base.EveryFrameUpdate();
         
-        MovementComponent?.SetEntityVelocityX(0f);
+        movementComponent.Component.SetEntityVelocityX(0f);
 
         if (Time.time >= _stateStartTime + _enemyStateData.enemyLongRangeActionTime)
         {
@@ -51,13 +51,13 @@ public class Enemy_PlayerDetectedState : EnemyStates
     {
         base.DoEnemyChecks();
         
-        _isPlayerInMinAgroRange = CollisionSenses.EnemyCheckPlayerInMinAgroRange();
-        _isPlayerInMaxAgroRange = CollisionSenses.EnemyCheckPlayerInMaxAgroRange();
-        if (CollisionSenses)
+        _isPlayerInMinAgroRange = collisionSenses.Component.EnemyCheckPlayerInMinAgroRange();
+        _isPlayerInMaxAgroRange = collisionSenses.Component.EnemyCheckPlayerInMaxAgroRange();
+        if (collisionSenses.Component)
         {
-            _isEnemyDetectingLedge = CollisionSenses.CheckIfEntityTouchesLedgeVertical;
+            _isEnemyDetectingLedge = collisionSenses.Component.CheckIfEntityTouchesLedgeVertical;
         }
 
-        _performEnemyCloseRangeAction = CollisionSenses.EnemyCheckPlayerInCloseRangeAction();
+        _performEnemyCloseRangeAction = collisionSenses.Component.EnemyCheckPlayerInCloseRangeAction();
     }
 }

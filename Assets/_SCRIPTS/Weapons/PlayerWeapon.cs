@@ -72,6 +72,8 @@ namespace Tomas.Weapons
             _attackCounterResetTimer = new Timer(_attackCounterResetCooldown);
         }
 
+        
+
         private void Update()
         {
             _attackCounterResetTimer.TimerTick();

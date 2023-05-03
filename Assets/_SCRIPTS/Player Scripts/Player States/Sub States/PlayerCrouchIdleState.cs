@@ -13,7 +13,7 @@ public class PlayerCrouchIdleState : PlayerGroundedState
     {
         base.StateEnter();
         
-        MovementComponent?.SetEntityVelocityZero();
+        movementComponent.Component.SetEntityVelocityZero();
         _player.SetPlayerHitBoxHeight(_playerData.playerCrouchHitBoxHeight);
     }
 
