@@ -5,6 +5,6 @@ namespace Tomas.Weapons.Components.ComponentData
 {
     public class PlayerWeaponSpriteData : PlayerWeaponComponentData
     {
-        [field: SerializeField] public PlayerAttackSprites[] PlayerAttackData { get; private set; }
+        [field: SerializeField] public PlayerWeaponAttackSprites[] PlayerAttackData { get; private set; }
     }
 }

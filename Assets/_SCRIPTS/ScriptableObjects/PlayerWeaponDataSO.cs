@@ -19,5 +19,8 @@ namespace Tomas.Weapons
 
         [ContextMenu("Add Weapon Sprite Data")]
         private void AddWeaponSpriteData() => ComponentData.Add(new PlayerWeaponSpriteData());
+        
+        [ContextMenu("Add Weapon Movement Data")]
+        private void AddMovementData() => ComponentData.Add(new PlayerWeaponMovementData());
     }
 }

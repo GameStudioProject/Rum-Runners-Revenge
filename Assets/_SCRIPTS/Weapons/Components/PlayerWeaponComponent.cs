@@ -7,11 +7,16 @@ namespace Tomas.Weapons.Components
     {
         protected PlayerWeapon _playerWeapon;
 
+        protected PlayerWeaponAnimationHandler eventHandler;
+        protected Core Core => _playerWeapon.Core;
+
         protected bool _isWeaponAttackActive;
         
         protected virtual void Awake()
         {
             _playerWeapon = GetComponent<PlayerWeapon>();
+
+            eventHandler = GetComponentInChildren<PlayerWeaponAnimationHandler>();
         }
 
         protected virtual void WeaponComponentHandleEnter()

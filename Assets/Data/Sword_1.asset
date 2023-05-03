@@ -15,6 +15,7 @@ MonoBehaviour:
   <NumberOfAttacks>k__BackingField: 3
   <ComponentData>k__BackingField:
   - rid: 9040973014786375681
+  - rid: 9040973036983681024
   references:
     version: 2
     RefIds:
@@ -40,3 +41,13 @@ MonoBehaviour:
           - {fileID: 10835460, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
           - {fileID: 2097261312, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
           - {fileID: -701177856, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+    - rid: 9040973036983681024
+      type: {class: PlayerWeaponMovementData, ns: Tomas.Weapons.Components.ComponentData, asm: Assembly-CSharp}
+      data:
+        <AttackMovementData>k__BackingField:
+        - <PlayerDirection>k__BackingField: {x: 1, y: 0}
+          <PlayerVelocity>k__BackingField: 3
+        - <PlayerDirection>k__BackingField: {x: 1, y: 0}
+          <PlayerVelocity>k__BackingField: 4
+        - <PlayerDirection>k__BackingField: {x: 1, y: 5}
+          <PlayerVelocity>k__BackingField: 5

@@ -25,7 +25,9 @@ namespace Tomas.Weapons
         public GameObject BaseWeaponGameObject { get; private set; }
         public GameObject WeaponSpriteGameObject { get; private set; }
 
-        private PlayerWeaponAnimationHandler _playerWeaponEventHandler;
+        public PlayerWeaponAnimationHandler PlayerWeaponEventHandler { get; private set; }
+        
+        public Core Core { get; private set; }
 
         private int _attackCounter;
 
@@ -44,6 +46,11 @@ namespace Tomas.Weapons
             
         }
 
+        public void SetCore(Core core)
+        {
+            Core = core;
+        }
+
         private void WeaponExit()
         {
             _weaponAnimator.SetBool("active", false);
@@ -60,7 +67,7 @@ namespace Tomas.Weapons
             WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
             _weaponAnimator = BaseWeaponGameObject.GetComponent<Animator>();
 
-            _playerWeaponEventHandler = BaseWeaponGameObject.GetComponent<PlayerWeaponAnimationHandler>();
+            PlayerWeaponEventHandler = BaseWeaponGameObject.GetComponent<PlayerWeaponAnimationHandler>();
 
             _attackCounterResetTimer = new Timer(_attackCounterResetCooldown);
         }
@@ -74,13 +81,13 @@ namespace Tomas.Weapons
 
         private void OnEnable()
         {
-            _playerWeaponEventHandler.OnWeaponFinish += WeaponExit;
+            PlayerWeaponEventHandler.OnWeaponFinish += WeaponExit;
             _attackCounterResetTimer.OnTimerDone += ResetWeaponAttackCounter;
         }
 
         private void OnDisable()
         {
-            _playerWeaponEventHandler.OnWeaponFinish -= WeaponExit;
+            PlayerWeaponEventHandler.OnWeaponFinish -= WeaponExit;
             _attackCounterResetTimer.OnTimerDone -= ResetWeaponAttackCounter;
         }
     }
