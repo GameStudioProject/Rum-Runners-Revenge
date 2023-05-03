@@ -1,4 +1,5 @@
 using System;
+using Tomas.Weapons.Components;
 using UnityEngine;
 
 namespace Tomas.Weapons.Components
@@ -39,6 +40,26 @@ namespace Tomas.Weapons.Components
         {
             _playerWeapon.OnWeaponEnter -= WeaponComponentHandleEnter;
             _playerWeapon.OnWeaponExit -= WeaponComponentHandleExit;
+        }
+    }
+
+    public abstract class PlayerWeaponComponent<T1, T2> : PlayerWeaponComponent where T1 : PlayerWeaponComponentData<T2> where T2 : PlayerWeaponAttackData
+    {
+        protected T1 weaponComponentData;
+        protected T2 currentAttackData;
+
+        protected override void WeaponComponentHandleEnter()
+        {
+            base.WeaponComponentHandleEnter();
+
+            currentAttackData = weaponComponentData.WeaponAttackData[_playerWeapon.AttackCounter];
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            weaponComponentData = _playerWeapon.WeaponData.GetData<T1>();
         }
     }
 }

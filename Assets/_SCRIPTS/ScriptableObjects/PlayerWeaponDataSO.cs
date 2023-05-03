@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Tomas.Weapons.Components.ComponentData;
+using Tomas.Weapons.Components;
 using UnityEngine;
 
 namespace Tomas.Weapons

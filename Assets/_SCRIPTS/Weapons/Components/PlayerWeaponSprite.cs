@@ -1,17 +1,15 @@
 using System;
-using Tomas.Weapons.Components.ComponentData;
+using Tomas.Weapons.Components;
 using UnityEngine;
 
 namespace Tomas.Weapons.Components
 {
-    public class PlayerWeaponSprite : PlayerWeaponComponent
+    public class PlayerWeaponSprite : PlayerWeaponComponent<PlayerWeaponSpriteData, PlayerWeaponAttackSprites>
     {
         private SpriteRenderer _baseWeaponSpriteRenderer;
         private SpriteRenderer _weaponSpriteRenderer;
 
         private int _weaponSpriteIndex;
-
-        private PlayerWeaponSpriteData _weaponSpriteData;
 
         protected override void WeaponComponentHandleEnter()
         {
@@ -28,7 +26,7 @@ namespace Tomas.Weapons.Components
                 return;
             }
 
-            var currentAttackSprite = _weaponSpriteData.PlayerAttackData[_playerWeapon.AttackCounter].PlayerSprites;
+            var currentAttackSprite = currentAttackData.PlayerSprites;
 
             if (_weaponSpriteIndex >= currentAttackSprite.Length)
             {
@@ -47,8 +45,6 @@ namespace Tomas.Weapons.Components
 
             _baseWeaponSpriteRenderer = transform.Find("Base").GetComponent<SpriteRenderer>();
             _weaponSpriteRenderer = transform.Find("WeaponSprite").GetComponent<SpriteRenderer>();
-
-            _weaponSpriteData = _playerWeapon.WeaponData.GetData<PlayerWeaponSpriteData>();
 
             // TODO: Fix this when weapon data is created.
             //_baseWeaponSpriteRenderer = _playerWeapon.BaseWeaponGameObject.GetComponent<SpriteRenderer>();

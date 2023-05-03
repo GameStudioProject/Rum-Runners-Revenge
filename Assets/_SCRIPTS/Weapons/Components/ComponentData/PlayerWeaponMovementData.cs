@@ -1,10 +1,10 @@
-using Tomas.Weapons.Components.ComponentData.AttackData;
+using Tomas.Weapons.Components;
 using UnityEngine;
 
-namespace Tomas.Weapons.Components.ComponentData
+namespace Tomas.Weapons.Components
 {
-    public class PlayerWeaponMovementData : PlayerWeaponComponentData
+    public class PlayerWeaponMovementData : PlayerWeaponComponentData<PlayerWeaponAttackMovement>
     {
-        [field: SerializeField] public PlayerWeaponAttackMovement[] AttackMovementData { get; private set; } 
+        
     }
 }

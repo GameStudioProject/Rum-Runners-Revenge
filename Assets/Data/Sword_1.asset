@@ -20,9 +20,9 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 9040973014786375681
-      type: {class: PlayerWeaponSpriteData, ns: Tomas.Weapons.Components.ComponentData, asm: Assembly-CSharp}
+      type: {class: PlayerWeaponSpriteData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
       data:
-        <PlayerAttackData>k__BackingField:
+        <WeaponAttackData>k__BackingField:
         - <PlayerSprites>k__BackingField:
           - {fileID: -1987402590, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
           - {fileID: -351094280, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
@@ -42,12 +42,12 @@ MonoBehaviour:
           - {fileID: 2097261312, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
           - {fileID: -701177856, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
     - rid: 9040973036983681024
-      type: {class: PlayerWeaponMovementData, ns: Tomas.Weapons.Components.ComponentData, asm: Assembly-CSharp}
+      type: {class: PlayerWeaponMovementData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
       data:
-        <AttackMovementData>k__BackingField:
+        <WeaponAttackData>k__BackingField:
         - <PlayerDirection>k__BackingField: {x: 1, y: 0}
-          <PlayerVelocity>k__BackingField: 3
-        - <PlayerDirection>k__BackingField: {x: 1, y: 0}
-          <PlayerVelocity>k__BackingField: 4
-        - <PlayerDirection>k__BackingField: {x: 1, y: 5}
           <PlayerVelocity>k__BackingField: 5
+        - <PlayerDirection>k__BackingField: {x: 1, y: 0}
+          <PlayerVelocity>k__BackingField: 5
+        - <PlayerDirection>k__BackingField: {x: 1, y: 5}
+          <PlayerVelocity>k__BackingField: 10
