@@ -17,10 +17,14 @@ namespace Tomas.Weapons
             return ComponentData.OfType<T>().FirstOrDefault();
         }
 
-        [ContextMenu("Add Weapon Sprite Data")]
-        private void AddWeaponSpriteData() => ComponentData.Add(new PlayerWeaponSpriteData());
-        
-        [ContextMenu("Add Weapon Movement Data")]
-        private void AddMovementData() => ComponentData.Add(new PlayerWeaponMovementData());
+        public void AddData(PlayerWeaponComponentData data)
+        {
+            if (ComponentData.FirstOrDefault(t => t.GetType() == data.GetType()) != null) return;
+            {
+                
+            }
+            
+            ComponentData.Add(data);
+        }
     }
 }
