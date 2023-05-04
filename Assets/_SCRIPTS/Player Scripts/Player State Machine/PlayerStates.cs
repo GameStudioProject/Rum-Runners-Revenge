@@ -7,7 +7,7 @@ public class PlayerStates
     protected Core _core;
     protected CoreAccessComponent<MovementComponent> movementComponent;
     protected CoreAccessComponent<CollisionSenses> collisionSenses;
-    protected CoreAccessComponent<CombatComponent> combatComponent;
+    protected CoreAccessComponent<CoreKnockBackReceiver> combatComponent;
     protected CoreAccessComponent<DeathComponent> deathComponent;
     protected CoreAccessComponent<StatsComponent> statsComponent;
     protected CoreAccessComponent<ParticleManagerComponent> particleManagerComponent;
@@ -34,7 +34,7 @@ public class PlayerStates
         
         movementComponent = new CoreAccessComponent<MovementComponent>(_core);
         collisionSenses = new CoreAccessComponent<CollisionSenses>(_core);
-        combatComponent = new CoreAccessComponent<CombatComponent>(_core);
+        combatComponent = new CoreAccessComponent<CoreKnockBackReceiver>(_core);
         deathComponent = new CoreAccessComponent<DeathComponent>(_core);
         statsComponent = new CoreAccessComponent<StatsComponent>(_core);
         particleManagerComponent = new CoreAccessComponent<ParticleManagerComponent>(_core);

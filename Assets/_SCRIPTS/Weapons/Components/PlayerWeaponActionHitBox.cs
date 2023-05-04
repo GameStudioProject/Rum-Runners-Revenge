@@ -5,7 +5,7 @@ namespace Tomas.Weapons.Components
 {
     public class PlayerWeaponActionHitBox : PlayerWeaponComponent<PlayerWeaponActionHitBoxData, PlayerWeaponAttackActionHitBox>
     {
-        private event Action<Collider2D[]> _hitBoxDetectedCollider2D;
+        public event Action<Collider2D[]> HitBoxDetectedCollider2D;
         
         private CoreAccessComponent<MovementComponent> _coreMovement;
 
@@ -24,12 +24,7 @@ namespace Tomas.Weapons.Components
                 return;
             }
             
-            _hitBoxDetectedCollider2D?.Invoke(_hitBoxDetected);
-
-            foreach (var item in _hitBoxDetected)
-            {
-                Debug.Log(item.name);
-            }
+            HitBoxDetectedCollider2D?.Invoke(_hitBoxDetected);
         }
 
         protected override void Start()

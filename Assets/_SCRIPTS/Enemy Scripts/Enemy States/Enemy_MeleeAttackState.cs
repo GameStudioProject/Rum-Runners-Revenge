@@ -60,11 +60,11 @@ public class Enemy_MeleeAttackState : Enemy_AttackState
                 
             }
 
-            KnockbackInterface knockbackable = collider.GetComponent<KnockbackInterface>();
+            KnockBackInterface knockbackable = collider.GetComponent<KnockBackInterface>();
 
             if (knockbackable != null)
             {
-                knockbackable.Knockback(_enemyMeleeAttackStateData.knockbackAngle, _enemyMeleeAttackStateData.knockbackStrength, MovementComponent.EntityFacingDirection);
+                knockbackable.KnockBack(_enemyMeleeAttackStateData.knockbackAngle, _enemyMeleeAttackStateData.knockbackStrength, MovementComponent.EntityFacingDirection);
             }
         }
     }
