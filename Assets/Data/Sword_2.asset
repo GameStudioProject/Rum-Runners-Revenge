@@ -23,7 +23,7 @@ MonoBehaviour:
     - rid: 9040973014786375682
       type: {class: PlayerWeaponSpriteData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
       data:
-        <WeaponAttackData>k__BackingField:
+        _weaponAttackData:
         - <PlayerSprites>k__BackingField:
           - {fileID: 1718810412, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
           - {fileID: -1464671733, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
@@ -45,17 +45,17 @@ MonoBehaviour:
     - rid: 9040973036983681025
       type: {class: PlayerWeaponMovementData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
       data:
-        <WeaponAttackData>k__BackingField:
+        _weaponAttackData:
         - <PlayerDirection>k__BackingField: {x: 1, y: 0}
-          <PlayerVelocity>k__BackingField: 5
+          <PlayerVelocity>k__BackingField: 3
         - <PlayerDirection>k__BackingField: {x: 1, y: 0}
-          <PlayerVelocity>k__BackingField: 5
+          <PlayerVelocity>k__BackingField: 4
         - <PlayerDirection>k__BackingField: {x: 1, y: 5}
-          <PlayerVelocity>k__BackingField: 10
+          <PlayerVelocity>k__BackingField: 5
     - rid: 9040973036983681031
       type: {class: PlayerWeaponActionHitBoxData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
       data:
-        <WeaponAttackData>k__BackingField:
+        _weaponAttackData:
         - Debug: 0
           <WeaponHitBox>k__BackingField:
             serializedVersion: 2

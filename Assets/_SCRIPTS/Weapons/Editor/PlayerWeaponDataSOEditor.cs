@@ -16,6 +16,9 @@ namespace Tomas.Weapons
 
         private PlayerWeaponDataSO _weaponDataSO;
 
+        private bool showForceUpdateButtons;
+        private bool showWeaponComponentButtons;
+
         private void OnEnable()
         {
             _weaponDataSO = target as PlayerWeaponDataSO;
@@ -25,18 +28,54 @@ namespace Tomas.Weapons
         {
             base.OnInspectorGUI();
 
-            foreach (var dataComponentType in _dataComponentTypes)
+            if (GUILayout.Button("Set Number of Attacks"))
             {
-                if (GUILayout.Button(dataComponentType.Name))
+                foreach (var item in _weaponDataSO.ComponentData)
                 {
-                    var component = Activator.CreateInstance(dataComponentType) as PlayerWeaponComponentData; //use type information stored in type class
+                    item.InitializeWeaponAttackData(_weaponDataSO.NumberOfAttacks);
+                }
+            }
 
-                    if (component == null)
+            showWeaponComponentButtons = EditorGUILayout.Foldout(showWeaponComponentButtons, "Add Weapon Components");
+
+            if (showWeaponComponentButtons)
+            {
+                foreach (var dataComponentType in _dataComponentTypes)
+                {
+                    if (GUILayout.Button(dataComponentType.Name))
                     {
-                        return;
-                    }
+                        var component = Activator.CreateInstance(dataComponentType) as PlayerWeaponComponentData; //use type information stored in type class
+
+                        if (component == null)
+                        {
+                            return;
+                        }
                     
-                    _weaponDataSO.AddData(component);
+                        component.InitializeWeaponAttackData(_weaponDataSO.NumberOfAttacks);
+                    
+                        _weaponDataSO.AddData(component);
+                    }
+                }
+            }
+            
+            showForceUpdateButtons = EditorGUILayout.Foldout(showForceUpdateButtons, "Force Update Buttons");
+
+            if (showForceUpdateButtons)
+            {
+                if (GUILayout.Button("Force Update Weapon Component Names"))
+                {
+                    foreach (var item in _weaponDataSO.ComponentData)
+                    {
+                        item.SetWeaponComponentName();
+                    }
+                }
+            
+                if (GUILayout.Button("Force Update Attack Names"))
+                {
+                    foreach (var item in _weaponDataSO.ComponentData)
+                    {
+                        item.SetAttackDataNames();
+                    }
                 }
             }
         }

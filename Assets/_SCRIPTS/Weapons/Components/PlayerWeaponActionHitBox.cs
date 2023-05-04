@@ -15,7 +15,7 @@ namespace Tomas.Weapons.Components
 
         private void HandleAttackAction()
         {
-            _hitBoxOffset.Set(transform.position.x + (currentAttackData.WeaponHitBox.x * _coreMovement.Component.EntityFacingDirection), transform.position.y + currentAttackData.WeaponHitBox.y);
+            _hitBoxOffset.Set(transform.position.x + (currentAttackData.WeaponHitBox.center.x * _coreMovement.Component.EntityFacingDirection), transform.position.y + currentAttackData.WeaponHitBox.center.y);
 
             _hitBoxDetected = Physics2D.OverlapBoxAll(_hitBoxOffset, currentAttackData.WeaponHitBox.size, 0f, weaponComponentData.WeaponDetectableLayers);
 
