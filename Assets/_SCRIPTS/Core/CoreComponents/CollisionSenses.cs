@@ -87,17 +87,17 @@ public class CollisionSenses : CoreComponent
 
     public bool CheckIfEntityTouchesWall
     {
-        get => Physics2D.Raycast(EntityWallCheck.position, Vector2.right * movementComponent.Component.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
+        get => Physics2D.Raycast(EntityWallCheck.position, Vector2.right * Movement.Component.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
     }
     
     public bool CheckIfEntityTouchesWallBehind
     {
-        get => Physics2D.Raycast(EntityWallCheck.position, Vector2.right * -movementComponent.Component.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
+        get => Physics2D.Raycast(EntityWallCheck.position, Vector2.right * -Movement.Component.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
     }
 
     public bool CheckIfEntityTouchesLedgeHorizontal
     {
-        get => Physics2D.Raycast(EntityLedgeCheckHorizontal.position, Vector2.right * movementComponent.Component.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
+        get => Physics2D.Raycast(EntityLedgeCheckHorizontal.position, Vector2.right * Movement.Component.EntityFacingDirection, _entityWallCheckDistance, _whatIsGround);
     }
 
     public bool CheckIfEntityTouchesLedgeVertical

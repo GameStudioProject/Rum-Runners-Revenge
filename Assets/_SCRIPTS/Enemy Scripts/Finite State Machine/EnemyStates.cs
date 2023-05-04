@@ -8,8 +8,8 @@ public class EnemyStates
     protected EnemyFiniteStateMachine _enemyStateMachine;
     protected EnemyBase _enemyBase;
     protected Core _core;
-    protected CoreAccessComponent<MovementComponent> movementComponent;
-    protected CoreAccessComponent<CollisionSenses> collisionSenses;
+    protected CoreAccessComponent<MovementComponent> Movement;
+    protected CoreAccessComponent<CollisionSenses> CollisionSenses;
 
     public float _stateStartTime { get; protected set; }
 
@@ -21,8 +21,8 @@ public class EnemyStates
         this._enemyStateMachine = _enemyStateMachine;
         this._enemyAnimationBoolName = _enemyAnimationBoolName;
         _core = this._enemyBase.Core;
-        movementComponent = new CoreAccessComponent<MovementComponent>(_core);
-        collisionSenses = new CoreAccessComponent<CollisionSenses>(_core);
+        Movement = new CoreAccessComponent<MovementComponent>(_core);
+        CollisionSenses = new CoreAccessComponent<CollisionSenses>(_core);
     }
 
     public virtual void StateEnter()

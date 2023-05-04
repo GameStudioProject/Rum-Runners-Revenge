@@ -19,9 +19,9 @@ public class PlayerMoveState : PlayerGroundedState
     {
         base.EveryFrameUpdate();
         
-        movementComponent.Component.CheckIfEntityShouldFlip(_xPlayerInput);
+        Movement.Component.CheckIfEntityShouldFlip(_xPlayerInput);
         
-        movementComponent.Component.SetEntityVelocityX(_playerData.playerMovementSpeed * _xPlayerInput);
+        Movement.Component.SetEntityVelocityX(_playerData.playerMovementSpeed * _xPlayerInput);
 
         if (!_isExitingPlayerState)
         {

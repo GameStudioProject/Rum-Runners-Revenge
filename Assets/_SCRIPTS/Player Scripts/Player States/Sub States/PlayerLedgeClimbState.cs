@@ -2,18 +2,6 @@ using UnityEngine;
 
 public class PlayerLedgeClimbState : PlayerStates
 {
-    protected MovementComponent MovementComponent
-    {
-        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
-    }
-    protected CollisionSenses CollisionSenses
-    {
-        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
-    }
-    
-    private MovementComponent _movementComponent;
-    private CollisionSenses _collisionSenses;
-    
     private Vector2 _playerDetectedPosition;
     private Vector2 _cornerPosition;
     private Vector2 _playerStartPosition;
@@ -39,12 +27,12 @@ public class PlayerLedgeClimbState : PlayerStates
     {
         base.StateEnter();
         
-        MovementComponent?.SetEntityVelocityZero();
+        Movement.Component?.SetEntityVelocityZero();
         _player.transform.position = _playerDetectedPosition;
         _cornerPosition = FindCornerPosition();
         
-        _playerStartPosition.Set(_cornerPosition.x - (MovementComponent.EntityFacingDirection * _playerData.playerStartOffset.x), _cornerPosition.y - _playerData.playerStartOffset.y);
-        _playerStopPosition.Set(_cornerPosition.x + (MovementComponent.EntityFacingDirection * _playerData.playerStopOffset.x), _cornerPosition.y + _playerData.playerStopOffset.y);
+        _playerStartPosition.Set(_cornerPosition.x - (Movement.Component.EntityFacingDirection * _playerData.playerStartOffset.x), _cornerPosition.y - _playerData.playerStartOffset.y);
+        _playerStopPosition.Set(_cornerPosition.x + (Movement.Component.EntityFacingDirection * _playerData.playerStopOffset.x), _cornerPosition.y + _playerData.playerStopOffset.y);
 
         _player.transform.position = _playerStartPosition;
     }
@@ -83,12 +71,12 @@ public class PlayerLedgeClimbState : PlayerStates
             _playerYInput = _player.PlayerInputHandler.NormInputY;
             _playerJumpInput = _player.PlayerInputHandler.PlayerJumpInput;
             
-            MovementComponent?.SetEntityVelocityZero();
+            Movement.Component?.SetEntityVelocityZero();
             _player.transform.position = _playerStartPosition;
             
             
 
-            if (_playerXInput == MovementComponent?.EntityFacingDirection && _isPlayerHanging && !_isPlayerClimbing)
+            if (_playerXInput == Movement.Component?.EntityFacingDirection && _isPlayerHanging && !_isPlayerClimbing)
             {
                 CheckForClimbSpace();
                 _isPlayerClimbing = true;
@@ -127,21 +115,21 @@ public class PlayerLedgeClimbState : PlayerStates
     {
         _isPlayerTouchingCeiling =
             Physics2D.Raycast(
-                _cornerPosition + (Vector2.up * 0.015f) + (Vector2.right * MovementComponent.EntityFacingDirection * 0.015f),
-                Vector2.up, _playerData.playerStandHitBoxHeight, CollisionSenses.WhatIsGround);
+                _cornerPosition + (Vector2.up * 0.015f) + (Vector2.right * Movement.Component.EntityFacingDirection * 0.015f),
+                Vector2.up, _playerData.playerStandHitBoxHeight, CollisionSenses.Component.WhatIsGround);
         
         _player.PlayerAnimator.SetBool("isTouchingCeiling", _isPlayerTouchingCeiling);
     }
     
     private Vector2 FindCornerPosition()
     {
-        RaycastHit2D xHit = Physics2D.Raycast(CollisionSenses.EntityWallCheck.position, Vector2.right * MovementComponent.EntityFacingDirection, CollisionSenses.EntityWallCheckDistance, CollisionSenses.WhatIsGround);
+        RaycastHit2D xHit = Physics2D.Raycast(CollisionSenses.Component.EntityWallCheck.position, Vector2.right * Movement.Component.EntityFacingDirection, CollisionSenses.Component.EntityWallCheckDistance, CollisionSenses.Component.WhatIsGround);
         float xDistance = xHit.distance;
-        _velocityWorkspace.Set((xDistance + 0.015f) * MovementComponent.EntityFacingDirection, 0f);
-        RaycastHit2D yHit = Physics2D.Raycast(CollisionSenses.EntityLedgeCheckHorizontal.position + (Vector3)(_velocityWorkspace), Vector2.down, CollisionSenses.EntityLedgeCheckHorizontal.position.y - CollisionSenses.EntityWallCheck.position.y + 0.015f, CollisionSenses.WhatIsGround);
+        _velocityWorkspace.Set((xDistance + 0.015f) * Movement.Component.EntityFacingDirection, 0f);
+        RaycastHit2D yHit = Physics2D.Raycast(CollisionSenses.Component.EntityLedgeCheckHorizontal.position + (Vector3)(_velocityWorkspace), Vector2.down, CollisionSenses.Component.EntityLedgeCheckHorizontal.position.y - CollisionSenses.Component.EntityWallCheck.position.y + 0.015f, CollisionSenses.Component.WhatIsGround);
         float yDistance = yHit.distance;
         
-        _velocityWorkspace.Set(CollisionSenses.EntityWallCheck.position.x + (xDistance * MovementComponent.EntityFacingDirection), CollisionSenses.EntityLedgeCheckHorizontal.position.y - yDistance);
+        _velocityWorkspace.Set(CollisionSenses.Component.EntityWallCheck.position.x + (xDistance * Movement.Component.EntityFacingDirection), CollisionSenses.Component.EntityLedgeCheckHorizontal.position.y - yDistance);
         return _velocityWorkspace;
     }
 }

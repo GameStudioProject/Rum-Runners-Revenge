@@ -22,13 +22,13 @@ public class Enemy_DodgeState : EnemyStates
 
         _isEnemyDodgeOver = false;
 
-        if (collisionSenses.Component.CheckEntityDodgeLandZone)
+        if (CollisionSenses.Component.CheckEntityDodgeLandZone)
         {
-            movementComponent.Component.SetEntityVelocity(_enemyDodgeStateData.enemyDodgeSpeed, _enemyDodgeStateData.enemyDodgeAngle, -movementComponent.Component.EntityFacingDirection);
+            Movement.Component.SetEntityVelocity(_enemyDodgeStateData.enemyDodgeSpeed, _enemyDodgeStateData.enemyDodgeAngle, -Movement.Component.EntityFacingDirection);
         }
         else
         {
-            movementComponent.Component.SetEntityVelocity(_enemyDodgeStateData.enemyDodgeSpeed * _enemyDodgeStateData.enemyDodgeSpeedMultiplier, _enemyDodgeStateData.enemyDodgeAngle, movementComponent.Component.EntityFacingDirection);
+            Movement.Component.SetEntityVelocity(_enemyDodgeStateData.enemyDodgeSpeed * _enemyDodgeStateData.enemyDodgeSpeedMultiplier, _enemyDodgeStateData.enemyDodgeAngle, Movement.Component.EntityFacingDirection);
         }
     }
 
@@ -56,12 +56,12 @@ public class Enemy_DodgeState : EnemyStates
     {
         base.DoEnemyChecks();
 
-        _performCloseRangeAction = collisionSenses.Component.EnemyCheckPlayerInCloseRangeAction();
-        _isPlayerInMaxAgroRange = collisionSenses.Component.EnemyCheckPlayerInMaxAgroRange();
+        _performCloseRangeAction = CollisionSenses.Component.EnemyCheckPlayerInCloseRangeAction();
+        _isPlayerInMaxAgroRange = CollisionSenses.Component.EnemyCheckPlayerInMaxAgroRange();
 
-        if (collisionSenses.Component)
+        if (CollisionSenses.Component)
         {
-            _isEnemyGrounded = collisionSenses.Component.CheckIfEntityGrounded;
+            _isEnemyGrounded = CollisionSenses.Component.CheckIfEntityGrounded;
         }
     }
 }

@@ -42,11 +42,13 @@ public class Core : MonoBehaviour
         }
         
         Debug.LogWarning($"{typeof(CoreT)} not found on {transform.parent.name}");
+        
         return component;
     }
     
     public T GetCoreComponent<T>(ref T value) where T : CoreComponent
     {
+        
         value = GetCoreComponent<T>();
         return value;
     }

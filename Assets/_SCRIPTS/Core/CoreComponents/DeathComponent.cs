@@ -6,24 +6,13 @@ using UnityEngine;
 public class DeathComponent : CoreComponent
 {
     [SerializeField] private GameObject[] deathParticles;
-
-    private ParticleManagerComponent ParticleManagerComponent
-    {
-        get => _particleManagerComponent ??= core.GetCoreComponent<ParticleManagerComponent>();
-    }
-    private ParticleManagerComponent _particleManagerComponent;
-
-    private StatsComponent StatsComponent
-    {
-        get => _statsComponent ??= core.GetCoreComponent<StatsComponent>();
-    }
-    private StatsComponent _statsComponent;
+    
     
     public void Die()
     {
         foreach (var particle in deathParticles)
         {
-            ParticleManagerComponent.SpawnParticles(particle);
+            ParticleManager.Component.SpawnParticles(particle);
         }
         
         core.transform.parent.gameObject.SetActive(false);
@@ -31,11 +20,11 @@ public class DeathComponent : CoreComponent
 
     private void OnEnable()
     {
-        StatsComponent.OnHealthZero += Die;
+        Stats.Component.OnHealthZero += Die;
     }
 
     private void OnDisable()
     {
-        StatsComponent.OnHealthZero -= Die;
+        Stats.Component.OnHealthZero -= Die;
     }
 }

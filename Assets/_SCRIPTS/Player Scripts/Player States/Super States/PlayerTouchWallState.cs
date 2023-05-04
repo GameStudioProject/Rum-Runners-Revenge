@@ -43,7 +43,7 @@ public class PlayerTouchWallState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerIdleState);
         }
-        else if (!_isPlayerTouchingWall || (_playerXInput != movementComponent.Component.EntityFacingDirection && !_playerGrabInput))
+        else if (!_isPlayerTouchingWall || (_playerXInput != Movement.Component.EntityFacingDirection && !_playerGrabInput))
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
         }
@@ -62,11 +62,11 @@ public class PlayerTouchWallState : PlayerStates
     {
         base.PerformPlayerChecks();
 
-        if (collisionSenses.Component)
+        if (CollisionSenses.Component)
         {
-            _isPlayerGrounded = collisionSenses.Component.CheckIfEntityGrounded;
-            _isPlayerTouchingWall = collisionSenses.Component.CheckIfEntityTouchesWall;
-            _isPlayerTouchingLedge = collisionSenses.Component.CheckIfEntityTouchesLedgeHorizontal;
+            _isPlayerGrounded = CollisionSenses.Component.CheckIfEntityGrounded;
+            _isPlayerTouchingWall = CollisionSenses.Component.CheckIfEntityTouchesWall;
+            _isPlayerTouchingLedge = CollisionSenses.Component.CheckIfEntityTouchesLedgeHorizontal;
         }
 
         if (_isPlayerTouchingWall && !_isPlayerTouchingLedge)

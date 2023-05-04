@@ -17,18 +17,18 @@ public class CoreKnockBackReceiver : CoreComponent, KnockBackInterface
 
     public void KnockBack(Vector2 angle, float strength, int direction)
     {
-        movementComponent.Component?.SetEntityVelocity(strength, angle, direction);
-        movementComponent.Component.CanSetEntityVelocity = false;
+        Movement.Component?.SetEntityVelocity(strength, angle, direction);
+        Movement.Component.CanSetEntityVelocity = false;
         _isEntityKnockBackActive = true;
         _knockbackStartTime = Time.time;
     }
 
     private void CheckEntityKnockBack()
     {
-        if (_isEntityKnockBackActive && ((movementComponent.Component?.EntityCurrentVelocity.y <= 0.01f && collisionSenses.Component.CheckIfEntityGrounded) || Time.time >= _knockbackStartTime + _maxKnockBackTime))
+        if (_isEntityKnockBackActive && ((Movement.Component?.EntityCurrentVelocity.y <= 0.01f && CollisionSenses.Component.CheckIfEntityGrounded) || Time.time >= _knockbackStartTime + _maxKnockBackTime))
         {
             _isEntityKnockBackActive = false;
-            movementComponent.Component.CanSetEntityVelocity = true;
+            Movement.Component.CanSetEntityVelocity = true;
         }
     }
 }

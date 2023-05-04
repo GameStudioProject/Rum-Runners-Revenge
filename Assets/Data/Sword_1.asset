@@ -17,6 +17,7 @@ MonoBehaviour:
   - rid: 9040973014786375681
   - rid: 9040973036983681024
   - rid: 9040973057527644160
+  - rid: 9040973062064570368
   references:
     version: 2
     RefIds:
@@ -92,3 +93,14 @@ MonoBehaviour:
         <WeaponDetectableLayers>k__BackingField:
           serializedVersion: 2
           m_Bits: 256
+    - rid: 9040973062064570368
+      type: {class: PlayerWeaponAttackDamageData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: PlayerWeaponAttackDamageData
+        _weaponAttackData:
+        - name: Attack 1
+          <DamageAmount>k__BackingField: 5
+        - name: Attack 2
+          <DamageAmount>k__BackingField: 10
+        - name: Attack 3
+          <DamageAmount>k__BackingField: 15

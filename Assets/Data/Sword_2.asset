@@ -17,26 +17,31 @@ MonoBehaviour:
   - rid: 9040973014786375682
   - rid: 9040973036983681025
   - rid: 9040973036983681031
+  - rid: 9040973062064570369
   references:
     version: 2
     RefIds:
     - rid: 9040973014786375682
       type: {class: PlayerWeaponSpriteData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
       data:
+        name: PlayerWeaponSpriteData
         _weaponAttackData:
-        - <PlayerSprites>k__BackingField:
+        - name: 
+          <PlayerSprites>k__BackingField:
           - {fileID: 1718810412, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
           - {fileID: -1464671733, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
           - {fileID: -908359060, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
           - {fileID: 1244791102, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
           - {fileID: 1904237583, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-        - <PlayerSprites>k__BackingField:
+        - name: 
+          <PlayerSprites>k__BackingField:
           - {fileID: 1691086387, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
           - {fileID: 1716957220, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
           - {fileID: 1731391090, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
           - {fileID: -1385162992, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
           - {fileID: 1658511406, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-        - <PlayerSprites>k__BackingField:
+        - name: 
+          <PlayerSprites>k__BackingField:
           - {fileID: -855543002, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
           - {fileID: -1306746448, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
           - {fileID: 1626021243, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
@@ -45,32 +50,40 @@ MonoBehaviour:
     - rid: 9040973036983681025
       type: {class: PlayerWeaponMovementData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
       data:
+        name: PlayerWeaponMovementData
         _weaponAttackData:
-        - <PlayerDirection>k__BackingField: {x: 1, y: 0}
+        - name: 
+          <PlayerDirection>k__BackingField: {x: 1, y: 0}
           <PlayerVelocity>k__BackingField: 3
-        - <PlayerDirection>k__BackingField: {x: 1, y: 0}
+        - name: 
+          <PlayerDirection>k__BackingField: {x: 1, y: 0}
           <PlayerVelocity>k__BackingField: 4
-        - <PlayerDirection>k__BackingField: {x: 1, y: 5}
+        - name: 
+          <PlayerDirection>k__BackingField: {x: 1, y: 5}
           <PlayerVelocity>k__BackingField: 5
     - rid: 9040973036983681031
       type: {class: PlayerWeaponActionHitBoxData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
       data:
+        name: PlayerWeaponActionHitBoxData
         _weaponAttackData:
-        - Debug: 0
+        - name: 
+          Debug: 0
           <WeaponHitBox>k__BackingField:
             serializedVersion: 2
             x: 0.11
             y: -0.9
             width: 1.94
             height: 1.41
-        - Debug: 0
+        - name: 
+          Debug: 0
           <WeaponHitBox>k__BackingField:
             serializedVersion: 2
             x: 0.11
             y: -0.9
             width: 1.94
             height: 1.41
-        - Debug: 0
+        - name: 
+          Debug: 0
           <WeaponHitBox>k__BackingField:
             serializedVersion: 2
             x: 0
@@ -80,3 +93,14 @@ MonoBehaviour:
         <WeaponDetectableLayers>k__BackingField:
           serializedVersion: 2
           m_Bits: 256
+    - rid: 9040973062064570369
+      type: {class: PlayerWeaponAttackDamageData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: PlayerWeaponAttackDamageData
+        _weaponAttackData:
+        - name: Attack 1
+          <DamageAmount>k__BackingField: 5
+        - name: Attack 2
+          <DamageAmount>k__BackingField: 10
+        - name: Attack 3
+          <DamageAmount>k__BackingField: 15

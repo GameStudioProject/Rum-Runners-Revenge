@@ -5,18 +5,6 @@ using UnityEngine;
 
 public class Enemy_ChargeState : EnemyStates
 {
-    protected MovementComponent MovementComponent
-    {
-        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
-    }
-    protected CollisionSenses CollisionSenses
-    {
-        get => _collisionSenses ??= _core.GetCoreComponent<CollisionSenses>();
-    }
-    
-    private MovementComponent _movementComponent;
-    private CollisionSenses _collisionSenses;
-    
     protected D_EnemyChargeState _enemyChargeStateData;
 
     protected bool _isPlayerInMinAgroRange;
@@ -36,7 +24,7 @@ public class Enemy_ChargeState : EnemyStates
         base.StateEnter();
 
         _isEnemyChargeTimeOver = false;
-        MovementComponent?.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * MovementComponent.EntityFacingDirection);
+        Movement.Component.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * Movement.Component.EntityFacingDirection);
     }
 
     public override void StateExit()
@@ -48,7 +36,7 @@ public class Enemy_ChargeState : EnemyStates
     {
         base.EveryFrameUpdate();
         
-        MovementComponent?.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * MovementComponent.EntityFacingDirection);
+        Movement.Component?.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * Movement.Component.EntityFacingDirection);
 
         if (Time.time >= _stateStartTime + _enemyChargeStateData.enemyChargeTime)
         {
@@ -65,12 +53,12 @@ public class Enemy_ChargeState : EnemyStates
     {
         base.DoEnemyChecks();
 
-        if (CollisionSenses)
+        if (CollisionSenses.Component)
         {
-            _isEnemyDetectingLedge = CollisionSenses.CheckIfEntityTouchesLedgeVertical;
-            _isEnemyDetectingWall = CollisionSenses.CheckIfEntityTouchesWall;
+            _isEnemyDetectingLedge = CollisionSenses.Component.CheckIfEntityTouchesLedgeVertical;
+            _isEnemyDetectingWall = CollisionSenses.Component.CheckIfEntityTouchesWall;
         }
-        _isPlayerInMinAgroRange = CollisionSenses.EnemyCheckPlayerInMinAgroRange();
-        _performEnemyCloseRangeAction = CollisionSenses.EnemyCheckPlayerInCloseRangeAction();
+        _isPlayerInMinAgroRange = CollisionSenses.Component.EnemyCheckPlayerInMinAgroRange();
+        _performEnemyCloseRangeAction = CollisionSenses.Component.EnemyCheckPlayerInCloseRangeAction();
     }
 }

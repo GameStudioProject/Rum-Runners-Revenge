@@ -1343,6 +1343,7 @@ GameObject:
   - component: {fileID: 407360324}
   - component: {fileID: 407360325}
   - component: {fileID: 407360326}
+  - component: {fileID: 407360327}
   m_Layer: 6
   m_Name: Combat
   m_TagString: Player
@@ -1377,8 +1378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebc0b72b914e634da224256961e5d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
-  _maxKnockbackTime: 0.2
+  _maxKnockBackTime: 0.2
 --- !u!61 &407360326
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1405,6 +1405,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.71890545, y: 1.4691172}
   m_EdgeRadius: 0
+--- !u!114 &407360327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407360323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697b511186f24b2ea987ea52e7e030f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
 --- !u!1 &438435855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,6 +2257,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1006962070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 324145399902446098, guid: c5e142efa98ce1b44b56a990f2de1eef, type: 3}
+  m_PrefabInstance: {fileID: 3511789213018114240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1010674909
 GameObject:
   m_ObjectHideFlags: 0
@@ -77057,6 +77075,7 @@ GameObject:
   - component: {fileID: 1748238952}
   - component: {fileID: 1748238953}
   - component: {fileID: 1748238954}
+  - component: {fileID: 1748238955}
   m_Layer: 8
   m_Name: Combat
   m_TagString: Untagged
@@ -77091,8 +77110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebc0b72b914e634da224256961e5d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
-  _maxKnockbackTime: 0.2
+  _maxKnockBackTime: 0.2
 --- !u!61 &1748238954
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -77119,6 +77137,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6272278, y: 1.553834}
   m_EdgeRadius: 0
+--- !u!114 &1748238955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748238951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697b511186f24b2ea987ea52e7e030f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
 --- !u!1 &1755150550
 GameObject:
   m_ObjectHideFlags: 0
@@ -77188,6 +77219,11 @@ MonoBehaviour:
   _whatisGrappleble:
     serializedVersion: 2
     m_Bits: 4096
+--- !u!1 &1757190916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 324145399902446098, guid: c5e142efa98ce1b44b56a990f2de1eef, type: 3}
+  m_PrefabInstance: {fileID: 8824475306204566480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1759090934
 GameObject:
   m_ObjectHideFlags: 0
@@ -84857,6 +84893,7 @@ GameObject:
   - component: {fileID: 1805676968}
   - component: {fileID: 1805676970}
   - component: {fileID: 1805676969}
+  - component: {fileID: 1805676971}
   m_Layer: 8
   m_Name: Combat
   m_TagString: Untagged
@@ -84917,8 +84954,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebc0b72b914e634da224256961e5d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxKnockBackTime: 0.2
+--- !u!114 &1805676971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805676967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697b511186f24b2ea987ea52e7e030f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
-  _maxKnockbackTime: 0.2
 --- !u!1 &1875214309
 GameObject:
   m_ObjectHideFlags: 0
@@ -86409,7 +86458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f143286726964f6da424e001006936ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxEntityHealth: 100
+  _maxEntityHealth: 50
   healthbar: {fileID: 0}
 --- !u!1 &2100456523
 GameObject:
@@ -86598,6 +86647,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6863215350103278290, guid: c5e142efa98ce1b44b56a990f2de1eef, type: 3}
   m_PrefabInstance: {fileID: 3511789213018114240}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3511789213018114246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006962070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d061fa3ab33412d8a39ed4367d65cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &5724095938014424416
 Camera:
   m_ObjectHideFlags: 0
@@ -86774,3 +86835,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6863215350103278290, guid: c5e142efa98ce1b44b56a990f2de1eef, type: 3}
   m_PrefabInstance: {fileID: 8824475306204566480}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8824475306204566486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757190916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d061fa3ab33412d8a39ed4367d65cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

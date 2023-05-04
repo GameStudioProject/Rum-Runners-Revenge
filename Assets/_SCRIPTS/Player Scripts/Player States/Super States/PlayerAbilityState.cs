@@ -31,7 +31,7 @@ public class PlayerAbilityState : PlayerStates
 
         if (_isPlayerAbilityDone)
         {
-            if (_isPlayerGrounded && movementComponent.Component.EntityCurrentVelocity.y < 0.01f)
+            if (_isPlayerGrounded && Movement.Component.EntityCurrentVelocity.y < 0.01f)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerIdleState);
             }
@@ -51,9 +51,9 @@ public class PlayerAbilityState : PlayerStates
     {
         base.PerformPlayerChecks();
 
-        if (collisionSenses.Component)
+        if (CollisionSenses.Component)
         {
-            _isPlayerGrounded = collisionSenses.Component.CheckIfEntityGrounded;
+            _isPlayerGrounded = CollisionSenses.Component.CheckIfEntityGrounded;
             
         }
     }

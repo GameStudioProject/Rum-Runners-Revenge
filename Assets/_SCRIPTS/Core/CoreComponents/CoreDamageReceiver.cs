@@ -9,8 +9,8 @@ namespace Tomas._SCRIPTS.Core.CoreComponents
         public void Damage(float _damageAmount)
         {
             Debug.Log(core.transform.parent.name + " Damaged! UWU");
-            statsComponent.Component?.DecreaseHealth(_damageAmount);
-            particleManagerComponent?.Component.SpawnParticles(_damageParticles);
+            Stats.Component?.DecreaseHealth(_damageAmount);
+            ParticleManager?.Component.SpawnParticles(_damageParticles);
         }
     }
 }

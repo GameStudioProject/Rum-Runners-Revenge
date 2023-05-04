@@ -30,10 +30,10 @@ public class PlayerGrappleHookState : PlayerAbilityState
         _grappleLineRenderer = _player.GetComponent<LineRenderer>();
         _rigidbody = _player.GetComponent<Rigidbody2D>();
         
-        _rigidbody.velocity = movementComponent.Component.EntityCurrentVelocity;
+        _rigidbody.velocity = Movement.Component.EntityCurrentVelocity;
         
         
-        StartGrappleHook(collisionSenses.Component.CheckForGrappleble);
+        StartGrappleHook(CollisionSenses.Component.CheckForGrappleble);
 
     }
 
@@ -41,7 +41,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
     {
         base.StateExit();
         
-        _rigidbody.velocity = movementComponent.Component.EntityCurrentVelocity.normalized * _playerData.playerGrappleExitBoost;
+        _rigidbody.velocity = Movement.Component.EntityCurrentVelocity.normalized * _playerData.playerGrappleExitBoost;
     }
 
     public override void EveryFrameUpdate()
@@ -67,7 +67,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
                 
                 _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;
 
-                movementComponent.Component.SetEntityVelocity(_grappleDirection * _playerData.playerGrappleSpeed);
+                Movement.Component.SetEntityVelocity(_grappleDirection * _playerData.playerGrappleSpeed);
                 
                 float movementAmount = _playerData.playerGrappleSpeed * Time.deltaTime;
                 Vector2 newPosition = Vector2.MoveTowards(_player.transform.position, _playerGrappleTarget, movementAmount);
@@ -102,7 +102,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
 
     public void StartGrappleHook(Collider2D[] hitColliders)
     {
-        movementComponent.Component.SetEntityVelocityZero();
+        Movement.Component.SetEntityVelocityZero();
         if (hitColliders.Length == 0) return;
 
         float closestDistance = float.MaxValue;
@@ -123,9 +123,9 @@ public class PlayerGrappleHookState : PlayerAbilityState
         _playerGrappleTarget = closestPoint;
         _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;
 
-        if (_grappleDirection.x * movementComponent.Component.EntityFacingDirection < 0)
+        if (_grappleDirection.x * Movement.Component.EntityFacingDirection < 0)
         {
-            movementComponent.Component.EntityFlip();
+            Movement.Component.EntityFlip();
         }
     }
 

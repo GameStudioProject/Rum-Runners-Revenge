@@ -25,7 +25,7 @@ public class Enemy_IdleState : EnemyStates
     {
         base.StateEnter();
         
-        movementComponent.Component.SetEntityVelocityX(0f);
+        Movement.Component.SetEntityVelocityX(0f);
         _isEnemyIdleTimeOver = false;
         
         SetEnemyRandomIdleTime();
@@ -37,7 +37,7 @@ public class Enemy_IdleState : EnemyStates
 
         if (_enemyFlipAfterIdle)
         {
-            movementComponent.Component.EntityFlip();
+            Movement.Component.EntityFlip();
         }
     }
 
@@ -45,7 +45,7 @@ public class Enemy_IdleState : EnemyStates
     {
         base.EveryFrameUpdate();
         
-        movementComponent.Component.SetEntityVelocityX(0f);
+        Movement.Component.SetEntityVelocityX(0f);
 
         if (Time.time >= _stateStartTime + _enemyIdleTime)
         {
@@ -62,7 +62,7 @@ public class Enemy_IdleState : EnemyStates
     {
         base.DoEnemyChecks();
         
-        _isPlayerInMinAgroRange = collisionSenses.Component.EnemyCheckPlayerInMinAgroRange();
+        _isPlayerInMinAgroRange = CollisionSenses.Component.EnemyCheckPlayerInMinAgroRange();
     }
 
     public void SetEnemyFlipAfterIdle(bool flip)

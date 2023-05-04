@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class Enemy_MeleeAttackState : Enemy_AttackState
 {
-    protected MovementComponent MovementComponent
-    {
-        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
-    }
-
-    private MovementComponent _movementComponent;
-    
-    
     protected D_EnemyMeleeAttackState _enemyMeleeAttackStateData;
 
     public Enemy_MeleeAttackState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, Transform _enemyAttackPosition, D_EnemyMeleeAttackState _enemyMeleeAttackStateData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyAttackPosition)
@@ -64,7 +56,7 @@ public class Enemy_MeleeAttackState : Enemy_AttackState
 
             if (knockbackable != null)
             {
-                knockbackable.KnockBack(_enemyMeleeAttackStateData.knockbackAngle, _enemyMeleeAttackStateData.knockbackStrength, MovementComponent.EntityFacingDirection);
+                knockbackable.KnockBack(_enemyMeleeAttackStateData.knockbackAngle, _enemyMeleeAttackStateData.knockbackStrength, Movement.Component.EntityFacingDirection);
             }
         }
     }
