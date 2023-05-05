@@ -37,12 +37,23 @@ public class E1_SpiderBoar : EnemyBase
         spiderBoar_MeleeAttackState = new E1_SpiderBoar_MeleeAttackState(this, EnemyStateMachine, "meleeAttack", _enemyMeleeAttackPosition, _enemyMeleeAttackStateData, this);
         spiderBoar_StunState = new E1_SpiderBoar_StunState(this, EnemyStateMachine, "stun", _enemyStunStateData, this);
         spiderBoar_DeadState = new E1_SpiderBoar_DeadState(this, EnemyStateMachine, "dead", _enemyDeadStateData, this);
-        
+
+        coreStats.EntityPoise.OnCurrentStatValueZero += HandleEnemyPoiseZero;
+    }
+
+    private void HandleEnemyPoiseZero()
+    {
+        EnemyStateMachine.ChangeEnemyState(spiderBoar_StunState);
     }
 
     private void Start()
     {
         EnemyStateMachine.InitializeState(spiderBoar_MoveState);
+    }
+
+    private void OnDestroy()
+    {
+        coreStats.EntityPoise.OnCurrentStatValueZero -= HandleEnemyPoiseZero;
     }
 
     public override void OnDrawGizmos()

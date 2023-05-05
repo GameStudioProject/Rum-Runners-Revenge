@@ -1,4 +1,5 @@
 using System;
+using Tomas.Core;
 using Tomas.Weapons;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -34,7 +35,6 @@ public class PlayerBase : MonoBehaviour
     public Core Core { get; private set; }
 
     private StatsComponent _statsComponent;
-
     public Animator PlayerAnimator { get; private set; }
     public PlayerInputHandler PlayerInputHandler { get; private set; }
     public Rigidbody2D PlayerRB { get; private set; }
@@ -91,7 +91,7 @@ public class PlayerBase : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
         PlayerHitBox = GetComponent<BoxCollider2D>();
-        healthBar.SetMaxHealth(_statsComponent._maxEntityHealth);
+        healthBar.SetMaxHealth(_statsComponent.EntityHealth.StatMaxValue);
 
         PlayerStateMachine.InitializeStateMachine(PlayerIdleState);
     }
@@ -100,7 +100,7 @@ public class PlayerBase : MonoBehaviour
     {
         Core.EveryFrameUpdate();
         PlayerStateMachine.PlayerCurrentState.EveryFrameUpdate();
-        healthBar.SetHealth(_statsComponent._currentEntityHealth);
+        healthBar.SetHealth(_statsComponent.EntityHealth.StatCurrentValue);
     }
 
     private void FixedUpdate()

@@ -5,51 +5,55 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using System.Linq;
 
-public class Core : MonoBehaviour
+namespace Tomas.Core
 {
-    private List<CoreComponent> _coreComponentsList = new List<CoreComponent>();
 
-    public void EveryFrameUpdate()
+    public class Core : MonoBehaviour
     {
-        foreach (CoreComponent _componentList in _coreComponentsList)
+        private List<CoreComponent> _coreComponentsList = new List<CoreComponent>();
+
+        public void EveryFrameUpdate()
         {
-            _componentList.LogicUpdate();
+            foreach (CoreComponent _componentList in _coreComponentsList)
+            {
+                _componentList.LogicUpdate();
+            }
         }
-    }
 
-    public void AddCoreComponent(CoreComponent coreComponent)
-    {
-        if (!_coreComponentsList.Contains(coreComponent))
+        public void AddCoreComponent(CoreComponent coreComponent)
         {
-            _coreComponentsList.Add(coreComponent);
+            if (!_coreComponentsList.Contains(coreComponent))
+            {
+                _coreComponentsList.Add(coreComponent);
+            }
         }
-    }
 
-    public CoreT GetCoreComponent<CoreT>() where CoreT : CoreComponent
-    {
-        var component = _coreComponentsList.OfType<CoreT>().FirstOrDefault();
-
-        if (component)
+        public CoreT GetCoreComponent<CoreT>() where CoreT : CoreComponent
         {
+            var component = _coreComponentsList.OfType<CoreT>().FirstOrDefault();
+
+            if (component)
+            {
+                return component;
+            }
+
+            component = GetComponentInChildren<CoreT>();
+
+            if (component)
+            {
+                return component;
+            }
+
+            Debug.LogWarning($"{typeof(CoreT)} not found on {transform.parent.name}");
+
             return component;
         }
 
-        component = GetComponentInChildren<CoreT>();
-
-        if (component)
+        public T GetCoreComponent<T>(ref T value) where T : CoreComponent
         {
-            return component;
+
+            value = GetCoreComponent<T>();
+            return value;
         }
-        
-        Debug.LogWarning($"{typeof(CoreT)} not found on {transform.parent.name}");
-        
-        return component;
-    }
-    
-    public T GetCoreComponent<T>(ref T value) where T : CoreComponent
-    {
-        
-        value = GetCoreComponent<T>();
-        return value;
     }
 }

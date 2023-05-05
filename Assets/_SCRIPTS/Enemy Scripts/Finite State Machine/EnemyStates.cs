@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tomas.Core;
 using UnityEngine;
 
 public class EnemyStates

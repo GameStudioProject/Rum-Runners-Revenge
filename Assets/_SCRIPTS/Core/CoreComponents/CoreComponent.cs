@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tomas.Core;
 using UnityEngine;
 
 public class CoreComponent : MonoBehaviour, LogicUpdateInterface

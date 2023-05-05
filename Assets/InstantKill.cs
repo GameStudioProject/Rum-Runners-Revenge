@@ -16,7 +16,7 @@ namespace Tomas
             
             if (statsComponent == null || damageInterface == null) return;
 
-            damageInterface.Damage(statsComponent._maxEntityHealth);
+            damageInterface.Damage(statsComponent.EntityHealth.StatMaxValue);
         }
     }
 }

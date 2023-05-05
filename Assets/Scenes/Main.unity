@@ -598,8 +598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f143286726964f6da424e001006936ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxEntityHealth: 50
-  healthbar: {fileID: 0}
+  <EntityHealth>k__BackingField:
+    <StatMaxValue>k__BackingField: 0
 --- !u!1 &192941326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,7 +1536,7 @@ Camera:
   far clip plane: 500
   field of view: 60
   orthographic: 1
-  orthographic size: 7.3125
+  orthographic size: 7.4999995
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1952,9 +1952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c72ca04eda1ea4d8ffc5206fcb9de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathParticles:
-  - {fileID: 5096148057906189823, guid: 4a122dcc68153794295f6953dd91521e, type: 3}
-  - {fileID: 1962614393226834858, guid: 3d13ef1f52d189642930444f906fc622, type: 3}
+  _deathParticles: []
 --- !u!1 &633152060
 GameObject:
   m_ObjectHideFlags: 0
@@ -76499,7 +76497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c72ca04eda1ea4d8ffc5206fcb9de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathParticles:
+  _deathParticles:
   - {fileID: 5096148057906189823, guid: 4a122dcc68153794295f6953dd91521e, type: 3}
   - {fileID: 1962614393226834858, guid: 3d13ef1f52d189642930444f906fc622, type: 3}
 --- !u!1 &1435141184
@@ -86126,7 +86124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c72ca04eda1ea4d8ffc5206fcb9de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathParticles:
+  _deathParticles:
   - {fileID: 5096148057906189823, guid: 4a122dcc68153794295f6953dd91521e, type: 3}
   - {fileID: 1962614393226834858, guid: 3d13ef1f52d189642930444f906fc622, type: 3}
 --- !u!1 &2036913549
@@ -86448,8 +86446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f143286726964f6da424e001006936ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxEntityHealth: 50
-  healthbar: {fileID: 0}
+  <EntityHealth>k__BackingField:
+    <StatMaxValue>k__BackingField: 50
 --- !u!1 &2100456523
 GameObject:
   m_ObjectHideFlags: 0
@@ -86494,8 +86492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f143286726964f6da424e001006936ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxEntityHealth: 100
-  healthbar: {fileID: 320541216}
+  <EntityHealth>k__BackingField:
+    <StatMaxValue>k__BackingField: 50
 --- !u!1 &2104081013
 GameObject:
   m_ObjectHideFlags: 0

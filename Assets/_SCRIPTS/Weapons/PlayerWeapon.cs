@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 using Unity.VisualScripting;
 using Timer = Tomas.Utilities.Timer;
+using Tomas.Core;
+using Tomas.Weapons;
 
 
-namespace Tomas.Weapons
-{
-    public class PlayerWeapon : MonoBehaviour
+public class PlayerWeapon : MonoBehaviour
     {
         
         [SerializeField] private float _attackCounterResetCooldown;
@@ -99,4 +99,3 @@ namespace Tomas.Weapons
             _attackCounterResetTimer.OnTimerDone -= ResetWeaponAttackCounter;
         }
     }
-}

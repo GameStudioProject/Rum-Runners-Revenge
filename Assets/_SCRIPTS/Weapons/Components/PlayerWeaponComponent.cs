@@ -1,9 +1,9 @@
 using System;
+using Tomas.Core;
+using Tomas.Weapons;
 using Tomas.Weapons.Components;
 using UnityEngine;
 
-namespace Tomas.Weapons.Components
-{
     public abstract class PlayerWeaponComponent : MonoBehaviour //can't attach
     {
         protected PlayerWeapon _playerWeapon;
@@ -67,4 +67,3 @@ namespace Tomas.Weapons.Components
             weaponComponentData = _playerWeapon.WeaponData.GetData<T1>();
         }
     }
-}

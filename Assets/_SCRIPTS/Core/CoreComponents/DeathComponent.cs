@@ -5,26 +5,34 @@ using UnityEngine;
 
 public class DeathComponent : CoreComponent
 {
-    [SerializeField] private GameObject[] deathParticles;
-    
+    [SerializeField] private GameObject[] _deathParticles;
+
+    private HealthBarScript _healthBar;
     
     public void Die()
     {
-        foreach (var particle in deathParticles)
+        foreach (var particle in _deathParticles)
         {
             coreParticleManager.SpawnParticles(particle);
         }
+        StartCoroutine(DeathWait());
         
+        _healthBar.gameObject.SetActive(false);
+    }
+
+    private IEnumerator DeathWait()
+    {
+        yield return new WaitForFixedUpdate();
         core.transform.parent.gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
-        coreStats.OnHealthZero += Die;
+        coreStats.EntityHealth.OnCurrentStatValueZero += Die;
     }
 
     private void OnDisable()
     {
-        coreStats.OnHealthZero -= Die;
+        coreStats.EntityHealth.OnCurrentStatValueZero -= Die;
     }
 }

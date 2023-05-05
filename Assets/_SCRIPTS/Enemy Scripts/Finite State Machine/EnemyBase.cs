@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tomas.Core;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -30,11 +31,15 @@ public class EnemyBase : MonoBehaviour
     protected bool _isEnemyStunned;
     protected bool _isEnemyDead;
 
+    protected StatsComponent coreStats;
+
     public virtual void Awake()
     {
         Core = GetComponentInChildren<Core>();
+        
         coreMovement = Core.GetCoreComponent<MovementComponent>();
         coreCollisionSenses = Core.GetCoreComponent<CollisionSenses>();
+        coreStats = Core.GetCoreComponent<StatsComponent>();
         
         coreCollisionSenses.EnemyBase = this;
         

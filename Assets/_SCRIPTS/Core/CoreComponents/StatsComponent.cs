@@ -1,42 +1,27 @@
 using System;
+using Tomas.Core.CoreStatsSystem;
 using UnityEngine;
 
 public class StatsComponent : CoreComponent
 {
-    public event Action OnHealthZero;
+    [field: SerializeField] public CoreStatSystem EntityHealth { get; private set; }
+    [field: SerializeField] public CoreStatSystem EntityPoise { get; private set; }
 
-    [SerializeField] public float _maxEntityHealth;
-    public float _currentEntityHealth { get; private set; }
-    public HealthBarScript healthbar;
-
+    [SerializeField] private float _entityPoiseRecoveryRate;
+    
     protected override void Awake()
     {
         base.Awake();
-
-        _currentEntityHealth = _maxEntityHealth;
+        
+        EntityHealth.StatInit();
+        EntityPoise.StatInit();
     }
 
-    public void DecreaseHealth(float decreaseAmount)
+    private void Update()
     {
-        _currentEntityHealth -= decreaseAmount;
-
-        if (_currentEntityHealth <= 0)
-        {
-            _currentEntityHealth = 0;
-
-            if (healthbar != null)
-            {
-                healthbar.SetHealth(_currentEntityHealth);
-            }
-            
-            OnHealthZero?.Invoke();
-            
-            Debug.Log("Health is zero, u ded bich");
-        }
-    }
-
-    public void IncreaseHealth(float increaseAmount)
-    {
-        _currentEntityHealth = Mathf.Clamp(_currentEntityHealth + increaseAmount, 0, _maxEntityHealth);
+        if (EntityPoise.StatCurrentValue.Equals(EntityPoise.StatMaxValue))
+            return;
+        
+        EntityPoise.IncreaseStat(_entityPoiseRecoveryRate * Time.deltaTime);
     }
 }
