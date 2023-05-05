@@ -24,7 +24,7 @@ public class Enemy_ChargeState : EnemyStates
         base.StateEnter();
 
         _isEnemyChargeTimeOver = false;
-        Movement.Component.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * Movement.Component.EntityFacingDirection);
+        coreMovement.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * coreMovement.EntityFacingDirection);
     }
 
     public override void StateExit()
@@ -36,7 +36,7 @@ public class Enemy_ChargeState : EnemyStates
     {
         base.EveryFrameUpdate();
         
-        Movement.Component?.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * Movement.Component.EntityFacingDirection);
+        coreMovement?.SetEntityVelocityX(_enemyChargeStateData.enemyChargeSpeed * coreMovement.EntityFacingDirection);
 
         if (Time.time >= _stateStartTime + _enemyChargeStateData.enemyChargeTime)
         {
@@ -53,12 +53,12 @@ public class Enemy_ChargeState : EnemyStates
     {
         base.DoEnemyChecks();
 
-        if (CollisionSenses.Component)
+        if (coreCollisionSenses)
         {
-            _isEnemyDetectingLedge = CollisionSenses.Component.CheckIfEntityTouchesLedgeVertical;
-            _isEnemyDetectingWall = CollisionSenses.Component.CheckIfEntityTouchesWall;
+            _isEnemyDetectingLedge = coreCollisionSenses.CheckIfEntityTouchesLedgeVertical;
+            _isEnemyDetectingWall = coreCollisionSenses.CheckIfEntityTouchesWall;
         }
-        _isPlayerInMinAgroRange = CollisionSenses.Component.EnemyCheckPlayerInMinAgroRange();
-        _performEnemyCloseRangeAction = CollisionSenses.Component.EnemyCheckPlayerInCloseRangeAction();
+        _isPlayerInMinAgroRange = coreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
+        _performEnemyCloseRangeAction = coreCollisionSenses.EnemyCheckPlayerInCloseRangeAction();
     }
 }

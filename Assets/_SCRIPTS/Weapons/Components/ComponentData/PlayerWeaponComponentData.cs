@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Tomas.Weapons.Components
 {
     [Serializable]
-    public class PlayerWeaponComponentData
+    public abstract class PlayerWeaponComponentData
     {
         [SerializeField, HideInInspector] private string name;
         
@@ -13,9 +13,12 @@ namespace Tomas.Weapons.Components
         public PlayerWeaponComponentData()
         {
             SetWeaponComponentName();
+            SetWeaponComponentDependency();
         }
 
         public void SetWeaponComponentName() => name = GetType().Name;
+
+        protected abstract void SetWeaponComponentDependency();
 
         public virtual void SetAttackDataNames()
         {
@@ -29,7 +32,7 @@ namespace Tomas.Weapons.Components
     }
     
     [Serializable]
-    public class PlayerWeaponComponentData<T> : PlayerWeaponComponentData where T : PlayerWeaponAttackData
+    public abstract class PlayerWeaponComponentData<T> : PlayerWeaponComponentData where T : PlayerWeaponAttackData
     {
         [SerializeField] private T[] _weaponAttackData;
         

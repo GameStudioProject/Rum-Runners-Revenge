@@ -7,8 +7,8 @@ using Random = UnityEngine.Random;
 
 public class EnemyBase : MonoBehaviour
 {
-    protected CoreAccessComponent<MovementComponent> movementComponent;
-    protected CoreAccessComponent<CollisionSenses> collisionSenses;
+    protected MovementComponent coreMovement;
+    protected CollisionSenses coreCollisionSenses;
     
     public EnemyFiniteStateMachine EnemyStateMachine;
     
@@ -33,10 +33,10 @@ public class EnemyBase : MonoBehaviour
     public virtual void Awake()
     {
         Core = GetComponentInChildren<Core>();
-        movementComponent = new CoreAccessComponent<MovementComponent>(Core);
-        collisionSenses = new CoreAccessComponent<CollisionSenses>(Core);
+        coreMovement = Core.GetCoreComponent<MovementComponent>();
+        coreCollisionSenses = Core.GetCoreComponent<CollisionSenses>();
         
-        collisionSenses.Component.EnemyBase = this;
+        coreCollisionSenses.EnemyBase = this;
         
         _enemyCurrentHealth = enemyData.maxHealth;
         _enemyCurrentStunResistance = enemyData.enemyStunResistance;
@@ -53,7 +53,7 @@ public class EnemyBase : MonoBehaviour
         
         EnemyStateMachine.CurrentEnemyState.EveryFrameUpdate();
         
-        EnemyAnimator.SetFloat("yVelocity", movementComponent.Component.Rigidbody.velocity.y);
+        EnemyAnimator.SetFloat("yVelocity", coreMovement.Rigidbody.velocity.y);
 
         if (Time.time >= _lastDamageTime + enemyData.enemyStunRecoveryTime)
         {
@@ -76,12 +76,12 @@ public class EnemyBase : MonoBehaviour
     {
         if (Core != null)
         {
-            Gizmos.DrawLine(collisionSenses.Component.EntityWallCheck.position, collisionSenses.Component.EntityWallCheck.position + (Vector3)(Vector2.right * movementComponent.Component.EntityFacingDirection * enemyData.wallCheckDistance));
-            Gizmos.DrawLine(collisionSenses.Component.EntityLedgeCheckVertical.position, collisionSenses.Component.EntityLedgeCheckVertical.position + (Vector3)(Vector2.down * enemyData.ledgeCheckDistance));
+            Gizmos.DrawLine(coreCollisionSenses.EntityWallCheck.position, coreCollisionSenses.EntityWallCheck.position + (Vector3)(Vector2.right * coreMovement.EntityFacingDirection * enemyData.wallCheckDistance));
+            Gizmos.DrawLine(coreCollisionSenses.EntityLedgeCheckVertical.position, coreCollisionSenses.EntityLedgeCheckVertical.position + (Vector3)(Vector2.down * enemyData.ledgeCheckDistance));
         
-            Gizmos.DrawWireSphere(collisionSenses.Component.EntityPlayerCheck.position + (Vector3)(Vector2.right * movementComponent.Component.EntityFacingDirection * enemyData.enemyCloseRangeActionDistance), 0.2f);
-            Gizmos.DrawWireSphere(collisionSenses.Component.EntityPlayerCheck.position + (Vector3)(Vector2.right * movementComponent.Component.EntityFacingDirection * enemyData.enemyMinAgroDistance), 0.2f);
-            Gizmos.DrawWireSphere(collisionSenses.Component.EntityPlayerCheck.position + (Vector3)(Vector2.right * movementComponent.Component.EntityFacingDirection *enemyData.enemyMaxAgroDistance), 0.2f);
+            Gizmos.DrawWireSphere(coreCollisionSenses.EntityPlayerCheck.position + (Vector3)(Vector2.right * coreMovement.EntityFacingDirection * enemyData.enemyCloseRangeActionDistance), 0.2f);
+            Gizmos.DrawWireSphere(coreCollisionSenses.EntityPlayerCheck.position + (Vector3)(Vector2.right * coreMovement.EntityFacingDirection * enemyData.enemyMinAgroDistance), 0.2f);
+            Gizmos.DrawWireSphere(coreCollisionSenses.EntityPlayerCheck.position + (Vector3)(Vector2.right * coreMovement.EntityFacingDirection *enemyData.enemyMaxAgroDistance), 0.2f);
         }
         
     }

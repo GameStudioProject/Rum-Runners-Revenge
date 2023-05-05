@@ -30,7 +30,7 @@ public class Enemy_LookForPlayerState : EnemyStates
         _lastEnemyTurnTime = _stateStartTime;
         _amountOfEnemyTurnsDone = 0;
         
-        Movement.Component.SetEntityVelocityX(0f);
+        coreMovement.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()
@@ -42,18 +42,18 @@ public class Enemy_LookForPlayerState : EnemyStates
     {
         base.EveryFrameUpdate();
         
-        Movement.Component.SetEntityVelocityX(0f);
+        coreMovement.SetEntityVelocityX(0f);
 
         if (_turnEnemyImmediately)
         {
-            Movement.Component.EntityFlip();
+            coreMovement.EntityFlip();
             _lastEnemyTurnTime = Time.time;
             _amountOfEnemyTurnsDone++;
             _turnEnemyImmediately = false;
         }
         else if (Time.time >= _lastEnemyTurnTime + _enemyLookForPlayerStateData.enemyTimeBetweenTurns && !_isAllEnemyTurnsDone)
         {
-            Movement.Component.EntityFlip();
+            coreMovement.EntityFlip();
             _lastEnemyTurnTime = Time.time;
             _amountOfEnemyTurnsDone++;
         }
@@ -78,7 +78,7 @@ public class Enemy_LookForPlayerState : EnemyStates
     {
         base.DoEnemyChecks();
 
-        _isPlayerInMinAgroRange = CollisionSenses.Component.EnemyCheckPlayerInMinAgroRange();
+        _isPlayerInMinAgroRange = coreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
     }
 
     public void TurnEnemyImmediately(bool flip)

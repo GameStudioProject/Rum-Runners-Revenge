@@ -29,8 +29,8 @@ public class PlayerCrouchMoveState : PlayerGroundedState
 
         if (!_isExitingPlayerState)
         {
-            Movement.Component.SetEntityVelocityX(_playerData.playerCrouchMoveSpeed * Movement.Component.EntityFacingDirection);
-            Movement.Component.CheckIfEntityShouldFlip(_xPlayerInput);
+            coreMovement.SetEntityVelocityX(_playerData.playerCrouchMoveSpeed * coreMovement.EntityFacingDirection);
+            coreMovement.CheckIfEntityShouldFlip(_xPlayerInput);
             
             if (_xPlayerInput == 0)
             {

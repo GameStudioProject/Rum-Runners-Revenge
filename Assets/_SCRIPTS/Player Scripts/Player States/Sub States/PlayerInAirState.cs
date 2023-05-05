@@ -70,7 +70,7 @@ public class PlayerInAirState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerSecondaryAttackState);
         }
-        else if (_isPlayerGrounded && Movement.Component?.EntityCurrentVelocity.y < 0.01f)
+        else if (_isPlayerGrounded && coreMovement?.EntityCurrentVelocity.y < 0.01f)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerLandState);
         }
@@ -81,7 +81,7 @@ public class PlayerInAirState : PlayerStates
         else if (_playerJumpInput && (_isPlayerTouchingWall || _isPlayerTouchingWallBehind || _playerWallJumpCoyoteTime))
         {
             StopWallJumpCoyoteTime();
-            _isPlayerTouchingWall = CollisionSenses.Component.CheckIfEntityTouchesWall;
+            _isPlayerTouchingWall = coreCollisionSenses.CheckIfEntityTouchesWall;
             _player.PlayerWallJumpState.FindWallJumpDirection(_isPlayerTouchingWall);
             _playerStateMachine.ChangePlayerState(_player.PlayerWallJumpState);
         }
@@ -93,7 +93,7 @@ public class PlayerInAirState : PlayerStates
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerWallGrabState);
         }
-        else if (_isPlayerTouchingWall && _playerXInput == Movement.Component?.EntityFacingDirection && Movement.Component?.EntityCurrentVelocity.y <= 0)
+        else if (_isPlayerTouchingWall && _playerXInput == coreMovement?.EntityFacingDirection && coreMovement?.EntityCurrentVelocity.y <= 0)
         {
             _playerStateMachine.ChangePlayerState(_player.PlayerWallSlideState);
         }
@@ -108,11 +108,11 @@ public class PlayerInAirState : PlayerStates
 
         else
         {
-            Movement.Component?.CheckIfEntityShouldFlip(_playerXInput);
-            Movement.Component?.SetEntityVelocityX(_playerData.playerMovementSpeed * _playerXInput);
+            coreMovement?.CheckIfEntityShouldFlip(_playerXInput);
+            coreMovement?.SetEntityVelocityX(_playerData.playerMovementSpeed * _playerXInput);
             
-            _player.PlayerAnimator.SetFloat("yVelocity", Movement.Component.EntityCurrentVelocity.y);
-            _player.PlayerAnimator.SetFloat("xVelocity", Mathf.Abs(Movement.Component.EntityCurrentVelocity.x));
+            _player.PlayerAnimator.SetFloat("yVelocity", coreMovement.EntityCurrentVelocity.y);
+            _player.PlayerAnimator.SetFloat("xVelocity", Mathf.Abs(coreMovement.EntityCurrentVelocity.x));
         }
     }
 
@@ -122,10 +122,10 @@ public class PlayerInAirState : PlayerStates
         {
             if (_playerJumpInputStop)
             {
-                Movement.Component?.SetEntityVelocityY(Movement.Component.EntityCurrentVelocity.y * _playerData.playerJumpHeightStrength);
+                coreMovement?.SetEntityVelocityY(coreMovement.EntityCurrentVelocity.y * _playerData.playerJumpHeightStrength);
                 _isPlayerJumping = false;
             }
-            else if (Movement.Component?.EntityCurrentVelocity.y <= 0.0f)
+            else if (coreMovement?.EntityCurrentVelocity.y <= 0.0f)
             {
                 _isPlayerJumping = false;
             }
@@ -144,12 +144,12 @@ public class PlayerInAirState : PlayerStates
         _previousIsTouchingWall = _isPlayerTouchingWall;
         _previousIsTouchingWallBack = _isPlayerTouchingWallBehind;
 
-        if (CollisionSenses.Component)
+        if (coreCollisionSenses)
         {
-            _isPlayerGrounded = CollisionSenses.Component.CheckIfEntityGrounded;
-            _isPlayerTouchingWall = CollisionSenses.Component.CheckIfEntityTouchesWall;
-            _isPlayerTouchingWallBehind = CollisionSenses.Component.CheckIfEntityTouchesWallBehind;
-            _isPlayerTouchingLedge = CollisionSenses.Component.CheckIfEntityTouchesLedgeHorizontal;
+            _isPlayerGrounded = coreCollisionSenses.CheckIfEntityGrounded;
+            _isPlayerTouchingWall = coreCollisionSenses.CheckIfEntityTouchesWall;
+            _isPlayerTouchingWallBehind = coreCollisionSenses.CheckIfEntityTouchesWallBehind;
+            _isPlayerTouchingLedge = coreCollisionSenses.CheckIfEntityTouchesLedgeHorizontal;
         }
 
         if (_isPlayerTouchingWall && !_isPlayerTouchingLedge)

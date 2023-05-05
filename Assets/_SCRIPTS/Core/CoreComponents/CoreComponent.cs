@@ -6,12 +6,11 @@ using UnityEngine;
 public class CoreComponent : MonoBehaviour, LogicUpdateInterface
 {
     protected Core core;
-    protected CoreAccessComponent<MovementComponent> Movement;
-    protected CoreAccessComponent<CollisionSenses> CollisionSenses;
-    protected CoreAccessComponent<CoreKnockBackReceiver> Combat;
-    protected CoreAccessComponent<DeathComponent> Death;
-    protected CoreAccessComponent<StatsComponent> Stats;
-    protected CoreAccessComponent<ParticleManagerComponent> ParticleManager;
+    protected MovementComponent coreMovement;
+    protected CollisionSenses coreCollisionSenses;
+    protected DeathComponent coreDeath;
+    protected StatsComponent coreStats;
+    protected ParticleManagerComponent coreParticleManager;
 
     protected virtual void Awake()
     {
@@ -22,13 +21,12 @@ public class CoreComponent : MonoBehaviour, LogicUpdateInterface
             Debug.LogError("Core is missing on parent game object");
         }
         core.AddCoreComponent(this);
-        
-        Movement = new CoreAccessComponent<MovementComponent>(core);
-        CollisionSenses = new CoreAccessComponent<CollisionSenses>(core);
-        Combat = new CoreAccessComponent<CoreKnockBackReceiver>(core);
-        Death = new CoreAccessComponent<DeathComponent>(core);
-        Stats = new CoreAccessComponent<StatsComponent>(core);
-        ParticleManager = new CoreAccessComponent<ParticleManagerComponent>(core);
+
+        coreMovement = core.GetCoreComponent<MovementComponent>();
+        coreCollisionSenses = core.GetCoreComponent<CollisionSenses>();
+        coreDeath = core.GetCoreComponent<DeathComponent>();
+        coreStats = core.GetCoreComponent<StatsComponent>();
+        coreParticleManager = core.GetCoreComponent<ParticleManagerComponent>();
     }
 
     public virtual void LogicUpdate()

@@ -5,12 +5,11 @@ using UnityEngine;
 public class PlayerStates
 {
     protected Core _core;
-    protected CoreAccessComponent<MovementComponent> Movement;
-    protected CoreAccessComponent<CollisionSenses> CollisionSenses;
-    protected CoreAccessComponent<CoreKnockBackReceiver> Combat;
-    protected CoreAccessComponent<DeathComponent> Death;
-    protected CoreAccessComponent<StatsComponent> Stats;
-    protected CoreAccessComponent<ParticleManagerComponent> ParticleManager;
+    protected MovementComponent coreMovement;
+    protected CollisionSenses coreCollisionSenses;
+    protected DeathComponent coreDeath;
+    protected StatsComponent coreStats;
+    protected ParticleManagerComponent coreParticleManager;
     
     protected PlayerBase _player;
     protected PlayerStateMachine _playerStateMachine;
@@ -31,13 +30,12 @@ public class PlayerStates
         _playerData = playerData;
         _animationBoolName = animationBoolName;
         _core = player.Core;
-        
-        Movement = new CoreAccessComponent<MovementComponent>(_core);
-        CollisionSenses = new CoreAccessComponent<CollisionSenses>(_core);
-        Combat = new CoreAccessComponent<CoreKnockBackReceiver>(_core);
-        Death = new CoreAccessComponent<DeathComponent>(_core);
-        Stats = new CoreAccessComponent<StatsComponent>(_core);
-        ParticleManager = new CoreAccessComponent<ParticleManagerComponent>(_core);
+
+        coreMovement = _core.GetCoreComponent<MovementComponent>();
+        coreCollisionSenses = _core.GetCoreComponent<CollisionSenses>();
+        coreDeath = _core.GetCoreComponent<DeathComponent>();
+        coreStats = _core.GetCoreComponent<StatsComponent>();
+        coreParticleManager = _core.GetCoreComponent<ParticleManagerComponent>();
     }
     
     public virtual void PerformPlayerChecks() //check for ground etc etc

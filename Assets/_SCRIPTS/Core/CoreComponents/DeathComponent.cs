@@ -12,7 +12,7 @@ public class DeathComponent : CoreComponent
     {
         foreach (var particle in deathParticles)
         {
-            ParticleManager.Component.SpawnParticles(particle);
+            coreParticleManager.SpawnParticles(particle);
         }
         
         core.transform.parent.gameObject.SetActive(false);
@@ -20,11 +20,11 @@ public class DeathComponent : CoreComponent
 
     private void OnEnable()
     {
-        Stats.Component.OnHealthZero += Die;
+        coreStats.OnHealthZero += Die;
     }
 
     private void OnDisable()
     {
-        Stats.Component.OnHealthZero -= Die;
+        coreStats.OnHealthZero -= Die;
     }
 }

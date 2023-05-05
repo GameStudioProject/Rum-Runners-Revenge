@@ -10,7 +10,7 @@ namespace Tomas
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player") == false) return;
-
+            
             StatsComponent statsComponent = other.GetComponentInChildren<StatsComponent>();
             DamageInterface damageInterface = other.GetComponentInChildren<DamageInterface>();
             

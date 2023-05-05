@@ -13,7 +13,7 @@ public class PlayerWallSlideState : PlayerTouchWallState
 
         if (!_isExitingPlayerState)
         {
-            Movement.Component.SetEntityVelocityY(-_playerData.playerWallSlideSpeed);
+            coreMovement?.SetEntityVelocityY(-_playerData.playerWallSlideSpeed);
 
             if (_playerGrabInput && _playerYInput == 0)
             {

@@ -7,7 +7,7 @@ namespace Tomas.Weapons.Components
     {
         public event Action<Collider2D[]> HitBoxDetectedCollider2D;
         
-        private CoreAccessComponent<MovementComponent> _coreMovement;
+        private MovementComponent _coreMovement;
 
         private Vector2 _hitBoxOffset;
 
@@ -15,7 +15,7 @@ namespace Tomas.Weapons.Components
 
         private void HandleAttackAction()
         {
-            _hitBoxOffset.Set(transform.position.x + (currentAttackData.WeaponHitBox.center.x * _coreMovement.Component.EntityFacingDirection), transform.position.y + currentAttackData.WeaponHitBox.center.y);
+            _hitBoxOffset.Set(transform.position.x + (currentAttackData.WeaponHitBox.center.x * _coreMovement.EntityFacingDirection), transform.position.y + currentAttackData.WeaponHitBox.center.y);
 
             _hitBoxDetected = Physics2D.OverlapBoxAll(_hitBoxOffset, currentAttackData.WeaponHitBox.size, 0f, weaponComponentData.WeaponDetectableLayers);
 
@@ -31,7 +31,7 @@ namespace Tomas.Weapons.Components
         {
             base.Start();
 
-            _coreMovement = new CoreAccessComponent<MovementComponent>(Core);
+            _coreMovement = Core.GetCoreComponent<MovementComponent>();
             
             eventHandler.OnWeaponAttackAction += HandleAttackAction;
         }

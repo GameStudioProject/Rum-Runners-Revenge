@@ -2,7 +2,8 @@ namespace Tomas.Weapons.Components
 {
     public class PlayerWeaponAttackDamageData : PlayerWeaponComponentData<PlayerWeaponAttackDamage>
     {
-        public PlayerWeaponAttackDamageData()
+        
+        protected override void SetWeaponComponentDependency()
         {
             WeaponComponentDependency = typeof(PlayerWeaponDamage);
         }

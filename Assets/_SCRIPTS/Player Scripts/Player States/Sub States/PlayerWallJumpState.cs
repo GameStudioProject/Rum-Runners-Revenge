@@ -15,8 +15,8 @@ public class PlayerWallJumpState : PlayerAbilityState
         
         _player.PlayerInputHandler.PlayerUsedJumpInput();
         _player.PlayerJumpState.ResetPlayerJumps();
-        Movement.Component.SetEntityVelocity(_playerData.playerWallJumpStrength, _playerData.playerWallJumpAngle, _playerWallJumpDirection);
-        Movement.Component.CheckIfEntityShouldFlip(_playerWallJumpDirection);
+        coreMovement?.SetEntityVelocity(_playerData.playerWallJumpStrength, _playerData.playerWallJumpAngle, _playerWallJumpDirection);
+        coreMovement?.CheckIfEntityShouldFlip(_playerWallJumpDirection);
         _player.PlayerJumpState.DecreasePlayerJumps();
     }
 
@@ -24,8 +24,8 @@ public class PlayerWallJumpState : PlayerAbilityState
     {
         base.EveryFrameUpdate();
         
-        _player.PlayerAnimator.SetFloat("yVelocity", Movement.Component.EntityCurrentVelocity.y);
-        _player.PlayerAnimator.SetFloat("xVelocity", Mathf.Abs(Movement.Component.EntityCurrentVelocity.x));
+        _player.PlayerAnimator.SetFloat("yVelocity", coreMovement.EntityCurrentVelocity.y);
+        _player.PlayerAnimator.SetFloat("xVelocity", Mathf.Abs(coreMovement.EntityCurrentVelocity.x));
 
         if (Time.time >= stateStartTime + _playerData.playerWallJumpTime)
         {
@@ -37,11 +37,11 @@ public class PlayerWallJumpState : PlayerAbilityState
     {
         if (isPlayerTouchingWall)
         {
-            _playerWallJumpDirection = -Movement.Component.EntityFacingDirection;
+            _playerWallJumpDirection = -coreMovement.EntityFacingDirection;
         }
         else
         {
-            _playerWallJumpDirection = Movement.Component.EntityFacingDirection;
+            _playerWallJumpDirection = coreMovement.EntityFacingDirection;
         }
     }
 }

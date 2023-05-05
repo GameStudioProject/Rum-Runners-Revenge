@@ -6,7 +6,7 @@ namespace Tomas.Weapons.Components
     {
         [field: SerializeField] public LayerMask WeaponDetectableLayers { get; private set; }
 
-        public PlayerWeaponActionHitBoxData()
+        protected override void SetWeaponComponentDependency()
         {
             WeaponComponentDependency = typeof(PlayerWeaponActionHitBox);
         }

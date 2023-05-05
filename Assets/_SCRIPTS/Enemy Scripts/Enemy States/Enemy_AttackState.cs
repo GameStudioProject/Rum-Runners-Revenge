@@ -22,7 +22,7 @@ public class Enemy_AttackState : EnemyStates
 
         _enemyBase.EnemyAnimationToStateMachine.EnemyAttackState = this;
         _isEnemyAnimationFinished = false;
-        Movement.Component.SetEntityVelocityX(0f);
+        coreMovement.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()
@@ -33,7 +33,7 @@ public class Enemy_AttackState : EnemyStates
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
-        Movement.Component.SetEntityVelocityX(0f);
+        coreMovement.SetEntityVelocityX(0f);
     }
 
     public override void PhysicsUpdate()
@@ -45,7 +45,7 @@ public class Enemy_AttackState : EnemyStates
     {
         base.DoEnemyChecks();
 
-        _isPlayerInMinAgroRange = CollisionSenses.Component.EnemyCheckPlayerInMinAgroRange();
+        _isPlayerInMinAgroRange = coreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
     }
 
     public virtual void EnemyTriggerAttack()

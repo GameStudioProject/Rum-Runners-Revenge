@@ -20,7 +20,7 @@ public class Enemy_MoveState : EnemyStates
     {
         base.StateEnter();
         
-        Movement.Component.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * Movement.Component.EntityFacingDirection);
+        coreMovement.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * coreMovement.EntityFacingDirection);
     }
 
     public override void StateExit()
@@ -32,7 +32,7 @@ public class Enemy_MoveState : EnemyStates
     {
         base.EveryFrameUpdate();
         
-        Movement.Component.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * Movement.Component.EntityFacingDirection);
+        coreMovement.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * coreMovement.EntityFacingDirection);
     }
 
     public override void PhysicsUpdate()
@@ -44,12 +44,12 @@ public class Enemy_MoveState : EnemyStates
     {
         base.DoEnemyChecks();
 
-        if (CollisionSenses.Component)
+        if (coreCollisionSenses)
         {
-            _isEnemyDetectingLedge = CollisionSenses.Component.CheckIfEntityTouchesLedgeVertical;
-            _isEnemyDetectingWall = CollisionSenses.Component.CheckIfEntityTouchesWall;
+            _isEnemyDetectingLedge = coreCollisionSenses.CheckIfEntityTouchesLedgeVertical;
+            _isEnemyDetectingWall = coreCollisionSenses.CheckIfEntityTouchesWall;
         }
         
-        _isPlayerInMinAgroRange = CollisionSenses.Component.EnemyCheckPlayerInMinAgroRange();
+        _isPlayerInMinAgroRange = coreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
     }
 }
