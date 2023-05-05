@@ -17,23 +17,18 @@ namespace Tomas.Weapons.Components
             }
         }
 
-        protected override void Awake()
+        protected override void Start()
         {
-            base.Awake();
+            base.Start();
 
             _weaponHitBox = GetComponent<PlayerWeaponActionHitBox>();
-        }
-
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-
+            
             _weaponHitBox.HitBoxDetectedCollider2D += HandleWeaponDetectCollider2D;
         }
-
-        protected override void OnDisable()
+        
+        protected override void OnDestroy()
         {
-            base.OnDisable();
+            base.OnDestroy();
 
             _weaponHitBox.HitBoxDetectedCollider2D -= HandleWeaponDetectCollider2D;
         }

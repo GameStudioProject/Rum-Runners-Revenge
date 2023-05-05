@@ -12,6 +12,11 @@ namespace Tomas.Weapons.Components
         protected Core Core => _playerWeapon.Core;
 
         protected bool _isWeaponAttackActive;
+
+        public virtual void WeaponInit()
+        {
+            
+        }
         
         protected virtual void Awake()
         {
@@ -22,7 +27,8 @@ namespace Tomas.Weapons.Components
 
         protected virtual void Start()
         {
-            
+            _playerWeapon.OnWeaponEnter += WeaponComponentHandleEnter;
+            _playerWeapon.OnWeaponExit += WeaponComponentHandleExit;
         }
 
         protected virtual void WeaponComponentHandleEnter()
@@ -34,14 +40,8 @@ namespace Tomas.Weapons.Components
         {
             _isWeaponAttackActive = false;
         }
-
-        protected virtual void OnEnable()
-        {
-            _playerWeapon.OnWeaponEnter += WeaponComponentHandleEnter;
-            _playerWeapon.OnWeaponExit += WeaponComponentHandleExit;
-        }
-
-        protected virtual void OnDisable()
+        
+        protected virtual void OnDestroy()
         {
             _playerWeapon.OnWeaponEnter -= WeaponComponentHandleEnter;
             _playerWeapon.OnWeaponExit -= WeaponComponentHandleExit;
@@ -60,9 +60,9 @@ namespace Tomas.Weapons.Components
             currentAttackData = weaponComponentData.WeaponAttackData[_playerWeapon.AttackCounter];
         }
 
-        protected override void Awake()
+        public override void WeaponInit()
         {
-            base.Awake();
+            base.WeaponInit();
 
             weaponComponentData = _playerWeapon.WeaponData.GetData<T1>();
         }

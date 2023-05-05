@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Tomas.Weapons.Components;
@@ -15,6 +16,11 @@ namespace Tomas.Weapons
         public T GetData<T>()
         {
             return ComponentData.OfType<T>().FirstOrDefault();
+        }
+
+        public List<Type> GetAllWeaponDependencies()
+        {
+            return ComponentData.Select(component => component.WeaponComponentDependency).ToList();
         }
 
         public void AddData(PlayerWeaponComponentData data)

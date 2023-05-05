@@ -8,9 +8,10 @@ namespace Tomas.Weapons
 {
     public class PlayerWeapon : MonoBehaviour
     {
-        [field: SerializeField] public PlayerWeaponDataSO WeaponData { get; private set; }
         
         [SerializeField] private float _attackCounterResetCooldown;
+        
+        public PlayerWeaponDataSO WeaponData { get; private set; }
 
         public int AttackCounter
         {
@@ -49,6 +50,11 @@ namespace Tomas.Weapons
         public void SetCore(Core core)
         {
             Core = core;
+        }
+
+        public void SetWeaponData(PlayerWeaponDataSO data)
+        {
+            WeaponData = data;
         }
 
         private void WeaponExit()

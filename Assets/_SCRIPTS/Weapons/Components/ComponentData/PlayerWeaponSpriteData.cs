@@ -5,6 +5,9 @@ namespace Tomas.Weapons.Components
 {
     public class PlayerWeaponSpriteData : PlayerWeaponComponentData<PlayerWeaponAttackSprites>
     {
-        
+        public PlayerWeaponSpriteData()
+        {
+            WeaponComponentDependency = typeof(PlayerWeaponSprite);
+        }
     }
 }

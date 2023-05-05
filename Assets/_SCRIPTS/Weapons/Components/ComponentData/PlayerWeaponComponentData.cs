@@ -7,6 +7,8 @@ namespace Tomas.Weapons.Components
     public class PlayerWeaponComponentData
     {
         [SerializeField, HideInInspector] private string name;
+        
+        public Type WeaponComponentDependency { get; protected set; }
 
         public PlayerWeaponComponentData()
         {

@@ -32,18 +32,13 @@ namespace Tomas.Weapons.Components
             base.Start();
 
             _coreMovement = new CoreAccessComponent<MovementComponent>(Core);
-        }
-
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-
+            
             eventHandler.OnWeaponAttackAction += HandleAttackAction;
         }
-
-        protected override void OnDisable()
+        
+        protected override void OnDestroy()
         {
-            base.OnDisable();
+            base.OnDestroy();
 
             eventHandler.OnWeaponAttackAction -= HandleAttackAction;
         }

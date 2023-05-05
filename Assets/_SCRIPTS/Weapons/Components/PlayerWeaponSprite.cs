@@ -39,34 +39,25 @@ namespace Tomas.Weapons.Components
             _weaponSpriteIndex++;
         }
 
-        protected override void Awake()
+        protected override void Start()
         {
-            base.Awake();
+            base.Start();
+            
+            _baseWeaponSpriteRenderer = _playerWeapon.BaseWeaponGameObject.GetComponent<SpriteRenderer>();
+            _weaponSpriteRenderer = _playerWeapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
 
-            _baseWeaponSpriteRenderer = transform.Find("Base").GetComponent<SpriteRenderer>();
-            _weaponSpriteRenderer = transform.Find("WeaponSprite").GetComponent<SpriteRenderer>();
-
-            // TODO: Fix this when weapon data is created.
-            //_baseWeaponSpriteRenderer = _playerWeapon.BaseWeaponGameObject.GetComponent<SpriteRenderer>();
-            //_weaponSpriteRenderer = _playerWeapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
-        }
-
-        protected override void OnEnable()
-        {
-            base.OnEnable();
+            weaponComponentData = _playerWeapon.WeaponData.GetData<PlayerWeaponSpriteData>();
             
             _baseWeaponSpriteRenderer.RegisterSpriteChangeCallback(HandleWeaponBaseSpriteChange);
-
-            _playerWeapon.OnWeaponEnter += WeaponComponentHandleEnter;
+            
         }
-
-        protected override void OnDisable()
+        
+        protected override void OnDestroy()
         {
-            base.OnDisable();
+            base.OnDestroy();
         
             _baseWeaponSpriteRenderer.UnregisterSpriteChangeCallback(HandleWeaponBaseSpriteChange);
-
-            _playerWeapon.OnWeaponEnter -= WeaponComponentHandleEnter;
+            
         }
     }
 }
