@@ -8,7 +8,7 @@ namespace Tomas.Core.CoreComponents
         
         public void Damage(float _damageAmount)
         {
-            Debug.Log(core.transform.parent.name + " Damaged! UWU");
+            Debug.Log(core.transform.parent.name + " Damaged!");
             coreStats?.EntityHealth.DecreaseStat(_damageAmount);
             coreParticleManager?.SpawnParticles(_damageParticles);
         }
