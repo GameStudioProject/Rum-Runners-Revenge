@@ -19,6 +19,7 @@ MonoBehaviour:
   - rid: 9040973057527644160
   - rid: 9040973062064570368
   - rid: 9040973067810504704
+  - rid: 9040973067810504706
   references:
     version: 2
     RefIds:
@@ -119,3 +120,14 @@ MonoBehaviour:
         - name: Attack 3
           <KnockBackAngle>k__BackingField: {x: 1, y: 3}
           <KnockBackStrength>k__BackingField: 20
+    - rid: 9040973067810504706
+      type: {class: PlayerWeaponPoiseDamageData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: PlayerWeaponPoiseDamageData
+        _weaponAttackData:
+        - name: Attack 1
+          <PoiseAmount>k__BackingField: 30
+        - name: Attack 2
+          <PoiseAmount>k__BackingField: 30
+        - name: Attack 3
+          <PoiseAmount>k__BackingField: 30

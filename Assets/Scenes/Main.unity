@@ -599,7 +599,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <EntityHealth>k__BackingField:
-    <StatMaxValue>k__BackingField: 0
+    <StatMaxValue>k__BackingField: 50
+  <EntityPoise>k__BackingField:
+    <StatMaxValue>k__BackingField: 25
+  _entityPoiseRecoveryRate: 5
 --- !u!1 &192941326
 GameObject:
   m_ObjectHideFlags: 0
@@ -77069,6 +77072,7 @@ GameObject:
   - component: {fileID: 1748238953}
   - component: {fileID: 1748238954}
   - component: {fileID: 1748238955}
+  - component: {fileID: 1748238956}
   m_Layer: 8
   m_Name: Combat
   m_TagString: Untagged
@@ -77143,6 +77147,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
+--- !u!114 &1748238956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748238951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ff45b38cc347468c308742ee7fa64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1755150550
 GameObject:
   m_ObjectHideFlags: 0
@@ -84882,6 +84898,7 @@ GameObject:
   - component: {fileID: 1805676970}
   - component: {fileID: 1805676969}
   - component: {fileID: 1805676971}
+  - component: {fileID: 1805676972}
   m_Layer: 8
   m_Name: Combat
   m_TagString: Untagged
@@ -84956,6 +84973,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageParticles: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
+--- !u!114 &1805676972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805676967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ff45b38cc347468c308742ee7fa64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1875214309
 GameObject:
   m_ObjectHideFlags: 0
@@ -86448,6 +86477,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EntityHealth>k__BackingField:
     <StatMaxValue>k__BackingField: 50
+  <EntityPoise>k__BackingField:
+    <StatMaxValue>k__BackingField: 25
+  _entityPoiseRecoveryRate: 5
 --- !u!1 &2100456523
 GameObject:
   m_ObjectHideFlags: 0
@@ -86494,6 +86526,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EntityHealth>k__BackingField:
     <StatMaxValue>k__BackingField: 50
+  <EntityPoise>k__BackingField:
+    <StatMaxValue>k__BackingField: 100
+  _entityPoiseRecoveryRate: 25
 --- !u!1 &2104081013
 GameObject:
   m_ObjectHideFlags: 0
