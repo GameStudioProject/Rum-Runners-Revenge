@@ -11,12 +11,11 @@ namespace Tomas
         {
             if (other.CompareTag("Player") == false) return;
             
-            StatsComponent statsComponent = other.GetComponentInChildren<StatsComponent>();
             DamageInterface damageInterface = other.GetComponentInChildren<DamageInterface>();
             
-            if (statsComponent == null || damageInterface == null) return;
+            if (damageInterface == null) return;
 
-            damageInterface.Damage(statsComponent.EntityHealth.StatMaxValue);
+            damageInterface.InstantKill();
         }
     }
 }

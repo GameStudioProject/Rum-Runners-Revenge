@@ -12,5 +12,10 @@ namespace Tomas.Core.CoreComponents
             coreStats?.EntityHealth.DecreaseStat(_damageAmount);
             coreParticleManager?.SpawnParticles(_damageParticles);
         }
+
+        public void InstantKill()
+        {
+            coreStats.EntityHealth.DecreaseStat(coreStats.EntityHealth.StatMaxValue);
+        }
     }
 }
