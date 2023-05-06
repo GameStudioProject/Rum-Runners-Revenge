@@ -23,6 +23,12 @@ public class PlayerIdleState : PlayerGroundedState
 
         if (!_isExitingPlayerState)
         {
+            //player will stop running into wall
+            if (_xPlayerInput == coreMovement.EntityFacingDirection && coreCollisionSenses.CheckIfEntityTouchesWall)
+            {
+                return;
+            }
+            
             if (_xPlayerInput != 0)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerMoveState);
