@@ -9,7 +9,7 @@ public class PlayerDashState : PlayerAbilityState
     private float _lastPlayerDashTime;
 
     private Vector2 _playerDashDirection;
-    private Vector2 _playerDashDirectionInput;
+    public Vector2 _playerDashDirectionInput { get; private set; }
     private Vector2 _lastAfterImagePosition;
     
     public PlayerDashState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)

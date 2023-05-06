@@ -30,6 +30,11 @@ public class PlayerCrouchIdleState : PlayerGroundedState
 
         if (!_isExitingPlayerState)
         {
+            if (_xPlayerInput == coreMovement.EntityFacingDirection && coreCollisionSenses.CheckIfEntityTouchesWall)
+            {
+                return;
+            }
+            
             if (_xPlayerInput != 0)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerCrouchMoveState);

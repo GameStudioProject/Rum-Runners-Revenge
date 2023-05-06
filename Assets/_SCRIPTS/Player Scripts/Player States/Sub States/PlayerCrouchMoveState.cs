@@ -32,7 +32,9 @@ public class PlayerCrouchMoveState : PlayerGroundedState
             coreMovement.SetEntityVelocityX(_playerData.playerCrouchMoveSpeed * coreMovement.EntityFacingDirection);
             coreMovement.CheckIfEntityShouldFlip(_xPlayerInput);
             
-            if (_xPlayerInput == 0)
+            
+            
+            if (_xPlayerInput == 0 || coreCollisionSenses.CheckIfEntityTouchesWall)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerCrouchIdleState);
             }

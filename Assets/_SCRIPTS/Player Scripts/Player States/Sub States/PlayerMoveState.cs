@@ -25,7 +25,7 @@ public class PlayerMoveState : PlayerGroundedState
 
         if (!_isExitingPlayerState)
         {
-            if (_xPlayerInput == 0)
+            if (_xPlayerInput == 0 || coreCollisionSenses.CheckIfEntityTouchesWall)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerIdleState);
             }
