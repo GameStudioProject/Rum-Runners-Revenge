@@ -6,9 +6,11 @@ namespace Tomas.Core.CoreComponents
     {
         [SerializeField] private GameObject _damageParticles;
         
+        
         public void Damage(float _damageAmount)
         {
             Debug.Log(core.transform.parent.name + " Damaged!");
+            entityFX.StartCoroutine("FlashHitFX");
             coreStats?.EntityHealth.DecreaseStat(_damageAmount);
             coreParticleManager?.SpawnParticles(_damageParticles);
         }

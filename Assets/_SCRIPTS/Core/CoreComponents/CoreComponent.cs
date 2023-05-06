@@ -12,6 +12,7 @@ public class CoreComponent : MonoBehaviour, LogicUpdateInterface
     protected DeathComponent coreDeath;
     protected StatsComponent coreStats;
     protected ParticleManagerComponent coreParticleManager;
+    protected EntityFX entityFX;
 
     protected virtual void Awake()
     {
@@ -28,6 +29,7 @@ public class CoreComponent : MonoBehaviour, LogicUpdateInterface
         coreDeath = core.GetCoreComponent<DeathComponent>();
         coreStats = core.GetCoreComponent<StatsComponent>();
         coreParticleManager = core.GetCoreComponent<ParticleManagerComponent>();
+        entityFX = GetComponentInChildren<EntityFX>();
     }
 
     public virtual void LogicUpdate()
