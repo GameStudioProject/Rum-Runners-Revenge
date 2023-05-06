@@ -6,8 +6,9 @@ using UnityEngine;
 public class EntityFX : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
-    
+
     [Header("Flash FX")] 
+    [SerializeField] private float _flashDuration;
     [SerializeField] private Material _hitMaterial;
     private Material _originalSpriteMaterial;
 
@@ -21,7 +22,7 @@ public class EntityFX : MonoBehaviour
     {
         _spriteRenderer.material = _hitMaterial;
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(_flashDuration);
 
         _spriteRenderer.material = _originalSpriteMaterial;
     }
