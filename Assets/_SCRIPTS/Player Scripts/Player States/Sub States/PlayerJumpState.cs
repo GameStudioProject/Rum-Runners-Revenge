@@ -14,6 +14,14 @@ public class PlayerJumpState : PlayerAbilityState
         base.StateEnter();
         
         _player.PlayerInputHandler.PlayerUsedJumpInput();
+        if(inWater())
+        {
+            _playerData.playerJumpVelocity = 20f;
+        }
+        else
+        {
+            _playerData.playerJumpVelocity = 15f;
+        }
         coreMovement.SetEntityVelocityY(_playerData.playerJumpVelocity);
         _isPlayerAbilityDone = true;
         _playerAmountOfJumpsLeft--;
@@ -30,6 +38,11 @@ public class PlayerJumpState : PlayerAbilityState
         {
             return false;
         }
+    }
+    
+    private bool inWater()
+    {
+        return coreCollisionSenses.CheckIfEntityUnderwater;
     }
 
     public void ResetPlayerJumps() => _playerAmountOfJumpsLeft = _playerData.playerJumps;

@@ -17,6 +17,12 @@ public class CollisionSenses : CoreComponent
         private set => _entityGrappleCheck = value;
     }
 
+    public Transform EntityWaterCheck
+    {
+        get => GenericCoreNotImplementedError<Transform>.TryGet(_entityWaterCheck, transform.parent.name);
+        private set => _entityWaterCheck = value;
+    }
+
     public Transform EntityWallCheck { 
         get => GenericCoreNotImplementedError<Transform>.TryGet(_entityWallCheck, transform.parent.name);
         private set => _entityWallCheck = value;
@@ -56,11 +62,13 @@ public class CollisionSenses : CoreComponent
     public float EntityWallCheckDistance { get => _entityWallCheckDistance; set => _entityWallCheckDistance = value; }
     public LayerMask WhatIsGround { get => _whatIsGround; set => _whatIsGround = value; }
     public LayerMask WhatIsPlayer { get => _whatIsPlayer; set => _whatIsPlayer = value; }
+    public LayerMask WhatIsWater { get => _whatIsWater; set => _whatIsWater = value; }
     public LayerMask WhatIsGrappleable { get => _whatisGrappleble; set => _whatisGrappleble = value; }
     
     [SerializeField] private Transform _entityGroundCheck;
     [SerializeField] private Transform _entityWallCheck;
     [SerializeField] private Transform _entityPlayerCheck;
+    [SerializeField] private Transform _entityWaterCheck;
     [SerializeField] private Transform _entityGrappleCheck;
     [SerializeField] private Transform _entityLedgeCheckHorizontal;
     [SerializeField] private Transform _entityLedgeCheckVertical;
@@ -71,6 +79,7 @@ public class CollisionSenses : CoreComponent
     [SerializeField] private float _entityGrappleCheckRadius;
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsPlayer;
+    [SerializeField] private LayerMask _whatIsWater;
     [SerializeField] private LayerMask _whatisGrappleble;
 
     #region Player Check Functions
@@ -103,6 +112,11 @@ public class CollisionSenses : CoreComponent
     public bool CheckIfEntityTouchesLedgeVertical
     {
         get => Physics2D.Raycast(EntityLedgeCheckVertical.position, Vector2.down, _entityWallCheckDistance, _whatIsGround);
+    }
+
+    public bool CheckIfEntityUnderwater
+    {
+        get => Physics2D.OverlapArea(_entityWaterCheck.transform.position, new Vector2(_entityWaterCheck.transform.position.x + 0.6f, _entityWaterCheck.transform.position.y + 1.6f), _whatIsWater);
     }
 
     public bool CheckEntityDodgeLandZone
