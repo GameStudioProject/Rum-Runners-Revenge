@@ -40,7 +40,7 @@ public class PlayerBase : MonoBehaviour
     public Rigidbody2D PlayerRB { get; private set; }
     public Transform PlayerDashDirectionIndicator { get; private set; }
     public BoxCollider2D PlayerHitBox { get; private set; }
-    public HealthBarScript healthBar;
+    //public HealthBarScript healthBar;
     
     #endregion
 
@@ -91,7 +91,7 @@ public class PlayerBase : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
         PlayerHitBox = GetComponent<BoxCollider2D>();
-        healthBar.SetMaxHealth(_statsComponent.EntityHealth.StatMaxValue);
+        //healthBar.SetMaxHealth(_statsComponent.EntityHealth.StatMaxValue);
 
         PlayerStateMachine.InitializeStateMachine(PlayerIdleState);
     }
@@ -100,7 +100,7 @@ public class PlayerBase : MonoBehaviour
     {
         Core.EveryFrameUpdate();
         PlayerStateMachine.PlayerCurrentState.EveryFrameUpdate();
-        healthBar.SetHealth(_statsComponent.EntityHealth.StatCurrentValue);
+        //healthBar.SetHealth(_statsComponent.EntityHealth.StatCurrentValue);
     }
 
     private void FixedUpdate()
