@@ -91,7 +91,7 @@ public class PlayerBase : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
         PlayerHitBox = GetComponent<BoxCollider2D>();
-        //healthBar.SetMaxHealth(_statsComponent.EntityHealth.StatMaxValue);
+        //healthBar.SetMaxHealthOnUI(_statsComponent.EntityHealth.StatMaxValue);
 
         PlayerStateMachine.InitializeStateMachine(PlayerIdleState);
     }
@@ -100,7 +100,7 @@ public class PlayerBase : MonoBehaviour
     {
         Core.EveryFrameUpdate();
         PlayerStateMachine.PlayerCurrentState.EveryFrameUpdate();
-        //healthBar.SetHealth(_statsComponent.EntityHealth.StatCurrentValue);
+        //healthBar.SetHealthOnUI(_statsComponent.EntityHealth.StatCurrentValue);
     }
 
     private void FixedUpdate()

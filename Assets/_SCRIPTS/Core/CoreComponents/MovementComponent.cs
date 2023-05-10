@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class MovementComponent : CoreComponent
     public Vector2 EntityCurrentVelocity { get; private set; }
     
     private Vector2 _velocityWorkspace;
+
+    public Action onEntityFlipped;
 
     protected override void Awake()
     {
@@ -89,6 +92,9 @@ public class MovementComponent : CoreComponent
     {
         EntityFacingDirection *= -1;
         Rigidbody.transform.Rotate(0.0f, 180.0f, 0.0f);
+
+        if(onEntityFlipped != null)
+            onEntityFlipped();
     }
     
     #endregion
