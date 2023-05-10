@@ -9,6 +9,7 @@ using Tomas.Weapons;
 public class PlayerWeapon : MonoBehaviour
     {
         
+        public AudioSource audio;
         [SerializeField] private float _attackCounterResetCooldown;
         
         public PlayerWeaponDataSO WeaponData { get; private set; }
@@ -37,6 +38,8 @@ public class PlayerWeapon : MonoBehaviour
         public void WeaponEnter()
         { 
             print($"{transform.name} enter");
+
+            audio.Play();
             
             _attackCounterResetTimer.StopTimer();
             

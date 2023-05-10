@@ -10,6 +10,7 @@ namespace Tomas
 
         public void controlsBackButton()
         {
+            GameObject.Find("UI Audio").GetComponent<AudioSource>().Play();
             controlsCanvas.SetActive(false);
         }
     }

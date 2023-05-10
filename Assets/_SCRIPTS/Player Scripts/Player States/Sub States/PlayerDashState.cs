@@ -22,6 +22,7 @@ public class PlayerDashState : PlayerAbilityState
         
         CanPlayerDash = false;
         _player.PlayerInputHandler.PlayerUsedDashInput();
+        
 
         _isPlayerHolding = true;
         _playerDashDirection = Vector2.right * coreMovement.EntityFacingDirection;
@@ -35,7 +36,7 @@ public class PlayerDashState : PlayerAbilityState
     public override void StateExit()
     {
         base.StateExit();
-
+        
         if (coreMovement?.EntityCurrentVelocity.y > 0)
         {
             coreMovement?.SetEntityVelocityY(coreMovement.EntityCurrentVelocity.y * _playerData.playerDashHeightMultiplier);
@@ -45,6 +46,7 @@ public class PlayerDashState : PlayerAbilityState
 
     public override void EveryFrameUpdate()
     {
+        
         base.EveryFrameUpdate();
         
         if (!_isExitingPlayerState)
@@ -69,6 +71,7 @@ public class PlayerDashState : PlayerAbilityState
                 if (_playerDashInputStop || Time.unscaledTime >= stateStartTime + _playerData.maxDashHoldTime)
                 {
                     _isPlayerHolding = false;
+                    GameObject.Find("Dash Audio").GetComponent<AudioSource>().Play();
                     Time.timeScale = 1f;
                     stateStartTime = Time.time;
                     coreMovement?.CheckIfEntityShouldFlip(Mathf.RoundToInt(_playerDashDirection.x));

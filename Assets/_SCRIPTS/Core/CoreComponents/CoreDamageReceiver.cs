@@ -13,6 +13,7 @@ namespace Tomas.Core.CoreComponents
 
         public void Damage(float _damageAmount)
         {
+            GameObject.Find("Damage Audio").GetComponent<AudioSource>().Play();
             Debug.Log(core.transform.parent.name + " Damaged!");
             entityFX.StartCoroutine("FlashHitFX");
             coreStats?.EntityHealth.DecreaseStat(_damageAmount);

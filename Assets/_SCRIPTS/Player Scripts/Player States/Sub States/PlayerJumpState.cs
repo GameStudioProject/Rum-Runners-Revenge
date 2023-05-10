@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerJumpState : PlayerAbilityState
 {
     private int _playerAmountOfJumpsLeft;
-    
+
     public PlayerJumpState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
     {
         _playerAmountOfJumpsLeft = playerData.playerJumps;
@@ -14,6 +14,7 @@ public class PlayerJumpState : PlayerAbilityState
         base.StateEnter();
         
         _player.PlayerInputHandler.PlayerUsedJumpInput();
+        GameObject.Find("Jump Audio").GetComponent<AudioSource>().Play();
         coreMovement.SetEntityVelocityY(_playerData.playerJumpVelocity);
         _isPlayerAbilityDone = true;
         _playerAmountOfJumpsLeft--;

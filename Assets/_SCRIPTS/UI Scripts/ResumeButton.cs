@@ -4,16 +4,14 @@ using UnityEngine;
 
 namespace Tomas
 {
-    public class ControlsButton : MonoBehaviour
+    public class ResumeButton : MonoBehaviour
     {
+        public PlayerInputHandler playerInputHandler;
 
-        public GameObject controlsCanvas;
-
-        public void controlsButton()
+        public void resumeButton()
         {
             GameObject.Find("UI Audio").GetComponent<AudioSource>().Play();
-            controlsCanvas.SetActive(true);
+            playerInputHandler.PauseMenuInput = true;
         }
-        
     }
 }

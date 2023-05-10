@@ -3,37 +3,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathComponent : CoreComponent
+namespace Tomas
 {
-    [SerializeField] private GameObject[] _deathParticles;
 
-    private HealthBarScript _healthBar;
-    
-    public void Die()
+    public class DeathComponent : CoreComponent
     {
-        foreach (var particle in _deathParticles)
-        {
-            coreParticleManager.SpawnParticles(particle);
-        }
-        StartCoroutine(DeathWait());
+        [SerializeField] private GameObject[] _deathParticles;
+
+        private HealthBarScript _healthBar;
+
+        public bool isDead = false;
         
-        if(_healthBar != null)
-            _healthBar.gameObject.SetActive(false);
-    }
+        public void Die()
+        {
+            
+            foreach (var particle in _deathParticles)
+            {
+                coreParticleManager.SpawnParticles(particle);
+            }
+            
+            StartCoroutine(DeathWait());
 
-    private IEnumerator DeathWait()
-    {
-        yield return new WaitForFixedUpdate();
-        core.transform.parent.gameObject.SetActive(false);
-    }
+            if(_healthBar != null)
+                _healthBar.gameObject.SetActive(false);
 
-    private void OnEnable()
-    {
-        coreStats.EntityHealth.OnCurrentStatValueZero += Die;
-    }
+        }
 
-    private void OnDisable()
-    {
-        coreStats.EntityHealth.OnCurrentStatValueZero -= Die;
+        private IEnumerator DeathWait()
+        {
+            yield return new WaitForFixedUpdate();
+            core.transform.parent.gameObject.SetActive(false);
+            
+        }
+
+        private void OnEnable()
+        {
+            coreStats.EntityHealth.OnCurrentStatValueZero += Die;
+        }
+
+        private void OnDisable()
+        {
+            coreStats.EntityHealth.OnCurrentStatValueZero -= Die;
+        }
     }
 }

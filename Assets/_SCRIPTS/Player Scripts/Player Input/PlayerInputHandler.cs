@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    public bool pauseMenuUp;
     private PlayerInput _playerInput;
     private Camera _camera;
     
@@ -25,6 +26,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool PlayerDashInput { get; private set; }
     public bool PlayerDashInputStop { get; private set; }
     public bool PlayerGrappleHookInput { get; private set; }
+    public bool PauseMenuInput { get; set; }
 
     public bool[] PlayerAttackInputs { get; private set; }
 
@@ -41,6 +43,10 @@ public class PlayerInputHandler : MonoBehaviour
         PlayerAttackInputs = new bool[count];
         
         _camera = Camera.main;
+
+        pauseMenuUp = false;
+
+        Time.timeScale = 1;
     }
 
     private void Update()
@@ -51,92 +57,120 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPlayerPrimaryAttackInput(InputAction.CallbackContext button)
     {
-        if (button.started)
+        if (pauseMenuUp == false)
         {
-            PlayerAttackInputs[(int)PlayerCombatInputs.primary] = true;
-        }
+            if (button.started)
+            {
+                PlayerAttackInputs[(int)PlayerCombatInputs.primary] = true;
+            }
 
-        if (button.canceled)
-        {
-            PlayerAttackInputs[(int)PlayerCombatInputs.primary] = false;
+            if (button.canceled)
+            {
+                PlayerAttackInputs[(int)PlayerCombatInputs.primary] = false;
+            }
         }
+        
     }
 
     public void OnPlayerSecondaryAttackInput(InputAction.CallbackContext button)
     {
-        if (button.started)
+        if (pauseMenuUp == false)
         {
-            PlayerAttackInputs[(int)PlayerCombatInputs.secondary] = true;
-        }
+            if (button.started)
+            {
+                PlayerAttackInputs[(int)PlayerCombatInputs.secondary] = true;
+            }
 
-        if (button.canceled)
-        {
-            PlayerAttackInputs[(int)PlayerCombatInputs.secondary] = false;
+            if (button.canceled)
+            {
+                PlayerAttackInputs[(int)PlayerCombatInputs.secondary] = false;
+            }
         }
+        
     }
 
     public void OnMovementInput(InputAction.CallbackContext button)
     {
-        RawPlayerMovementInput = button.ReadValue<Vector2>();
+        if (pauseMenuUp == false)
+        {
+            RawPlayerMovementInput = button.ReadValue<Vector2>();
 
-        NormInputX = Mathf.RoundToInt(RawPlayerMovementInput.x);
-        NormInputY = Mathf.RoundToInt(RawPlayerMovementInput.y);
+            NormInputX = Mathf.RoundToInt(RawPlayerMovementInput.x);
+            NormInputY = Mathf.RoundToInt(RawPlayerMovementInput.y);
+        }
+        
 
     }
 
     public void OnJumpInput(InputAction.CallbackContext button)
     {
-        if (button.started)
+        if (pauseMenuUp == false)
         {
-            PlayerJumpInput = true;
-            PlayerJumpInputStop = false;
-            _playerJumpInputStartTime = Time.time;
-        }
+            if (button.started)
+            {
+                PlayerJumpInput = true;
+                PlayerJumpInputStop = false;
+                _playerJumpInputStartTime = Time.time;
+            }
 
-        if (button.canceled)
-        {
-            PlayerJumpInputStop = true;
+            if (button.canceled)
+            {
+                PlayerJumpInputStop = true;
+            }
         }
+        
     }
 
     public void OnPlayerGrabInput( InputAction.CallbackContext button)
     {
-        if (button.started)
+        if (pauseMenuUp == false)
         {
-            PlayerGrabInput = true;
-        }
+            if (button.started)
+            {
+                PlayerGrabInput = true;
+            }
 
-        if (button.canceled)
-        {
-            PlayerGrabInput = false;
+            if (button.canceled)
+            {
+                PlayerGrabInput = false;
+            }
         }
+        
     }
 
     public void OnPlayerDashInput(InputAction.CallbackContext button)
     {
-        if (button.started)
+        if (pauseMenuUp == false)
         {
-            PlayerDashInput = true;
-            PlayerDashInputStop = false;
-            _playerDashInputStartTime = Time.time;
+            if (button.started)
+            {
+                PlayerDashInput = true;
+                PlayerDashInputStop = false;
+                _playerDashInputStartTime = Time.time;
+            }
+            else if (button.canceled)
+            {
+                PlayerDashInputStop = true;
+            }
         }
-        else if (button.canceled)
-        {
-            PlayerDashInputStop = true;
-        }
+        
     }
 
     public void OnPlayerGrappleHookInput(InputAction.CallbackContext button)
     {
-        if (button.started)
+        if (pauseMenuUp == false)
         {
-            PlayerGrappleHookInput = true;
+            if (button.started)
+            {
+                PlayerGrappleHookInput = true;
 
+            }
+            else if (button.canceled)
+            {
+                PlayerGrappleHookInput = false;
+            }
         }
-        else if (button.canceled)
-        {
-            PlayerGrappleHookInput = false;
-        }
+        
     }
 
     public void OnPlayerDashInputDirection(InputAction.CallbackContext direction)
@@ -172,6 +206,19 @@ public class PlayerInputHandler : MonoBehaviour
         if (Time.time >= _playerDashInputStartTime + _playerInputHoldTime)
         {
             PlayerDashInput = false;
+        }
+    }
+
+    public void OnPauseMenuInput(InputAction.CallbackContext button)
+    {
+        if (button.started)
+        {
+            PauseMenuInput = true;
+
+        }
+        else if (button.canceled)
+        {
+            PauseMenuInput = false;
         }
     }
 }
