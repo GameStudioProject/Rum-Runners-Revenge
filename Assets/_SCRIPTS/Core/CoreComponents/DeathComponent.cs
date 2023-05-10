@@ -17,7 +17,8 @@ public class DeathComponent : CoreComponent
         }
         StartCoroutine(DeathWait());
         
-        _healthBar.gameObject.SetActive(false);
+        if(_healthBar != null)
+            _healthBar.gameObject.SetActive(false);
     }
 
     private IEnumerator DeathWait()
