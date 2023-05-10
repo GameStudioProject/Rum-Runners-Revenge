@@ -3605,7 +3605,6 @@ MonoBehaviour:
   _deathParticles:
   - {fileID: 5096148057906189823, guid: 4a122dcc68153794295f6953dd91521e, type: 3}
   - {fileID: 1962614393226834858, guid: 3d13ef1f52d189642930444f906fc622, type: 3}
-  gameOverCanvas: {fileID: 0}
   isDead: 0
 --- !u!1 &633152060
 GameObject:
@@ -81434,7 +81433,6 @@ MonoBehaviour:
   _deathParticles:
   - {fileID: 5096148057906189823, guid: 4a122dcc68153794295f6953dd91521e, type: 3}
   - {fileID: 1962614393226834858, guid: 3d13ef1f52d189642930444f906fc622, type: 3}
-  gameOverCanvas: {fileID: 0}
   isDead: 0
 --- !u!1 &1435141184
 GameObject:
@@ -83524,6 +83522,51 @@ MonoBehaviour:
   _whatisGrappleble:
     serializedVersion: 2
     m_Bits: 0
+--- !u!1 &1690331078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1690331080}
+  - component: {fileID: 1690331079}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1690331079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690331078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f7236f556b4540af536c3ba5842875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1358180720}
+--- !u!4 &1690331080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690331078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 74.12155, y: 41.414474, z: 0.24217331}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1748238951
 GameObject:
   m_ObjectHideFlags: 0
@@ -101130,7 +101173,6 @@ MonoBehaviour:
   _deathParticles:
   - {fileID: 5096148057906189823, guid: 4a122dcc68153794295f6953dd91521e, type: 3}
   - {fileID: 1962614393226834858, guid: 3d13ef1f52d189642930444f906fc622, type: 3}
-  gameOverCanvas: {fileID: 1992609336}
   isDead: 0
 --- !u!1 &1992609336
 GameObject:

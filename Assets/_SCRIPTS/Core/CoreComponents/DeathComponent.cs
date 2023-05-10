@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Tomas
-{
 
-    public class DeathComponent : CoreComponent
+
+public class DeathComponent : CoreComponent
     {
         [SerializeField] private GameObject[] _deathParticles;
 
@@ -46,4 +45,3 @@ namespace Tomas
             coreStats.EntityHealth.OnCurrentStatValueZero -= Die;
         }
     }
-}
