@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     public bool pauseMenuUp;
+
     private PlayerInput _playerInput;
     private Camera _camera;
     
@@ -211,15 +212,16 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPauseMenuInput(InputAction.CallbackContext button)
     {
+
         if (button.started)
         {
             PauseMenuInput = true;
-
         }
         else if (button.canceled)
         {
             PauseMenuInput = false;
         }
+
     }
 }
 

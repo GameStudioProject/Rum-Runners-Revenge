@@ -12,7 +12,22 @@ namespace Tomas
         {
             GameObject.Find("UI Audio").GetComponent<AudioSource>().Play();
             optionsCanvas.SetActive(true);
+            PlayerManager.instance.player.GetComponent<PauseMenuCheck>().optionsMenuUp = true;
         }
         
+        public void update()
+        {
+            if (PlayerManager.instance.player.GetComponent<PauseMenuCheck>().optionsMenuUp == true)
+            {
+                if (PlayerManager.instance.player.PlayerInputHandler.PauseMenuInput == true)
+                {
+                    Debug.Log("Test");
+                    GameObject.Find("UI Audio").GetComponent<AudioSource>().Play();
+                    optionsCanvas.SetActive(false);
+                    PlayerManager.instance.player.GetComponent<PauseMenuCheck>().optionsMenuUp = false;
+                    PlayerManager.instance.player.PlayerInputHandler.PauseMenuInput = false;
+                }
+            }
+        }
     }
 }

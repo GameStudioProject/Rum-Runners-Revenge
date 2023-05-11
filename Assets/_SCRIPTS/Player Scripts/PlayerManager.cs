@@ -1,7 +1,6 @@
 using UnityEngine;
 
-namespace Tomas._SCRIPTS.Player_Scripts
-{
+
     public class PlayerManager : MonoBehaviour
     {
         public static PlayerManager instance;
@@ -15,4 +14,3 @@ namespace Tomas._SCRIPTS.Player_Scripts
                 instance = this;
         }
     }
-}

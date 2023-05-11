@@ -20,6 +20,8 @@ public class DeathComponent : CoreComponent
             {
                 coreParticleManager.SpawnParticles(particle);
             }
+
+            isDead = true;
             
             StartCoroutine(DeathWait());
 
