@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     public bool pauseMenuUp;
+    public bool levelScreenClear;
 
     private PlayerInput _playerInput;
     private Camera _camera;
@@ -58,7 +59,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPlayerPrimaryAttackInput(InputAction.CallbackContext button)
     {
-        if (pauseMenuUp == false)
+        if (pauseMenuUp == false && levelScreenClear == false)
         {
             if (button.started)
             {
@@ -75,7 +76,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPlayerSecondaryAttackInput(InputAction.CallbackContext button)
     {
-        if (pauseMenuUp == false)
+        if (pauseMenuUp == false && levelScreenClear == false)
         {
             if (button.started)
             {
@@ -92,7 +93,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMovementInput(InputAction.CallbackContext button)
     {
-        if (pauseMenuUp == false)
+        if (pauseMenuUp == false && levelScreenClear == false)
         {
             RawPlayerMovementInput = button.ReadValue<Vector2>();
 
@@ -105,7 +106,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext button)
     {
-        if (pauseMenuUp == false)
+        if (pauseMenuUp == false && levelScreenClear == false)
         {
             if (button.started)
             {
@@ -124,7 +125,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPlayerGrabInput( InputAction.CallbackContext button)
     {
-        if (pauseMenuUp == false)
+        if (pauseMenuUp == false && levelScreenClear == false)
         {
             if (button.started)
             {
@@ -141,7 +142,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPlayerDashInput(InputAction.CallbackContext button)
     {
-        if (pauseMenuUp == false)
+        if (pauseMenuUp == false && levelScreenClear == false)
         {
             if (button.started)
             {
@@ -159,7 +160,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPlayerGrappleHookInput(InputAction.CallbackContext button)
     {
-        if (pauseMenuUp == false)
+        if (pauseMenuUp == false && levelScreenClear == false)
         {
             if (button.started)
             {
@@ -212,14 +213,16 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPauseMenuInput(InputAction.CallbackContext button)
     {
-
-        if (button.started)
+        if (levelScreenClear == false)
         {
-            PauseMenuInput = true;
-        }
-        else if (button.canceled)
-        {
-            PauseMenuInput = false;
+            if (button.started)
+            {
+                PauseMenuInput = true;
+            }
+            else if (button.canceled)
+            {
+                PauseMenuInput = false;
+            }
         }
 
     }

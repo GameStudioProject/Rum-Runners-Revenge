@@ -28,7 +28,7 @@ public class Key : MonoBehaviour
             if (hasKey == false)
             {   
                 float newY = Mathf.Sin(Time.time * speed);
-                transform.position = new Vector2(pos.x, newY) * height;
+                transform.position = new Vector2(201, newY) * height;
             }
             if (hasKey == true)
             {

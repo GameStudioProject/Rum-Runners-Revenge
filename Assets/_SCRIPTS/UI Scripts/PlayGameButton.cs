@@ -10,6 +10,7 @@ namespace Tomas
 
         public void PlayGame()
         {
+            GameObject.Find("UI Audio").GetComponent<AudioSource>().Play();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
