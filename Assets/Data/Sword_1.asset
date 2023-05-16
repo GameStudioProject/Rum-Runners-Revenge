@@ -30,25 +30,28 @@ MonoBehaviour:
         _weaponAttackData:
         - name: Attack 1
           <PlayerSprites>k__BackingField:
-          - {fileID: -1987402590, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: -351094280, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: 1791216324, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: 603611908, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: -1233246082, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 1614567613, guid: 8f2bac1cf9773af46a16fbe123a80a1b, type: 3}
+          - {fileID: 1315650156, guid: 8f2bac1cf9773af46a16fbe123a80a1b, type: 3}
+          - {fileID: -1976309060, guid: 8f2bac1cf9773af46a16fbe123a80a1b, type: 3}
+          - {fileID: -1144172640, guid: 8f2bac1cf9773af46a16fbe123a80a1b, type: 3}
+          - {fileID: 484693615, guid: 8f2bac1cf9773af46a16fbe123a80a1b, type: 3}
+          - {fileID: -375243750, guid: 8f2bac1cf9773af46a16fbe123a80a1b, type: 3}
         - name: Attack 2
           <PlayerSprites>k__BackingField:
-          - {fileID: 988610502, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: 15816517, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: 772720957, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: 1273519991, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: 916460301, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 1838677301, guid: 61986047ee426824fa7201642a15c501, type: 3}
+          - {fileID: 683535210, guid: 61986047ee426824fa7201642a15c501, type: 3}
+          - {fileID: -1022976194, guid: 61986047ee426824fa7201642a15c501, type: 3}
+          - {fileID: -1349239331, guid: 61986047ee426824fa7201642a15c501, type: 3}
+          - {fileID: 1372399127, guid: 61986047ee426824fa7201642a15c501, type: 3}
+          - {fileID: 913798912, guid: 61986047ee426824fa7201642a15c501, type: 3}
         - name: Attack 3
           <PlayerSprites>k__BackingField:
-          - {fileID: 750126921, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: 912870272, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: 10835460, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: 2097261312, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
-          - {fileID: -701177856, guid: e5f50a995f7756641884e53f3c84594b, type: 3}
+          - {fileID: 359606595, guid: 95e6b432a2519a343a33f8d7b3ef6046, type: 3}
+          - {fileID: 301241225, guid: 95e6b432a2519a343a33f8d7b3ef6046, type: 3}
+          - {fileID: 702724886, guid: 95e6b432a2519a343a33f8d7b3ef6046, type: 3}
+          - {fileID: -208897197, guid: 95e6b432a2519a343a33f8d7b3ef6046, type: 3}
+          - {fileID: -2527992, guid: 95e6b432a2519a343a33f8d7b3ef6046, type: 3}
+          - {fileID: -1917855141, guid: 95e6b432a2519a343a33f8d7b3ef6046, type: 3}
     - rid: 9040973036983681024
       type: {class: PlayerWeaponMovementData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -58,10 +61,10 @@ MonoBehaviour:
           <PlayerDirection>k__BackingField: {x: 1, y: 0}
           <PlayerVelocity>k__BackingField: 3
         - name: Attack 2
-          <PlayerDirection>k__BackingField: {x: 1, y: 0}
+          <PlayerDirection>k__BackingField: {x: 2, y: 5}
           <PlayerVelocity>k__BackingField: 4
         - name: Attack 3
-          <PlayerDirection>k__BackingField: {x: 1, y: 5}
+          <PlayerDirection>k__BackingField: {x: 5, y: 0}
           <PlayerVelocity>k__BackingField: 5
     - rid: 9040973057527644160
       type: {class: PlayerWeaponActionHitBoxData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}

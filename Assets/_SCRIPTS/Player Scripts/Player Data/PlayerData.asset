@@ -25,7 +25,7 @@ MonoBehaviour:
   playerWallGrabSlideSpeed: 0.1
   playerWallClimbSpeed: 3
   playerWallClimbTime: 1
-  playerStartOffset: {x: 0.4, y: 0.9}
+  playerStartOffset: {x: 0.4, y: 0.5}
   playerStopOffset: {x: 0.4, y: 0.75}
   playerDashCooldown: 0.5
   maxDashHoldTime: 1
