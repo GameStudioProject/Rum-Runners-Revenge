@@ -35,6 +35,8 @@ public class PlayerLedgeClimbState : PlayerStates
         _playerStopPosition.Set(_cornerPosition.x + (coreMovement.EntityFacingDirection * _playerData.playerStopOffset.x), _cornerPosition.y + _playerData.playerStopOffset.y);
 
         _player.transform.position = _playerStartPosition;
+        
+        
     }
 
     public override void StateExit()
@@ -53,7 +55,8 @@ public class PlayerLedgeClimbState : PlayerStates
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
-
+        coreStats.EntityStamina.DecreaseStat(_playerData.playerWallGrabStaminaReduceAmount);
+        
         if (_isPlayerAnimationFinished)
         {
             if (_isPlayerTouchingCeiling)
@@ -82,6 +85,10 @@ public class PlayerLedgeClimbState : PlayerStates
                 _isPlayerClimbing = true;
                 _player.PlayerAnimator.SetBool("climbLedge", true);
             
+            }
+            else if ( _isPlayerHanging && coreStats.EntityStamina.StatCurrentValue <= 0 && !_isPlayerClimbing)
+            {
+                _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
             }
             else if (_playerYInput == -1 && _isPlayerHanging && !_isPlayerClimbing)
             {
