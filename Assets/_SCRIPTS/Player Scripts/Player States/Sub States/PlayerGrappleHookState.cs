@@ -21,12 +21,14 @@ public class PlayerGrappleHookState : PlayerAbilityState
     public override void StateEnter()
     {
         base.StateEnter();
+        
+        
 
         _canPlayerGrapple = false;
         _player.PlayerInputHandler.PlayerUsedGrappleHookInput();
         
         _maxGrappleDistance = _playerData.maxGrappleDistance;
-        
+
         _grappleLineRenderer = _player.GetComponent<LineRenderer>();
         _rigidbody = _player.GetComponent<Rigidbody2D>();
         
@@ -103,24 +105,28 @@ public class PlayerGrappleHookState : PlayerAbilityState
     public void StartGrappleHook(Collider2D[] hitColliders)
     {
         coreMovement.SetEntityVelocityZero();
-        if (hitColliders.Length == 0) return;
+        if (hitColliders.Length == 0) 
+            return; 
 
         float closestDistance = float.MaxValue;
-        Vector2 closestPoint = Vector2.zero;
+        Vector2 closestGrapplePoint = Vector2.zero;
 
         foreach (Collider2D collider in hitColliders)
         {
-            Vector2 point = collider.ClosestPoint(_player.transform.position);
-            float distance = Vector2.Distance(_player.transform.position, point);
+            Vector2 grapplePoint = collider.ClosestPoint(_player.transform.position);
+            float distance = Vector2.Distance(_player.transform.position, grapplePoint);
 
             if (distance < closestDistance)
             {
                 closestDistance = distance;
-                closestPoint = point;
+                closestGrapplePoint = grapplePoint;
             }
         }
 
-        _playerGrappleTarget = closestPoint;
+        if (_player.transform.position.y > closestGrapplePoint.y) 
+            return;
+
+        _playerGrappleTarget = closestGrapplePoint;
         _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;
 
         if (_grappleDirection.x * coreMovement.EntityFacingDirection < 0)
@@ -154,10 +160,9 @@ public class PlayerGrappleHookState : PlayerAbilityState
             _canPlayerGrapple = false;
             return true;
         }
-        else
-        {
-            return false;
-        }
+        
+        return false;
+        
     }
 
 }

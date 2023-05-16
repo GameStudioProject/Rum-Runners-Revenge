@@ -21,7 +21,8 @@ MonoBehaviour:
   playerCoyoteTime: 0.2
   playerJumpHeightStrength: 0.5
   playerWallSlideSpeed: 2.5
-  playerWallGrabTime: 1.5
+  playerWallGrabStaminaReduceAmount: 5
+  playerMinAmountOfStaminaNeeded: 5000
   playerWallGrabSlideSpeed: 0.1
   playerWallClimbSpeed: 3
   playerWallClimbTime: 1

@@ -1,7 +1,4 @@
-using System;
 using Tomas.Core;
-using Tomas.Weapons;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerBase : MonoBehaviour 
@@ -40,8 +37,7 @@ public class PlayerBase : MonoBehaviour
     public Rigidbody2D PlayerRB { get; private set; }
     public Transform PlayerDashDirectionIndicator { get; private set; }
     public BoxCollider2D PlayerHitBox { get; private set; }
-    //public HealthBarScript healthBar;
-    
+
     #endregion
 
     #region Other Variables
@@ -91,7 +87,6 @@ public class PlayerBase : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
         PlayerHitBox = GetComponent<BoxCollider2D>();
-        //healthBar.SetMaxHealthOnUI(_statsComponent.EntityHealth.StatMaxValue);
 
         PlayerStateMachine.InitializeStateMachine(PlayerIdleState);
     }
@@ -100,7 +95,6 @@ public class PlayerBase : MonoBehaviour
     {
         Core.EveryFrameUpdate();
         PlayerStateMachine.PlayerCurrentState.EveryFrameUpdate();
-        //healthBar.SetHealthOnUI(_statsComponent.EntityHealth.StatCurrentValue);
     }
 
     private void FixedUpdate()

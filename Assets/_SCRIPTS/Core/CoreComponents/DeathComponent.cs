@@ -9,7 +9,7 @@ public class DeathComponent : CoreComponent
     {
         [SerializeField] private GameObject[] _deathParticles;
 
-        private HealthBarScript _healthBar;
+        private PlayerUIBarScript _playerUIBar;
 
         public bool isDead = false;
         
@@ -25,8 +25,8 @@ public class DeathComponent : CoreComponent
             
             StartCoroutine(DeathWait());
 
-            if(_healthBar != null)
-                _healthBar.gameObject.SetActive(false);
+            if(_playerUIBar != null)
+                _playerUIBar.gameObject.SetActive(false);
 
         }
 

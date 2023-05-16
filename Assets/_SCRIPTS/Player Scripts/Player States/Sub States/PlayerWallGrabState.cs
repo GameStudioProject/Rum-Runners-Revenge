@@ -4,7 +4,7 @@ public class PlayerWallGrabState : PlayerTouchWallState
 {
     private Vector2 _playerHoldPosition;
     public bool CanPlayerWallGrab { get; private set; }
-    
+
     public PlayerWallGrabState(PlayerBase player, PlayerStateMachine playerStateMachine, PlayerData playerData, string animationBoolName) : base(player, playerStateMachine, playerData, animationBoolName)
     {
         
@@ -27,16 +27,16 @@ public class PlayerWallGrabState : PlayerTouchWallState
     public override void EveryFrameUpdate()
     {
         base.EveryFrameUpdate();
-
         
+        coreStats.EntityStamina.DecreaseStat(_playerData.playerWallGrabStaminaReduceAmount);
 
         if (!_isExitingPlayerState)
         {
-            //PlayerHoldPosition();
+            
             coreMovement.SetEntityVelocityX(0f);
             coreMovement.SetEntityVelocityY(-_playerData.playerWallGrabSlideSpeed);
 
-            if (Time.time >= stateStartTime + _playerData.playerWallGrabTime)
+            if (coreStats.EntityStamina.StatCurrentValue <= 0)
             {
                 _player.PlayerInputHandler.PlayerUsedWallGrabInput();
                 _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
@@ -52,7 +52,7 @@ public class PlayerWallGrabState : PlayerTouchWallState
         }
         
     }
-
+    
     private void PlayerHoldPosition()
     {
         _player.transform.position = _playerHoldPosition;

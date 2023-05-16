@@ -20,6 +20,7 @@ MonoBehaviour:
   - rid: 9040973062064570369
   - rid: 9040973067810504705
   - rid: 9040973067810504707
+  - rid: 9040973318587154434
   references:
     version: 2
     RefIds:
@@ -101,11 +102,11 @@ MonoBehaviour:
         name: PlayerWeaponAttackDamageData
         _weaponAttackData:
         - name: Attack 1
-          <DamageAmount>k__BackingField: 5
+          <DamageAmount>k__BackingField: 0
         - name: Attack 2
-          <DamageAmount>k__BackingField: 10
+          <DamageAmount>k__BackingField: 0
         - name: Attack 3
-          <DamageAmount>k__BackingField: 15
+          <DamageAmount>k__BackingField: 0
     - rid: 9040973067810504705
       type: {class: PlayerWeaponKnockBackData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -131,3 +132,14 @@ MonoBehaviour:
           <PoiseAmount>k__BackingField: 20
         - name: Attack 3
           <PoiseAmount>k__BackingField: 20
+    - rid: 9040973318587154434
+      type: {class: PlayerWeaponLifeStealData, ns: , asm: Assembly-CSharp}
+      data:
+        name: PlayerWeaponLifeStealData
+        _weaponAttackData:
+        - name: Attack 1
+          <LifeStealAmount>k__BackingField: 5
+        - name: Attack 2
+          <LifeStealAmount>k__BackingField: 10
+        - name: Attack 3
+          <LifeStealAmount>k__BackingField: 15

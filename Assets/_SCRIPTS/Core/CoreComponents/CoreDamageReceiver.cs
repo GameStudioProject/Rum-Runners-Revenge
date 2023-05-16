@@ -8,9 +8,7 @@ namespace Tomas.Core.CoreComponents
     {
         [SerializeField] private GameObject _damageParticles;
 
-        public Action onEntityHealthChange;
-
-
+        
         public void Damage(float _damageAmount)
         {
             GameObject.Find("Damage Audio").GetComponent<AudioSource>().Play();
@@ -18,9 +16,7 @@ namespace Tomas.Core.CoreComponents
             entityFX.StartCoroutine("FlashHitFX");
             coreStats?.EntityHealth.DecreaseStat(_damageAmount);
             coreParticleManager?.SpawnParticles(_damageParticles);
-
-            if(onEntityHealthChange != null)
-                onEntityHealthChange();
+            
         }
 
         public void InstantKill()
