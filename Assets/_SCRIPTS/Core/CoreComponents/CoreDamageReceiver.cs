@@ -14,8 +14,8 @@ namespace Tomas.Core.CoreComponents
             GameObject.Find("Damage Audio").GetComponent<AudioSource>().Play();
             Debug.Log(core.transform.parent.name + " Damaged!");
             entityFX.StartCoroutine("FlashHitFX");
-            coreStats?.EntityHealth.DecreaseStat(_damageAmount);
-            coreParticleManager?.SpawnParticles(_damageParticles);
+            coreStats.EntityHealth.DecreaseStat(_damageAmount);
+            coreParticleManager.SpawnParticles(_damageParticles);
             
         }
 
