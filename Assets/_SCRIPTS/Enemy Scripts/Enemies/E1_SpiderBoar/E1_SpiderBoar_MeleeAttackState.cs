@@ -5,10 +5,11 @@ using UnityEngine;
 public class E1_SpiderBoar_MeleeAttackState : Enemy_MeleeAttackState
 {
     private E1_SpiderBoar _enemySpiderBoar;
-    
-    public E1_SpiderBoar_MeleeAttackState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, Transform _enemyAttackPosition, D_EnemyMeleeAttackState _enemyMeleeAttackStateData, E1_SpiderBoar _enemySpiderBoar) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyAttackPosition, _enemyMeleeAttackStateData)
+
+
+    public E1_SpiderBoar_MeleeAttackState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData, Transform enemyAttackPosition, E1_SpiderBoar enemySpiderBoar) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData, enemyAttackPosition)
     {
-        this._enemySpiderBoar = _enemySpiderBoar;
+        _enemySpiderBoar = enemySpiderBoar;
     }
 
     public override void StateEnter()

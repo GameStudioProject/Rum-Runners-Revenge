@@ -5,10 +5,11 @@ using UnityEngine;
 public class E2_Archer_RangedAttackState : Enemy_RangedAttackState
 {
     private E2_Archer _archer;
-    
-    public E2_Archer_RangedAttackState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, Transform _enemyAttackPosition, D_RangedAttackState _enemyRangedAttackStateData, E2_Archer _archer) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyAttackPosition, _enemyRangedAttackStateData)
+
+
+    public E2_Archer_RangedAttackState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData, Transform enemyAttackPosition, E2_Archer archer) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData, enemyAttackPosition)
     {
-        this._archer = _archer;
+        _archer = archer;
     }
 
     public override void StateEnter()

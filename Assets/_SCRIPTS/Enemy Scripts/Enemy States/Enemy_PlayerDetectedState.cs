@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_PlayerDetectedState : EnemyStates
+public class Enemy_PlayerDetectedState : Enemy_GroundedState
 {
-    protected D_EnemyPlayerDetectedState _enemyStateData;
-
-    protected bool _isPlayerInMinAgroRange;
-    protected bool _isPlayerInMaxAgroRange;
+    
     protected bool _performEnemyCloseRangeAction;
     protected bool _performEnemyLongRangeAction;
-    protected bool _isEnemyDetectingLedge;
-    
-    public Enemy_PlayerDetectedState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyPlayerDetectedState _enemyStateData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName)
+
+
+    public Enemy_PlayerDetectedState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData)
     {
-        this._enemyStateData = _enemyStateData;
+        
     }
 
     public override void StateEnter()
@@ -36,7 +33,7 @@ public class Enemy_PlayerDetectedState : EnemyStates
         
         coreMovement.SetEntityVelocityX(0f);
 
-        if (Time.time >= _stateStartTime + _enemyStateData.enemyLongRangeActionTime)
+        if (Time.time >= _stateStartTime + _enemyData.enemyLongRangeActionTime)
         {
             _performEnemyLongRangeAction = true;
         }
@@ -51,13 +48,6 @@ public class Enemy_PlayerDetectedState : EnemyStates
     {
         base.DoEnemyChecks();
         
-        _isPlayerInMinAgroRange = coreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
-        _isPlayerInMaxAgroRange = coreCollisionSenses.EnemyCheckPlayerInMaxAgroRange();
-        if (coreCollisionSenses)
-        {
-            _isEnemyDetectingLedge = coreCollisionSenses.CheckIfEntityTouchesLedgeVertical;
-        }
-
         _performEnemyCloseRangeAction = coreCollisionSenses.EnemyCheckPlayerInCloseRangeAction();
     }
 }

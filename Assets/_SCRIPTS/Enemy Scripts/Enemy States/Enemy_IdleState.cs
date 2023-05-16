@@ -2,24 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_IdleState : EnemyStates
+public class Enemy_IdleState : Enemy_GroundedState
 {
-    private MovementComponent _movementComponent;
-    private CollisionSenses _collisionSenses;
-    
-    protected D_EnemyIdleState _enemyStateData;
-
     protected bool _enemyFlipAfterIdle;
     protected bool _isEnemyIdleTimeOver;
-    protected bool _isPlayerInMinAgroRange;
 
     protected float _enemyIdleTime;
-    
-    public Enemy_IdleState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyIdleState _enemyStateData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName)
-    {
-        this._enemyStateData = _enemyStateData;
-    }
 
+
+    public Enemy_IdleState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData)
+    {
+    }
 
     public override void StateEnter()
     {
@@ -72,6 +65,6 @@ public class Enemy_IdleState : EnemyStates
 
     private void SetEnemyRandomIdleTime()
     {
-        _enemyIdleTime = Random.Range(_enemyStateData.enemyMinIdleTime, _enemyStateData.enemyMaxIdleTime);
+        _enemyIdleTime = Random.Range(_enemyData.enemyMinIdleTime, _enemyData.enemyMaxIdleTime);
     }
 }

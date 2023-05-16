@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Enemy_MeleeAttackState : Enemy_AttackState
 {
-    protected D_EnemyMeleeAttackState _enemyMeleeAttackStateData;
-
-    public Enemy_MeleeAttackState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, Transform _enemyAttackPosition, D_EnemyMeleeAttackState _enemyMeleeAttackStateData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyAttackPosition)
+    public Enemy_MeleeAttackState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData, Transform enemyAttackPosition) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData, enemyAttackPosition)
     {
-        this._enemyMeleeAttackStateData = _enemyMeleeAttackStateData;
+        
     }
 
     public override void StateEnter()
@@ -40,7 +38,7 @@ public class Enemy_MeleeAttackState : Enemy_AttackState
     {
         base.EnemyTriggerAttack();
 
-        Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(_enemyAttackPosition.position, _enemyMeleeAttackStateData.enemyAttackRadius, _enemyMeleeAttackStateData.whatIsPlayer);
+        Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(_enemyAttackPosition.position, _enemyData.enemyAttackRadius, _enemyData.whatIsPlayer);
 
         foreach (Collider2D collider in detectedObjects)
         {
@@ -48,7 +46,7 @@ public class Enemy_MeleeAttackState : Enemy_AttackState
 
             if (damageable != null)
             {
-                damageable.Damage(_enemyMeleeAttackStateData.enemyAttackDamage);
+                damageable.Damage(_enemyData.enemyAttackDamage);
                 
             }
 
@@ -56,7 +54,7 @@ public class Enemy_MeleeAttackState : Enemy_AttackState
 
             if (knockbackable != null)
             {
-                knockbackable.KnockBack(_enemyMeleeAttackStateData.knockbackAngle, _enemyMeleeAttackStateData.knockbackStrength, coreMovement.EntityFacingDirection);
+                knockbackable.KnockBack(_enemyData.knockBackAngle, _enemyData.knockBackStrength, coreMovement.EntityFacingDirection);
             }
         }
     }

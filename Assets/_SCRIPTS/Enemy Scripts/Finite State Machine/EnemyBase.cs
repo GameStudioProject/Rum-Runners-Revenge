@@ -12,8 +12,7 @@ public class EnemyBase : MonoBehaviour
     protected CollisionSenses coreCollisionSenses;
     
     public EnemyFiniteStateMachine EnemyStateMachine;
-    
-    public D_EnemyBase enemyData;
+    public D_EnemyData enemyData;
     public Animator EnemyAnimator { get; private set; }
     public EnemyAnimationToStateMachine EnemyAnimationToStateMachine { get; private set; }
     
@@ -35,9 +34,9 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void Awake()
     {
-        Core = GetComponentInChildren<Core>();
-        
-        coreMovement = Core.GetCoreComponent<MovementComponent>();
+         Core = GetComponentInChildren<Core>();
+
+         coreMovement = Core.GetCoreComponent<MovementComponent>();
         coreCollisionSenses = Core.GetCoreComponent<CollisionSenses>();
         coreStats = Core.GetCoreComponent<StatsComponent>();
         

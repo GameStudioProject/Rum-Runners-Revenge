@@ -5,12 +5,12 @@ using UnityEngine;
 public class E1_SpiderBoar_ChargeState : Enemy_ChargeState
 {
     protected E1_SpiderBoar _enemySpiderBoar;
-    
-    public E1_SpiderBoar_ChargeState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyChargeState _enemyChargeStateData, E1_SpiderBoar _enemySpiderBoar) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyChargeStateData)
-    {
-        this._enemySpiderBoar = _enemySpiderBoar;
-    }
 
+
+    public E1_SpiderBoar_ChargeState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData, E1_SpiderBoar enemySpiderBoar) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData)
+    {
+        _enemySpiderBoar = enemySpiderBoar;
+    }
 
     public override void StateEnter()
     {

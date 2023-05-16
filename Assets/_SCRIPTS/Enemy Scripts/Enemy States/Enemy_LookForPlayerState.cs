@@ -2,22 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_LookForPlayerState : EnemyStates
+public class Enemy_LookForPlayerState : Enemy_GroundedState
 {
-    protected D_EnemyLookForPlayerState _enemyLookForPlayerStateData;
-
     protected bool _turnEnemyImmediately;
-    protected bool _isPlayerInMinAgroRange;
     protected bool _isAllEnemyTurnsDone;
     protected bool _isAllEnemyTurnsTimeDone;
 
     protected float _lastEnemyTurnTime;
 
     protected int _amountOfEnemyTurnsDone;
-    
-    public Enemy_LookForPlayerState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyLookForPlayerState _enemyLookForPlayerStateData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName)
+
+
+    public Enemy_LookForPlayerState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData)
     {
-        this._enemyLookForPlayerStateData = _enemyLookForPlayerStateData;
     }
 
     public override void StateEnter()
@@ -51,19 +48,19 @@ public class Enemy_LookForPlayerState : EnemyStates
             _amountOfEnemyTurnsDone++;
             _turnEnemyImmediately = false;
         }
-        else if (Time.time >= _lastEnemyTurnTime + _enemyLookForPlayerStateData.enemyTimeBetweenTurns && !_isAllEnemyTurnsDone)
+        else if (Time.time >= _lastEnemyTurnTime + _enemyData.enemyTimeBetweenTurns && !_isAllEnemyTurnsDone)
         {
             coreMovement.EntityFlip();
             _lastEnemyTurnTime = Time.time;
             _amountOfEnemyTurnsDone++;
         }
 
-        if (_amountOfEnemyTurnsDone >= _enemyLookForPlayerStateData.enemyTurns)
+        if (_amountOfEnemyTurnsDone >= _enemyData.enemyTurns)
         {
             _isAllEnemyTurnsDone = true;
         }
 
-        if (Time.time >= _lastEnemyTurnTime + _enemyLookForPlayerStateData.enemyTimeBetweenTurns && _isAllEnemyTurnsDone)
+        if (Time.time >= _lastEnemyTurnTime + _enemyData.enemyTimeBetweenTurns && _isAllEnemyTurnsDone)
         {
             _isAllEnemyTurnsTimeDone = true;
         }
@@ -77,8 +74,6 @@ public class Enemy_LookForPlayerState : EnemyStates
     public override void DoEnemyChecks()
     {
         base.DoEnemyChecks();
-
-        _isPlayerInMinAgroRange = coreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
     }
 
     public void TurnEnemyImmediately(bool flip)

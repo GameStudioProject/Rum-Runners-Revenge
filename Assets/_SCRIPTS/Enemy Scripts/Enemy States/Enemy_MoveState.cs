@@ -2,25 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_MoveState : EnemyStates
+public class Enemy_MoveState : Enemy_GroundedState
 {
-    protected D_EnemyMoveState _enemyStateData;
-
-    protected bool _isEnemyDetectingWall;
-    protected bool _isEnemyDetectingLedge;
-    protected bool _isPlayerInMinAgroRange;
-    
-    public Enemy_MoveState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyMoveState _enemyStateData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName)
+    public Enemy_MoveState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData)
     {
-        this._enemyStateData = _enemyStateData;
+        
     }
-
 
     public override void StateEnter()
     {
         base.StateEnter();
         
-        coreMovement.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * coreMovement.EntityFacingDirection);
+        coreMovement.SetEntityVelocityX(_enemyData.enemyMovementSpeed * coreMovement.EntityFacingDirection);
     }
 
     public override void StateExit()
@@ -32,7 +25,7 @@ public class Enemy_MoveState : EnemyStates
     {
         base.EveryFrameUpdate();
         
-        coreMovement.SetEntityVelocityX(_enemyStateData.EnemyMovementSpeed * coreMovement.EntityFacingDirection);
+        coreMovement.SetEntityVelocityX(_enemyData.enemyMovementSpeed * coreMovement.EntityFacingDirection);
     }
 
     public override void PhysicsUpdate()
@@ -43,13 +36,5 @@ public class Enemy_MoveState : EnemyStates
     public override void DoEnemyChecks()
     {
         base.DoEnemyChecks();
-
-        if (coreCollisionSenses)
-        {
-            _isEnemyDetectingLedge = coreCollisionSenses.CheckIfEntityTouchesLedgeVertical;
-            _isEnemyDetectingWall = coreCollisionSenses.CheckIfEntityTouchesWall;
-        }
-        
-        _isPlayerInMinAgroRange = coreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
     }
 }

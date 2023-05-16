@@ -7,6 +7,8 @@ using System.Linq;
 
 namespace Tomas.Core
 {
+    //Core was made following https://www.youtube.com/watch?v=Pux1GlFwKPs&list=PLy78FINcVmjA0zDBhLuLNL1Jo6xNMMq-W Bardent 2D Platformer Series
+    //However refactoring of the core for inheritance, ease of access solution and other, was made by Tomas.
 
     public class Core : MonoBehaviour
     {

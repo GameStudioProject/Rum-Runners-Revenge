@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Enemy_AttackState : EnemyStates
 {
-    
-
     protected Transform _enemyAttackPosition;
 
     protected bool _isEnemyAnimationFinished;
     protected bool _isPlayerInMinAgroRange;
 
-    public Enemy_AttackState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, Transform _enemyAttackPosition) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName)
+
+    public Enemy_AttackState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData, Transform enemyAttackPosition) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData)
     {
-        this._enemyAttackPosition = _enemyAttackPosition;
+        _enemyAttackPosition = enemyAttackPosition;
     }
 
     public override void StateEnter()

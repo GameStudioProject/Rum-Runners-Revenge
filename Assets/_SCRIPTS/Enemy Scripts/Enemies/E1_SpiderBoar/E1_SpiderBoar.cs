@@ -13,15 +13,7 @@ public class E1_SpiderBoar : EnemyBase
     public E1_SpiderBoar_MeleeAttackState spiderBoar_MeleeAttackState { get; private set; }
     public E1_SpiderBoar_StunState spiderBoar_StunState { get; private set; }
     public E1_SpiderBoar_DeadState spiderBoar_DeadState { get; private set; }
-
-    [SerializeField] private D_EnemyIdleState _enemyIdleStateData;
-    [SerializeField] private D_EnemyMoveState _enemyMoveStateData;
-    [SerializeField] private D_EnemyPlayerDetectedState _enemyPlayerDetectedStateData;
-    [SerializeField] private D_EnemyChargeState _enemyChargeStateData;
-    [SerializeField] private D_EnemyLookForPlayerState _enemyLookForPlayerStateData;
-    [SerializeField] private D_EnemyMeleeAttackState _enemyMeleeAttackStateData;
-    [SerializeField] private D_EnemyStunState _enemyStunStateData;
-    [SerializeField] private D_EnemyDeadState _enemyDeadStateData;
+    
 
     [SerializeField] private Transform _enemyMeleeAttackPosition;
 
@@ -29,14 +21,14 @@ public class E1_SpiderBoar : EnemyBase
     {
         base.Awake();
 
-        spiderBoar_MoveState = new E1_SpiderBoar_MoveState(this, EnemyStateMachine, "move", _enemyMoveStateData, this);
-        spiderBoar_IdleState = new E1_SpiderBoar_IdleState(this, EnemyStateMachine, "idle", _enemyIdleStateData, this);
-        spiderBoar_PlayerDetectedState = new E1_SpiderBoar_PlayerDetectedState(this, EnemyStateMachine, "playerDetected", _enemyPlayerDetectedStateData, this);
-        spiderBoar_ChargeState = new E1_SpiderBoar_ChargeState(this, EnemyStateMachine, "charge", _enemyChargeStateData, this);
-        spiderBoar_LookForPlayerState = new E1_SpiderBoar_LookForPlayerState(this, EnemyStateMachine, "lookForPlayer", _enemyLookForPlayerStateData, this);
-        spiderBoar_MeleeAttackState = new E1_SpiderBoar_MeleeAttackState(this, EnemyStateMachine, "meleeAttack", _enemyMeleeAttackPosition, _enemyMeleeAttackStateData, this);
-        spiderBoar_StunState = new E1_SpiderBoar_StunState(this, EnemyStateMachine, "stun", _enemyStunStateData, this);
-        spiderBoar_DeadState = new E1_SpiderBoar_DeadState(this, EnemyStateMachine, "dead", _enemyDeadStateData, this);
+        spiderBoar_MoveState = new E1_SpiderBoar_MoveState(this, EnemyStateMachine, "move", enemyData, this);
+        spiderBoar_IdleState = new E1_SpiderBoar_IdleState(this, EnemyStateMachine, "idle", enemyData, this);
+        spiderBoar_PlayerDetectedState = new E1_SpiderBoar_PlayerDetectedState(this, EnemyStateMachine, "playerDetected", enemyData, this);
+        spiderBoar_ChargeState = new E1_SpiderBoar_ChargeState(this, EnemyStateMachine, "charge", enemyData, this);
+        spiderBoar_LookForPlayerState = new E1_SpiderBoar_LookForPlayerState(this, EnemyStateMachine, "lookForPlayer", enemyData, this);
+        spiderBoar_MeleeAttackState = new E1_SpiderBoar_MeleeAttackState(this, EnemyStateMachine, "meleeAttack", enemyData, _enemyMeleeAttackPosition, this);
+        spiderBoar_StunState = new E1_SpiderBoar_StunState(this, EnemyStateMachine, "stun", enemyData, this);
+        spiderBoar_DeadState = new E1_SpiderBoar_DeadState(this, EnemyStateMachine, "dead", enemyData, this);
 
         coreStats.EntityPoise.OnCurrentStatValueZero += HandleEnemyPoiseZero;
     }
@@ -60,6 +52,6 @@ public class E1_SpiderBoar : EnemyBase
     {
         base.OnDrawGizmos();
         
-        Gizmos.DrawWireSphere(_enemyMeleeAttackPosition.position, _enemyMeleeAttackStateData.enemyAttackRadius);
+        Gizmos.DrawWireSphere(_enemyMeleeAttackPosition.position, enemyData.enemyAttackRadius);
     }
 }

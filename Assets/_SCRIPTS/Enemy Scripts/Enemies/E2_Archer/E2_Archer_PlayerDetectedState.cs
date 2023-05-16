@@ -6,9 +6,10 @@ public class E2_Archer_PlayerDetectedState : Enemy_PlayerDetectedState
 {
     private E2_Archer _archer;
 
-    public E2_Archer_PlayerDetectedState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyPlayerDetectedState _enemyStateData, E2_Archer _archer) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyStateData)
+
+    public E2_Archer_PlayerDetectedState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData, E2_Archer archer) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData)
     {
-        this._archer = _archer;
+        _archer = archer;
     }
 
     public override void StateEnter()
@@ -27,7 +28,7 @@ public class E2_Archer_PlayerDetectedState : Enemy_PlayerDetectedState
 
         if (_performEnemyCloseRangeAction)
         {
-            if (Time.time >= _archer.ArcherDodgeState._stateStartTime + _archer._archerDodgeStateData.enemyDodgeCooldown)
+            if (Time.time >= _archer.ArcherDodgeState._stateStartTime + _archer.enemyData.enemyDodgeCooldown)
             {
                 _enemyStateMachine.ChangeEnemyState(_archer.ArcherDodgeState);
             }

@@ -21,11 +21,38 @@ MonoBehaviour:
   enemyMaxAgroDistance: 8
   enemyStunResistance: 3
   enemyStunRecoveryTime: 2
-  enemyCloseRangeActionDistance: 1.75
-  _enemyHitParticle: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
+  enemyCloseRangeActionDistance: 1.5
+  enemyHitParticle: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  enemyMinIdleTime: 1
+  enemyMaxIdleTime: 2
+  enemyMovementSpeed: 3
+  enemyDodgeSpeed: 10
+  enemyDodgeSpeedMultiplier: 0.5
+  enemyDodgeTime: 0.2
+  enemyDodgeCooldown: 2
+  enemyDodgeAngle: {x: 0, y: 0}
+  enemyChargeSpeed: 6
+  enemyChargeTime: 1.5
+  enemyTurns: 2
+  enemyTimeBetweenTurns: 0.75
+  enemyLongRangeActionTime: 1.5
+  enemyProjectile: {fileID: 0}
+  enemyProjectileDamage: 10
+  enemyProjectileSpeed: 12
+  enemyProjectileTravelDistance: 0
+  enemyAttackRadius: 0.75
+  enemyAttackDamage: 10
+  knockBackAngle: {x: 1, y: 1}
+  knockBackStrength: 10
+  enemyStunTime: 3
+  enemyStunKnockBackTime: 0.2
+  enemyStunKnockBackSpeed: 20
+  enemyStunKnockBackAngle: {x: 1, y: 2}
+  enemyDeathChunkParticle: {fileID: 1962614393226834858, guid: 3d13ef1f52d189642930444f906fc622, type: 3}
+  enemyDeathBloodParticle: {fileID: 5096148057906189823, guid: 4a122dcc68153794295f6953dd91521e, type: 3}

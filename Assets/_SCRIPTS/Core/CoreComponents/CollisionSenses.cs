@@ -47,7 +47,7 @@ public class CollisionSenses : CoreComponent
     
     public EnemyBase EnemyBase {get; set; }
 
-    public D_EnemyBase EntityData
+    public D_EnemyData EntityData
     {
         get => EnemyBase.enemyData;
     }

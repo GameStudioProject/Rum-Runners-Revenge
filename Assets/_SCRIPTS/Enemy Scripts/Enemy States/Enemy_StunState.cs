@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_StunState : EnemyStates
+public class Enemy_StunState : Enemy_GroundedState
 {
-    protected D_EnemyStunState _enemyStunStateData;
-
     protected bool _isEnemyStunTimeOver;
-    protected bool _isEnemyGrounded;
     protected bool _isEnemyMovementStopped;
     protected bool _performEnemyCloseRangeAction;
-    protected bool _isPlayerInMinAgroRange;
-    
-    public Enemy_StunState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyStunState _enemyStunStateData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName)
+
+
+    public Enemy_StunState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData)
     {
-        this._enemyStunStateData = _enemyStunStateData;
+        
     }
 
     public override void StateEnter()
@@ -23,7 +20,7 @@ public class Enemy_StunState : EnemyStates
 
         _isEnemyStunTimeOver = false;
         _isEnemyMovementStopped = false;
-        coreMovement.SetEntityVelocity(_enemyStunStateData.enemyStunKnockbackSpeed, _enemyStunStateData.enemyStunKnockbackAngle, _enemyBase.LastDamageDirection);
+        coreMovement.SetEntityVelocity(_enemyData.enemyStunKnockBackSpeed, _enemyData.enemyStunKnockBackAngle, _enemyBase.LastDamageDirection);
     }
 
     public override void StateExit()
@@ -37,12 +34,12 @@ public class Enemy_StunState : EnemyStates
     {
         base.EveryFrameUpdate();
 
-        if (Time.time >= _stateStartTime + _enemyStunStateData.enemyStunTime)
+        if (Time.time >= _stateStartTime + _enemyData.enemyStunTime)
         {
             _isEnemyStunTimeOver = true;
         }
 
-        if (_isEnemyGrounded && Time.time >= _stateStartTime + _enemyStunStateData.enemyStunKnockbackTime && !_isEnemyMovementStopped)
+        if (_isEnemyGrounded && Time.time >= _stateStartTime + _enemyData.enemyStunKnockBackTime && !_isEnemyMovementStopped)
         {
             _isEnemyMovementStopped = true;
             coreMovement.SetEntityVelocityX(0f);
@@ -60,9 +57,9 @@ public class Enemy_StunState : EnemyStates
 
         if (coreCollisionSenses)
         {
-            _isEnemyGrounded = coreCollisionSenses.CheckIfEntityGrounded;
+            
             _performEnemyCloseRangeAction = coreCollisionSenses.EnemyCheckPlayerInCloseRangeAction();
-            _isPlayerInMinAgroRange = coreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
+            
         }
     }
 }

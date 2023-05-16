@@ -5,10 +5,11 @@ using UnityEngine;
 public class E1_SpiderBoar_PlayerDetectedState : Enemy_PlayerDetectedState
 {
     private E1_SpiderBoar _enemySpiderBoar;
-    
-    public E1_SpiderBoar_PlayerDetectedState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyPlayerDetectedState _enemyStateData, E1_SpiderBoar _enemySpiderBoar) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyStateData)
+
+
+    public E1_SpiderBoar_PlayerDetectedState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData, E1_SpiderBoar enemySpiderBoar) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData)
     {
-        this._enemySpiderBoar = _enemySpiderBoar;
+        _enemySpiderBoar = enemySpiderBoar;
     }
 
     public override void StateEnter()

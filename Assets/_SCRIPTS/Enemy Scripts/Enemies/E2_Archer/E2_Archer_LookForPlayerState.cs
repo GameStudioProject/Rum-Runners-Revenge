@@ -6,9 +6,10 @@ public class E2_Archer_LookForPlayerState : Enemy_LookForPlayerState
 {
     private E2_Archer _archer;
 
-    public E2_Archer_LookForPlayerState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyLookForPlayerState _enemyLookForPlayerStateData, E2_Archer _archer) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyLookForPlayerStateData)
+
+    public E2_Archer_LookForPlayerState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData, E2_Archer archer) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData)
     {
-        this._archer = _archer;
+        _archer = archer;
     }
 
     public override void StateEnter()

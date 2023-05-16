@@ -6,9 +6,10 @@ public class E2_Archer_StunState : Enemy_StunState
 {
     private E2_Archer _archer;
 
-    public E2_Archer_StunState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyStunState _enemyStunStateData, E2_Archer _archer) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyStunStateData)
+
+    public E2_Archer_StunState(EnemyBase _enemyBase, EnemyFiniteStateMachine _enemyStateMachine, string _enemyAnimationBoolName, D_EnemyData _enemyData, E2_Archer archer) : base(_enemyBase, _enemyStateMachine, _enemyAnimationBoolName, _enemyData)
     {
-        this._archer = _archer;
+        _archer = archer;
     }
 
     public override void StateEnter()
