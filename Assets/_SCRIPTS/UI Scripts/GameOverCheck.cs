@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Tomas
 {
@@ -11,6 +12,7 @@ namespace Tomas
         public GameObject backgroundAudio1;
         public GameObject backgroundAudio2;
         public GameObject deathAudio;
+        public Button Restart;
 
         public bool isDead = false;
 
@@ -32,6 +34,7 @@ namespace Tomas
         {
             yield return new WaitForSeconds(3);
             gameOverCanvas.SetActive(true);
+            Restart.Select();
             Time.timeScale = 0;
         }
 

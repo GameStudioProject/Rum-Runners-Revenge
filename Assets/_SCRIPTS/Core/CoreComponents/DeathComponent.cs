@@ -24,7 +24,8 @@ public class DeathComponent : CoreComponent
             isDead = true;
             
             StartCoroutine(DeathWait());
-
+            
+            Time.timeScale = 1;
             if(_playerUIBar != null)
                 _playerUIBar.gameObject.SetActive(false);
 

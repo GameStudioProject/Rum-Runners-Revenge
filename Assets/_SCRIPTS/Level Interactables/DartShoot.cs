@@ -5,7 +5,7 @@ using UnityEngine;
 public class DartShoot : MonoBehaviour
 {
 
-    public Vector2 Origin;
+    private Vector2 Origin;
     public bool isShooting = false;
     public GameObject dart;
     public Rigidbody2D rb;
@@ -29,7 +29,7 @@ public class DartShoot : MonoBehaviour
         
             if (collision.CompareTag("Player"))
             {
-                damageable.Damage(50);
+                damageable.Damage(25);
             }
             gameObject.transform.position = (Origin);
             Debug.Log(gameObject.transform.position);
@@ -46,7 +46,7 @@ public class DartShoot : MonoBehaviour
 
         Debug.Log("Check 2");
         isShooting = true;
-        rb.velocity = new Vector2(-10,0);
+        rb.velocity = new Vector2(10,0);
 
     }
 

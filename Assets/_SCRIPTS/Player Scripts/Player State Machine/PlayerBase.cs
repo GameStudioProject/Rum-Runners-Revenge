@@ -122,5 +122,6 @@ public class PlayerBase : MonoBehaviour
     private void PlayerAnimationFinishTrigger() => PlayerStateMachine.PlayerCurrentState.PlayerAnimationFinishTrigger();
     
     
+    
     #endregion
 }

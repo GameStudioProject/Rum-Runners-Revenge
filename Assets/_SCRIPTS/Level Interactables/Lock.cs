@@ -19,7 +19,7 @@ public class Lock : MonoBehaviour
     {
         if (keyScript.keyUsed == true)
         {
-            Key.transform.position = Vector2.MoveTowards(Key.transform.position, transform.position, 2f * Time.deltaTime);
+            Key.transform.position = Vector2.MoveTowards(Key.transform.position, transform.position, 3f * Time.deltaTime);
             StartCoroutine(Timer());
         }
     }
@@ -28,13 +28,10 @@ public class Lock : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (keyScript.hasKey == true)
+            if (keyScript.hasKey)
             {
                 keyScript.keyUsed = true;
-                //Key.transform.position = Vector2.MoveTowards(Key.transform.position, transform.position, 0.1f * Time.deltaTime);
-                //StartCoroutine(Timer());
-                //Destroy(Key);
-                //Destroy(gameObject);
+
             }
         }
     }

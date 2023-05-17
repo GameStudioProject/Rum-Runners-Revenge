@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Tomas
 {
@@ -8,10 +9,13 @@ namespace Tomas
     {
         public GameObject optionsCanvas;
 
+        public Button Controls;
+
         public void optionsButton()
         {
             GameObject.Find("UI Audio").GetComponent<AudioSource>().Play();
             optionsCanvas.SetActive(true);
+            Controls.Select();
             PlayerManager.instance.player.GetComponent<PauseMenuCheck>().optionsMenuUp = true;
         }
         

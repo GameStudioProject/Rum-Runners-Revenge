@@ -6,7 +6,8 @@ public class Key : MonoBehaviour
 {
 
     public float speed = 2f;
-    public float height = 0.1f;
+    public float heightOnPlayer = 0.1f;
+    public float height = 0.01f;
     public bool hasKey = false;
     public bool keyUsed = false;
     public GameObject player;
@@ -23,17 +24,16 @@ public class Key : MonoBehaviour
         if (keyUsed == false)
         {
             playerPos = player.transform.position;
-            Vector2 pos = transform.position;
 
             if (hasKey == false)
             {   
                 float newY = Mathf.Sin(Time.time * speed);
-                transform.position = new Vector2(201, newY) * height;
+                transform.position = new Vector2(transform.position.x, (newY * height) + transform.position.y);
             }
             if (hasKey == true)
             {
                 float newY = Mathf.Sin(Time.time * speed);
-                transform.position = new Vector2(playerPos.x, (newY * height) + (playerPos.y + 1.5f));
+                transform.position = new Vector2(playerPos.x, (newY * heightOnPlayer) + (playerPos.y + 1.5f));
             }
         }
         

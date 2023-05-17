@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Tomas
 {
@@ -8,11 +9,13 @@ namespace Tomas
     {
 
         public GameObject controlsCanvas;
+        public Button backButton;
 
         public void controlsButton()
         {
             GameObject.Find("UI Audio").GetComponent<AudioSource>().Play();
             controlsCanvas.SetActive(true);
+            backButton.Select();
         }
         
     }

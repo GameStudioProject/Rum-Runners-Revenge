@@ -9,6 +9,7 @@ public class PlayerInputHandler : MonoBehaviour
 {
     public bool pauseMenuUp;
     public bool levelScreenClear;
+    public bool canPress;
 
     private PlayerInput _playerInput;
     private Camera _camera;
@@ -30,6 +31,8 @@ public class PlayerInputHandler : MonoBehaviour
     public bool PlayerGrappleHookInput { get; private set; }
     public bool PauseMenuInput { get; set; }
 
+    public bool InteractInput {get; set; }
+
     public bool[] PlayerAttackInputs { get; private set; }
 
     [SerializeField] private float _playerInputHoldTime = 0.2f;
@@ -47,6 +50,7 @@ public class PlayerInputHandler : MonoBehaviour
         _camera = Camera.main;
 
         pauseMenuUp = false;
+        canPress = false;
 
         Time.timeScale = 1;
     }
@@ -225,6 +229,22 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
 
+    }
+
+    public void OnInteractInput(InputAction.CallbackContext button)
+    {
+        if (pauseMenuUp == false && levelScreenClear == false && canPress == true)
+        {
+            if (button.started)
+            {
+                InteractInput = true;
+
+            }
+            else if (button.canceled)
+            {
+                InteractInput = false;
+            }
+        }
     }
 }
 

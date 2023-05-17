@@ -138,8 +138,8 @@ MonoBehaviour:
         name: PlayerWeaponLifeStealData
         _weaponAttackData:
         - name: Attack 1
-          <LifeStealAmount>k__BackingField: 5
+          <LifeStealAmount>k__BackingField: 1
         - name: Attack 2
-          <LifeStealAmount>k__BackingField: 10
+          <LifeStealAmount>k__BackingField: 3
         - name: Attack 3
-          <LifeStealAmount>k__BackingField: 15
+          <LifeStealAmount>k__BackingField: 5

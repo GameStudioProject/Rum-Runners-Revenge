@@ -56,7 +56,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
             {
                 _distanceToGrappleTarget = Vector2.Distance(_player.transform.position, _playerGrappleTarget);
 
-                if (_distanceToGrappleTarget <= _playerData.playerGrappleHookStopDistance)
+                if (_distanceToGrappleTarget <= _playerData.playerGrappleHookStopDistance || !coreCollisionSenses.EntityGrappleStuckCheck)
                 {
                     StopGrappleHook();
                     return;

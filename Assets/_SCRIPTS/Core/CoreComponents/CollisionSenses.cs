@@ -33,6 +33,10 @@ public class CollisionSenses : CoreComponent
         get => GenericCoreNotImplementedError<Transform>.TryGet(_entityCeilingCheck, transform.parent.name);
         private set => _entityCeilingCheck = value; 
     }
+    public Transform EntityGrappleStuckCheck {
+        get => GenericCoreNotImplementedError<Transform>.TryGet(_entityGrappleStuckCheck, transform.parent.name);
+        private set => _entityGrappleStuckCheck = value;
+    }
     public Transform EntityDodgeLandZone
     {
         get => GenericCoreNotImplementedError<Transform>.TryGet(_entityDodgeLandZone, transform.parent.name);
@@ -65,10 +69,12 @@ public class CollisionSenses : CoreComponent
     [SerializeField] private Transform _entityLedgeCheckHorizontal;
     [SerializeField] private Transform _entityLedgeCheckVertical;
     [SerializeField] private Transform _entityCeilingCheck;
+    [SerializeField] private Transform _entityGrappleStuckCheck;
     [SerializeField] private Transform _entityDodgeLandZone;
     [SerializeField] private float _entityGroundCheckRadius;
     [SerializeField] private float _entityWallCheckDistance;
     [SerializeField] private float _entityGrappleCheckRadius;
+    [SerializeField] public float _entityGrappleStuckRadius;
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsPlayer;
     [SerializeField] private LayerMask _whatisGrappleble;
@@ -113,6 +119,11 @@ public class CollisionSenses : CoreComponent
     public Collider2D[] CheckForGrappleble
     {
         get => Physics2D.OverlapCircleAll(_entityGrappleCheck.transform.position, _entityGrappleCheckRadius, _whatisGrappleble);
+    }
+
+    public bool CheckEntityGrappleStuck
+    {
+        get => Physics2D.OverlapCircle(_entityGrappleStuckCheck.transform.position, _entityGrappleStuckRadius, _whatIsGround);
     }
     
     public virtual bool EnemyCheckPlayerInMinAgroRange()
