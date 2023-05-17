@@ -1,3 +1,4 @@
+using System;
 using Tomas.Core;
 using UnityEngine;
 
@@ -30,8 +31,9 @@ public class PlayerBase : MonoBehaviour
     #region Components
 
     public Core Core { get; private set; }
-
-    private StatsComponent _statsComponent;
+    public CollisionSenses collisionSenses { get; private set; }
+    
+    
     public Animator PlayerAnimator { get; private set; }
     public PlayerInputHandler PlayerInputHandler { get; private set; }
     public Rigidbody2D PlayerRB { get; private set; }
@@ -52,8 +54,10 @@ public class PlayerBase : MonoBehaviour
     private void Awake()
     {
         Core = GetComponentInChildren<Core>();
-        _statsComponent = Core.GetCoreComponent<StatsComponent>();
+        collisionSenses = Core.GetCoreComponent<CollisionSenses>();
 
+        collisionSenses.PlayerBase = this;
+        
         _primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<PlayerWeapon>();
         _secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<PlayerWeapon>();
         
@@ -82,11 +86,13 @@ public class PlayerBase : MonoBehaviour
 
     private void Start()
     {
+        
         PlayerAnimator = GetComponent<Animator>();
         PlayerInputHandler = GetComponent<PlayerInputHandler>();
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
         PlayerHitBox = GetComponent<BoxCollider2D>();
+        
 
         PlayerStateMachine.InitializeStateMachine(PlayerIdleState);
     }
@@ -120,8 +126,15 @@ public class PlayerBase : MonoBehaviour
     private void PlayerAnimationTrigger() => PlayerStateMachine.PlayerCurrentState.PlayerAnimationTrigger();
 
     private void PlayerAnimationFinishTrigger() => PlayerStateMachine.PlayerCurrentState.PlayerAnimationFinishTrigger();
-    
-    
-    
+
+    public void OnDrawGizmos()
+    {
+        if (Core != null)
+        {
+            Gizmos.DrawWireSphere(collisionSenses._entityGrappleStuckCheck.transform.position, collisionSenses._entityGrappleStuckRadius);
+            Gizmos.DrawWireSphere(collisionSenses._entityGrappleCheck.transform.position, collisionSenses._entityGrappleCheckRadius);
+        }
+    }
+
     #endregion
 }

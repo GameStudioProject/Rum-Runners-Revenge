@@ -50,13 +50,13 @@ public class CollisionSenses : CoreComponent
     }
     
     public EnemyBase EnemyBase {get; set; }
+    public PlayerBase PlayerBase { get; set; }
 
     public D_EnemyData EntityData
     {
         get => EnemyBase.enemyData;
     }
     
-    public float EntityGroundCheckRadius { get => _entityGroundCheckRadius; set => _entityGroundCheckRadius = value; }
     public float EntityWallCheckDistance { get => _entityWallCheckDistance; set => _entityWallCheckDistance = value; }
     public LayerMask WhatIsGround { get => _whatIsGround; set => _whatIsGround = value; }
     public LayerMask WhatIsPlayer { get => _whatIsPlayer; set => _whatIsPlayer = value; }
@@ -65,15 +65,15 @@ public class CollisionSenses : CoreComponent
     [SerializeField] private Transform _entityGroundCheck;
     [SerializeField] private Transform _entityWallCheck;
     [SerializeField] private Transform _entityPlayerCheck;
-    [SerializeField] private Transform _entityGrappleCheck;
+    [SerializeField] public Transform _entityGrappleCheck;
     [SerializeField] private Transform _entityLedgeCheckHorizontal;
     [SerializeField] private Transform _entityLedgeCheckVertical;
     [SerializeField] private Transform _entityCeilingCheck;
-    [SerializeField] private Transform _entityGrappleStuckCheck;
+    [SerializeField] public Transform _entityGrappleStuckCheck;
     [SerializeField] private Transform _entityDodgeLandZone;
     [SerializeField] private float _entityGroundCheckRadius;
     [SerializeField] private float _entityWallCheckDistance;
-    [SerializeField] private float _entityGrappleCheckRadius;
+    [SerializeField] public float _entityGrappleCheckRadius;
     [SerializeField] public float _entityGrappleStuckRadius;
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsPlayer;
@@ -142,4 +142,5 @@ public class CollisionSenses : CoreComponent
     }
 
     #endregion
+    
 }

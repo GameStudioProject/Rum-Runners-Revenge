@@ -23,7 +23,6 @@ public class PlayerGrappleHookState : PlayerAbilityState
         base.StateEnter();
         
         
-
         _canPlayerGrapple = false;
         _player.PlayerInputHandler.PlayerUsedGrappleHookInput();
         
@@ -33,8 +32,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
         _rigidbody = _player.GetComponent<Rigidbody2D>();
         
         _rigidbody.velocity = coreMovement.EntityCurrentVelocity;
-        
-        
+
         StartGrappleHook(coreCollisionSenses.CheckForGrappleble);
 
     }
@@ -56,17 +54,17 @@ public class PlayerGrappleHookState : PlayerAbilityState
             {
                 _distanceToGrappleTarget = Vector2.Distance(_player.transform.position, _playerGrappleTarget);
 
-                if (_distanceToGrappleTarget <= _playerData.playerGrappleHookStopDistance || !coreCollisionSenses.EntityGrappleStuckCheck)
+                if (_distanceToGrappleTarget <= _playerData.playerGrappleHookStopDistance || coreCollisionSenses.CheckEntityGrappleStuck)
                 {
                     StopGrappleHook();
                     return;
                 }
-                else if (_distanceToGrappleTarget > _maxGrappleDistance)
+                if (_distanceToGrappleTarget > _maxGrappleDistance)
                 {
                     StopGrappleHook();
                     return;
                 }
-                
+
                 _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;
 
                 coreMovement.SetEntityVelocity(_grappleDirection * _playerData.playerGrappleSpeed);
@@ -110,6 +108,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
 
         float closestDistance = float.MaxValue;
         Vector2 closestGrapplePoint = Vector2.zero;
+        
 
         foreach (Collider2D collider in hitColliders)
         {
@@ -123,8 +122,11 @@ public class PlayerGrappleHookState : PlayerAbilityState
             }
         }
 
-        if (_player.transform.position.y > closestGrapplePoint.y) 
-            return;
+        if (_player.transform.position.y > closestGrapplePoint.y)
+        {
+            StopGrappleHook();
+            _player.PlayerAnimator.SetBool("grappleHook", false);
+        }
 
         _playerGrappleTarget = closestGrapplePoint;
         _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;

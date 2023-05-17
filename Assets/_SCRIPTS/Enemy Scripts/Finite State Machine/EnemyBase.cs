@@ -6,10 +6,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(EnemyAnimationToStateMachine))]
 public class EnemyBase : MonoBehaviour
 {
-    protected MovementComponent coreMovement;
-    protected CollisionSenses coreCollisionSenses;
+    
     
     public EnemyFiniteStateMachine EnemyStateMachine;
     public D_EnemyData enemyData;
@@ -31,15 +35,17 @@ public class EnemyBase : MonoBehaviour
     protected bool _isEnemyDead;
 
     protected StatsComponent coreStats;
+    protected MovementComponent coreMovement;
+    protected CollisionSenses coreCollisionSenses;
 
     public virtual void Awake()
     {
          Core = GetComponentInChildren<Core>();
 
          coreMovement = Core.GetCoreComponent<MovementComponent>();
-        coreCollisionSenses = Core.GetCoreComponent<CollisionSenses>();
-        coreStats = Core.GetCoreComponent<StatsComponent>();
-        
+         coreCollisionSenses = Core.GetCoreComponent<CollisionSenses>();
+         coreStats = Core.GetCoreComponent<StatsComponent>();
+         
         coreCollisionSenses.EnemyBase = this;
         
         _enemyCurrentHealth = enemyData.maxHealth;
