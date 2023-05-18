@@ -14,7 +14,6 @@ using Random = UnityEngine.Random;
 public class EnemyBase : MonoBehaviour
 {
     
-    
     public EnemyFiniteStateMachine EnemyStateMachine;
     public D_EnemyData enemyData;
     public Animator EnemyAnimator { get; private set; }
@@ -23,6 +22,11 @@ public class EnemyBase : MonoBehaviour
     public int LastDamageDirection { get; private set; }
     
     public Core Core { get; private set; }
+    public StatsComponent CoreStats { get; private set; }
+    public MovementComponent CoreMovement { get; private set; }
+    public CollisionSenses CoreCollisionSenses { get; private set; }
+    public DeathComponent CoreDeathComponent { get; private set; }
+    public ParticleManagerComponent ParticleManager { get; private set; }
 
     private float _enemyCurrentHealth;
     private float _enemyCurrentStunResistance;
@@ -34,19 +38,19 @@ public class EnemyBase : MonoBehaviour
     protected bool _isEnemyStunned;
     protected bool _isEnemyDead;
 
-    protected StatsComponent coreStats;
-    protected MovementComponent coreMovement;
-    protected CollisionSenses coreCollisionSenses;
+    
 
     public virtual void Awake()
     {
          Core = GetComponentInChildren<Core>();
 
-         coreMovement = Core.GetCoreComponent<MovementComponent>();
-         coreCollisionSenses = Core.GetCoreComponent<CollisionSenses>();
-         coreStats = Core.GetCoreComponent<StatsComponent>();
+         CoreMovement = Core.GetCoreComponent<MovementComponent>();
+         CoreCollisionSenses = Core.GetCoreComponent<CollisionSenses>();
+         CoreDeathComponent = Core.GetCoreComponent<DeathComponent>();
+         ParticleManager = Core.GetCoreComponent<ParticleManagerComponent>();
+         CoreStats = Core.GetCoreComponent<StatsComponent>();
          
-        coreCollisionSenses.EnemyBase = this;
+        CoreCollisionSenses.EnemyBase = this;
         
         _enemyCurrentHealth = enemyData.maxHealth;
         _enemyCurrentStunResistance = enemyData.enemyStunResistance;
@@ -63,7 +67,7 @@ public class EnemyBase : MonoBehaviour
         
         EnemyStateMachine.CurrentEnemyState.EveryFrameUpdate();
         
-        EnemyAnimator.SetFloat("yVelocity", coreMovement.Rigidbody.velocity.y);
+        EnemyAnimator.SetFloat("yVelocity", CoreMovement.Rigidbody.velocity.y);
 
         if (Time.time >= _lastDamageTime + enemyData.enemyStunRecoveryTime)
         {
@@ -86,12 +90,12 @@ public class EnemyBase : MonoBehaviour
     {
         if (Core != null)
         {
-            Gizmos.DrawLine(coreCollisionSenses.EntityWallCheck.position, coreCollisionSenses.EntityWallCheck.position + (Vector3)(Vector2.right * coreMovement.EntityFacingDirection * enemyData.wallCheckDistance));
-            Gizmos.DrawLine(coreCollisionSenses.EntityLedgeCheckVertical.position, coreCollisionSenses.EntityLedgeCheckVertical.position + (Vector3)(Vector2.down * enemyData.ledgeCheckDistance));
+            Gizmos.DrawLine(CoreCollisionSenses.EntityWallCheck.position, CoreCollisionSenses.EntityWallCheck.position + (Vector3)(Vector2.right * CoreMovement.EntityFacingDirection * enemyData.wallCheckDistance));
+            Gizmos.DrawLine(CoreCollisionSenses.EntityLedgeCheckVertical.position, CoreCollisionSenses.EntityLedgeCheckVertical.position + (Vector3)(Vector2.down * enemyData.ledgeCheckDistance));
         
-            Gizmos.DrawWireSphere(coreCollisionSenses.EntityPlayerCheck.position + (Vector3)(Vector2.right * coreMovement.EntityFacingDirection * enemyData.enemyCloseRangeActionDistance), 0.2f);
-            Gizmos.DrawWireSphere(coreCollisionSenses.EntityPlayerCheck.position + (Vector3)(Vector2.right * coreMovement.EntityFacingDirection * enemyData.enemyMinAgroDistance), 0.2f);
-            Gizmos.DrawWireSphere(coreCollisionSenses.EntityPlayerCheck.position + (Vector3)(Vector2.right * coreMovement.EntityFacingDirection *enemyData.enemyMaxAgroDistance), 0.2f);
+            Gizmos.DrawWireSphere(CoreCollisionSenses.EntityPlayerCheck.position + (Vector3)(Vector2.right * CoreMovement.EntityFacingDirection * enemyData.enemyCloseRangeActionDistance), 0.2f);
+            Gizmos.DrawWireSphere(CoreCollisionSenses.EntityPlayerCheck.position + (Vector3)(Vector2.right * CoreMovement.EntityFacingDirection * enemyData.enemyMinAgroDistance), 0.2f);
+            Gizmos.DrawWireSphere(CoreCollisionSenses.EntityPlayerCheck.position + (Vector3)(Vector2.right * CoreMovement.EntityFacingDirection *enemyData.enemyMaxAgroDistance), 0.2f);
         }
         
     }

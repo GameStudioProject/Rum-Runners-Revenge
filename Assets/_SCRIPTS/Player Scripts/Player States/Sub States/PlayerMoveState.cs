@@ -19,13 +19,13 @@ public class PlayerMoveState : PlayerGroundedState
     {
         base.EveryFrameUpdate();
         
-        coreMovement.CheckIfEntityShouldFlip(_xPlayerInput);
+        _player.CoreMovement.CheckIfEntityShouldFlip(_xPlayerInput);
         
-        coreMovement.SetEntityVelocityX(_playerData.playerMovementSpeed * _xPlayerInput);
+        _player.CoreMovement.SetEntityVelocityX(_playerData.playerMovementSpeed * _xPlayerInput);
 
         if (!_isExitingPlayerState)
         {
-            if (_xPlayerInput == 0 || coreCollisionSenses.CheckIfEntityTouchesWall)
+            if (_xPlayerInput == 0 || _player.CoreCollisionSenses.CheckIfEntityTouchesWall)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerIdleState);
             }

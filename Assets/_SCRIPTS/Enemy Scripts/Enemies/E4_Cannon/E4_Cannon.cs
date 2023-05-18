@@ -27,7 +27,7 @@ public class E4_Cannon : EnemyBase
         CannonDeadState = new E4_Cannon_DeadState(this, EnemyStateMachine, "dead", enemyData, this);
         CannonRangedAttackState = new E4_Cannon_RangedAttackState(this, EnemyStateMachine, "rangedAttack", enemyData, _rangedAttackPosition,this);
         
-        coreStats.EntityPoise.OnCurrentStatValueZero += HandleEnemyPoiseZero;
+        CoreStats.EntityPoise.OnCurrentStatValueZero += HandleEnemyPoiseZero;
     }
 
     private void HandleEnemyPoiseZero()
@@ -42,7 +42,7 @@ public class E4_Cannon : EnemyBase
 
     private void OnDestroy()
     {
-        coreStats.EntityPoise.OnCurrentStatValueZero -= HandleEnemyPoiseZero;
+        CoreStats.EntityPoise.OnCurrentStatValueZero -= HandleEnemyPoiseZero;
     }
 
     public override void OnDrawGizmos()

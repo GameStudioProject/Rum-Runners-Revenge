@@ -17,13 +17,13 @@ public class Enemy_DodgeState : Enemy_GroundedState
 
         _isEnemyDodgeOver = false;
 
-        if (coreCollisionSenses.CheckEntityDodgeLandZone)
+        if (_enemyBase.CoreCollisionSenses.CheckEntityDodgeLandZone)
         {
-            coreMovement.SetEntityVelocity(_enemyData.enemyDodgeSpeed, _enemyData.enemyDodgeAngle, -coreMovement.EntityFacingDirection);
+            _enemyBase.CoreMovement.SetEntityVelocity(_enemyData.enemyDodgeSpeed, _enemyData.enemyDodgeAngle, -_enemyBase.CoreMovement.EntityFacingDirection);
         }
         else
         {
-            coreMovement.SetEntityVelocity(_enemyData.enemyDodgeSpeed * _enemyData.enemyDodgeSpeedMultiplier, _enemyData.enemyDodgeAngle, coreMovement.EntityFacingDirection);
+            _enemyBase.CoreMovement.SetEntityVelocity(_enemyData.enemyDodgeSpeed * _enemyData.enemyDodgeSpeedMultiplier, _enemyData.enemyDodgeAngle, _enemyBase.CoreMovement.EntityFacingDirection);
         }
     }
 

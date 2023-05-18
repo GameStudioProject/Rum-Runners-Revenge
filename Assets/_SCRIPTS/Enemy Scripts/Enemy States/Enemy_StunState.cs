@@ -20,7 +20,7 @@ public class Enemy_StunState : Enemy_GroundedState
 
         _isEnemyStunTimeOver = false;
         _isEnemyMovementStopped = false;
-        coreMovement.SetEntityVelocity(_enemyData.enemyStunKnockBackSpeed, _enemyData.enemyStunKnockBackAngle, _enemyBase.LastDamageDirection);
+        _enemyBase.CoreMovement.SetEntityVelocity(_enemyData.enemyStunKnockBackSpeed, _enemyData.enemyStunKnockBackAngle, _enemyBase.LastDamageDirection);
     }
 
     public override void StateExit()
@@ -42,7 +42,7 @@ public class Enemy_StunState : Enemy_GroundedState
         if (_isEnemyGrounded && Time.time >= _stateStartTime + _enemyData.enemyStunKnockBackTime && !_isEnemyMovementStopped)
         {
             _isEnemyMovementStopped = true;
-            coreMovement.SetEntityVelocityX(0f);
+            _enemyBase.CoreMovement.SetEntityVelocityX(0f);
         }
     }
 
@@ -55,10 +55,10 @@ public class Enemy_StunState : Enemy_GroundedState
     {
         base.DoEnemyChecks();
 
-        if (coreCollisionSenses)
+        if (_enemyBase.CoreCollisionSenses)
         {
             
-            _performEnemyCloseRangeAction = coreCollisionSenses.EnemyCheckPlayerInCloseRangeAction();
+            _performEnemyCloseRangeAction = _enemyBase.CoreCollisionSenses.EnemyCheckPlayerInCloseRangeAction();
             
         }
     }

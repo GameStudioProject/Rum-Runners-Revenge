@@ -25,7 +25,7 @@ public class PlayerDashState : PlayerAbilityState
         
 
         _isPlayerHolding = true;
-        _playerDashDirection = Vector2.right * coreMovement.EntityFacingDirection;
+        _playerDashDirection = Vector2.right * _player.CoreMovement.EntityFacingDirection;
 
         Time.timeScale = _playerData.slowMotionTimeScale; //slowmotion
         stateStartTime = Time.unscaledTime; //constant time so the slowmotion scaleTime has no effect on countdown
@@ -37,9 +37,9 @@ public class PlayerDashState : PlayerAbilityState
     {
         base.StateExit();
         
-        if (coreMovement?.EntityCurrentVelocity.y > 0)
+        if (_player.CoreMovement?.EntityCurrentVelocity.y > 0)
         {
-            coreMovement?.SetEntityVelocityY(coreMovement.EntityCurrentVelocity.y * _playerData.playerDashHeightMultiplier);
+            _player.CoreMovement?.SetEntityVelocityY(_player.CoreMovement.EntityCurrentVelocity.y * _playerData.playerDashHeightMultiplier);
         }
         
     }
@@ -51,8 +51,8 @@ public class PlayerDashState : PlayerAbilityState
         
         if (!_isExitingPlayerState)
         {
-            _player.PlayerAnimator.SetFloat("yVelocity", coreMovement.EntityCurrentVelocity.y);
-            _player.PlayerAnimator.SetFloat("xVelocity", Mathf.Abs(coreMovement.EntityCurrentVelocity.x));
+            _player.PlayerAnimator.SetFloat("yVelocity", _player.CoreMovement.EntityCurrentVelocity.y);
+            _player.PlayerAnimator.SetFloat("xVelocity", Mathf.Abs(_player.CoreMovement.EntityCurrentVelocity.x));
             
             if (_isPlayerHolding)
             {
@@ -74,21 +74,21 @@ public class PlayerDashState : PlayerAbilityState
                     GameObject.Find("Dash Audio").GetComponent<AudioSource>().Play();
                     Time.timeScale = 1f;
                     stateStartTime = Time.time;
-                    coreMovement?.CheckIfEntityShouldFlip(Mathf.RoundToInt(_playerDashDirection.x));
-                    _player.PlayerRB.drag = _playerData.playerAirDrag;
-                    coreMovement?.SetEntityVelocity(_playerData.playerDashSpeed, _playerDashDirection);
+                    _player.CoreMovement?.CheckIfEntityShouldFlip(Mathf.RoundToInt(_playerDashDirection.x));
+                    _player.PlayerRb.drag = _playerData.playerAirDrag;
+                    _player.CoreMovement?.SetEntityVelocity(_playerData.playerDashSpeed, _playerDashDirection);
                     _player.PlayerDashDirectionIndicator.gameObject.SetActive(false);
                     PlaceAfterImage();
                 }
             }
             else
             {
-                coreMovement?.SetEntityVelocity(_playerData.playerDashSpeed, _playerDashDirection);
+                _player.CoreMovement?.SetEntityVelocity(_playerData.playerDashSpeed, _playerDashDirection);
                 CheckIfAfterImageIsNeeded();
 
                 if (Time.time >= stateStartTime + _playerData.playerDashTime)
                 {
-                    _player.PlayerRB.drag = 0f;
+                    _player.PlayerRb.drag = 0f;
                     _isPlayerAbilityDone = true;
                     _lastPlayerDashTime = Time.time;
                 }

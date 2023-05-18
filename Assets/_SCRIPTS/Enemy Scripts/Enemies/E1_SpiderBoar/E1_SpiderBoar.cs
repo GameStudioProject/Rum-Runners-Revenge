@@ -30,7 +30,7 @@ public class E1_SpiderBoar : EnemyBase
         spiderBoar_StunState = new E1_SpiderBoar_StunState(this, EnemyStateMachine, "stun", enemyData, this);
         spiderBoar_DeadState = new E1_SpiderBoar_DeadState(this, EnemyStateMachine, "dead", enemyData, this);
 
-        coreStats.EntityPoise.OnCurrentStatValueZero += HandleEnemyPoiseZero;
+        CoreStats.EntityPoise.OnCurrentStatValueZero += HandleEnemyPoiseZero;
     }
 
     private void HandleEnemyPoiseZero()
@@ -45,7 +45,7 @@ public class E1_SpiderBoar : EnemyBase
 
     private void OnDestroy()
     {
-        coreStats.EntityPoise.OnCurrentStatValueZero -= HandleEnemyPoiseZero;
+        CoreStats.EntityPoise.OnCurrentStatValueZero -= HandleEnemyPoiseZero;
     }
 
     public override void OnDrawGizmos()

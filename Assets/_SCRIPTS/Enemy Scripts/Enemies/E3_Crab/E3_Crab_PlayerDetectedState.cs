@@ -11,12 +11,6 @@ public class E3_Crab_PlayerDetectedState : Enemy_PlayerDetectedState
         _enemyCrab = enemyCrab;
     }
 
-    protected MovementComponent MovementComponent
-    {
-        get => _movementComponent ??= _core.GetCoreComponent<MovementComponent>();
-    }
-    private MovementComponent _movementComponent;
-
     private E3_Crab _enemyCrab;
     
 

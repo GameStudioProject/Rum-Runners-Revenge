@@ -31,9 +31,9 @@ public class PlayerGrappleHookState : PlayerAbilityState
         _grappleLineRenderer = _player.GetComponent<LineRenderer>();
         _rigidbody = _player.GetComponent<Rigidbody2D>();
         
-        _rigidbody.velocity = coreMovement.EntityCurrentVelocity;
+        _rigidbody.velocity = _player.CoreMovement.EntityCurrentVelocity;
 
-        StartGrappleHook(coreCollisionSenses.CheckForGrappleble);
+        StartGrappleHook(_player.CoreCollisionSenses.CheckForGrappleble);
 
     }
 
@@ -41,7 +41,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
     {
         base.StateExit();
         
-        _rigidbody.velocity = coreMovement.EntityCurrentVelocity.normalized * _playerData.playerGrappleExitBoost;
+        _rigidbody.velocity = _player.CoreMovement.EntityCurrentVelocity.normalized * _playerData.playerGrappleExitBoost;
     }
 
     public override void EveryFrameUpdate()
@@ -54,7 +54,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
             {
                 _distanceToGrappleTarget = Vector2.Distance(_player.transform.position, _playerGrappleTarget);
 
-                if (_distanceToGrappleTarget <= _playerData.playerGrappleHookStopDistance || coreCollisionSenses.CheckEntityGrappleStuck)
+                if (_distanceToGrappleTarget <= _playerData.playerGrappleHookStopDistance || _player.CoreCollisionSenses.CheckEntityGrappleStuck)
                 {
                     StopGrappleHook();
                     _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
@@ -69,7 +69,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
 
                 _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;
 
-                coreMovement.SetEntityVelocity(_grappleDirection * _playerData.playerGrappleSpeed);
+                _player.CoreMovement.SetEntityVelocity(_grappleDirection * _playerData.playerGrappleSpeed);
                 
                 float movementAmount = _playerData.playerGrappleSpeed * Time.deltaTime;
                 Vector2 newPosition = Vector2.MoveTowards(_player.transform.position, _playerGrappleTarget, movementAmount);
@@ -104,7 +104,7 @@ public class PlayerGrappleHookState : PlayerAbilityState
 
     public void StartGrappleHook(Collider2D[] hitColliders)
     {
-        coreMovement.SetEntityVelocityZero();
+        _player.CoreMovement.SetEntityVelocityZero();
         if (hitColliders.Length == 0) 
             return; 
 
@@ -133,9 +133,9 @@ public class PlayerGrappleHookState : PlayerAbilityState
         _playerGrappleTarget = closestGrapplePoint;
         _grappleDirection = (_playerGrappleTarget - (Vector2)_player.transform.position).normalized;
 
-        if (_grappleDirection.x * coreMovement.EntityFacingDirection < 0)
+        if (_grappleDirection.x * _player.CoreMovement.EntityFacingDirection < 0)
         {
-            coreMovement.EntityFlip();
+            _player.CoreMovement.EntityFlip();
         }
     }
 

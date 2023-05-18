@@ -18,7 +18,7 @@ public class Enemy_IdleState : Enemy_GroundedState
     {
         base.StateEnter();
         
-        coreMovement.SetEntityVelocityX(0f);
+        _enemyBase.CoreMovement.SetEntityVelocityX(0f);
         _isEnemyIdleTimeOver = false;
         
         SetEnemyRandomIdleTime();
@@ -30,7 +30,7 @@ public class Enemy_IdleState : Enemy_GroundedState
 
         if (_enemyFlipAfterIdle)
         {
-            coreMovement.EntityFlip();
+            _enemyBase.CoreMovement.EntityFlip();
         }
     }
 
@@ -38,7 +38,7 @@ public class Enemy_IdleState : Enemy_GroundedState
     {
         base.EveryFrameUpdate();
         
-        coreMovement.SetEntityVelocityX(0f);
+        _enemyBase.CoreMovement.SetEntityVelocityX(0f);
 
         if (Time.time >= _stateStartTime + _enemyIdleTime)
         {
@@ -55,7 +55,7 @@ public class Enemy_IdleState : Enemy_GroundedState
     {
         base.DoEnemyChecks();
         
-        _isPlayerInMinAgroRange = coreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
+        _isPlayerInMinAgroRange = _enemyBase.CoreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
     }
 
     public void SetEnemyFlipAfterIdle(bool flip)

@@ -54,7 +54,7 @@ public class Enemy_MeleeAttackState : Enemy_AttackState
 
             if (knockbackable != null)
             {
-                knockbackable.KnockBack(_enemyData.knockBackAngle, _enemyData.knockBackStrength, coreMovement.EntityFacingDirection);
+                knockbackable.KnockBack(_enemyData.knockBackAngle, _enemyData.knockBackStrength, _enemyBase.CoreMovement.EntityFacingDirection);
             }
         }
     }

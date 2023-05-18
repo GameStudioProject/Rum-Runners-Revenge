@@ -19,7 +19,7 @@ public class Enemy_PlayerDetectedState : Enemy_GroundedState
         base.StateEnter();
 
         _performEnemyLongRangeAction = false;
-        coreMovement.SetEntityVelocityX(0f);
+        _enemyBase.CoreMovement.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()
@@ -31,7 +31,7 @@ public class Enemy_PlayerDetectedState : Enemy_GroundedState
     {
         base.EveryFrameUpdate();
         
-        coreMovement.SetEntityVelocityX(0f);
+        _enemyBase.CoreMovement.SetEntityVelocityX(0f);
 
         if (Time.time >= _stateStartTime + _enemyData.enemyLongRangeActionTime)
         {
@@ -48,6 +48,6 @@ public class Enemy_PlayerDetectedState : Enemy_GroundedState
     {
         base.DoEnemyChecks();
         
-        _performEnemyCloseRangeAction = coreCollisionSenses.EnemyCheckPlayerInCloseRangeAction();
+        _performEnemyCloseRangeAction = _enemyBase.CoreCollisionSenses.EnemyCheckPlayerInCloseRangeAction();
     }
 }

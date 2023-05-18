@@ -18,13 +18,13 @@ public class PlayerWallClimbState : PlayerTouchWallState
     {
         base.EveryFrameUpdate();
 
-        coreStats.EntityStamina.DecreaseStat(_playerData.playerWallGrabStaminaReduceAmount);
+        _player.CoreStats.EntityStamina.DecreaseStat(_playerData.playerWallGrabStaminaReduceAmount);
         
         if (!_isExitingPlayerState)
         {
-            coreMovement.SetEntityVelocityY(_playerData.playerWallClimbSpeed);
+            _player.CoreMovement.SetEntityVelocityY(_playerData.playerWallClimbSpeed);
 
-            if (coreStats.EntityStamina.StatCurrentValue <= 0)
+            if (_player.CoreStats.EntityStamina.StatCurrentValue <= 0)
             {
                 _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
             }

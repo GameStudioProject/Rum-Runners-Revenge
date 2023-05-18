@@ -9,7 +9,7 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.StateEnter();
         
-        coreMovement.SetEntityVelocityX(0f);
+        _player.CoreMovement.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()
@@ -24,7 +24,7 @@ public class PlayerIdleState : PlayerGroundedState
         if (!_isExitingPlayerState)
         {
             //player will stop running into wall
-            if (_xPlayerInput == coreMovement.EntityFacingDirection && coreCollisionSenses.CheckIfEntityTouchesWall)
+            if (_xPlayerInput == _player.CoreMovement.EntityFacingDirection && _player.CoreCollisionSenses.CheckIfEntityTouchesWall)
             {
                 return;
             }

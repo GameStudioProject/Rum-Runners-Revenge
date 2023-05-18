@@ -13,7 +13,7 @@ public class PlayerCrouchIdleState : PlayerGroundedState
     {
         base.StateEnter();
         
-        coreMovement.SetEntityVelocityZero();
+        _player.CoreMovement.SetEntityVelocityZero();
         _player.SetPlayerHitBoxHeight(_playerData.playerCrouchHitBoxHeight);
     }
 
@@ -30,7 +30,7 @@ public class PlayerCrouchIdleState : PlayerGroundedState
 
         if (!_isExitingPlayerState)
         {
-            if (_xPlayerInput == coreMovement.EntityFacingDirection && coreCollisionSenses.CheckIfEntityTouchesWall)
+            if (_xPlayerInput == _player.CoreMovement.EntityFacingDirection && _player.CoreCollisionSenses.CheckIfEntityTouchesWall)
             {
                 return;
             }

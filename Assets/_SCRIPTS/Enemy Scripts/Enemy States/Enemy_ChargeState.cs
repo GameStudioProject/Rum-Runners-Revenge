@@ -18,7 +18,7 @@ public class Enemy_ChargeState : Enemy_GroundedState
         base.StateEnter();
 
         _isEnemyChargeTimeOver = false;
-        coreMovement.SetEntityVelocityX(_enemyData.enemyChargeSpeed * coreMovement.EntityFacingDirection);
+        _enemyBase.CoreMovement.SetEntityVelocityX(_enemyData.enemyChargeSpeed * _enemyBase.CoreMovement.EntityFacingDirection);
     }
 
     public override void StateExit()
@@ -30,7 +30,7 @@ public class Enemy_ChargeState : Enemy_GroundedState
     {
         base.EveryFrameUpdate();
         
-        coreMovement?.SetEntityVelocityX(_enemyData.enemyChargeSpeed * coreMovement.EntityFacingDirection);
+        _enemyBase.CoreMovement?.SetEntityVelocityX(_enemyData.enemyChargeSpeed * _enemyBase.CoreMovement.EntityFacingDirection);
 
         if (Time.time >= _stateStartTime + _enemyData.enemyChargeTime)
         {
@@ -47,6 +47,6 @@ public class Enemy_ChargeState : Enemy_GroundedState
     {
         base.DoEnemyChecks();
         
-        _performEnemyCloseRangeAction = coreCollisionSenses.EnemyCheckPlayerInCloseRangeAction();
+        _performEnemyCloseRangeAction = _enemyBase.CoreCollisionSenses.EnemyCheckPlayerInCloseRangeAction();
     }
 }

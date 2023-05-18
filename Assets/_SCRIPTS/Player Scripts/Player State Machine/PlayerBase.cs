@@ -31,13 +31,15 @@ public class PlayerBase : MonoBehaviour
     #region Components
 
     public Core Core { get; private set; }
-    public CollisionSenses collisionSenses { get; private set; }
-    public MovementComponent movementComponent { get; private set; }
-    
+    public MovementComponent CoreMovement { get; private set; }
+    public CollisionSenses CoreCollisionSenses { get; private set; }
+    public DeathComponent CoreDeath { get; private set; }
+    public StatsComponent CoreStats { get; private set; }
+    public ParticleManagerComponent CoreParticleManager { get; private set; }
     
     public Animator PlayerAnimator { get; private set; }
     public PlayerInputHandler PlayerInputHandler { get; private set; }
-    public Rigidbody2D PlayerRB { get; private set; }
+    public Rigidbody2D PlayerRb { get; private set; }
     public Transform PlayerDashDirectionIndicator { get; private set; }
     public BoxCollider2D PlayerHitBox { get; private set; }
 
@@ -55,10 +57,13 @@ public class PlayerBase : MonoBehaviour
     private void Awake()
     {
         Core = GetComponentInChildren<Core>();
-        collisionSenses = Core.GetCoreComponent<CollisionSenses>();
-        movementComponent = Core.GetCoreComponent<MovementComponent>();
+        CoreMovement = Core.GetCoreComponent<MovementComponent>();
+        CoreCollisionSenses = Core.GetCoreComponent<CollisionSenses>();
+        CoreDeath = Core.GetCoreComponent<DeathComponent>();
+        CoreStats = Core.GetCoreComponent<StatsComponent>();
+        CoreParticleManager = Core.GetCoreComponent<ParticleManagerComponent>();
 
-        collisionSenses.PlayerBase = this;
+        CoreCollisionSenses.PlayerBase = this;
         
         _primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<PlayerWeapon>();
         _secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<PlayerWeapon>();
@@ -91,7 +96,7 @@ public class PlayerBase : MonoBehaviour
         
         PlayerAnimator = GetComponent<Animator>();
         PlayerInputHandler = GetComponent<PlayerInputHandler>();
-        PlayerRB = GetComponent<Rigidbody2D>();
+        PlayerRb = GetComponent<Rigidbody2D>();
         PlayerDashDirectionIndicator = transform.Find("PlayerDashDirectionIndicator");
         PlayerHitBox = GetComponent<BoxCollider2D>();
         
@@ -113,12 +118,12 @@ public class PlayerBase : MonoBehaviour
 
     #region Other Functions
 
-    public void SetPlayerHitBoxHeight(float height)
+    public void SetPlayerHitBoxHeight(float _height)
     {
         Vector2 hitBoxCentre = PlayerHitBox.offset;
-        _velocityWorkspace.Set(PlayerHitBox.size.x, height);
+        _velocityWorkspace.Set(PlayerHitBox.size.x, _height);
 
-        hitBoxCentre.y += (height - PlayerHitBox.size.y) / 2;
+        hitBoxCentre.y += (_height - PlayerHitBox.size.y) / 2;
         
         PlayerHitBox.size = _velocityWorkspace;
         PlayerHitBox.offset = hitBoxCentre;
@@ -133,8 +138,8 @@ public class PlayerBase : MonoBehaviour
     {
         if (Core != null)
         {
-            Gizmos.DrawWireSphere(collisionSenses._entityGrappleStuckCheck.transform.position, collisionSenses._entityGrappleStuckRadius);
-            Gizmos.DrawWireSphere(collisionSenses._entityGrappleCheck.transform.position, collisionSenses._entityGrappleCheckRadius);
+            Gizmos.DrawWireSphere(CoreCollisionSenses._entityGrappleStuckCheck.transform.position, CoreCollisionSenses._entityGrappleStuckRadius);
+            Gizmos.DrawWireSphere(CoreCollisionSenses._entityGrappleCheck.transform.position, CoreCollisionSenses._entityGrappleCheckRadius);
         }
     }
 

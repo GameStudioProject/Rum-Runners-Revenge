@@ -13,7 +13,7 @@ public class Enemy_MoveState : Enemy_GroundedState
     {
         base.StateEnter();
         
-        coreMovement.SetEntityVelocityX(_enemyData.enemyMovementSpeed * coreMovement.EntityFacingDirection);
+        _enemyBase.CoreMovement.SetEntityVelocityX(_enemyData.enemyMovementSpeed * _enemyBase.CoreMovement.EntityFacingDirection);
     }
 
     public override void StateExit()
@@ -25,7 +25,7 @@ public class Enemy_MoveState : Enemy_GroundedState
     {
         base.EveryFrameUpdate();
         
-        coreMovement.SetEntityVelocityX(_enemyData.enemyMovementSpeed * coreMovement.EntityFacingDirection);
+        _enemyBase.CoreMovement.SetEntityVelocityX(_enemyData.enemyMovementSpeed * _enemyBase.CoreMovement.EntityFacingDirection);
     }
 
     public override void PhysicsUpdate()

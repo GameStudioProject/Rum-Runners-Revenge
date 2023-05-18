@@ -34,15 +34,15 @@ public class Enemy_GroundedState : EnemyStates
     {
         base.DoEnemyChecks();
         
-        if (coreCollisionSenses)
+        if (_enemyBase.CoreCollisionSenses)
         {
-           _isEnemyDetectingLedge = coreCollisionSenses.CheckIfEntityTouchesLedgeVertical;
-           _isEnemyDetectingWall = coreCollisionSenses.CheckIfEntityTouchesWall;
-           _isEnemyGrounded = coreCollisionSenses.CheckIfEntityGrounded;
+           _isEnemyDetectingLedge = _enemyBase.CoreCollisionSenses.CheckIfEntityTouchesLedgeVertical;
+           _isEnemyDetectingWall = _enemyBase.CoreCollisionSenses.CheckIfEntityTouchesWall;
+           _isEnemyGrounded = _enemyBase.CoreCollisionSenses.CheckIfEntityGrounded;
         }
         
-        _isPlayerInMinAgroRange = coreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
-        _performCloseRangeAction = coreCollisionSenses.EnemyCheckPlayerInCloseRangeAction();
-        _isPlayerInMaxAgroRange = coreCollisionSenses.EnemyCheckPlayerInMaxAgroRange();
+        _isPlayerInMinAgroRange = _enemyBase.CoreCollisionSenses.EnemyCheckPlayerInMinAgroRange();
+        _performCloseRangeAction = _enemyBase.CoreCollisionSenses.EnemyCheckPlayerInCloseRangeAction();
+        _isPlayerInMaxAgroRange = _enemyBase.CoreCollisionSenses.EnemyCheckPlayerInMaxAgroRange();
     }
 }

@@ -9,9 +9,7 @@ public class EnemyStates
     protected EnemyFiniteStateMachine _enemyStateMachine;
     protected EnemyBase _enemyBase;
     public D_EnemyData _enemyData;
-    protected Core _core;
-    protected MovementComponent coreMovement;
-    protected CollisionSenses coreCollisionSenses;
+    
 
     public float _stateStartTime { get; protected set; }
 
@@ -23,10 +21,6 @@ public class EnemyStates
         this._enemyData = _enemyData;
         this._enemyStateMachine = _enemyStateMachine;
         this._enemyAnimationBoolName = _enemyAnimationBoolName;
-        _core = this._enemyBase.Core;
-        
-        coreMovement = _core.GetCoreComponent<MovementComponent>();
-        coreCollisionSenses = _core.GetCoreComponent<CollisionSenses>();
     }
 
     public virtual void StateEnter()

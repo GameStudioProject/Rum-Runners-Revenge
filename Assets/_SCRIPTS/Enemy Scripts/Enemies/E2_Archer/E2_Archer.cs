@@ -33,7 +33,7 @@ public class E2_Archer : EnemyBase
         ArcherDodgeState = new E2_Archer_DodgeState(this, EnemyStateMachine, "dodge", enemyData, this);
         ArcherRangedAttackState = new E2_Archer_RangedAttackState(this, EnemyStateMachine, "rangedAttack" ,enemyData, _rangedAttackPosition ,this);
         
-        coreStats.EntityPoise.OnCurrentStatValueZero += HandleEnemyPoiseZero;
+        CoreStats.EntityPoise.OnCurrentStatValueZero += HandleEnemyPoiseZero;
     }
 
     private void HandleEnemyPoiseZero()
@@ -48,7 +48,7 @@ public class E2_Archer : EnemyBase
 
     private void OnDestroy()
     {
-        coreStats.EntityPoise.OnCurrentStatValueZero -= HandleEnemyPoiseZero;
+        CoreStats.EntityPoise.OnCurrentStatValueZero -= HandleEnemyPoiseZero;
     }
 
     public override void OnDrawGizmos()

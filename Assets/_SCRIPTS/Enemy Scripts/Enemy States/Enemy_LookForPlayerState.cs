@@ -27,7 +27,7 @@ public class Enemy_LookForPlayerState : Enemy_GroundedState
         _lastEnemyTurnTime = _stateStartTime;
         _amountOfEnemyTurnsDone = 0;
         
-        coreMovement.SetEntityVelocityX(0f);
+        _enemyBase.CoreMovement.SetEntityVelocityX(0f);
     }
 
     public override void StateExit()
@@ -39,18 +39,18 @@ public class Enemy_LookForPlayerState : Enemy_GroundedState
     {
         base.EveryFrameUpdate();
         
-        coreMovement.SetEntityVelocityX(0f);
+        _enemyBase.CoreMovement.SetEntityVelocityX(0f);
 
         if (_turnEnemyImmediately)
         {
-            coreMovement.EntityFlip();
+            _enemyBase.CoreMovement.EntityFlip();
             _lastEnemyTurnTime = Time.time;
             _amountOfEnemyTurnsDone++;
             _turnEnemyImmediately = false;
         }
         else if (Time.time >= _lastEnemyTurnTime + _enemyData.enemyTimeBetweenTurns && !_isAllEnemyTurnsDone)
         {
-            coreMovement.EntityFlip();
+            _enemyBase.CoreMovement.EntityFlip();
             _lastEnemyTurnTime = Time.time;
             _amountOfEnemyTurnsDone++;
         }

@@ -15,7 +15,7 @@ public class PlayerJumpState : PlayerAbilityState
         
         _player.PlayerInputHandler.PlayerUsedJumpInput();
         GameObject.Find("Jump Audio").GetComponent<AudioSource>().Play();
-        coreMovement.SetEntityVelocityY(_playerData.playerJumpVelocity);
+        _player.CoreMovement.SetEntityVelocityY(_playerData.playerJumpVelocity);
         _isPlayerAbilityDone = true;
         _playerAmountOfJumpsLeft--;
         _player.PlayerInAirState.SetPlayerJump();

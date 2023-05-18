@@ -28,15 +28,15 @@ public class PlayerWallGrabState : PlayerTouchWallState
     {
         base.EveryFrameUpdate();
         
-        coreStats.EntityStamina.DecreaseStat(_playerData.playerWallGrabStaminaReduceAmount);
+        _player.CoreStats.EntityStamina.DecreaseStat(_playerData.playerWallGrabStaminaReduceAmount);
 
         if (!_isExitingPlayerState)
         {
             
-            coreMovement.SetEntityVelocityX(0f);
-            coreMovement.SetEntityVelocityY(-_playerData.playerWallGrabSlideSpeed);
+            _player.CoreMovement.SetEntityVelocityX(0f);
+            _player.CoreMovement.SetEntityVelocityY(-_playerData.playerWallGrabSlideSpeed);
 
-            if (coreStats.EntityStamina.StatCurrentValue <= 0)
+            if (_player.CoreStats.EntityStamina.StatCurrentValue <= 0)
             {
                 _player.PlayerInputHandler.PlayerUsedWallGrabInput();
                 _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
