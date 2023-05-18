@@ -122,6 +122,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectileGravity: 5
   _damageRadius: 0.2
+  _damage: 10
+  knockBackAngle: {x: 1, y: 3}
+  knockBackStrength: 5
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 128

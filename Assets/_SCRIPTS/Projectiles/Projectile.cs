@@ -6,11 +6,15 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private float _speed;
+    
     private float _projectileTravelDistance;
     private float _projectileXStartPosition;
 
     [SerializeField] private float _projectileGravity;
     [SerializeField] private float _damageRadius;
+    [SerializeField] private float _damage;
+    [SerializeField] private Vector2 knockBackAngle;
+    [SerializeField] private float knockBackStrength;
 
     private Rigidbody2D _projectileRB;
     
@@ -20,7 +24,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsPlayer;
     [SerializeField] private Transform _projectileDamagePosition;
-    
+
 
     private void Start()
     {
@@ -38,8 +42,6 @@ public class Projectile : MonoBehaviour
     {
         if (!_hasProjectileHitGround)
         {
-            //_attackDetails.position = transform.position;
-            
             if (_isProjectileGravityOn)
             {
                 float angle = Mathf.Atan2(_projectileRB.velocity.y, _projectileRB.velocity.x) * Mathf.Rad2Deg;
@@ -52,20 +54,26 @@ public class Projectile : MonoBehaviour
     {
         if (!_hasProjectileHitGround)
         {
-            Collider2D damageHit = Physics2D.OverlapCircle(_projectileDamagePosition.position, _damageRadius, _whatIsPlayer);
-            Collider2D groundHit = Physics2D.OverlapCircle(_projectileDamagePosition.position, _damageRadius, _whatIsGround);
+            
+            Collider2D detectedObjects = Physics2D.OverlapCircle(_projectileDamagePosition.position, _damageRadius, _whatIsPlayer);
 
-            if (damageHit)
+            if (detectedObjects)
             {
-                //damageHit.transform.SendMessage("Damage", _attackDetails);
-                Destroy(gameObject);
+                DamageInterface damaged = detectedObjects.GetComponentInChildren<DamageInterface>();
+                damaged.Damage(_damage);
             }
-
+            
+            
+            
+            
+            Collider2D groundHit = Physics2D.OverlapCircle(_projectileDamagePosition.position, _damageRadius, _whatIsGround);
+            
             if (groundHit)
             {
                 _hasProjectileHitGround = true;
                 _projectileRB.gravityScale = 0;
                 _projectileRB.velocity = Vector2.zero;
+                Destroy(gameObject);
             }
             
             if (Mathf.Abs(_projectileXStartPosition - transform.position.x) >= _projectileTravelDistance && !_isProjectileGravityOn)
@@ -80,11 +88,12 @@ public class Projectile : MonoBehaviour
     {
         _speed = speed;
         _projectileTravelDistance = travelDistance;
-        //_attackDetails.damageAmount = damage;
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(_projectileDamagePosition.position, _damageRadius);
     }
+
+    
 }

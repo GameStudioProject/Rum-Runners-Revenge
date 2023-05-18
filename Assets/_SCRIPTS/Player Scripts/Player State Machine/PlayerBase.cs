@@ -32,6 +32,7 @@ public class PlayerBase : MonoBehaviour
 
     public Core Core { get; private set; }
     public CollisionSenses collisionSenses { get; private set; }
+    public MovementComponent movementComponent { get; private set; }
     
     
     public Animator PlayerAnimator { get; private set; }
@@ -55,6 +56,7 @@ public class PlayerBase : MonoBehaviour
     {
         Core = GetComponentInChildren<Core>();
         collisionSenses = Core.GetCoreComponent<CollisionSenses>();
+        movementComponent = Core.GetCoreComponent<MovementComponent>();
 
         collisionSenses.PlayerBase = this;
         

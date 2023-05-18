@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86fa2f055232f54c8c7dc0402547eb9, type: 3}
+  m_Name: E4_Cannon_Base
+  m_EditorClassIdentifier: 
+  maxHealth: 60
+  enemyDamageHopSpeed: 10
+  wallCheckDistance: 0.2
+  ledgeCheckDistance: 0.7
+  groundCheckRadius: 0.3
+  enemyMinAgroDistance: 8
+  enemyMaxAgroDistance: 9
+  enemyStunResistance: 3
+  enemyStunRecoveryTime: 2
+  enemyCloseRangeActionDistance: 1.3
+  enemyHitParticle: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 128
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  enemyMinIdleTime: 1
+  enemyMaxIdleTime: 2
+  enemyMovementSpeed: 3
+  enemyDodgeSpeed: 10
+  enemyDodgeSpeedMultiplier: 0.5
+  enemyDodgeTime: 0.2
+  enemyDodgeCooldown: 2
+  enemyDodgeAngle: {x: 0, y: 0}
+  enemyChargeSpeed: 6
+  enemyChargeTime: 2
+  enemyTurns: 2
+  enemyTimeBetweenTurns: 0.75
+  enemyLongRangeActionTime: 1.5
+  enemyProjectile: {fileID: 520525365201432645, guid: b51fc514c955bcd4cb8333bd1e43ecf2, type: 3}
+  enemyProjectileDamage: 10
+  enemyProjectileSpeed: 12
+  enemyProjectileTravelDistance: 10
+  enemyAttackRadius: 0.5
+  enemyAttackDamage: 10
+  knockBackAngle: {x: 1, y: 1}
+  knockBackStrength: 10
+  enemyStunTime: 3
+  enemyStunKnockBackTime: 0.3
+  enemyStunKnockBackSpeed: 20
+  enemyStunKnockBackAngle: {x: 0, y: 0}
+  enemyDeathChunkParticle: {fileID: 0}
+  enemyDeathBloodParticle: {fileID: 0}
