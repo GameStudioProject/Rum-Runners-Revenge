@@ -21,21 +21,25 @@ public class Key : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (keyUsed == false)
+        if (Time.timeScale == 1)
         {
-            playerPos = player.transform.position;
-
-            if (hasKey == false)
-            {   
-                float newY = Mathf.Sin(Time.time * speed);
-                transform.position = new Vector2(transform.position.x, (newY * height) + transform.position.y);
-            }
-            if (hasKey == true)
+            if (keyUsed == false)
             {
-                float newY = Mathf.Sin(Time.time * speed);
-                transform.position = new Vector2(playerPos.x, (newY * heightOnPlayer) + (playerPos.y + 1.5f));
+                playerPos = player.transform.position;
+
+                if (hasKey == false)
+                {   
+                    float newY = Mathf.Sin(Time.time * speed);
+                    transform.position = new Vector2(transform.position.x, (newY * height) + transform.position.y);
+                }
+                if (hasKey == true)
+                {
+                    float newY = Mathf.Sin(Time.time * speed);
+                    transform.position = new Vector2(playerPos.x, (newY * heightOnPlayer) + (playerPos.y + 1.5f));
+                }
             }
         }
+        
         
     }
 

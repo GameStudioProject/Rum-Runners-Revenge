@@ -57,13 +57,11 @@ public class PlayerGrappleHookState : PlayerAbilityState
                 if (_distanceToGrappleTarget <= _playerData.playerGrappleHookStopDistance || _player.CoreCollisionSenses.CheckEntityGrappleStuck)
                 {
                     StopGrappleHook();
-                    _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
                     return;
                 }
                 if (_distanceToGrappleTarget > _maxGrappleDistance)
                 {
                     StopGrappleHook();
-                    _playerStateMachine.ChangePlayerState(_player.PlayerInAirState);
                     return;
                 }
 
