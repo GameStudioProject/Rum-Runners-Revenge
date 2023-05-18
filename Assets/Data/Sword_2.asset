@@ -130,11 +130,11 @@ MonoBehaviour:
         name: PlayerWeaponPoiseDamageData
         _weaponAttackData:
         - name: Attack 1
-          <PoiseAmount>k__BackingField: 20
+          <PoiseAmount>k__BackingField: 5
         - name: Attack 2
-          <PoiseAmount>k__BackingField: 20
+          <PoiseAmount>k__BackingField: 10
         - name: Attack 3
-          <PoiseAmount>k__BackingField: 20
+          <PoiseAmount>k__BackingField: 15
     - rid: 9040973318587154434
       type: {class: PlayerWeaponLifeStealData, ns: , asm: Assembly-CSharp}
       data:

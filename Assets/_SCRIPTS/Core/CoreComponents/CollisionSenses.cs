@@ -71,6 +71,7 @@ public class CollisionSenses : CoreComponent
     [SerializeField] private Transform _entityCeilingCheck;
     [SerializeField] public Transform _entityGrappleStuckCheck;
     [SerializeField] private Transform _entityDodgeLandZone;
+    [SerializeField] private Transform _entityWaterCheck;
     [SerializeField] private float _entityGroundCheckRadius;
     [SerializeField] private float _entityWallCheckDistance;
     [SerializeField] public float _entityGrappleCheckRadius;
@@ -78,12 +79,20 @@ public class CollisionSenses : CoreComponent
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsPlayer;
     [SerializeField] private LayerMask _whatisGrappleble;
+    [SerializeField] private LayerMask _whatIsWater;
 
     #region Player Check Functions
     
     public bool CheckForCeiling
     {
         get => Physics2D.OverlapCircle(EntityCeilingCheck.position, _entityGroundCheckRadius, _whatIsGround);
+    }
+
+    public bool CheckIfEntityUnderWater
+    {
+        get => Physics2D.OverlapArea(_entityWaterCheck.transform.position,
+            new Vector2(_entityWaterCheck.transform.position.x + 0.6f, _entityWaterCheck.transform.position.y + 1.6f),
+            _whatIsWater);
     }
 
     public bool CheckIfEntityGrounded

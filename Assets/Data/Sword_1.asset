@@ -129,8 +129,8 @@ MonoBehaviour:
         name: PlayerWeaponPoiseDamageData
         _weaponAttackData:
         - name: Attack 1
-          <PoiseAmount>k__BackingField: 30
+          <PoiseAmount>k__BackingField: 5
         - name: Attack 2
-          <PoiseAmount>k__BackingField: 30
+          <PoiseAmount>k__BackingField: 15
         - name: Attack 3
-          <PoiseAmount>k__BackingField: 30
+          <PoiseAmount>k__BackingField: 20
