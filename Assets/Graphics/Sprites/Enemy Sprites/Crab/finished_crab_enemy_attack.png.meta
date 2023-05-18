@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 11cb456a97c9bdc4097dcf44e68f743d
+guid: 29c4918a8b9afd2418c3609946794bbe
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,11 +101,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_0
+      name: finished_crab_enemy_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5b64314e93554e43aaced36c06350b6
-      internalID: 1750097087
+      spriteID: bd22db24c3bc9834db1d9da0cf23e77f
+      internalID: 1154313934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_1
+      name: finished_crab_enemy_attack_1
       rect:
         serializedVersion: 2
         x: 64
@@ -140,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcd5a422c16f96f4c800ad9dd028bfdc
-      internalID: 508070898
+      spriteID: 50351c45ce7347744bf55dc4e3356f06
+      internalID: -148262425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_2
+      name: finished_crab_enemy_attack_2
       rect:
         serializedVersion: 2
         x: 128
@@ -161,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b32aabbf8840bb441a58526bf97a9486
-      internalID: 1782262589
+      spriteID: 25059484e5ac52c4c97956e0f9d49aab
+      internalID: -1802482553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_3
+      name: finished_crab_enemy_attack_3
       rect:
         serializedVersion: 2
         x: 192
@@ -182,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d6a4190c5cfc5e468f8772ff2e2de59
-      internalID: 746937850
+      spriteID: 5034bd2ccaffcec408651e1819f8d12e
+      internalID: -1359647772
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_4
+      name: finished_crab_enemy_attack_4
       rect:
         serializedVersion: 2
         x: 256
@@ -203,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 685bc0769058daf4f9567eb54f31eb6b
-      internalID: 1852065216
+      spriteID: c6f3f1fca9583d74caef533514f366b8
+      internalID: -1301969061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_5
+      name: finished_crab_enemy_attack_5
       rect:
         serializedVersion: 2
         x: 320
@@ -224,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebd4d45774abba542a3690cf5c3e5e9c
-      internalID: -1523027130
+      spriteID: 50b4c9cd3efa4c64ab09165908b46f90
+      internalID: -1628111232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_6
+      name: finished_crab_enemy_attack_6
       rect:
         serializedVersion: 2
         x: 384
@@ -245,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52e8dce6e27862c439a859822798f1a9
-      internalID: 469223842
+      spriteID: e543a41d92358ef4dbc05bacfa1f9c8d
+      internalID: -936371415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_7
+      name: finished_crab_enemy_attack_7
       rect:
         serializedVersion: 2
         x: 448
@@ -266,14 +278,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c171a56f60ed344bb794ac4bfdb39f3
-      internalID: -787030919
+      spriteID: 0ce9577cd48c1804a8105e00aa2ef13b
+      internalID: 1750128877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_8
+      name: finished_crab_enemy_attack_8
       rect:
         serializedVersion: 2
         x: 512
@@ -287,14 +299,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8932fa1ed2ead454bba052921d5ffd82
-      internalID: 632715635
+      spriteID: c0a7f713ce2016f478d1742f787ec328
+      internalID: -753359668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_9
+      name: finished_crab_enemy_attack_9
       rect:
         serializedVersion: 2
         x: 576
@@ -308,14 +320,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf5e5099a12bf234fb2f2c652665987b
-      internalID: -2025845468
+      spriteID: cd9edba769e148844a2e6f7168840520
+      internalID: 1720971608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_10
+      name: finished_crab_enemy_attack_10
       rect:
         serializedVersion: 2
         x: 640
@@ -329,14 +341,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abfdb77e306f8a34c9a1b383bd0df9b0
-      internalID: 1523878774
+      spriteID: a5d4e8839577e6545b15c23db67899d3
+      internalID: -557340071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_11
+      name: finished_crab_enemy_attack_11
       rect:
         serializedVersion: 2
         x: 704
@@ -350,14 +362,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78add7fa02982414282beb9b56805dc5
-      internalID: 922992892
+      spriteID: 7a5d6244b57aeed488974873a1473395
+      internalID: -1324936814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_12
+      name: finished_crab_enemy_attack_12
       rect:
         serializedVersion: 2
         x: 768
@@ -371,14 +383,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39fd0889ef7da4f4dbecaa5251cd3fce
-      internalID: 872435645
+      spriteID: 7fac19a7a40165d4ebe4f9f1fce01585
+      internalID: -1725514856
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_13
+      name: finished_crab_enemy_attack_13
       rect:
         serializedVersion: 2
         x: 832
@@ -392,14 +404,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46c97d80d7dff1948af6219931db28cf
-      internalID: 325156298
+      spriteID: dfdf7d3520664d848ba69ad02522d33b
+      internalID: 1593818793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_14
+      name: finished_crab_enemy_attack_14
       rect:
         serializedVersion: 2
         x: 896
@@ -413,14 +425,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ede650252a605b74ba7ec79105ed9536
-      internalID: -504362525
+      spriteID: fa8fd9afa7cd1df439d91d493cf4a652
+      internalID: -450047331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_15
+      name: finished_crab_enemy_attack_15
       rect:
         serializedVersion: 2
         x: 960
@@ -434,14 +446,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c4f1f8c270a4c64a99577be29830345
-      internalID: -1287728995
+      spriteID: 02743c36a30b6ab4dbbcfcc778a5b762
+      internalID: 444052388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_16
+      name: finished_crab_enemy_attack_16
       rect:
         serializedVersion: 2
         x: 1024
@@ -455,14 +467,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3184b59ff00d6747be78cb575ff5b1a
-      internalID: 1070852536
+      spriteID: 913b776ca5cde5743bf42c56359a98d1
+      internalID: 1459537139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_17
+      name: finished_crab_enemy_attack_17
       rect:
         serializedVersion: 2
         x: 1088
@@ -476,14 +488,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8a6eaa37e1423d45987bee2c92d4e26
-      internalID: 531597172
+      spriteID: eb27fbaf7faab3b46ace437e8db07038
+      internalID: -1270322777
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_18
+      name: finished_crab_enemy_attack_18
       rect:
         serializedVersion: 2
         x: 1152
@@ -497,14 +509,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9867911d327a5284f9c31bb66ed22f74
-      internalID: 1018904747
+      spriteID: 053fca415e48d7547a719c816a1900b4
+      internalID: 589943800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_19
+      name: finished_crab_enemy_attack_19
       rect:
         serializedVersion: 2
         x: 1216
@@ -518,14 +530,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bb171983392e364685e5e04729fac65
-      internalID: 258155844
+      spriteID: 95cc739bb0e92ea49a80922fe99d3082
+      internalID: -1862252403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_20
+      name: finished_crab_enemy_attack_20
       rect:
         serializedVersion: 2
         x: 1280
@@ -539,14 +551,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0f5dee5f5dce744785e24f48aa9c4e9
-      internalID: 1991848450
+      spriteID: 989e6a694e770364e906e44b6c54c414
+      internalID: 461058081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_21
+      name: finished_crab_enemy_attack_21
       rect:
         serializedVersion: 2
         x: 1344
@@ -560,14 +572,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d61caa9ace819a47b3f933a297e74d2
-      internalID: -1478606204
+      spriteID: da5bb44f8ba865d40bf4ac63bfec426c
+      internalID: 54467026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_22
+      name: finished_crab_enemy_attack_22
       rect:
         serializedVersion: 2
         x: 1408
@@ -581,155 +593,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c299bec083441944a1ac03e4299fbb3
-      internalID: 523841201
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_23
-      rect:
-        serializedVersion: 2
-        x: 1472
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2bd5097fbdd7b6843b1fa96fe7ea9dc9
-      internalID: 1729011880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_24
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd084c8de9144ad49be9f9d2653e333e
-      internalID: -2101322554
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_25
-      rect:
-        serializedVersion: 2
-        x: 1600
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c2549d69731af3842b9c5c5bbf1c2163
-      internalID: -1924701982
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_26
-      rect:
-        serializedVersion: 2
-        x: 1664
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38510b914e6459f44b916d0055ebd08b
-      internalID: -688901534
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_27
-      rect:
-        serializedVersion: 2
-        x: 1728
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c2e3cd4d260b794eb503ec4192d7b8c
-      internalID: -1112427637
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_28
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f99fbf0d19f42b54a905fc98468be60f
-      internalID: 1947453924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: finished_crab_enemy_attack_2_29
-      rect:
-        serializedVersion: 2
-        x: 1856
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e6b112aa448d9f4184e64ce32dc4929
-      internalID: -2023840072
+      spriteID: 516e5ee9e071d374fbf50c60a0e2f2de
+      internalID: 2099394102
       vertices: []
       indices: 
       edges: []
@@ -745,36 +610,29 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      finished_crab_enemy_attack_2_0: 1750097087
-      finished_crab_enemy_attack_2_1: 508070898
-      finished_crab_enemy_attack_2_10: 1523878774
-      finished_crab_enemy_attack_2_11: 922992892
-      finished_crab_enemy_attack_2_12: 872435645
-      finished_crab_enemy_attack_2_13: 325156298
-      finished_crab_enemy_attack_2_14: -504362525
-      finished_crab_enemy_attack_2_15: -1287728995
-      finished_crab_enemy_attack_2_16: 1070852536
-      finished_crab_enemy_attack_2_17: 531597172
-      finished_crab_enemy_attack_2_18: 1018904747
-      finished_crab_enemy_attack_2_19: 258155844
-      finished_crab_enemy_attack_2_2: 1782262589
-      finished_crab_enemy_attack_2_20: 1991848450
-      finished_crab_enemy_attack_2_21: -1478606204
-      finished_crab_enemy_attack_2_22: 523841201
-      finished_crab_enemy_attack_2_23: 1729011880
-      finished_crab_enemy_attack_2_24: -2101322554
-      finished_crab_enemy_attack_2_25: -1924701982
-      finished_crab_enemy_attack_2_26: -688901534
-      finished_crab_enemy_attack_2_27: -1112427637
-      finished_crab_enemy_attack_2_28: 1947453924
-      finished_crab_enemy_attack_2_29: -2023840072
-      finished_crab_enemy_attack_2_3: 746937850
-      finished_crab_enemy_attack_2_4: 1852065216
-      finished_crab_enemy_attack_2_5: -1523027130
-      finished_crab_enemy_attack_2_6: 469223842
-      finished_crab_enemy_attack_2_7: -787030919
-      finished_crab_enemy_attack_2_8: 632715635
-      finished_crab_enemy_attack_2_9: -2025845468
+      finished_crab_enemy_attack_0: 1154313934
+      finished_crab_enemy_attack_1: -148262425
+      finished_crab_enemy_attack_10: -557340071
+      finished_crab_enemy_attack_11: -1324936814
+      finished_crab_enemy_attack_12: -1725514856
+      finished_crab_enemy_attack_13: 1593818793
+      finished_crab_enemy_attack_14: -450047331
+      finished_crab_enemy_attack_15: 444052388
+      finished_crab_enemy_attack_16: 1459537139
+      finished_crab_enemy_attack_17: -1270322777
+      finished_crab_enemy_attack_18: 589943800
+      finished_crab_enemy_attack_19: -1862252403
+      finished_crab_enemy_attack_2: -1802482553
+      finished_crab_enemy_attack_20: 461058081
+      finished_crab_enemy_attack_21: 54467026
+      finished_crab_enemy_attack_22: 2099394102
+      finished_crab_enemy_attack_3: -1359647772
+      finished_crab_enemy_attack_4: -1301969061
+      finished_crab_enemy_attack_5: -1628111232
+      finished_crab_enemy_attack_6: -936371415
+      finished_crab_enemy_attack_7: 1750128877
+      finished_crab_enemy_attack_8: -753359668
+      finished_crab_enemy_attack_9: 1720971608
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

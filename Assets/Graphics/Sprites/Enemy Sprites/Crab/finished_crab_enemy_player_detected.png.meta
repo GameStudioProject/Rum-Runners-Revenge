@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e0ff50b83db3acf4ab19450cbd7d6fc4
+guid: 422d350dd2741cb468d6b407e5add98a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,11 +101,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: finished_crab_enemy_death_0
+      name: finished_crab_enemy_player_detected_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92e146d91be2a844fbeec4d30fef38c0
-      internalID: -1913933025
+      spriteID: 1afb0739c0d03504b8890fe257066ff7
+      internalID: -960331621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_death_1
+      name: finished_crab_enemy_player_detected_1
       rect:
         serializedVersion: 2
         x: 64
@@ -140,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 153eab7496101e147875842b26c170d5
-      internalID: -1136508827
+      spriteID: 72dd40dacf87b5a48afb9d27e0dae042
+      internalID: -330214183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_death_2
+      name: finished_crab_enemy_player_detected_2
       rect:
         serializedVersion: 2
         x: 128
@@ -161,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7865eefbddad847409ee768cac77e376
-      internalID: -419655668
+      spriteID: e08cd2f4819f70e47b000bf7b9d300b9
+      internalID: 430382838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_death_3
+      name: finished_crab_enemy_player_detected_3
       rect:
         serializedVersion: 2
         x: 192
@@ -182,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e8c357dcf4c8074a9b71fbdb76ccac8
-      internalID: 1195480986
+      spriteID: cfb4555bf2a84df42a5e92073c4e0c0c
+      internalID: -1590576862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_death_4
+      name: finished_crab_enemy_player_detected_4
       rect:
         serializedVersion: 2
         x: 256
@@ -203,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5332cb319407e314a9012e01f67c5dee
-      internalID: 2099321845
+      spriteID: 88d5f904e08f7144db3ba5840ebd7d82
+      internalID: -160047465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_death_5
+      name: finished_crab_enemy_player_detected_5
       rect:
         serializedVersion: 2
         x: 320
@@ -224,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4689b4fea0d287b4eaaaa8141ad03b0c
-      internalID: 951282089
+      spriteID: 74e6d6776a679c7499bff049507ef260
+      internalID: 1901014405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_death_6
+      name: finished_crab_enemy_player_detected_6
       rect:
         serializedVersion: 2
         x: 384
@@ -245,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc19d5d95618ab84c92a220eff36928e
-      internalID: -1354895398
+      spriteID: 825b1214d9309e8468254b1496e92b3b
+      internalID: 1168898370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: finished_crab_enemy_death_7
+      name: finished_crab_enemy_player_detected_7
       rect:
         serializedVersion: 2
         x: 448
@@ -266,71 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab9904690d29e8349a13ecd258fbe0de
-      internalID: -186478222
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: finished_crab_enemy_death_8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d8cd30f678c49ac49b2ba002e7457d1b
-      internalID: -706009635
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: finished_crab_enemy_death_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94ce33376739f5b4b834e3a9e6383289
-      internalID: -730604014
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: finished_crab_enemy_death_10
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1219acbed1140bf4d846d2a3f705445d
-      internalID: -946471130
+      spriteID: 63fe85a56afe0e14d8cf1ce4fc86af46
+      internalID: 553803390
       vertices: []
       indices: 
       edges: []
@@ -346,17 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      finished_crab_enemy_death_0: -1913933025
-      finished_crab_enemy_death_1: -1136508827
-      finished_crab_enemy_death_10: -946471130
-      finished_crab_enemy_death_2: -419655668
-      finished_crab_enemy_death_3: 1195480986
-      finished_crab_enemy_death_4: 2099321845
-      finished_crab_enemy_death_5: 951282089
-      finished_crab_enemy_death_6: -1354895398
-      finished_crab_enemy_death_7: -186478222
-      finished_crab_enemy_death_8: -706009635
-      finished_crab_enemy_death_9: -730604014
+      finished_crab_enemy_player_detected_0: -960331621
+      finished_crab_enemy_player_detected_1: -330214183
+      finished_crab_enemy_player_detected_2: 430382838
+      finished_crab_enemy_player_detected_3: -1590576862
+      finished_crab_enemy_player_detected_4: -160047465
+      finished_crab_enemy_player_detected_5: 1901014405
+      finished_crab_enemy_player_detected_6: 1168898370
+      finished_crab_enemy_player_detected_7: 553803390
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

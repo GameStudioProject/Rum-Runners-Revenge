@@ -77,24 +77,24 @@ MonoBehaviour:
             serializedVersion: 2
             x: 0.11
             y: -0.9
-            width: 1.94
+            width: 0.92
             height: 1.41
         - name: Attack 2
           Debug: 0
           <WeaponHitBox>k__BackingField:
             serializedVersion: 2
             x: 0.11
-            y: -0.9
-            width: 1.94
+            y: -0.47
+            width: 0.71
             height: 1.41
         - name: Attack 3
           Debug: 0
           <WeaponHitBox>k__BackingField:
             serializedVersion: 2
             x: 0
-            y: -0.9
-            width: 1.61
-            height: 2.51
+            y: -0.34
+            width: 1.13
+            height: 0.36
         <WeaponDetectableLayers>k__BackingField:
           serializedVersion: 2
           m_Bits: 256
