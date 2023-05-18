@@ -12,6 +12,7 @@ namespace Tomas
         public PlayerInputHandler playerInputHandler;
         public Button Resume;
 
+        public GameObject UI;
         public bool optionsMenuUp = false;
 
         void Update()
@@ -23,6 +24,7 @@ namespace Tomas
                     if (playerInputHandler.pauseMenuUp == false)
                     {
                         pauseMenuCanvas.SetActive(true);
+                        UI.SetActive(false);
                         Resume.Select();
                         playerInputHandler.pauseMenuUp = true;
                         playerInputHandler.PauseMenuInput = false;
@@ -32,6 +34,7 @@ namespace Tomas
                     else if (playerInputHandler.pauseMenuUp == true)
                     {
                         pauseMenuCanvas.SetActive(false);
+                        UI.SetActive(true);
                         playerInputHandler.pauseMenuUp = false;
                         playerInputHandler.PauseMenuInput = false;
                         Time.timeScale = 1;

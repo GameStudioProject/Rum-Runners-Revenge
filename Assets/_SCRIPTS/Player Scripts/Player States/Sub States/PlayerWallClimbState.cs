@@ -18,7 +18,7 @@ public class PlayerWallClimbState : PlayerTouchWallState
     {
         base.EveryFrameUpdate();
 
-        _player.CoreStats.EntityStamina.DecreaseStat(_playerData.playerWallGrabStaminaReduceAmount);
+        _player.CoreStats.EntityStamina.DecreaseStat(_playerData.playerWallGrabStaminaReduceAmount * Time.deltaTime);
         
         if (!_isExitingPlayerState)
         {

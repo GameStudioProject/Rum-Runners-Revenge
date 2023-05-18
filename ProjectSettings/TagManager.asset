@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Enemy
   - ParticleContainer
+  - Collider
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Decoration
   - Water
   - UI
   - Player
@@ -20,7 +21,7 @@ TagManager:
   - Weapon
   - 
   - Grappleble
-  - 
+  - Foreground
   - 
   - 
   - 
