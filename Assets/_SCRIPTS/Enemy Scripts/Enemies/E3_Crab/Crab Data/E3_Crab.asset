@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86fa2f055232f54c8c7dc0402547eb9, type: 3}
   m_Name: E3_Crab
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 15
   enemyDamageHopSpeed: 10
   wallCheckDistance: 0.1
   ledgeCheckDistance: 0.4
@@ -22,10 +22,37 @@ MonoBehaviour:
   enemyStunResistance: 3
   enemyStunRecoveryTime: 2
   enemyCloseRangeActionDistance: 1
-  _enemyHitParticle: {fileID: 6240072112886026631, guid: 25aeb624df7917e4aa9cbe2204b85ed6, type: 3}
+  enemyHitParticle: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  enemyMinIdleTime: 1
+  enemyMaxIdleTime: 2
+  enemyMovementSpeed: 3
+  enemyDodgeSpeed: 10
+  enemyDodgeSpeedMultiplier: 0.5
+  enemyDodgeTime: 0.2
+  enemyDodgeCooldown: 2
+  enemyDodgeAngle: {x: 0, y: 0}
+  enemyChargeSpeed: 6
+  enemyChargeTime: 2
+  enemyTurns: 2
+  enemyTimeBetweenTurns: 0.75
+  enemyLongRangeActionTime: 1.5
+  enemyProjectile: {fileID: 0}
+  enemyProjectileDamage: 10
+  enemyProjectileSpeed: 12
+  enemyProjectileTravelDistance: 0
+  enemyAttackRadius: 0.5
+  enemyAttackDamage: 10
+  knockBackAngle: {x: 1, y: 1}
+  knockBackStrength: 10
+  enemyStunTime: 3
+  enemyStunKnockBackTime: 0.3
+  enemyStunKnockBackSpeed: 20
+  enemyStunKnockBackAngle: {x: 0, y: 0}
+  enemyDeathChunkParticle: {fileID: 0}
+  enemyDeathBloodParticle: {fileID: 0}

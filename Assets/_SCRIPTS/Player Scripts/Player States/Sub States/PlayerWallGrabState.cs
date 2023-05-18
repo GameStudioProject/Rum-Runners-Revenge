@@ -28,7 +28,7 @@ public class PlayerWallGrabState : PlayerTouchWallState
     {
         base.EveryFrameUpdate();
         
-        _player.CoreStats.EntityStamina.DecreaseStat(_playerData.playerWallGrabStaminaReduceAmount* Time.deltaTime) ;
+        _player.CoreStats.EntityStamina.DecreaseStat(_playerData.playerWallGrabStaminaReduceAmount) ;
 
         if (!_isExitingPlayerState)
         {

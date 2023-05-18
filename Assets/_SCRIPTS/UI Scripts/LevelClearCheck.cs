@@ -8,9 +8,11 @@ namespace Tomas
     {
 
         public GameObject Level1Block;
+        public GameObject Level1Block1;
         public GameObject Level2Block;
         public GameObject Level1Music;
         public GameObject Level2Music;
+
 
         public double levelCount = 0;
 
@@ -23,13 +25,12 @@ namespace Tomas
             {
                 if (levelCount < 1)
                 {
-                    Level1Block.SetActive(true);
                     Level1Music.SetActive(false);
+                    Level1Block1.SetActive(true);
 
                 }
                 else if (levelCount < 2)
                 {
-                    Level2Block.SetActive(true);
                     Level2Music.SetActive(false);
                 }
 
@@ -38,6 +39,21 @@ namespace Tomas
                 LevelClearCanvas.SetActive(true);
                 LevelClearCanvas.GetComponent<LevelClear>().StartScreen();
                 PlayerManager.instance.player.PlayerInputHandler.levelScreenClear = true;
+            }
+        }
+        public void OnTriggerExit2D(Collider2D other) 
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                if (levelCount == 1)
+                {
+                    Level1Block.SetActive(true);
+
+                }
+                else if (levelCount == 2)
+                {
+                    Level2Block.SetActive(true);
+                }
             }
         }
 
