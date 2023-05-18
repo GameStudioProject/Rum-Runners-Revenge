@@ -31,25 +31,28 @@ MonoBehaviour:
         _weaponAttackData:
         - name: 
           <PlayerSprites>k__BackingField:
-          - {fileID: 1718810412, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: -1464671733, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: -908359060, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: 1244791102, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: 1904237583, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
+          - {fileID: 1614567613, guid: a084a87c24ed4cc4e9e0f84aeb990175, type: 3}
+          - {fileID: 1315650156, guid: a084a87c24ed4cc4e9e0f84aeb990175, type: 3}
+          - {fileID: -1976309060, guid: a084a87c24ed4cc4e9e0f84aeb990175, type: 3}
+          - {fileID: -1144172640, guid: a084a87c24ed4cc4e9e0f84aeb990175, type: 3}
+          - {fileID: 484693615, guid: a084a87c24ed4cc4e9e0f84aeb990175, type: 3}
+          - {fileID: -375243750, guid: a084a87c24ed4cc4e9e0f84aeb990175, type: 3}
         - name: 
           <PlayerSprites>k__BackingField:
-          - {fileID: 1691086387, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: 1716957220, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: 1731391090, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: -1385162992, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: 1658511406, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
+          - {fileID: 1838677301, guid: 7acf449d691587644a4e0f6341c245a3, type: 3}
+          - {fileID: 683535210, guid: 7acf449d691587644a4e0f6341c245a3, type: 3}
+          - {fileID: -1022976194, guid: 7acf449d691587644a4e0f6341c245a3, type: 3}
+          - {fileID: -1349239331, guid: 7acf449d691587644a4e0f6341c245a3, type: 3}
+          - {fileID: 1372399127, guid: 7acf449d691587644a4e0f6341c245a3, type: 3}
+          - {fileID: 913798912, guid: 7acf449d691587644a4e0f6341c245a3, type: 3}
         - name: 
           <PlayerSprites>k__BackingField:
-          - {fileID: -855543002, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: -1306746448, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: 1626021243, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: 1980015340, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
-          - {fileID: 678514815, guid: 818d335b4dde3c04ea646d89cbde558a, type: 3}
+          - {fileID: 359606595, guid: ba7c3d2e993067b42a037f1f10ac26e1, type: 3}
+          - {fileID: 301241225, guid: ba7c3d2e993067b42a037f1f10ac26e1, type: 3}
+          - {fileID: 702724886, guid: ba7c3d2e993067b42a037f1f10ac26e1, type: 3}
+          - {fileID: -208897197, guid: ba7c3d2e993067b42a037f1f10ac26e1, type: 3}
+          - {fileID: -2527992, guid: ba7c3d2e993067b42a037f1f10ac26e1, type: 3}
+          - {fileID: -1917855141, guid: ba7c3d2e993067b42a037f1f10ac26e1, type: 3}
     - rid: 9040973036983681025
       type: {class: PlayerWeaponMovementData, ns: Tomas.Weapons.Components, asm: Assembly-CSharp}
       data:
